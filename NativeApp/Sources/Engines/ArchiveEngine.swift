@@ -6,7 +6,13 @@ struct ArchiveEngine: ConversionEngine {
     }
 
     func convert(_ request: ConversionRequest) async throws {
-        throw OpenTangerineError.invalidInput("Archive conversion is disabled in this trial pending bounded, isolated extraction. Original archives are unchanged.")
+        let fm = FileManager.default
+        let staging = fm.temporaryDirectory.appendingPathComponent("opentangerine-archive-\(UUID().uuidString)")
+        try fm.createDirectory(at: staging, withIntermediateDirectories: true)
+        defer { try? fm.removeItem(at: staging) }
+        try await extract(request.source, format: request.sourceFormat, into: staging)
+        try await pack(staging, as: request.target, to: request.destination)
+        request.progress(1)
     }
 
     func extract(_ archive: URL, format: FileFormat, into directory: URL) async throws {

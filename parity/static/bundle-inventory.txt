@@ -1,0 +1,85 @@
+=== find /Applications/Tangerine.app -maxdepth 2 ===
+/Applications/Tangerine.app
+/Applications/Tangerine.app/Contents
+/Applications/Tangerine.app/Contents/Info.plist
+/Applications/Tangerine.app/Contents/MacOS
+/Applications/Tangerine.app/Contents/PkgInfo
+/Applications/Tangerine.app/Contents/Resources
+/Applications/Tangerine.app/Contents/_CodeSignature
+/Applications/Tangerine.app/Contents/_MASReceipt
+
+=== Resources (all, with sizes) ===
+drwxr-xr-x  16 root  wheel  512 Oct 28 22:21 /Applications/Tangerine.app/Contents/Resources
+-rw-r--r--  1 root  wheel  68584 Oct 16 19:01 /Applications/Tangerine.app/Contents/Resources/AppIcon.icns
+-rw-r--r--  1 root  wheel  3324536 Oct 16 19:01 /Applications/Tangerine.app/Contents/Resources/Assets.car
+-rw-r--r--  1 root  wheel  2740 Oct 16 19:01 /Applications/Tangerine.app/Contents/Resources/CupertinoFiles-Licenses.txt
+drwxr-xr-x  7 root  wheel  224 Oct 28 22:21 /Applications/Tangerine.app/Contents/Resources/ExifTool
+-rw-r--r--  1 root  wheel  9349 Oct 16 19:01 /Applications/Tangerine.app/Contents/Resources/HighlightSound.mp3
+-rw-r--r--  1 root  wheel  11598 Oct 16 19:01 /Applications/Tangerine.app/Contents/Resources/HighlightSound.wav
+-rw-r--r--  1 root  wheel  59306 Oct 16 19:01 /Applications/Tangerine.app/Contents/Resources/OfficePreview-Licenses.txt
+-rw-r--r--  1 root  wheel  188843 Oct 16 19:01 /Applications/Tangerine.app/Contents/Resources/OfficePreview.js
+-rw-r--r--  1 root  wheel  82768 Oct 16 19:01 /Applications/Tangerine.app/Contents/Resources/PagesTemplate.pages
+-rw-r--r--  1 root  wheel  694646 Oct 16 19:01 /Applications/Tangerine.app/Contents/Resources/PagesWriter.js
+drwxr-xr-x  6 root  wheel  192 Oct 28 22:21 /Applications/Tangerine.app/Contents/Resources/PowerPoint
+-rw-r--r--  1 root  wheel  1455 Oct 16 19:01 /Applications/Tangerine.app/Contents/Resources/PrivacyInfo.xcprivacy
+drwxr-xr-x  3 root  wheel  96 Oct 28 22:21 /Applications/Tangerine.app/Contents/Resources/RevenueCat_RevenueCat.bundle
+drwxr-xr-x  5 root  wheel  160 Oct 28 22:21 /Applications/Tangerine.app/Contents/Resources/Tools
+
+=== Tools tree ===
+drwxr-xr-x  5 root  wheel  160 Oct 28 22:21 /Applications/Tangerine.app/Contents/Resources/Tools
+-rwxr-xr-x  1 root  wheel  505024 Oct 16 19:19 /Applications/Tangerine.app/Contents/Resources/Tools/cwebp
+-rwxr-xr-x  1 root  wheel  21986240 Oct 16 19:19 /Applications/Tangerine.app/Contents/Resources/Tools/ffmpeg
+drwxr-xr-x  5 root  wheel  160 Oct 28 22:21 /Applications/Tangerine.app/Contents/Resources/Tools/licenses
+drwxr-xr-x  4 root  wheel  128 Oct 28 22:21 /Applications/Tangerine.app/Contents/Resources/Tools/licenses/ffmpeg
+drwxr-xr-x  3 root  wheel  96 Oct 28 22:21 /Applications/Tangerine.app/Contents/Resources/Tools/licenses/lame
+drwxr-xr-x  3 root  wheel  96 Oct 28 22:21 /Applications/Tangerine.app/Contents/Resources/Tools/licenses/libwebp
+
+=== ExifTool tree ===
+/Applications/Tangerine.app/Contents/Resources/ExifTool
+/Applications/Tangerine.app/Contents/Resources/ExifTool/Artistic.txt
+/Applications/Tangerine.app/Contents/Resources/ExifTool/README
+/Applications/Tangerine.app/Contents/Resources/ExifTool/lib
+/Applications/Tangerine.app/Contents/Resources/ExifTool/lib/File
+/Applications/Tangerine.app/Contents/Resources/ExifTool/lib/File/RandomAccess.pm
+/Applications/Tangerine.app/Contents/Resources/ExifTool/lib/Image
+/Applications/Tangerine.app/Contents/Resources/ExifTool/lib/Image/ExifTool
+/Applications/Tangerine.app/Contents/Resources/ExifTool/lib/Image/ExifTool.pm
+/Applications/Tangerine.app/Contents/Resources/ExifTool/tangerine_metadata.pl
+/Applications/Tangerine.app/Contents/Resources/ExifTool/tangerine_privacy.pl
+
+=== PowerPoint top+arm64 ===
+drwxr-xr-x  6 root  wheel  192 Oct 28 22:21 /Applications/Tangerine.app/Contents/Resources/PowerPoint
+-rw-r--r--  1 root  wheel  274348 Oct 16 19:01 /Applications/Tangerine.app/Contents/Resources/PowerPoint/THIRD-PARTY-NOTICES.txt
+drwxr-xr-x  7 root  wheel  224 Oct 28 22:21 /Applications/Tangerine.app/Contents/Resources/PowerPoint/arm64
+drwxr-xr-x  3 root  wheel  96 Oct 28 22:21 /Applications/Tangerine.app/Contents/Resources/PowerPoint/arm64/bin
+drwxr-xr-x  7 root  wheel  224 Oct 28 22:21 /Applications/Tangerine.app/Contents/Resources/PowerPoint/arm64/conf
+drwxr-xr-x  9 root  wheel  288 Oct 28 22:21 /Applications/Tangerine.app/Contents/Resources/PowerPoint/arm64/legal
+drwxr-xr-x  39 root  wheel  1248 Oct 28 22:21 /Applications/Tangerine.app/Contents/Resources/PowerPoint/arm64/lib
+-rw-r--r--  1 root  wheel  125 Oct 16 19:01 /Applications/Tangerine.app/Contents/Resources/PowerPoint/arm64/release
+drwxr-xr-x  22 root  wheel  704 Oct 28 22:21 /Applications/Tangerine.app/Contents/Resources/PowerPoint/lib
+-rw-r--r--  1 root  wheel  25843 Oct 16 19:01 /Applications/Tangerine.app/Contents/Resources/PowerPoint/lib/SparseBitSet-1.3.jar
+-rw-r--r--  1 root  wheel  401021 Oct 16 19:01 /Applications/Tangerine.app/Contents/Resources/PowerPoint/lib/commons-codec-1.20.0.jar
+-rw-r--r--  1 root  wheel  898652 Oct 16 19:01 /Applications/Tangerine.app/Contents/Resources/PowerPoint/lib/commons-collections4-4.5.0.jar
+-rw-r--r--  1 root  wheel  1117221 Oct 16 19:01 /Applications/Tangerine.app/Contents/Resources/PowerPoint/lib/commons-compress-1.28.0.jar
+-rw-r--r--  1 root  wheel  585274 Oct 16 19:01 /Applications/Tangerine.app/Contents/Resources/PowerPoint/lib/commons-io-2.21.0.jar
+-rw-r--r--  1 root  wheel  702952 Oct 16 19:01 /Applications/Tangerine.app/Contents/Resources/PowerPoint/lib/commons-lang3-3.18.0.jar
+-rw-r--r--  1 root  wheel  73737 Oct 16 19:01 /Applications/Tangerine.app/Contents/Resources/PowerPoint/lib/commons-logging-1.3.5.jar
+-rw-r--r--  1 root  wheel  2213560 Oct 16 19:01 /Applications/Tangerine.app/Contents/Resources/PowerPoint/lib/commons-math3-3.6.1.jar
+-rw-r--r--  1 root  wheel  117159 Oct 16 19:01 /Applications/Tangerine.app/Contents/Resources/PowerPoint/lib/curvesapi-1.08.jar
+-rw-r--r--  1 root  wheel  1644618 Oct 16 19:01 /Applications/Tangerine.app/Contents/Resources/PowerPoint/lib/fontbox-3.0.6.jar
+-rw-r--r--  1 root  wheel  91887 Oct 16 19:01 /Applications/Tangerine.app/Contents/Resources/PowerPoint/lib/graphics2d-3.0.5.jar
+-rw-r--r--  1 root  wheel  348513 Oct 16 19:01 /Applications/Tangerine.app/Contents/Resources/PowerPoint/lib/log4j-api-2.24.3.jar
+-rw-r--r--  1 root  wheel  2058310 Oct 16 19:01 /Applications/Tangerine.app/Contents/Resources/PowerPoint/lib/pdfbox-3.0.6.jar
+-rw-r--r--  1 root  wheel  47746 Oct 16 19:01 /Applications/Tangerine.app/Contents/Resources/PowerPoint/lib/pdfbox-io-3.0.6.jar
+-rw-r--r--  1 root  wheel  3006527 Oct 16 19:01 /Applications/Tangerine.app/Contents/Resources/PowerPoint/lib/poi-5.5.1.jar
+-rw-r--r--  1 root  wheel  2052603 Oct 16 19:01 /Applications/Tangerine.app/Contents/Resources/PowerPoint/lib/poi-ooxml-5.5.1.jar
+-rw-r--r--  1 root  wheel  5995475 Oct 16 19:01 /Applications/Tangerine.app/Contents/Resources/PowerPoint/lib/poi-ooxml-lite-5.5.1.jar
+-rw-r--r--  1 root  wheel  1913107 Oct 16 19:01 /Applications/Tangerine.app/Contents/Resources/PowerPoint/lib/poi-scratchpad-5.5.1.jar
+-rw-r--r--  1 root  wheel  32301 Oct 16 19:01 /Applications/Tangerine.app/Contents/Resources/PowerPoint/lib/tangerine-powerpoint.jar
+-rw-r--r--  1 root  wheel  2211661 Oct 16 19:01 /Applications/Tangerine.app/Contents/Resources/PowerPoint/lib/xmlbeans-5.3.0.jar
+drwxr-xr-x  7 root  wheel  224 Oct 28 22:21 /Applications/Tangerine.app/Contents/Resources/PowerPoint/x86_64
+drwxr-xr-x  3 root  wheel  96 Oct 28 22:21 /Applications/Tangerine.app/Contents/Resources/PowerPoint/x86_64/bin
+drwxr-xr-x  7 root  wheel  224 Oct 28 22:21 /Applications/Tangerine.app/Contents/Resources/PowerPoint/x86_64/conf
+drwxr-xr-x  9 root  wheel  288 Oct 28 22:21 /Applications/Tangerine.app/Contents/Resources/PowerPoint/x86_64/legal
+drwxr-xr-x  39 root  wheel  1248 Oct 28 22:21 /Applications/Tangerine.app/Contents/Resources/PowerPoint/x86_64/lib
+-rw-r--r--  1 root  wheel  125 Oct 16 19:01 /Applications/Tangerine.app/Contents/Resources/PowerPoint/x86_64/release

@@ -57,11 +57,18 @@ python3 scripts/package-icon.py .build/AppIcon.iconset "$app/Contents/Resources/
 cp LICENSE "$app/Contents/Resources/GPL-3.0.txt"
 cp NativeApp/LICENSE "$app/Contents/Resources/Satsuma-MIT.txt"
 cp THIRD_PARTY_NOTICES.md "$app/Contents/Resources/THIRD_PARTY_NOTICES.md"
+# File-provider sync paths add Finder metadata that makes codesign refuse the bundle.
+xattr -cr "$app" 2>/dev/null || true
 # Developer trials use ad-hoc signing. Developer ID + notarization is required for trusted public distribution.
 if [[ -n "${DEVELOPER_ID_APPLICATION:-}" ]]; then
   codesign --force --options runtime --timestamp --sign "$DEVELOPER_ID_APPLICATION" "$app"
 else
-  codesign --force --sign - "$app"
+  # File-provider synced folders re-attach FinderInfo right after it is cleared, so retry.
+  for attempt in 1 2 3 4; do
+    xattr -cr "$app" 2>/dev/null || true
+    if codesign --force --sign - "$app" 2>/dev/null; then break; fi
+    sleep 1
+  done
 fi
 codesign --verify --deep --strict --verbose=2 "$app"
 test -x "$app/Contents/MacOS/OpenTangerine"

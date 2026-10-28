@@ -2,14 +2,45 @@ import AppKit
 import CryptoKit
 
 enum FileAction: String, CaseIterable, Hashable {
-    case reveal = "Reveal", copy = "Copy Files", paths = "Copy Paths", duplicate = "Duplicate", hash = "SHA-256"
+    case airDrop = "AirDrop"
+    case float = "Float"
+    case copy = "Copy"
+    case move = "Move"
+    case paths = "Copy Path"
+    case openTerminal = "Terminal"
+    // Extra actions kept from the community baseline.
+    case reveal = "Reveal"
+    case duplicate = "Duplicate"
+    case hash = "SHA-256"
+
+    /// The six actions Tangerine offers in its Control wheel.
+    static let official: [FileAction] = [.airDrop, .float, .copy, .move, .paths, .openTerminal]
+
     var symbol: String {
         switch self {
-        case .reveal: return "folder"
+        case .airDrop: return "airplayaudio"
+        case .float: return "pin.fill"
         case .copy: return "doc.on.doc"
-        case .paths: return "link"
+        case .move: return "folder"
+        case .paths: return "doc.text"
+        case .openTerminal: return "terminal"
+        case .reveal: return "folder"
         case .duplicate: return "plus.square.on.square"
         case .hash: return "number"
+        }
+    }
+
+    var detail: String {
+        switch self {
+        case .airDrop: return "Share files and folders through the macOS recipient picker."
+        case .float: return "Keep files in a floating shelf you can drag into another app."
+        case .copy: return "Copy files to the clipboard, ready to paste in Finder."
+        case .move: return "Choose a destination folder and move the originals there."
+        case .paths: return "Copy full file paths as text, one path per line."
+        case .openTerminal: return "Open the containing folder in Terminal."
+        case .reveal: return "Reveal the files in Finder."
+        case .duplicate: return "Create a copy next to each original."
+        case .hash: return "Copy a SHA-256 checksum for each file."
         }
     }
 
@@ -19,6 +50,16 @@ enum FileAction: String, CaseIterable, Hashable {
             try FileManager.default.copyItem(at: source, to: destination)
             return destination
         }
+    }
+
+    static func moveFiles(_ urls: [URL], into directory: URL) throws -> [URL] {
+        var moved: [URL] = []
+        for source in urls {
+            let destination = ConversionMatrix.uniqueURL(directory: directory, baseName: source.deletingPathExtension().lastPathComponent, suffix: "", ext: source.pathExtension)
+            try FileManager.default.moveItem(at: source, to: destination)
+            moved.append(destination)
+        }
+        return moved
     }
 
     static func hashReport(_ urls: [URL]) throws -> String {
@@ -35,15 +76,57 @@ enum FileAction: String, CaseIterable, Hashable {
             return hash.finalize().map { String(format: "%02x", $0) }.joined() + "  " + url.lastPathComponent
         }.joined(separator: "\n")
     }
+
     @MainActor func run(_ urls: [URL]) {
         switch self {
-        case .reveal: NSWorkspace.shared.activateFileViewerSelecting(urls)
+        case .airDrop:
+            let items = urls as [NSURL]
+            if let service = NSSharingService(named: .sendViaAirDrop) {
+                service.perform(withItems: items)
+            } else {
+                let picker = NSSharingServicePicker(items: items)
+                if let view = NSApp.keyWindow?.contentView {
+                    picker.show(relativeTo: .zero, of: view, preferredEdge: .minY)
+                } else {
+                    Self.alert("AirDrop is not available on this Mac.")
+                }
+            }
+        case .float:
+            FloatingShelfManager.shared.present(urls: urls)
         case .copy:
             NSPasteboard.general.clearContents()
             NSPasteboard.general.writeObjects(urls as [NSURL])
+        case .move:
+            let panel = NSOpenPanel()
+            panel.canChooseDirectories = true
+            panel.canChooseFiles = false
+            panel.allowsMultipleSelection = false
+            panel.prompt = "Move Here"
+            panel.message = "Choose a destination folder for \(urls.count) item\(urls.count == 1 ? "" : "s")."
+            NSApp.activate(ignoringOtherApps: true)
+            panel.begin { response in
+                guard response == .OK, let directory = panel.url else { return }
+                JobRunner.shared.run(title: "Moving", detail: "\(urls.count) item\(urls.count == 1 ? "" : "s")") { _ in
+                    let moved = try Self.moveFiles(urls, into: directory)
+                    NSWorkspace.shared.activateFileViewerSelecting(moved)
+                    return moved
+                }
+            }
         case .paths:
             NSPasteboard.general.clearContents()
             NSPasteboard.general.setString(urls.map(\.path).joined(separator: "\n"), forType: .string)
+        case .openTerminal:
+            let folder = urls[0].hasDirectoryPath ? urls[0] : urls[0].deletingLastPathComponent()
+            let terminal = URL(fileURLWithPath: "/System/Applications/Utilities/Terminal.app")
+            if FileManager.default.fileExists(atPath: terminal.path) {
+                NSWorkspace.shared.open([folder], withApplicationAt: terminal, configuration: NSWorkspace.OpenConfiguration()) { _, error in
+                    if error != nil { NSWorkspace.shared.open(folder) }
+                }
+            } else {
+                NSWorkspace.shared.open(folder)
+            }
+        case .reveal:
+            NSWorkspace.shared.activateFileViewerSelecting(urls)
         case .duplicate:
             JobRunner.shared.run(title: "Duplicate", detail: "\(urls.count) files") { _ in
                 try Self.duplicateFiles(urls)
@@ -66,5 +149,11 @@ enum FileAction: String, CaseIterable, Hashable {
                 }
             }
         }
+    }
+
+    @MainActor private static func alert(_ message: String) {
+        let alert = NSAlert()
+        alert.messageText = message
+        alert.runModal()
     }
 }

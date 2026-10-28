@@ -39,13 +39,17 @@ struct OpenTangerineTests {
     static func main() {
         let runner = TestRunner()
 
-        runner.test("conversion matrix excludes disabled archives") {
-            try expectEqual(ConversionMatrix.totalConversions, 176)
-            try expectEqual(ConversionMatrix.targets(for: .zip).count, 0)
+        runner.test("conversion matrix matches the Tangerine wheel") {
+            try expectEqual(ConversionMatrix.totalConversions, 275)
+            try expectEqual(ConversionMatrix.targets(for: .zip), [.tar, .gz])
+            try expectEqual(ConversionMatrix.targets(for: .rar), [.zip, .tar, .gz])
         }
 
-        runner.test("25 advanced tools") {
-            try expectEqual(ToolID.total, 25)
+        runner.test("Tangerine tools plus extras") {
+            try expectEqual(ToolID.total, 29)
+            for tool: ToolID in [.annotateImage, .muteVideo, .extractArchive, .readQRCode] {
+                try expect(ToolID.allCases.contains(tool), "missing \(tool)")
+            }
         }
 
         runner.test("no format converts to itself") {
@@ -54,11 +58,13 @@ struct OpenTangerineTests {
             }
         }
 
-        runner.test("JPG and PNG export DOCX, other images do not") {
-            try expect(ConversionMatrix.targets(for: .jpg).contains(.docx), "jpg → docx")
-            try expect(ConversionMatrix.targets(for: .png).contains(.docx), "png → docx")
-            try expect(!ConversionMatrix.targets(for: .webp).contains(.docx), "webp → docx")
+        runner.test("images stay images and SVG can export PDF") {
+            for image: FileFormat in [.jpg, .png, .webp, .heic, .tiff, .avif, .bmp, .svg] {
+                try expect(!ConversionMatrix.targets(for: image).contains(.docx), "\(image) → docx")
+            }
             try expect(ConversionMatrix.targets(for: .svg).contains(.pdf), "svg → pdf")
+            try expectEqual(ConversionMatrix.targets(for: .jpg).count, 7)
+            try expectEqual(ConversionMatrix.targets(for: .svg).count, 8)
         }
 
         runner.test("video exports GIF and MP3, GIF does not") {
@@ -68,12 +74,12 @@ struct OpenTangerineTests {
             try expectEqual(ConversionMatrix.targets(for: .gif), FileFormat.video)
         }
 
-        runner.test("PDF, TXT, subtitle and archive targets") {
-            try expectEqual(ConversionMatrix.targets(for: .pdf), [.docx, .jpg, .png, .txt])
-            try expectEqual(ConversionMatrix.targets(for: .txt), [.pdf, .jpg, .png, .srt, .vtt])
+        runner.test("PDF, TXT, subtitle, document and archive targets") {
+            try expectEqual(ConversionMatrix.targets(for: .pdf), [.docx, .pages, .pptx, .xlsx, .jpg, .png, .epub, .txt, .md])
+            try expectEqual(ConversionMatrix.targets(for: .txt), [.docx, .pages, .pdf, .md, .html, .epub, .jpg, .png])
             try expectEqual(ConversionMatrix.targets(for: .srt), [.vtt, .txt])
-            try expectEqual(ConversionMatrix.targets(for: .zip), [])
-            try expectEqual(ConversionMatrix.targets(for: .docx), [])
+            try expectEqual(ConversionMatrix.targets(for: .zip), [.tar, .gz])
+            try expectEqual(ConversionMatrix.targets(for: .docx), [.pages, .pdf, .txt, .md, .html, .epub, .png, .jpg])
         }
 
         runner.test("mixed selection intersects targets") {

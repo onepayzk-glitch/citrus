@@ -1,0 +1,12 @@
+ffmpeg version 8.0.3 Copyright (c) 2000-2026 the FFmpeg developers
+built with Apple clang version 21.0.0 (clang-2100.3.34.2)
+configuration: --cc=/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang --host-cc=/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang --host-cflags='-arch arm64 -mmacosx-version-min=13.0 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX27.0.sdk -O2' --host-cppflags='-isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX27.0.sdk' --host-ldflags='-arch arm64 -mmacosx-version-min=13.0 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX27.0.sdk' --arch=arm64 --target-os=darwin --prefix=/private/tmp/claude-501/-Users-thameem-Dev-LeapStudio-mac-tools-Tangerine/578ba2f4-3ed5-4422-b6e6-58f7416d5de7/scratchpad//Tangerine-FFmpeg-Build.WmTj3I/prefix --pkg-config=/private/tmp/claude-501/-Users-thameem-Dev-LeapStudio-mac-tools-Tangerine/578ba2f4-3ed5-4422-b6e6-58f7416d5de7/scratchpad//Tangerine-FFmpeg-Build.WmTj3I/pkg_config_ffmpeg.zsh --pkg-config-flags=--static --extra-cflags='-arch arm64 -mmacosx-version-min=13.0 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX27.0.sdk -O2 -I/private/tmp/claude-501/-Users-thameem-Dev-LeapStudio-mac-tools-Tangerine/578ba2f4-3ed5-4422-b6e6-58f7416d5de7/scratchpad//Tangerine-FFmpeg-Build.WmTj3I/prefix/include' --extra-ldflags='-arch arm64 -mmacosx-version-min=13.0 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX27.0.sdk -L/private/tmp/claude-501/-Users-thameem-Dev-LeapStudio-mac-tools-Tangerine/578ba2f4-3ed5-4422-b6e6-58f7416d5de7/scratchpad//Tangerine-FFmpeg-Build.WmTj3I/prefix/lib' --disable-shared --enable-static --disable-autodetect --disable-doc --disable-debug --disable-network --disable-ffplay --disable-ffprobe --disable-encoder=libwebp_anim --enable-audiotoolbox --enable-videotoolbox --enable-zlib --enable-libmp3lame --enable-libwebp
+libavutil      60.  8.103 / 60.  8.103
+libavcodec     62. 11.103 / 62. 11.103
+libavformat    62.  3.103 / 62.  3.103
+libavdevice    62.  1.103 / 62.  1.103
+libavfilter    11.  4.103 / 11.  4.103
+libswscale      9.  1.103 /  9.  1.103
+libswresample   6.  1.103 /  6.  1.103
+
+Exiting with exit code 0

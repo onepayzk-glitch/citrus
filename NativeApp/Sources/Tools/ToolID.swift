@@ -32,6 +32,10 @@ enum ToolID: String, CaseIterable, Identifiable {
     case mergePDF
     case organizePDF
     case splitPDF
+    case annotateImage
+    case muteVideo
+    case extractArchive
+    case readQRCode
 
     var id: String { rawValue }
 
@@ -62,6 +66,10 @@ enum ToolID: String, CaseIterable, Identifiable {
         case .mergePDF: return "Merge PDFs"
         case .organizePDF: return "Organize PDF pages"
         case .splitPDF: return "Split PDF"
+        case .annotateImage: return "Annotate photo"
+        case .muteVideo: return "Remove audio"
+        case .extractArchive: return "Extract archive"
+        case .readQRCode: return "Read QR codes"
         }
     }
 
@@ -88,6 +96,10 @@ enum ToolID: String, CaseIterable, Identifiable {
         case .redactAudio: return "Bleeping"
         case .mergePDF: return "Merging"
         case .organizePDF: return "Organizing"
+        case .annotateImage: return "Annotating photo"
+        case .muteVideo: return "Removing audio"
+        case .extractArchive: return "Extracting archive"
+        case .readQRCode: return "Reading QR codes"
         }
     }
 
@@ -114,6 +126,10 @@ enum ToolID: String, CaseIterable, Identifiable {
         case .redactAudio: return "BLEEP"
         case .mergePDF: return "MERGE"
         case .organizePDF: return "ORGANIZE"
+        case .annotateImage: return "ANNOTATE"
+        case .muteVideo: return "MUTE"
+        case .extractArchive: return "EXTRACT"
+        case .readQRCode: return "QR"
         }
     }
 
@@ -142,6 +158,10 @@ enum ToolID: String, CaseIterable, Identifiable {
         case .redactAudio: return "speaker.slash"
         case .mergePDF: return "doc.on.doc.fill"
         case .organizePDF: return "rectangle.stack"
+        case .annotateImage: return "pencil.and.outline"
+        case .muteVideo: return "speaker.slash.fill"
+        case .extractArchive: return "archivebox"
+        case .readQRCode: return "qrcode.viewfinder"
         }
     }
 
@@ -157,6 +177,12 @@ enum ToolID: String, CaseIterable, Identifiable {
             return [.audio]
         case .mergePDF, .organizePDF, .splitPDF:
             return [.document]
+        case .annotateImage, .readQRCode:
+            return [.image]
+        case .muteVideo:
+            return [.video]
+        case .extractArchive:
+            return [.archive]
         }
     }
 

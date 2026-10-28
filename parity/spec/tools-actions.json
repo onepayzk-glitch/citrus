@@ -1,0 +1,172 @@
+{
+ "tools_per_type": {
+  "image_single": [
+   "compress",
+   "removeMetadata",
+   "editImage",
+   "annotateImage",
+   "frameImage",
+   "cropImage",
+   "redactImage"
+  ],
+  "image_multi": [
+   "compress",
+   "removeMetadata",
+   "cropImage",
+   "createPDF",
+   "createCollage"
+  ],
+  "svg_single": [],
+  "svg_multi": [
+   "createPDF",
+   "createCollage"
+  ],
+  "audio": [
+   "compress",
+   "removeMetadata",
+   "normalizeAudio",
+   "audioToVideo",
+   "trimAudio",
+   "audioChannels",
+   "redactAudio"
+  ],
+  "video_single": [
+   "compress",
+   "removeMetadata",
+   "muteVideo",
+   "trimVideo",
+   "cropVideo",
+   "changeVideoSpeed",
+   "videoSnapshots",
+   "splitVideo",
+   "redactVideo"
+  ],
+  "video_multi": [
+   "compress",
+   "removeMetadata",
+   "muteVideo",
+   "trimVideo",
+   "cropVideo",
+   "changeVideoSpeed",
+   "joinVideos"
+  ],
+  "gif": [
+   "removeMetadata"
+  ],
+  "pdf_single": [
+   "compress",
+   "removeMetadata",
+   "splitPDF",
+   "organizePDF"
+  ],
+  "pdf_multi": [
+   "compress",
+   "removeMetadata",
+   "splitPDF",
+   "mergePDF"
+  ],
+  "archive": [
+   "extractArchive"
+  ],
+  "other": []
+ },
+ "tool_ids": [
+  "annotateImage",
+  "audioChannels",
+  "audioToVideo",
+  "changeVideoSpeed",
+  "compress",
+  "createCollage",
+  "createPDF",
+  "cropImage",
+  "cropVideo",
+  "editImage",
+  "extractArchive",
+  "frameImage",
+  "joinVideos",
+  "mergePDF",
+  "muteVideo",
+  "normalizeAudio",
+  "organizePDF",
+  "redactAudio",
+  "redactImage",
+  "redactVideo",
+  "removeMetadata",
+  "splitPDF",
+  "splitVideo",
+  "trimAudio",
+  "trimVideo",
+  "videoSnapshots"
+ ],
+ "naming": {
+  "compress": "Compressed.<fmt> (wav->flac)",
+  "removeMetadata": "No Metadata.<fmt>",
+  "editImage": "Edited.<fmt>",
+  "annotateImage": "Annotated.png",
+  "frameImage": "Background.<fmt>",
+  "cropImage": "Cropped.<fmt>",
+  "redactImage": "Redacted.<fmt>",
+  "cropVideo": "Cropped.<fmt>",
+  "normalizeAudio": "Normalized.<fmt>",
+  "muteVideo": "Muted.<fmt>",
+  "trimVideo": "Trimmed.<fmt>",
+  "trimAudio": "Trimmed.<fmt>",
+  "redactAudio": "Bleeped.<fmt>",
+  "changeVideoSpeed": "Speed 2x.<fmt>",
+  "videoSnapshots": "Snapshot.png",
+  "splitVideo": "Clips (folder)",
+  "splitPDF": "Pages (folder)",
+  "organizePDF": "Organized.pdf",
+  "redactVideo": "Redacted.<fmt>",
+  "extractArchive": "Extracted (folder)",
+  "audioToVideo": "Visualizer.mp4",
+  "audioChannels": "Mono.<fmt>",
+  "createPDF": "?",
+  "mergePDF": "?",
+  "createCollage": "?",
+  "joinVideos": "?"
+ },
+ "modifier_wheels": {
+  "Shift": "conversions",
+  "Meta/Command": "tools",
+  "Control": "actions"
+ },
+ "file_actions": {
+  "airDrop": {
+   "title": "AIRDROP",
+   "name": "AirDrop",
+   "symbol": "airplayaudio",
+   "description": "Share files and folders through the macOS recipient picker."
+  },
+  "float": {
+   "title": "FLOAT",
+   "name": "Float",
+   "symbol": "pin.fill",
+   "description": "Keep files in a floating shelf. Pin it to a screen edge and drag files into another app."
+  },
+  "copy": {
+   "title": "COPY",
+   "name": "Copy",
+   "symbol": "doc.on.doc",
+   "description": "Copy files to the clipboard, ready to paste in Finder."
+  },
+  "move": {
+   "title": "MOVE",
+   "name": "Move",
+   "symbol": "folder",
+   "description": "Choose a destination folder and move the originals there."
+  },
+  "copyPath": {
+   "title": "COPY PATH",
+   "name": "Copy Path",
+   "symbol": "doc.text",
+   "description": "Copy full file paths as text, with one path per line for a selection."
+  },
+  "openTerminal": {
+   "title": "TERMINAL",
+   "name": "Terminal",
+   "symbol": "terminal",
+   "description": "Open a folder, or a file's containing folder, in Terminal or iTerm2."
+  }
+ }
+}

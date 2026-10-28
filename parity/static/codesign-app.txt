@@ -1,0 +1,29 @@
+Executable=/Applications/Tangerine.app/Contents/MacOS/Tangerine
+Identifier=com.th.Tangerine
+Format=app bundle with Mach-O thin (arm64)
+CodeDirectory v=20500 size=22172 flags=0x10000(runtime) hashes=682+7 location=embedded
+VersionPlatform=1
+VersionMin=851968
+VersionSDK=1769472
+Hash type=sha256 size=32
+CandidateCDHash sha256=a649af2fa1d7bdc1c5cfef3e42ee455b97c03d62
+CandidateCDHashFull sha256=a649af2fa1d7bdc1c5cfef3e42ee455b97c03d62f237a4286c93f1335808d61c
+Hash choices=sha256
+CMSDigest=a649af2fa1d7bdc1c5cfef3e42ee455b97c03d62f237a4286c93f1335808d61c
+CMSDigestType=2
+Executable Segment base=0
+Executable Segment limit=9830400
+Executable Segment flags=0x1
+Page size=16384
+CDHash=a649af2fa1d7bdc1c5cfef3e42ee455b97c03d62
+Signature size=4710
+Authority=Apple Mac OS Application Signing
+Authority=Apple Worldwide Developer Relations Certification Authority
+Authority=Apple Root CA
+Info.plist entries=27
+TeamIdentifier=GTF45UH2VQ
+Runtime Version=27.0.0
+Sealed Resources version=2 rules=13 files=462
+Internal requirements count=1 size=216
+Total signatures=1
+Chosen signature=1

@@ -1,0 +1,1980 @@
+A DOCX image is missing or refers to external media.
+A DOCX note is missing its text.
+A DOCX table is too large.
+A PDF page could not be rendered.
+A PDF page has invalid dimensions or could not be rendered.
+A PDF page has invalid dimensions or exceeds Word's 22-inch page limit.
+A PDF page has invalid dimensions.
+A document XML part is too large.
+A document note is missing its text.
+A document resource escapes its folder.
+A document resource uses an unsafe path.
+A document table is too large or has invalid widths.
+A network error has occurred.
+A request for subscriber attributes returned none.
+A rich text attachment is missing, too large, or is not an image.
+AAyAAyAByACyADyACyAAyAAyAAyAlZGANGAHy
+AAyAAyADyAKGARGAHGAAyAAy
+ACyACyADyAKGARGAHGACyACy
+ACyACyARyAByAAyAByACyACyACyAkZGAMGAGy
+ADyADyAAyAByACyAByADyADyADyAlZGANGAHy
+ADyADyAEyALGASGAIGADyADy
+ADyADyAFyAMGATGAJGADyADy
+AEyAEyAFyAMGATGAJGAEyAEy
+ALGtGGADyADyAAyAByADy
+AMGtGGAEyAEyACyAByAEy
+ANGtGGAFyAFyADyACyAFy
+API request completed: 
+API request failed with status code 
+API request started: 
+APIKeyValidationResult
+APISourceFailoverType
+Accept-RC-Element-Encoding
+Accessing Environment's value outside of being installed on a View. This will always read the default value and will not update.
+Ad event flush already in progress
+Ad event flush starting with 
+Ad event flush with empty store
+Ad event store size limit reached. Clearing oldest events to free up space.
+Ad event sync failed: 
+Ad event tracking is disabled - no ad event store configured
+Ad events flushed successfully
+AdEventStore: unable to resolve persistence directory
+AdImpressionEventData
+AdRewardEarnedUnverified
+AdRewardFailedToVerify
+AdRewardFailureReason
+AdServices attribution token is not available in the simulator
+AdServices attribution token successfully posted
+AdServices: mocking token: 
+AdSupport framework not imported. Attribution data incomplete.
+Add Files to an Existing Float
+Add at least one annotation.
+Add at least one bleep range.
+Add bleep at playhead
+Add redaction at playhead
+Add split points at least 0.05 seconds apart, inside the video.
+Add split points inside the video, at least 0.05 seconds from either end.
+Adding Product.PurchaseOption for .appAccountToken '
+Adding Product.PurchaseOption for developer-provided introductoryOfferEligibilityJWS
+Adding Product.PurchaseOption for developer-provided promotionalOfferJWS with offer ID '
+Adding Product.PurchaseOption for discount '
+Adding Product.PurchaseOption for win-back offer with ID '
+Adding payment for product '
+AirDropSharingController
+AllTransactionsProviderType
+Allow Home Folder Access
+Allow Tangerine in macOS Login Items to finish setup.
+An EPUB chapter could not be rendered.
+An EPUB chapter could not load: 
+An EPUB chapter has no readable XHTML body.
+An EPUB chapter's images or fonts could not be prepared.
+An EPUB contains media that editable document formats cannot preserve.
+An EPUB embedded image is unreadable or too large.
+An EPUB filename is too long.
+An EPUB fixed-layout chapter is too large.
+An EPUB image has no source.
+An EPUB image is missing or too large.
+An EPUB output path escaped its workspace.
+An EPUB output path is invalid.
+An EPUB package document is too large.
+An EPUB stylesheet is too large or unreadable.
+An EPUB table has invalid spans.
+An EPUB table is too large.
+An RTFD attachment is missing or unreadable.
+An embedded Pages image could not be decoded.
+An error occurred while processing the refund request. Please try again.
+An image crop has invalid dimensions.
+An unrecognized billing plan identifier was detected: 
+An unsupported Pages attachment cannot be converted directly.
+AnnotationKeyboardHandler
+AnswerSubmittedCodingKeys
+AnyEncodable value cannot be decoded
+AnyEncodable value cannot be encoded
+App does not have sufficient permissions to make purchases.
+App running in sandbox without a receipt file. Restoring transactions won't work until a purchase is made to generate a receipt. This should not happen in production unless user is logged out of Apple account.
+App running on sandbox without a receipt file. Unable to determine intro eligibility unless you've purchased before and there is a receipt available.
+AppearanceCustomColors
+Apple In-App Purchase Key is invalid or not present. You must configure an In-App Purchase Key.
+Apple has received the refund request
+Apple returned a payment where the productIdentifier is nil, this is possibly an App Store quirk
+Applying billing plan of type 
+Attempt to delete attributes for user, but there were none to delete
+Attempt to spend VirtualCurrencies on network failed.
+Attempt to spend zero/negative currency amount 
+Attempt to update CustomerInfo from network failed.
+Attempt to update VirtualCurrencies from network failed.
+Attempting to check intro eligibility locally
+Attribute set locally: 
+Attribution data is the same as latest. Skipping.
+Attribution data stored in UserDefaults has invalid format for network key: 
+Attribution error: identifierForAdvertisers is missing
+AttributionDataMigrator
+AttributionTypeFactory
+AudienceConfigurationSnapshot
+AudienceUnavailableError
+AudiencesConfigProvider
+AudiencesConfigProviderType
+Audio preview is unavailable for this file. You can still export the selected range.
+Audio waveform layer. Drag to move the playhead.
+AudioBleepWaveformTrack
+AudioChannelPreviewRow
+AudioChannelVolumeRow
+AudioChannelWaveforms
+AudioNormalizationEditor
+AudioVisualizationStyle
+AudioVisualizerEditor
+AudioWaveformOverview
+AuthenticationStrings
+AutoAdvanceTransitionType
+Automatic syncing of purchases has been disabled. 
+BackendParsedTransaction
+Background refresh failed for workflow 
+Background task expired: 
+Background task failed to start: 
+Background task started: 
+Background task unavailable
+Background tasks unavailable (app extension or no UIApplication access)
+Base price is required for test subscription products
+Batch drops of any size
+BeginRefundRequestHelper
+Better visual quality with moderate file-size savings.
+Billing Issue Detected At
+Blur softens details. Use Solid for sensitive information.
+BundleSandboxEnvironmentDetector
+Bundled PowerPoint converter
+Bundled PowerPoint runtime
+Bundled spreadsheet converter
+Bundled spreadsheet runtime
+CFBundleShortVersionString
+CFDataCreateWithBytesNoCopy
+CFPropertyListCreateFromXMLData
+CFPropertyListCreateWithData
+CFStringCreateWithCStringNoCopy
+CGImageForProposedRect:context:hints:
+CIHighlightShadowAdjust
+Cache URL is not available
+CacheableNetworkOperation
+CacheableNetworkOperationFactory
+Cached CustomerInfo has incompatible schema.
+Cached transaction metadata sync already in progress, skipping
+CachedPurchaseContext
+Caching presented offering identifier '
+Caching trial or intro eligibility for products: 
+CachingProductsManager
+CachingTrialOrIntroPriceEligibilityChecker
+Cannot activate twice
+Cannot resolve product ID 
+Cannot serialize ad event
+Change access in Settings 
+Change image background
+Channel waveforms unavailable. You can still convert the audio.
+Checking intro eligibility locally from receipt: 
+CheckpointResolutionReason
+CheckpointRulesProviderError
+CheckpointRulesSnapshot
+CheckpointWorkflowResolver
+CheckpointsConfigProvider
+CheckpointsConfigProviderType
+ChecksumValidationFailure
+Choose Mono or Stereo for a file with an audio track.
+Choose a background image
+Choose a background image.
+Choose a canvas and spacing that leave at least 8 
+Choose a custom background color
+Choose a destination folder for 
+Choose a destination outside 
+Choose a folder where Tangerine may save results. Every folder inside it is included.
+Choose a positive time range within the file
+Choose a preview range within the audio.
+Choose a reduction from 1% to 99% that leaves a target of at least 1 KB.
+Choose a reduction from 1% to 99% that leaves at least 1 KB per file.
+Choose a silence threshold between 
+Choose a speed between 0.25
+Choose a static image
+Choose a target from 
+Choose a valid audio channel to preview.
+Choose a valid audio range to preview.
+Choose a visualization image
+Choose a zoom level, then click the detail to place a magnifier bubble.
+Choose an image background
+Choose an image for the visualization.
+Choose an image to place on the canvas.
+Choose image background
+Choose original dimensions to preserve this image's animation.
+Choose valid audio channel settings.
+Choose valid background settings.
+Choose whether Tangerine launches at login. You can change these options and your shortcuts in Settings.
+Choosing a parent folder, such as your home folder, also covers every folder inside it.
+Clearing ETagManager cache
+Click Allow Access to let Tangerine save results beside files anywhere in your home folder.
+Click a clip in the timeline and press Delete to remove it. Space plays the result.
+Close Float without deleting files
+Closing FileHandler for: 
+CodableEnumWithUnknownCase
+CommonLocalizedString
+CompatibilityMatrixCell
+CompatibilityMatrixLocation
+ComponentInteractionCodingKeys
+ComponentInteractionData
+ComponentInteractionType
+CompoundProductIdentifier
+Compressed output would exceed the original or target file size.
+CompressionSettingsEditor
+CompressionTargetMode
+Computed offline CustomerInfo from 
+ConfiguredStoreEnvironment
+Configuring SDK using RevenueCat's UserDefaults suite.
+Configuring SDK using UserDefaults.standard because we found existing data in it.
+Configuring SDK using provided UserDefaults.
+ConnectionErrorReason
+Contradictory frame constraints specified.
+Conversion defaults are configured on the output format you choose.
+ConversionOptionsFields
+ConversionOverlayController
+ConversionOverlayPanel
+ConversionOverlayView
+Convert Audio Channels
+Copy QR code text from 
+Copy file and folder paths
+Copy files and folders
+Copying unsynced subscriber attributes from user 
+Could not begin refund request. No active entitlement.
+Could not blur the selected area.
+Could not build installments info for the requested billing plan. Will not return 
+Could not convert old format to JSON string
+Could not create DiagnosticsTracker
+Could not create request to 
+Could not create the PDF page image.
+Could not create the PDF.
+Could not create the PNG image.
+Could not create the RAR archive.
+Could not create the collage canvas.
+Could not create the compressed PDF.
+Could not create the cropped image.
+Could not create the edited image.
+Could not create the organized PDF.
+Could not create the resized PNG.
+Could not decode the selected frame preview.
+Could not find products with identifiers: 
+Could not find public key '
+Could not finish adding the background.
+Could not finish the PNG image.
+Could not play the bleep preview. 
+Could not play the output preview. 
+Could not play this audio channel. 
+Could not prepare the annotated image.
+Could not prepare the image background.
+Could not prepare the offline EPUB renderer.
+Could not prepare the redacted photo.
+Could not preview PDF page 
+Could not purchase SKProduct. There is a problem with your configuration in App Store Connect. More info here: https://errors.rev.cat/configuring-products
+Could not reach the target size. Smallest attempt was 
+Could not read PDF page 
+Could not read one or more selected files.
+Could not read the audio waveform.
+Could not read the duration of 
+Could not read the encoded WebP container.
+Could not read the image 
+Could not read the image.
+Could not read the video bitrate for cropping.
+Could not render PDF page 
+Could not render the collage.
+Could not render the photo adjustments.
+Could not save the PDF page image.
+Could not save the cropped image.
+Could not save the edited image.
+Could not save the resized PNG.
+Could not write page 
+Couldn't check intro eligibility locally, error: 
+Couldn't decode cached VirtualCurrencies:
+Couldn't decode data from json, it was corrupted: 
+Couldn't deserialize PaywallEvent from storage. Error: 
+Couldn't encode CustomerInfo:
+Couldn't encode data into json. Error:
+Couldn't find an object identifier of type data in the receipt
+Couldn't find previous transactions or an AppTransaction.
+Couldn't get encoded event from storage.
+Couldn't initialize NonSubscriptionTransaction. 
+Couldn't serialize PaywallEvent to storage.
+Create a fixed layout book of page images. Text resizing, selection, and search are unavailable.
+Create a support ticket
+Create adjustable, selectable text with parsed headings and tables. Keep illustrations and complex equations as separate artwork.
+Create normal paragraphs, headings, and tables that reflow when edited. Recognize scanned text with OCR. Keep illustrations as inline images.
+Creates a native Pages document directly on your Mac.
+Creating FileHandler for: 
+Creating intermediate key with expiration '
+Creating visualization
+Crop height in pixels
+Crop selection. Drag to reposition.
+CrossProductPromotion
+CurrentTokenRefreshState
+CustomPaywallImpressionParams
+CustomVariableDefinition
+CustomVariableKeyValidator
+CustomerCenterAnswerSubmittedEvent
+CustomerCenterAnswerSubmittedEventRequest
+CustomerCenterBaseData
+CustomerCenterConfigAPI
+CustomerCenterConfigCallback
+CustomerCenterConfigData
+CustomerCenterConfigResponse
+CustomerCenterEventBaseRequest
+CustomerCenterEventCreationData
+CustomerCenterEventType
+CustomerCenterPresentationMode
+CustomerInfo cache is stale, updating from network in background.
+CustomerInfo cache is stale, updating from network in foreground.
+CustomerInfo updated from network.
+CustomerInfo was computed offline. Won't be stored in cache.
+CustomerInfoDataResult
+CustomerInfoDimensionProvider
+CustomerInfoResponseHandler
+DOCX blocks are nested too deeply or too large.
+DOCX content is nested too deeply or too large.
+DOCX imported HTML chunks are not supported.
+DOCX styles contain a cycle or excessive inheritance.
+Debug logging enabled
+Decoded an unknown ad reward kind '
+DefaultCheckpointWorkflowResolver
+DefaultFontFileManager
+DefaultLocaleFallback
+DefaultMacAppStoreDetector
+DefaultPaywallFontsManager
+DefaultResponseSignatureContextProvider
+DefaultSimulatedStorePurchaseUI
+DefaultStorefrontProvider
+DefaultsUsageCountStore
+Delete selected annotation
+Detected active subscriptions changed. Clearing trial or intro eligibility cache.
+Detected purchase in progress: will skip cache updates
+Detected unverified cached CustomerInfo but verification is enabled. Invalidating ETag cache.
+DeviceDimensionProvider
+Diagnostics event flush: posting 
+Diagnostics event flushing already in progress. Skipping.
+Diagnostics event flushing requested with empty store.
+DiagnosticsEventsRequest
+DiagnosticsFileHandler
+DiagnosticsFileHandlerDelegate
+DiagnosticsFileHandlerType
+DiagnosticsPostOperation
+DiagnosticsSynchronizer
+DiagnosticsSynchronizerType
+DiagnosticsTrackerType
+DimensionResolutionError
+DisabledCheckpointWorkflowResolver
+Document XML entity declarations are not supported.
+Document XML is nested too deeply or too large.
+Document artwork exceeds the conversion limit.
+Document rendering must run as a background conversion.
+Document to PDF failed: 
+Document to PDF failed: A rendered page is missing.
+Document to PDF failed: Could not prepare offline document rendering.
+Document to PDF failed: Document rendering timed out.
+Document to PDF failed: The document could not be printed as PDF.
+Document to PDF failed: The document's page size could not be read.
+Document to PDF failed: The generated PDF could not be saved.
+Document to PDF failed: The generated PDF could not be verified.
+DocumentReadingOptionKey
+Down-casted Array element failed to match the target type
+Downloaded font file is corrupt. Hash mismatch. Expected: 
+Downloading remote font from url: 
+Downloading the latest version of the app may help solve the problem.
+Drag across the Bleep layer to add a section, then drag a clip or either edge to adjust it.
+Drag from the tail toward the arrowhead. Drag an annotation to move it.
+Drag on the image to draw. Drag an annotation to move it.
+Drag over the image to highlight.
+Drag the border to move text
+Drag the ends to trim
+Drag the handles to mark a bleep
+Drag to change its position, or use Rotate to turn it clockwise
+Drag to change text width
+Drag to change the preview time
+Drag to draw. Use Clear Drawing to remove all drawn strokes.
+Drag to move. Drag either end to change duration.
+Drag to resize from the 
+Drag to scrub and play from a time
+DragModifierCombination
+Draining pending priority flush
+Draw a rectangle over the area to hide.
+Draw a slightly longer freehand line.
+Drop at least one item
+Drop only accessible files
+Duplicate offeringId in workflows response: 
+Duplicate values for key: '
+EPUB blocks are nested too deeply.
+EPUB content is nested too deeply or too large.
+EPUB package documents cannot contain DTD or entity declarations.
+EPUB rendering must run as a background conversion.
+EPUB rendering timed out.
+EPUB symbolic links are not supported.
+Eligible for trial or introductory price.
+EmbeddedVideoPlayerView
+Empty Product titles are not supported. Found in product with identifier: 
+Encountered a server error. Will attempt to compute an offline CustomerInfo from local purchases.
+Encountered error when decoding JSON for '
+Encrypted or font-obfuscated EPUB files are not supported.
+Encrypted or unsupported EPUB ZIP entries cannot be opened.
+Enqueing network operation '
+EnsureNonEmptyCollectionDecodable
+Enter a target size between 1 KB and 1 TB.
+Enter a target size of at least 1 KB.
+Enter text for the text box.
+Entering customEntitlementComputation mode. CustomerInfo cache will not be automatically fetched. Anonymous user IDs will be disallowed, logOut will be disabled, and the PurchasesDelegate's customerInfo listener will only get called after a receipt is posted, getCustomerInfo is called or logIn is called.
+Entitlement is no longer active (expired 
+EntitlementVerificationMode
+Entitlements revoked for product 
+Error checking ad event file size: 
+Error checking discount eligibility for product '
+Error checking file size: 
+Error closing FileHandle: 
+Error computing offline CustomerInfo. Will return original error.
+Error connecting to API: 
+Error creating FileHandle: 
+Error creating request with body: 
+Error decoding base64 string.
+Error displaying StoreKit message: '
+Error emptying ad event file: 
+Error emptying file: 
+Error encoding SK2 receipt: '
+Error fetching AppTransaction: '
+Error fetching ad events: 
+Error fetching events: 
+Error fetching offerings - 
+Error fetching offerings. Using disk cache
+Error fetching status for subscription group with id '
+Error fetching workflows list: 
+Error initializing AdEventStore: 
+Error initializing FeatureEventStore: 
+Error installing font 
+Error installing font with url: '
+Error loading customer info from cache:
+Error loading local receipt: 
+Error loading local receipt: Bundle.appStoreReceiptURL was nil.
+Error loading transaction metadata from cache: 
+Error performing request because the internet connection appears to be offline.
+Error pre-fetching paywall image '
+Error redeeming web purchase: 
+Error registering the external purchase token: 
+Error removing first 
+Error requesting the external purchase token: 
+Error showing the external purchase notice: 
+Error storing ad event: 
+Error storing event: 
+Error validating app bundle signature.
+Error when syncing subscriber attributes. Details: 
+Error when trying to begin refund request.
+Error when trying to show manage subscription: 
+Error while parsing in-app purchase. One or more attributes are missing or in the wrong format.
+Error while parsing the receipt. One or more attributes are missing.
+Error while parsing, payload can't be interpreted as ASN1. details: 
+Event is missing the app session ID.
+Event store size limit reached. Clearing oldest events to free up space.
+Events flush succeeded
+EventsHTTPRequestPath
+EventsManager initialized
+Every selected file must contain a video track.
+Expected a string, number, or boolean.
+Expected string, number, or boolean value
+Expired Subscriptions
+ExtendedGraphemeClusterLiteralType
+External purchase availability resolved to 
+External purchases are not supported when the SDK is configured with a Test Store API key.
+ExternalPurchaseAvailability
+ExternalPurchaseCustomLinkType
+ExternalPurchaseError
+ExternalPurchaseLinkResult
+ExternalPurchaseManager
+ExternalPurchaseStrings
+ExternalPurchaseTokenAPI
+ExternalPurchaseTokenCallback
+ExternalPurchaseTokenResponse
+ExternalPurchaseTokenType
+FailableStateDeclaration
+Failed fetching offerings: 
+Failed initializing intermediate key: 
+Failed looking up localization, using fallback: 
+Failed making signed request: 
+Failed removing old store: 
+Failed to build remote config blob URL for ref '
+Failed to check whether diagnostics file is too big: 
+Failed to clean sent diagnostics: 
+Failed to clear remote config blob store: 
+Failed to create StoreProductDiscount.DiscountType with unknown value: 
+Failed to create a temporary file for 
+Failed to create cache directory for 
+Failed to create diagnostics file directory
+Failed to create fonts directory: 
+Failed to decode canonical audience configuration: 
+Failed to delete old cache directory: 
+Failed to delete old diagnostics file: 
+Failed to delete unreferenced remote config blob '
+Failed to download file from 
+Failed to download remote config blob '
+Failed to empty diagnostics file: 
+Failed to get CustomerInfo to proceed with refund for 
+Failed to get managementURL from CustomerInfo. Details: 
+Failed to migrate file from 
+Failed to modify item 
+Failed to parse ISO duration: 
+Failed to parse dark color 
+Failed to parse light color 
+Failed to parse remote config response. Keeping cached configuration. Error: 
+Failed to read cache contents: 
+Failed to read lines from file: 
+Failed to read remote config blob '
+Failed to read remote config cache from disk: 
+Failed to save codable to cache: 
+Failed to save file to 
+Failed to send, please try again.
+Failed to serialize diagnostics event to JSON
+Failed to store diagnostics event: 
+Failed to sync diagnostics more than max retries. Clearing entire diagnostics file.
+Failed to synchronize diagnostics: 
+Failed to write remote config blob '
+Failed to write remote config cache to disk.
+Failed updating ProductEntitlementMapping from network: 
+FailedEncodingEventError
+FailedToLoadCodingKeys
+FakeTrackingManagerAuthorizationStatus
+FallbackSignatureContextProvider
+FanHighlightSoundPlayer
+FeatureEventStore: unable to resolve persistence directory
+FeatureEventStoreStrings
+FeatureEventStoreType
+Fetching AdServices attribution token failed with error: 
+File selection area. Drag empty space to select multiple files.
+File size unavailable
+File size unavailable.
+FileClipboardController
+FileRepositoryStrings
+FileToolOptionsWindowController
+Fill cells (crop edges)
+Find the Tangerine icon near the clock in your menu bar
+Finished syncing all cached transaction metadata
+Finishing transaction '
+Float file or folder thumbnail
+FloatPaperClipFigmaBack
+FloatPaperClipFigmaFront
+FloatingFileContextMenuController
+FloatingFileDragRegion
+FloatingFileDragSourceView
+FloatingFileGroupModel
+FloatingFileHostingView
+FloatingFilePanelContent
+FloatingFileWindowController
+FloatingPaperClipDepth
+FloatingPaperClipLayer
+FloatingQuickLookController
+FloatingRubberBandSelectionRegion
+FloatingRubberBandSelectionView
+FloatingTabGlassBackground
+FloatingTabGlassMaterialView
+FloatingTabPresentation
+FloatingTabResizeMotion
+FloatingTabStackPreview
+FloatingWindowDragRegion
+FloatingWindowDragSourceView
+FolderAccessSettingsView
+Font download failed with an invalid response
+Font download failed with status code: 
+Font registration error: 
+For more info, visit the RevenueCat dashboard.
+For photos, Remove All also clears hidden camera and processing data. HDR and portrait effects may change.
+Force refreshing the receipt to get latest transactions from Apple.
+FormatCompatibilityMatrix
+Found an existing request for products: 
+Found cached trial or intro eligibility for products: 
+Found invalid intermediate key expiration date: 
+Found localized configuration for '
+Found no etag for request to '
+Found remote config sources sharing the same URL with conflicting priority/weight 
+Found unexpected value '
+Found unverified renewal info for product with identifier: '
+Found unverified transaction with ID: '
+Foundation/arm64e-apple-macos.swiftinterface
+Frame %03d - %.3fs.png
+FrameBackgroundPreset
+FrameGradientBlendMode
+FrameRadialBackgroundView
+FrameRadialGradientDefinition
+FrameRadialGradientLayer
+Fresh offerings fetch rate limit reached: 
+Full version unlocked
+G22localizedConfigurationt
+G22localizedConfigurationtSg
+GAAyAAyAAyAAyAAyAByACy
+GAAyAAyAAyAAyAAyAEyAFy
+GAAyAcdEyAEyAEyAEyAEyAEy
+GAByAByAByAByAByAByAdGy
+GACGALGANGAPGAIyAIyAIyAIyAM
+GACyACyACyACyACyAAyABy
+GACyAefGyAGyAGyAGyAGyAGy
+GADyADyADyADyADyAHyACy
+GADyAfgAyAAyAAyAAyAAyAAy
+GADyAfgHyAHyAHyAHyAHyAHy
+GAEGANGAPGARGAKyAKyAKyAKyAO
+GAFGALGAAyAAyASyAieUGAFGALGGAAyAAyAAyAAyAAy
+GAFGALGADyADyASyAieUGAFGALGGADyADyADyADyADy
+GAFGANGAPGARGAAyAAyAAyAAyAO
+GAFGAOGAQGASGALyALyALyALyAP
+GAGGAAyAAyAjEGAGGGSgAAyAAyAAyAB
+GAGGAMGAByAByATyAjfVGAGGAMGGAByAByAByAByABy
+GAGGAOGAQGASGAAyAAyAAyAAyAP
+GAIGAAyAAyAlGGAIGGSgAAyAAyAAyAD
+GAIGACyACyAlGGAIGGSgACyACyACyAD
+GAJGAByAByAmHGAJGGSgAByAByAByAE
+GAJGADyADyAmHGAJGGSgADyADyADyAE
+GAKGAQGAAyAAyAXyAnjZGAKGAQGGAAyAAyAAyAAyAAy
+GAKGAQGAFyAFyAXyAnjZGAKGAQGGAFyAFyAFyAFyAFy
+GANGAFyAFyAqLGANGGSgAFyAFyAFyAI
+GAOGAAyAAyArMGAOGGSgAAyAAyAAyAJ
+GAOGAGyAGyArMGAOGGSgAGyAGyAGyAJ
+GAPGAHyAHyAsNGAPGGSgAHyAHyAHyAK
+GGAAyAAyAAyAAyAAyAAyAgLGAHG
+GGAAyAAyAAyAAyAAyAAyAkPGALG
+GGAByAByAByAByAByAByAeJGAFG
+GGADyADyADyADyADyADyAgLGAHG
+GGADyADyADyADyADyADyAiNGAJG
+GGADyADyADyADyADyADyAmRGANG
+GGAEyAEyAEyAEyAEyAEyAhMGAIG
+GGAEyAEyAEyAEyAEyAEyAjOGAKG
+GGAYGAYGAbAyAAyAEyAFyAAy
+GGAYGAYGAdAyAAyAByACyAAy
+GGAYGAYGAdCyACyAAyAByACy
+GGSgAAyAAyAAyAAyAAyAAy
+GGSgAByAByAByAByAByABy
+GGSgAFyAFyAFyAFyAFyAFy
+GGSgAGyAGyAGyAGyAGyAGy
+GGSgAHyAHyAHyAHyAHyAHy
+GGSgAIyAIyAIyAIyAIyAIy
+GSSAAyAByACyACyACyACyAkHGAQGAQG
+GSSAAyAOyAAyAAyAAyAsGySiSgGGAGy
+GSSAByACyAAyAAyAAyAAyAkHGAQGAQG
+GSSAByAOyAByAByAByAsGySiSgGGAGy
+GSSADyAByACyACyACyACyAkHGAQGAQG
+GSSAEyACyADyADyADyADyAmJGASGASG
+GSSAFyADyAEyAEyAEyAEyAmJGASGASG
+GSSAFyAEyAAyAAyAAyAAyAmJGASGASG
+GenerationGuardedCache
+GetCustomerCenterConfigOperation
+GetCustomerInfoOperation
+GetIntroEligibilityOperation
+GetIntroEligibilityResponse
+GetOfferingsOperation
+GetProductEntitlementMappingOperation
+GetRemoteConfigFallbackOperation
+GetRemoteConfigOperation
+GetRewardVerificationStatusOperation
+GetVirtualCurrenciesOperation
+GetWebBillingProductsOperation
+GetWebOfferingProductsOperation
+Grace Period Expires At
+H'Eijkh8jj(8hki8hj)8H'Fij
+HTTPEmptyResponseBody
+HTTPRequestTimeoutManager
+HTTPRequestTimeoutManagerType
+HTTPResponseOriginalSource
+HealthReportAvailability
+Home folder access enabled
+HostedCheckoutCallback
+HostedCheckoutResponse
+Identifying App User ID
+If this is happening to you consistently, you might want to try using a new Sandbox account. 
+Ignoring dimension name '
+ImageAdjustmentEditor
+ImageCompressionOptions
+ImageCompressionStrength
+ImageIO could not create page 
+ImageIO could not create the 
+ImageIO could not create the compressed JPEG.
+ImageIO could not create the output image.
+ImageIO could not finish page 
+ImageIO could not finish the compressed JPEG.
+ImageIO could not finish the conversion.
+ImageIO could not finish the image.
+ImageIO could not prepare the WebP conversion.
+InMemoryUsageCountStore
+Initial App User ID set
+Initialization error: 
+Initializing AdEventStore: 
+Initializing FeatureEventStore: 
+Input and output format.
+InstallmentsInfoFactory
+InstallmentsInfoFactoryType
+Intermediate key expired at '
+Intermediate key failed verification: 
+InternalAuthenticatorDelegate
+InternalDangerousSettingsType
+InternalPurchasesType
+IntroEligibilityCalculator
+IntroEligibilityStatus
+IntroEligibilityStatus.eligible
+IntroEligibilityStatus.ineligible
+IntroEligibilityStatus.noIntroOfferExists
+IntroEligibilityStatus.unknown
+Invalid DOCX table grid.
+Invalid DOCX table span.
+Invalid DOCX vertical table merge.
+Invalid ISO8601 date: 
+Invalid Pages table merge.
+Invalid Product Identifiers - 
+Invalid Virtual Currency code
+Invalid document paper size.
+Invalid fallback URL configuration for path: 
+Invalid fontSize format
+Invalid number of keys found, expected one.
+Invalid paragraph formatting.
+Invalid product identifiers were ignored: 
+Invalid sent diagnostics count: 
+Invalidating CustomerInfo cache.
+Invalidating VirtualCurrencies cache.
+IsPurchaseAllowedByRestoreBehaviorCallback
+IsPurchaseAllowedByRestoreBehaviorResponse
+It doesn't look like you've purchased any in-app currencies.
+It looks like requests to RevenueCat are being blocked. Context: We're attempting to connect 
+JSONObjectWithData:options:error:
+JWT missing RC user ID
+Keep annotations inside the image.
+Keep at least one clip.
+Keep each rectangle inside the preview.
+Keep every page as a sharp image, including tables, equations, and scanned content. Text cannot be edited.
+Keep original dimensions
+Keep the crop inside the image.
+Keep the crop inside the video frame.
+KeychainUsageCountStore
+KeyedDeferredValueStore
+LazyPublishedWorkflow
+Loaded receipt from url 
+Loaded receipt was found empty.
+Local intro eligibility computed locally. Result: 
+Local receipt is still missing purchase for '
+LocalReceiptFetcherType
+LocalRulesEvaluationError
+LocalTransactionMetadata
+LocalTransactionMetadataStore
+LocalTransactionMetadataStoreType
+LocalizationValidationError
+LocalizedConfiguration
+LockingSynchronizedUserDefaults
+Log out called for user
+LogOut was called but the current user is anonymous.
+Login failed, unable to instantiate CustomerInfo
+Looking up localization but found no strings
+Looking up localized configuration for 
+Looks like you're using a legacy API key.
+META-INF/container.xml
+META-INF/encryption.xml
+Make all pages the same width
+Make drawn annotations a little larger.
+Make the crop at least 2 
+Manage access in Settings 
+Manage your subscription
+ManageSubscriptionsHelper
+Markdown HTML is too large or contains entity declarations.
+Markdown has too many blocks.
+Markdown has too many lines.
+Markdown is nested too deeply.
+Marked remote config blob source unhealthy while downloading blob '
+Marking AdServices attribution token as synced for App User ID: 
+Marking attributes as synced for App User ID: 
+Mathematical expression
+MirroredUsageCountStore
+Missing 'signatureData' or its structure changed:
+Missing client transaction ID.
+Missing internal auth delegate
+Missing offers from response returned from posting offer for signing.
+Missing product in PurchaseParams
+Monitoring drag-to-convert gestures
+More info here: https://errors.rev.cat/configuring-products
+More information: https://rev.cat/displaying-products
+More information: https://rev.cat/ios-18-4-simulator-issue
+More information: https://rev.cat/sdk-troubleshooting
+More information: https://rev.cat/sdk-troubleshooting 
+More information: https://rev.cat/skproductsrequest-hangs
+More information: https://rev.cat/why-are-offerings-empty
+Move files and folders to a chosen folder
+Move or edit text annotation
+Much smaller files with more visible quality loss.
+NNSAttributedStringDocumentReadingOptionKey
+NNSAttributedStringDocumentType
+NNSAttributedStringKey
+NNSBitmapImageRepPropertyKey
+NNSEventModifierFlags
+NNSOperatingSystemVersion
+NNSPasteboardReadingOptionKey
+NNSPrintInfoAttributeKey
+NSApplicationDelegate
+NSArray element failed to match the Swift Array Element type
+NSDeviceDescriptionKey
+NSISO8601DateFormatter
+NSSharingServiceDelegate
+NSURLSessionTaskDelegate
+Native target-size compression requires a still WebP image.
+NativePetalGlassShape
+No Applications Available
+No Subscriptions found
+No amount specified to spend. This will be ignored.
+No base price found for product 
+No cached CustomerInfo, fetching from network.
+No cached Offerings, fetching from network
+No cached transaction metadata to sync
+No existing products cached, starting store products request for: 
+No folders allowed yet.
+No frame is available at this time. Choose an earlier frame.
+No initial App User ID
+No installed converter for 
+No localized configuration found, using default: 
+No previous purchase was found for this Apple Account.
+No previous purchase was found.
+No pricing terms were found for product with productIdentifier 
+No purchase option found for product 
+No readable metadata found.
+No shared actions for selected files
+No transaction found for product ID: 
+No valid subtitle cues were found.
+NoOpRemoteConfigManager
+NonEmptyStringDecodable
+NonSubscriptionTransaction
+None of the Test Store products registered in the RevenueCat dashboard could be fetched.
+None of the products registered in the RevenueCat dashboard could be fetched from App Store Connect (or the StoreKit Configuration file if one is being used).
+None of the products registered in the RevenueCat dashboard could be fetched.
+NormalizationSettingRow
+Normalized audio preview is unavailable. You can still export with these settings.
+Normalized preview unavailable. You can still normalize this audio.
+Not eligible for trial or introductory price.
+Not fetching AppTransaction because it is not available
+Not preparing an external purchase: another one is already being prepared.
+Not preparing an external purchase: this app cannot offer one to this customer.
+Not preparing an external purchase: this device does not authorize payments.
+Not storing etag for: '
+Not using a simulator.
+ObjectWillChangePublisher
+Observing StoreKit.PurchaseIntent.intents
+Observing StoreKit.Transaction.updates
+Offerings cache is stale, updating from network in background
+Offerings cache is stale, updating from network in foreground
+Offerings response contained no offerings
+Offerings response must be a JSON object
+Offerings updated from network.
+OfferingsTrackingContext
+Offline entitlements aren't available, won't fetch ProductEntitlementMapping.
+Offline entitlements not available.
+Offline vector rendering could not be prepared: 
+OfflineCustomerInfoCreator
+OfflineEntitlementsAPI
+OfflineEntitlementsManager
+OfflineEntitlementsModeErrorReason
+OfflineEntitlementsStrings
+One more step: allow Tangerine in macOS Login Items.
+One of these fields cannot be edited.
+One or more files have no audio track.
+One or more of the arguments provided are invalid.
+One or more of the arguments provided are invalid. 
+One or more of the attributes sent could not be saved.
+One-time purchase, no subscription
+Only files and folders can be moved.
+Only local file and folder paths can be copied.
+Only local files and folders can be copied.
+Only local files and folders can be moved.
+Only local files and folders can open a terminal.
+Open terminal in folder
+OperatingSystemVersion
+Operation in progress
+Operation not supported in UI preview mode
+Operation not supported in UI preview mode.
+OperationDispatcherWorkerQueue
+OperationProgressController
+OperationProgressPanel
+OperationProgressWindowController
+OrangeIndeterminateProgressView
+Order the files by name, as Finder lists them
+Original Download Date
+Output channel preview
+Output will be at most 
+PDF artwork exceeds the document conversion limit.
+PDF inline illustration
+PDFKit could not write the cleaned PDF.
+PDFKit could not write the combined PDF.
+PDFKit could not write the organized PDF.
+Page rotations must be 90-degree turns for pages in this PDF.
+Pages content could not be read directly: 
+PartialButtonComponent
+PartialCarouselComponent
+PartialCountdownComponent
+PartialImageComponent
+PartialPackageComponent
+PartialStackComponent
+PartialTimelineComponent
+PartialVideoComponent
+PartialWebViewComponent
+Pause preview (Space)
+PaymentAuthorizationProvider
+PaymentQueue didRevokeEntitlementsForProductIdentifiers: 
+PaymentQueueWrapperDelegate
+Paywall contains malformed condition of type '
+Paywall contains unrecognized condition type '
+Paywall event flush failed: 
+Paywall event flush: posting 
+Paywall event flushing already in progress. Skipping.
+Paywall event flushing failed, will retry. Error: 
+Paywall event flushing requested with empty store.
+PaywallCacheWarmingType
+PaywallComponentsConfig
+PaywallComponentsData
+PaywallFontManagerType
+PaywallLocalizedConfiguration
+PaywallPartialComponent
+PaywallWindowController
+Performing redirect from '
+Persisted remote config for domain '
+PersistedRemoteConfiguration
+PhotoRedactionDetectionKind
+Pinch to zoom, drag to pan, or double-click to reset zoom
+Play or pause the timeline preview (Space)
+Play the complete Mono or Stereo output with the selected volume balance
+Playback is unavailable for this video. Use the frame slider to preview your rectangles.
+Playback is unavailable for this video. You can still scrub the timeline and export.
+Playhead position in seconds
+Please configure the App Store app on the RevenueCat dashboard and use its corresponding Apple API key 
+Please contact support to manage your subscription.
+Please describe your issue or question.
+Please see https://rev.cat/in-app-purchase-key-configuration for more info.
+Please update to the latest SDK version.
+PostAdEventsOperation
+PostAdServicesTokenOperation
+PostAttributionDataOperation
+PostCreateTicketOperation
+PostExternalPurchaseTokenOperation
+PostFeatureEventsOperation
+PostHostedCheckoutOperation
+PostIsPurchaseAllowedByRestoreBehaviorOperation
+PostOfferForSigningData
+PostOfferForSigningOperation
+PostReceiptDataOperation
+PostRedeemWebPurchaseOperation
+PostSubscriberAttributesOperation
+Posting AdServices attribution token failed with error: 
+Posting JWS token (source: '
+Posting StoreKit 2 receipt (source: '
+Posting cached metadata for transaction '
+Posting receipt (source: '
+Posting receipt for unfinished transaction failed 
+PreferredLocalesProvider
+PrefetchedWorkflowCache
+PresentedOfferingContext
+PresentedOfferingContextData
+Presenting code redemption sheet.
+Preserve original pages
+Press Image to choose files, or press 
+Press Text to add another box. Drag its border to move it and its side handles to change width.
+Preview selected frame
+Previewing the first of 
+PriceFormatterProvider
+Priority event tracked while flush in progress, queuing priority flush
+Priority flush rate-limited (max 
+Product does not have trial or introductory price.
+Product hasn't been purchased or doesn't exist.
+Product purchase for '
+Product.ProductType '
+ProductEntitlementMapping
+ProductEntitlementMapping cache is stale, updating from network.
+ProductEntitlementMapping cache updated from network.
+ProductEntitlementMappingCallback
+ProductEntitlementMappingFetcher
+ProductEntitlementMappingResponse
+ProductRequestDataEncodedWrapper
+Products request error: 
+Products request finished.
+Products with billing plans are not supported when using StoreKit 1. Will not return 
+ProductsRequestFactory
+PromotionalOfferEligibility
+Providing an alias for the current user is unsupported when using IAM identities
+Public key could not be loaded: 
+Publishing web bundle URLs for 
+PurchasableSK2Product
+Purchase data already cached for transaction identifier: 
+Purchase data not found in cache for transaction identifier 
+Purchase failure simulated successfully in Test Store.
+Purchase was cancelled.
+PurchaseButtonComponent
+PurchaseDateCandidate
+PurchaseErrorCodingKeys
+PurchaseInitiatedCodingKeys
+PurchaseOwnershipType
+PurchaseRedemptionErrorInfo
+PurchaseUnavailableError
+Purchased product - '
+PurchasedProductsFetcher
+PurchasedProductsFetcher: fetched 
+PurchasedProductsFetcher: fetching products from StoreKit
+PurchasedProductsFetcher: fetching products took too long
+PurchasedProductsFetcher: invalidating cache
+PurchasedProductsFetcher: returning 
+PurchasedProductsFetcherType
+PurchasedTransactionData
+PurchasedTransactionDataEncodedWrapper
+Purchases delegate has already been configured.
+Purchases delegate is being set to nil, you probably don't want to do this.
+Purchases has not been configured. Please call Purchases.configure()
+Purchases instance already set with the same configuration. Ignoring duplicate call.
+Purchases is being configured using a proxy for RevenueCat 
+Purchases is configured with StoreKit version 
+Purchases is configured with enforced response verification
+Purchases is configured with informational response verification
+Purchases is configured with purchasesAreCompletedBy set to .myApp
+Purchases is configured with response verification disabled
+Purchases.init: created new Purchases instance: 
+PurchasesAreCompletedBy
+PurchasesErrorConvertible
+PurchasesOrchestrator
+PurchasesOrchestrator.deinit: 
+PurchasesOrchestrator.init: 
+PurchasesOrchestrator: caching paywall from purchase initiated event
+PurchasesOrchestrator: cancel or purchaseError event is missing productId. This should never happen.
+PurchasesOrchestrator: clearing paywall from purchase initiated event
+PurchasesReceiptParser
+PurchasesStatusPoller
+QLPreviewPanelDataSource
+QRCodeResultsWindowController
+Quantity must be between 1 and 10, but got 
+QuickLook/Preview.pdf
+RAR output cannot store 
+RC Container header flags non-zero (0x
+RC Remote Config Queue
+RC element reserved bits non-zero (0x
+RCConfigurationBuilder
+RCCustomPaywallImpressionParams
+RCNonSubscriptionTransaction
+RCPresentedOfferingContext
+RCPromotionalOfferEligibility
+RCPromotionalOfferSignedData
+RCPurchaseParamsBuilder
+RCPurchasesAuthentication
+RCPurchasesAuthenticationDelegate
+RCPurchasesDiagnostics
+RCPurchasesErrorUtils
+RCStoreProductDiscount
+RCWebPurchaseRedemption
+RTF contains an unsupported picture. PNG and JPEG pictures are supported.
+RTF contains unbalanced groups or trailing content.
+RTF embedded objects cannot be preserved as editable text.
+RTF is nested too deeply or too large.
+RTF picture dimensions exceed the conversion limit.
+RTFD contains unsafe files or exceeds the 128 MB package limit.
+Ready whenever you turn on your Mac.
+Reason: missing data: 
+Receipt empty, refreshing
+Receipt for product '
+Receipt parsed successfully
+ReceiptRefreshRequestFactory
+Received an invalid 'entitlement' ad reward payload 
+Received malformed response from the backend.
+Received malformed reward verification reward payload for type: 
+Received remote config with 
+Received unexpected reward verification reward value: expected a JSON object
+Received unknown purchase result: 
+Received unknown remote config topic: 
+Received unknown reward verification status: 
+Received unknown transaction state: 
+Received unknown workflow trigger action type: 
+Received unknown workflow trigger type: 
+Received unsupported reward verification reward type: 
+RectangleRedactionEditor
+Redact one still photo at a time. Export the frames or pages first.
+Redaction preview. Draw rectangles to cover areas.
+RedactionDeleteKeyHandler
+Redeeming web purchase.
+RedirectLoggerSessionDelegate
+Refreshing remote config for domain '
+Refund already requested for this product and is either pending, already denied, 
+Refund request submission failed: 
+Refusing remote config blob operation with malformed ref '
+Registered external purchase token 
+Remote config cache URL is not available.
+Remote config refresh failed. Keeping cached configuration. Error: 
+Remote config was not modified. Keeping cached configuration.
+Remote configuration changed while resolving checkpoint '
+Remote configuration kept changing while resolving checkpoint '
+RemoteConfigBlobDownloaderType
+RemoteConfigBlobFetchScheduler
+RemoteConfigBlobFetcher
+RemoteConfigBlobFetcherType
+RemoteConfigBlobStore
+RemoteConfigBlobStoreType
+RemoteConfigConsistencyError
+RemoteConfigContainer
+RemoteConfigDiskCache
+RemoteConfigDiskCacheType
+RemoteConfigFallbackCallback
+RemoteConfigFallbackFetchResult
+RemoteConfigFetchContext
+RemoteConfigFetchResult
+RemoteConfigManagerType
+RemoteConfigSignatureContextProvider
+RemoteConfigSourceHandle
+RemoteConfigSourceProvider
+RemoteConfigSourceProviderType
+RemoteConfigTopicStoreType
+Remove a clip to join the rest into one video, or export separate clips.
+Remove a clip to join the rest into one video.
+Remove all drawn strokes
+Remove metadata now and save a new file. Photo cleanup includes private blocks that cannot be removed individually. The original stays unchanged.
+Remove selected frame
+Request failed signature verification. Please see https://rev.cat/trusted-entitlements for more info.
+Request failed signature verification. Please see https://rev.cat/trusted-entitlements for more info. 
+Request was handled by load shedder: 
+Requested a cached CustomerInfo but it's not available.
+Requested trial or introductory price eligibility with no identifiers. This is likely a program error.
+Requested verification: 
+Requesting products from the store with identifiers: 
+Requests are currently paused, queueing 
+Requests to RevenueCat are being blocked. See: https://rev.cat/dnsBlocking for more info.
+ReservedSubscriberAttribute
+Resize text from left
+Resize text from right
+ResolvedCheckpointWorkflow
+ResponseSignatureContextProvider
+ResponseVerificationMode
+Restore Compression Defaults
+Restoring purchases not available in Test Store. Returning current CustomerInfo.
+Results are saved next to the originals. Allow your home folder once so macOS doesn
+Retrieved SKProducts: 
+Retrying receipt fetch after %2.f seconds
+Retrying request using fallback host: 
+Returning offerings from cache.
+Returning result from backend 
+RevenueCat could not process transaction completed by your app: 
+RevenueCat dashboard for your offerings.
+RevenueCat.AdDisplayed
+RevenueCat.AdFailedToLoad
+RevenueCat.Attribution
+RevenueCat.Authentication
+RevenueCat.BillingPlanType
+RevenueCat.Configuration
+RevenueCat.CustomPaywallImpressionParams
+RevenueCat.CustomerInfo
+RevenueCat.EntitlementInfo
+RevenueCat.EntitlementInfos
+RevenueCat.IdentitySource
+RevenueCat.InstallmentsInfo
+RevenueCat.MediatorName
+RevenueCat.NetworkOperation
+RevenueCat.NonSubscriptionTransaction
+RevenueCat.PaymentQueueWrapper
+RevenueCat.PlatformInfo
+RevenueCat.PresentedOfferingContext
+RevenueCat.ProductPaidPrice
+RevenueCat.ProductsFetcherSK1
+RevenueCat.ProductsManager
+RevenueCat.PromotionalOffer
+RevenueCat.PurchaseCompleted
+RevenueCat.PurchaseParams
+RevenueCat.PurchasesDiagnostics
+RevenueCat.PurchasesReceiptParser
+RevenueCat.RevocationReason
+RevenueCat.SignedData
+RevenueCat.StoreKit1Wrapper
+RevenueCat.StoreKit2PromotionalOfferPurchaseOptions
+RevenueCat.StoreKitRequestFetcher
+RevenueCat.StoreProduct
+RevenueCat.StoreProductDiscount
+RevenueCat.StoreTransaction
+RevenueCat.Storefront
+RevenueCat.SubscriptionInfo
+RevenueCat.SubscriptionPeriod
+RevenueCat.TargetingContext
+RevenueCat.VirtualCurrencies
+RevenueCat.VirtualCurrency
+RevenueCat.WebPurchaseRedemption
+RevenueCat.WinBackOffer
+RevenueCat/APISourceFailover.swift
+RevenueCat/AdEventStore.swift
+RevenueCat/AdEventsRequest.swift
+RevenueCat/AdReward.swift
+RevenueCat/AsyncExtensions.swift
+RevenueCat/Attribution.swift
+RevenueCat/AttributionFetcher.swift
+RevenueCat/AttributionPoster.swift
+RevenueCat/AudiencesConfigProvider.swift
+RevenueCat/Authentication.swift
+RevenueCat/BackendError.swift
+RevenueCat/CachingProductsManager.swift
+RevenueCat/CachingTrialOrIntroPriceEligibilityChecker.swift
+RevenueCat/CheckpointRules.swift
+RevenueCat/CheckpointWorkflowResolver.swift
+RevenueCat/CheckpointsConfigProvider.swift
+RevenueCat/ComponentOverrides.swift
+RevenueCat/CompoundProductIdentifier.swift
+RevenueCat/CompoundProductIdentifierResolver.swift
+RevenueCat/Configuration.swift
+RevenueCat/CustomerCenterConfigAPI.swift
+RevenueCat/CustomerCenterConfigData.swift
+RevenueCat/CustomerInfo.swift
+RevenueCat/CustomerInfoDimensionProvider.swift
+RevenueCat/CustomerInfoManager.swift
+RevenueCat/CustomerInfoResponseHandler.swift
+RevenueCat/DNSChecker.swift
+RevenueCat/DefaultDecodable.swift
+RevenueCat/DeviceCache.swift
+RevenueCat/DiagnosticsFileHandler.swift
+RevenueCat/DiagnosticsSynchronizer.swift
+RevenueCat/DimensionResolver.swift
+RevenueCat/ETagManager.swift
+RevenueCat/EncodedAppleReceipt.swift
+RevenueCat/ErrorUtils.swift
+RevenueCat/ErrorUtils.swift:
+RevenueCat/EventsManager.swift
+RevenueCat/ExternalPurchaseManager.swift
+RevenueCat/FeatureEventStore.swift
+RevenueCat/FileHandler.swift
+RevenueCat/FileRepository.swift
+RevenueCat/GetCustomerCenterConfigOperation.swift
+RevenueCat/GetCustomerInfoOperation.swift
+RevenueCat/GetIntroEligibilityOperation.swift
+RevenueCat/GetOfferingsOperation.swift
+RevenueCat/GetRewardVerificationStatusOperation.swift
+RevenueCat/GetVirtualCurrenciesOperation.swift
+RevenueCat/GetWebBillingProductsOperation.swift
+RevenueCat/GetWebOfferingProductsOperation.swift
+RevenueCat/HTTPClient.swift
+RevenueCat/HTTPRequestPath.swift
+RevenueCat/ISODurationFormatter.swift
+RevenueCat/IdentityManager.swift
+RevenueCat/IntroEligibilityCalculator.swift
+RevenueCat/LargeItemCacheType.swift
+RevenueCat/LocalRulesEvaluator.swift
+RevenueCat/LocalTransactionMetadataStore.swift
+RevenueCat/LogInOperation.swift
+RevenueCat/ManageSubscriptionsHelper.swift
+RevenueCat/MapAppStoreDetector.swift
+RevenueCat/NetworkError.swift
+RevenueCat/NetworkOperation.swift
+RevenueCat/NonSubscriptionTransaction.swift
+RevenueCat/Obsoletions.swift
+RevenueCat/Offering.swift
+RevenueCat/OfferingsAPI.swift
+RevenueCat/OfferingsFactory.swift
+RevenueCat/OfferingsManager.swift
+RevenueCat/OfflineCustomerInfoCreator.swift
+RevenueCat/OfflineEntitlementsManager.swift
+RevenueCat/PaywallCacheWarming.swift
+RevenueCat/PaywallExtensions.swift
+RevenueCat/PaywallFontManagerType.swift
+RevenueCat/Poller.swift
+RevenueCat/PostAdServicesTokenOperation.swift
+RevenueCat/PostAttributionDataOperation.swift
+RevenueCat/PostExternalPurchaseTokenOperation.swift
+RevenueCat/PostHostedCheckoutOperation.swift
+RevenueCat/PostIsPurchaseAllowedByRestoreBehaviorOperation.swift
+RevenueCat/PostOfferForSigningOperation.swift
+RevenueCat/PostReceiptDataOperation.swift
+RevenueCat/PostSubscriberAttributesOperation.swift
+RevenueCat/ProductType.swift
+RevenueCat/ProductsFetcherSK1.swift
+RevenueCat/ProductsFetcherSK2.swift
+RevenueCat/ProductsManager.swift
+RevenueCat/PurchasedProductsFetcher.swift
+RevenueCat/Purchases.swift
+RevenueCat/PurchasesError.swift
+RevenueCat/PurchasesOrchestrator.swift
+RevenueCat/PurchasesReceiptParser.swift
+RevenueCat/RawDataContainer.swift
+RevenueCat/ReceiptFetcher.swift
+RevenueCat/RedirectLoggerTaskDelegate.swift
+RevenueCat/RemoteConfigBlobFetcher.swift
+RevenueCat/RemoteConfigBlobStore.swift
+RevenueCat/RemoteConfigDiskCache.swift
+RevenueCat/RemoteConfigManager.swift
+RevenueCat/RemoteConfigSourceProvider.swift
+RevenueCat/RevocationReason.swift
+RevenueCat/RewardVerificationStatusResponse.swift
+RevenueCat/RulesEngineLoggerBridge.swift
+RevenueCat/SK1StoreProduct.swift
+RevenueCat/SK1StoreProductDiscount.swift
+RevenueCat/SK1StoreTransaction.swift
+RevenueCat/SK2StoreProduct.swift
+RevenueCat/SK2StoreProductDiscount.swift
+RevenueCat/SandboxEnvironmentDetector.swift
+RevenueCat/Signing.swift
+RevenueCat/SimulatedStoreProductsManager.swift
+RevenueCat/SimulatedStorePurchaseHandler.swift
+RevenueCat/SimulatedStoreTransactionFetcher.swift
+RevenueCat/SourceHealthChecker.swift
+RevenueCat/StoreEnvironment.swift
+RevenueCat/StoreKit1Wrapper.swift
+RevenueCat/StoreKit2ObserverModePurchaseDetector.swift
+RevenueCat/StoreKit2PurchaseIntentListener.swift
+RevenueCat/StoreKit2TransactionFetcher.swift
+RevenueCat/StoreKit2TransactionListener.swift
+RevenueCat/StoreKitRequestFetcher.swift
+RevenueCat/StoreKitWorkarounds.swift
+RevenueCat/StoreProduct.swift
+RevenueCat/StoreProductDiscount.swift
+RevenueCat/SubscriberAttributesDimensionProvider.swift
+RevenueCat/SubscriberAttributesManager.swift
+RevenueCat/SubscriberDimensionsProvider.swift
+RevenueCat/SubscriptionPeriod.swift
+RevenueCat/SynchronizedLargeItemCache.swift
+RevenueCat/SystemInfo.swift
+RevenueCat/TimingUtil.swift
+RevenueCat/TokenManager.swift
+RevenueCat/TokenOperations.swift
+RevenueCat/TransactionMetadataSyncHelper.swift
+RevenueCat/TransactionPoster.swift
+RevenueCat/TransactionReason.swift
+RevenueCat/TrialOrIntroPriceEligibilityChecker.swift
+RevenueCat/UIConfig.swift
+RevenueCat/UiConfigProvider.swift
+RevenueCat/VirtualCurrencyManager.swift
+RevenueCat/WebBundleURLBatcher.swift
+RevenueCat/WebPurchaseRedemptionHelper.swift
+RevenueCat/WinBackEligibilityAdapters.swift
+RevenueCat/WinBackOfferEligibilityCalculator.swift
+RevenueCat/WorkflowManager.swift
+RevenueCat/WorkflowsConfigProvider.swift
+RevenueCat/WorkflowsResponse.swift
+RevenueCatBackendErrorCode
+RevenueCatPurchaseService
+Reward verification failed: 
+Reward verification poll attempt 
+Reward verification poll transient error, retrying: 
+Reward verification stopped after an unrecoverable error: 
+Reward verification timed out after repeated transient errors while polling 
+Reward verification timed out: the server-side verification (SSV) callback was not received in time. Possible causes: SSV is not enabled/configured for this ad unit in your ad network's dashboard, the SSV callback URL is misconfigured, the ad network delayed delivering the callback, or RevenueCat failed to process the SSV 
+Reward verification token customData encoding failed: 
+RewardEarnedUnverifiedCodingKeys
+RewardFailedToVerifyCodingKeys
+RewardGrantedCodingKeys
+RewardVerificationAsyncSleeper
+RewardVerificationPollStatus
+RewardVerificationResult
+RewardVerificationStatusCallback
+RewardVerificationStatusPolling
+RewardVerificationStatusResponse
+RewardVerificationToken
+RewardVerifiedCodingKeys
+RewardedAdTrackingMetadata
+Rich text exceeds the conversion limit.
+Rich text has invalid table spans.
+RulesEngineLoggerBridge
+SDySSSo12NSXMLElementCG
+SK1StoreProductDiscount
+SK2 receipt is still missing transaction with id '
+SK2AllTransactionsProvider
+SK2StoreProductDiscount
+SKPaymentQueue.presentCodeRedemptionSheet is not available in the current platform, this is an Apple bug.
+SKPaymentQueueDelegate
+SKPaymentTransactionObserver
+SKPaymentTransactionState
+SKProductsRequest took longer than 
+SKProductsRequest took too long to complete.
+SKProductsRequestDelegate
+SKReceiptRefreshRequest finished
+SKReceiptRefreshRequest started
+SandboxEnvironmentDetector
+SaySo12NSXMLElementCG
+SaySo20SKPaymentTransactionCG
+Sb26needsSignatureVerificationt
+See all in-app currencies
+See https://errors.rev.cat/testing-in-simulator for more details.
+See https://rev.cat/auth for more details.
+Select at least one frame within the video.
+Select at least two videos to join.
+SendableOperationQueue
+SendableReadOperation
+SendableRecordPurchaseCompletion
+Sending latest CustomerInfo to delegate.
+Sending updated CustomerInfo to delegate.
+Serial request done: 
+Set a start and duration within the file.
+Set a start and end within the file.
+SettingsWindowController
+Sg014paywallSessionB0t
+SgSo7NSErrorCSgSbtYbScMYccG
+SgSo7NSErrorCSgSbtYbScMYccGG
+Share files and folders with AirDrop
+Shared through family member
+Show for Entire Video
+Signature error encountered in response returned from posting offer for signing.
+Signature failed verification
+Signature is not base64: 
+Signature passed verification
+Silence threshold in decibels
+SimpleNetworkServiceType
+SimulatedStoreProductsManager
+SimulatedStorePurchaseHandler
+SimulatedStorePurchaseHandlerType
+SimulatedStorePurchaseUI
+SimulatedStorePurchaseUIResult
+SimulatedStoreTransaction
+SimulatedStoreTransactionFetcher
+Skip for now and macOS will ask per folder.
+Skipping API source with malformed url 
+Skipping checkpoint rule for workflow '
+Skipping free trial for simulated store product '
+Skipping introductory price for simulated store product '
+Skipping malformed checkpoint rule: 
+Skipping products request for these products because they were already 
+Skipping remote config blob '
+Smaller files with less quality loss.
+Smaller files with more quality loss.
+So14NSUserDefaultsCSg
+So16NSOperationQueueC
+So16NSPrintOperationCSg
+So16NSSharingServiceCSg
+So16NSSharingServiceCSgyc
+So17NSFileCoordinatorC
+So17NSHTTPURLResponseC
+So17NSHTTPURLResponseCSg
+So17SKProductDiscountC
+So17SKProductsRequestC
+So17WKContentRuleListCSg
+So18NSLayoutConstraintCSg
+So18NSVisualEffectViewC
+So18NSWindowControllerC
+So18SKProductsResponseC
+So20NSNotificationCenterC
+So20SKPaymentTransactionC
+So22NSISO8601DateFormatterC
+So22NSSharingServicePickerCSg
+So22WKWebViewConfigurationC
+So25QLThumbnailRepresentationCSg
+So28QLThumbnailGenerationRequestCSg
+Sound and haptic feedback
+SourceHealthCheckerType
+SpendVirtualCurrenciesOperation
+Spending virtual currencies requires configuring the SDK .with(iamEnabled: true)
+Split points must be at least 0.05 seconds apart.
+Start time in seconds
+Starting the next request in the queue, 
+Step 2. While dragging, tap 
+StepCompletedCodingKeys
+StepStartedCodingKeys
+StickyFooterComponent
+Store products request finished
+Store products request received response
+StoreDimensionProvider
+StoreKit 1 product request took longer than expected
+StoreKit 2 intro eligibility took longer than expected to determine
+StoreKit 2 product request took longer than expected
+StoreKit did not raise any errors while processing the purchase, but the transaction returned by StoreKit contains an expiration date that is in the past. This is likely an issue with 
+StoreKit provided no external purchase token. Registering without one.
+StoreKit. Expiration date: 
+StoreKit.Transaction.updates: received transaction for product '
+StoreKit.Transaction.updates: waiting for in-flight purchase receipt post to finish 
+StoreKit1Wrapper.deinit: 
+StoreKit1Wrapper.finishTransaction was called for '
+StoreKit1Wrapper.init: 
+StoreKit1WrapperDelegate
+StoreKit2ConfirmInOptions
+StoreKit2ObserverModePurchaseDetector
+StoreKit2ObserverModePurchaseDetectorDelegate
+StoreKit2ObserverModePurchaseDetectorType
+StoreKit2ProductPurchaser
+StoreKit2ProductPurchaserType
+StoreKit2PromotionalOfferPurchaseOptions
+StoreKit2PurchaseIntentListener
+StoreKit2PurchaseIntentListenerDelegate
+StoreKit2PurchaseIntentListenerType
+StoreKit2PurchaseIntentType
+StoreKit2StorefrontListener
+StoreKit2StorefrontListenerDelegate
+StoreKit2TransactionFetcher
+StoreKit2TransactionFetcherType
+StoreKit2TransactionListener
+StoreKit2TransactionListenerDelegate
+StoreKit2TransactionListenerType
+StoreKitExternalPurchaseCustomLink
+StoreKitRequestFetcher
+StoreKitWinBackPricingTerms
+StoreKitWinBackProduct
+StoreKitWinBackRenewalInfo
+StoreKitWinBackStatus
+StoreKitWinBackSubscriptionInfo
+StoreMessagesHelperType
+StoreMessagesProvider
+StoreMessagesProviderType
+StoreProductDiscountEncodedWrapper
+StoreProductDiscountType
+Stored inline remote config blob '
+Stored remote config blob '
+StoredAdEventSerializer
+StoredFeatureEventSerializer
+Storefront change detected. Invalidating and re-fetching product cache.
+StorefrontProviderType
+Storing an ad event. There was an error trying to print it
+Storing an event. There was an error trying to print it
+Subclasses must override this method
+Subscriber attributes errors: 
+Subscriber attributes synced successfully for App User ID: 
+SubscriberAttributesDimensionProvider
+SubscriberAttributesManager
+SubscriberAttributesManagerDelegate
+SubscriberDimensionsProvider
+Subscription management sheet dismissed.
+SubscriptionHistoryTracker
+Successfully downloaded and cached font '
+SupportedFormatsMatrixStack
+Swift/arm64e-apple-macos.swiftinterface
+Sync attributes and offerings rate limit reached:
+SynchronizedLargeItemCache
+SynchronizedUserDefaults
+Syncing diagnostics events since enough file size reached
+Syncing purchases not available in Test Store. Returning current CustomerInfo.
+SystemWeightedSourceRandomizer
+TabControlButtonComponent
+TabControlToggleComponent
+Tangerine conversions
+Tangerine saves results beside the originals. Allow access to 
+Tangerine saves results beside the originals. macOS asks you to allow each output folder once. Allowing a parent folder, such as your home folder, also covers every folder inside it.
+Tangerine-annotation-paste-
+Tangerine-channel-output-
+Tangerine-document-images-
+Tangerine-epub-chapter-
+Tangerine-normalization-
+Tangerine-pdf-markdown-
+Tangerine-powerpoint-
+Tangerine-powerpoint-output-
+Tangerine-spreadsheet-
+Tangerine-structured-
+Tangerine-visualizer-
+Tangerine.AirDropSharingController
+Tangerine.AppDelegate
+Tangerine.EPUBPDFRenderer
+Tangerine.FileToolOptionsWindowController
+Tangerine.FloatingFileContextMenuController
+Tangerine.FloatingFileHostingView
+Tangerine.FloatingFileWindowController
+Tangerine.FormatDropTarget
+Tangerine.MenuBarController
+Tangerine.MonitorView
+Tangerine.OfficePDFRenderer
+Tangerine.OperationProgressWindowController
+Tangerine.OutputPublication
+Tangerine.PaywallWindowController
+Tangerine.QRCodeResultsWindowController
+Tangerine.SDVectorRenderer
+Tangerine.SettingsWindowController
+Tangerine.WelcomeWindowController
+Tangerine/ConversionOverlay.swift
+Tangerine/ConversionTaskStore.swift
+Tangerine/DocumentConverter.swift
+Tangerine/DragGestureMonitor.swift
+Tangerine/FileClipboardController.swift
+Tangerine/FileMoveAction.swift
+Tangerine/FileToolOptionsModel.swift
+Tangerine/FloatingFileWindowController.swift
+Tangerine/FolderAccess.swift
+Tangerine/GeneratedAssetSymbols.swift
+Tangerine/LoginItemController.swift
+Tangerine/OperationProgressWindowController.swift
+Tangerine/PaywallWindowController.swift
+Tangerine/Purchases.swift
+Tangerine/QRCodeResultsWindowController.swift
+Tangerine/SettingsWindowController.swift
+Tangerine/TerminalFileAction.swift
+Tangerine/Unlock.swift
+Tangerine/WelcomeModel.swift
+TangerineBrandMarkView
+TangerineColumnSettingsWindow
+TangerineOfflineOffice
+TangerineOfflineVector
+TangerinePanelBackgroundView
+TangerineSettingsModel
+TangerineSettingsView
+Tap the chosen modifier combination while dragging files.
+Target size cannot exceed the original file size.
+Target size compression
+Target size compression cannot preserve this animation. Use a preset with original dimensions.
+TerminalApplicationSettings
+TestStoreProductDiscount
+Text recognition could not read a scanned PDF page: 
+The .login endpoint is not allowed when IAM is enabled
+The EPUB ZIP container is damaged or unsupported.
+The EPUB archive is too large to open safely.
+The EPUB container document is malformed.
+The EPUB contains a damaged file: 
+The EPUB contains an unsafe filename.
+The EPUB contains duplicate or colliding archive paths.
+The EPUB contains malformed XML.
+The EPUB does not identify a readable package document.
+The EPUB expands beyond Tangerine's safety limit.
+The EPUB has no readable chapters.
+The EPUB manifest contains an incomplete item.
+The EPUB manifest contains duplicate item identifiers.
+The EPUB mimetype entry must be the first physical entry and uncompressed.
+The EPUB package document is malformed.
+The EPUB spine contains a missing or unsupported chapter.
+The EPUB spine contains an incomplete item reference.
+The EPUB spine is malformed.
+The EPUB workspace is incomplete.
+The PDF cannot be read or is password-protected.
+The PDF cannot be read, is empty, or is password-protected.
+The PDF contains no text or page artwork that can be exported.
+The PDF could not be verified.
+The PDF has invalid or oversized page dimensions.
+The Pages archive exceeds the 128 MB import limit.
+The Pages package contains unsafe entries or is too large.
+The SKPaymentTransaction has a nil value for SKPayment - this is an bug in StoreKit.
+The SKPaymentTransaction has a nil value for transaction date - this is a bug in StoreKit.
+The SKPaymentTransaction has a nil value for transaction identifier - this is a bug in StoreKit.
+The SKProductDiscount or Product.SubscriptionOffer wrapped by StoreProductDiscount is missing an identifier. This is a required property and likely an AppStore quirk that it is missing.
+The Test Store is for development only. Never use a Test Store API key in production. Test Store purchases are simulated, do not use StoreKit, and generate no revenue. Apps submitted with a Test Store API key will be rejected during App Review.
+The User is ineligible for that action.
+The WebP encoder could not meet this target. Try a larger size.
+The app user ID is not valid.
+The app will close now to protect the security of test purchases.
+The appUserID is empty. This method should only be called with non-empty values.
+The appUserID passed to logIn is a constant string known at compile time. This is likely a programmer error. This ID is used to identify the current user. See https://docs.revenuecat.com/docs/user-ids for more information.
+The appUserID passed to logIn is the same as the one already cached. No action will be taken.
+The audiences for checkpoint '
+The clipping contains no readable text resource.
+The clipping contains no supported text.
+The compressed PDF could not be verified.
+The compressed video's duration or tracks could not be verified.
+The conversion finished, but 
+The conversion process failed.
+The converted PDF could not be verified.
+The converted spreadsheet could not be verified.
+The converter finished without creating an output file.
+The crop must be at least 1 
+The crop must be at least 2 
+The customer chose not to continue to the external purchase.
+The customer info is unavailable, so its checkpoint dimensions cannot be evaluated: 
+The data object identifier couldn't be found on the receipt.
+The destination must be an existing local folder.
+The device or user is not allowed to make the purchase.
+The document contains malformed XML.
+The document has no pages.
+The document has too many blocks.
+The document has too many sections.
+The document is empty or exceeds the 128 MB conversion limit.
+The document is empty or exceeds the 128 MB import limit.
+The document is empty or exceeds the 128 MB rendering limit.
+The document is nested too deeply.
+The document text exceeds the conversion limit.
+The document's paper size cannot be used in Pages.
+The encoder could not fit this video within the target. Choose a larger size.
+The encoder produced 
+The exported document exceeds the 128 MB document limit.
+The file has invalid text encoding or too much text. Save it as UTF-8 in TextEdit and try again.
+The file is not a valid EPUB container.
+The file is not valid RTF.
+The generated EPUB could not be verified.
+The generated EPUB is too large.
+The generated PDF could not be verified.
+The given json data was not valid: 
+The image could not be verified. No output was saved.
+The information associated with this PromotionalOffer is not valid. See https://rev.cat/ios-subscription-offers for more info.
+The information associated with this PromotionalOffer is not valid. See https://rev.cat/ios-subscription-offers for more info. 
+The link you provided does not contain a valid purchase token.
+The link you provided has expired. A new one will be sent to the email used to make the purchase.
+The macOS PDF compression filter is unavailable.
+The move was not completed.
+The native Pages writer failed: 
+The native Pages writer is unavailable.
+The operation is already in progress for this product.
+The organized PDF could not be verified.
+The page order must include every page exactly once.
+The parameter networkUserId is REQUIRED for AppsFlyer.
+The payment is deferred.
+The payment is pending.
+The payment is pending. 
+The product is not available for purchase.
+The product is not available for purchase. 
+The receipt is in use by another subscriber.
+The receipt is missing.
+The receipt is not valid.
+The selected range is silent at this threshold. Lower the threshold or turn off automatic trimming.
+The signature generated by RevenueCat could not be decoded: 
+The source archive is empty.
+The source file could not be read.
+The specified API Key is not recognized.
+The spreadsheet is empty or exceeds the 128 MB conversion limit.
+The subscriber attributes are unavailable, so they cannot be evaluated: 
+The subscriber dimensions are unavailable, so they cannot be evaluated: 
+The subtitle file is not valid UTF-8.
+The target is calculated separately from each original file.
+The target is too small after audio and container overhead. Choose a larger size.
+The target is too small for this duration. Choose a larger size.
+The target leaves too little space for video.
+The text could not be completely laid out in the PDF.
+The text could not be laid out on a PDF page.
+The text document exceeds the paragraph or text limit.
+The text document has too many paragraphs.
+The text file is unreadable or exceeds the 32 MB import limit.
+The user is not eligible for the 
+The user is not eligible for the requested billing plan. Will not return a product 
+The web purchase already belongs to another user.
+There are no cached VirtualCurrencies.
+There are no requests currently running, starting request 
+There is a problem with the SKPayment missing a product identifier - this is an issue with the App Store.
+There is a problem with your Test Store configuration in the RevenueCat dashboard. 
+There is a problem with your configuration in App Store Connect. 
+There is a problem with your product configuration in the RevenueCat dashboard. 
+There is a purchase instance configured, posting attribution
+There is already another active subscriber using the same receipt.
+There is an issue with the App Store, this SKProductDiscount is missing a Locale - The current device Locale will be used instead.
+There is an issue with your configuration. Check the underlying error for more details.
+There is no purchase instance configured, caching attribution
+There is no singleton instance. Make sure you configure Purchases before trying to get the default instance. More info here: https://errors.rev.cat/configuring-sdk
+There was a credentials issue. Check the underlying error for more details.
+There was a problem related to the customer info.
+There was a problem related to the customer info. 
+There was a problem related to the system info.
+There was a problem with the App Store. This could also indicate the purchase dialog was cancelled.
+There was a problem with the App Store. This could also indicate the purchase dialog was cancelled. 
+There was a problem with the operation. Looks like we don't support that yet. Check the underlying error for more details.
+There was a problem with the operation. Looks like we don't support that yet. Check the underlying error for more details. 
+There was an error communicating with RevenueCat servers. CustomerInfo was temporarily computed offline, and it will be posted again as soon as possible.
+There was an error when trying to parse the receipt 
+There was an unknown backend error.
+There's a problem with your configuration. No packages could be found for offering with 
+There's a problem with your configuration. No packages could be found for offering with  
+There's a problem with your configuration. None of the Test Store products registered in the RevenueCat dashboard could be fetched. 
+There's a problem with your configuration. None of the products registered in the RevenueCat dashboard could be fetched from App Store Connect (or the StoreKit Configuration file if one is being used). 
+There's a problem with your configuration. None of the products registered in the RevenueCat dashboard could be fetched. 
+There's a request currently running and 
+This DOCX contains an embedded object or equation that direct conversion cannot preserve.
+This DOCX contains an embedded object that cannot be rendered locally. Export it as PDF in its document app to preserve that object.
+This PDF cannot be read or is password-protected.
+This PDF does not allow copying its content.
+This PDF has no pages.
+This PDF has no selectable text. Scanned pages need OCR before text can be exported.
+This Pages document could not be read: 
+This RTF refers to missing attachments. Use its complete RTFD package instead.
+This StoreProduct represents an SK1 product, but SK2 was expected.
+This app is using a test API key: 
+This feature is not available when utilizing the customEntitlementsComputation dangerousSetting.
+This feature is not supported when using StoreKit 1. Configure the SDK to use StoreKit 2 to use this feature.
+This file has no audio track.
+This file has no playable audio track.
+This file has no playable audio.
+This file has no playable duration.
+This file has no playable video track.
+This file is already smaller than 1 KB.
+This file is not a readable DOCX document.
+This file type is not supported.
+This format could not save the change to 
+This format has no adjustable conversion settings.
+This frame would be too large. Use less padding or a closer output ratio.
+This high number is unexpected and is likely due to using an old sandbox account on a new device. If this is impacting performance, using a new sandbox account is recommended.
+This is a test purchase and should only be used during development. In production, use an Apple API key from RevenueCat.
+This is a very high number and might impact performance.
+This is not allowed and will be ignored.
+This is your subscription with the earliest billing date.
+This is your subscription with the earliest expiration date.
+This issue is widely reported by iOS 18.4 simulator users. Try using a different iOS version with your simulator.
+This metadata field is not supported.
+This output format has no adjustable conversion defaults.
+This product is already active for the user.
+This source uses more than 32-bit integer audio. Choose an output bit depth in settings.
+This subscription has expired.
+This text clipping has an unsupported or malformed format.
+This will be reported as a verification failure.
+Throttled request to refresh receipt.
+To configure products, follow the instructions in 
+To prepare for release, update your RevenueCat settings to use a production key.
+Token login requires .with(iamEnabled: true)
+TokenRefreshOperation
+TokenRevocationOperation
+Tq,N,R,VownershipType
+Transaction for productID 
+TransactionMetadataStrings
+TransactionMetadataSyncHelper
+TransactionPoster: handling transaction '
+TransactionPosterType
+Transactions in the backend and in webhooks are unaffected and will have the correct identifier.
+Transactions in the backend and in webhooks are unaffected and will have the correct timestamps.
+Transactions in the backend and in webhooks are unaffected.
+TrialOrIntroPriceEligibilityChecker
+TrialOrIntroPriceEligibilityCheckerType
+Tried to defer store messages but an error occured: '
+Tried to fetch AdServices attribution token on device without AdServices support.
+Tried to post Apple Search Ads Attribution, but ATT Framework is required on this OS and it isn't included
+Tried to post Apple Search Ads Attribution, but Apple Ad Framework is is required for it and it isn't included
+Tried to post Apple Search Ads Attribution, but authorization hasn't been granted. Will automatically retry if authorization gets granted.
+Trim silent ends automatically
+TrimHandleCornerStyle
+TwoDimensionAlignment
+URLForApplicationWithBundleIdentifier:
+URLForDirectory:inDomain:appropriateForURL:create:error:
+URLForResource:withExtension:
+URLForResource:withExtension:subdirectory:
+URLSession:didBecomeInvalidWithError:
+URLSession:didCreateTask:
+URLSession:didReceiveChallenge:completionHandler:
+URLSession:task:didCompleteWithError:
+URLSession:task:didFinishCollectingMetrics:
+URLSession:task:didReceiveChallenge:completionHandler:
+URLSession:task:didReceiveInformationalResponse:
+URLSession:task:didSendBodyData:totalBytesSent:totalBytesExpectedToSend:
+URLSession:task:needNewBodyStream:
+URLSession:task:needNewBodyStreamFromOffset:completionHandler:
+URLSession:task:willBeginDelayedRequest:completionHandler:
+URLSession:task:willPerformHTTPRedirection:newRequest:completionHandler:
+URLSession:taskIsWaitingForConnectivity:
+URLSessionDidFinishEventsForBackgroundURLSession:
+URLSessionRemoteConfigBlobDownloader
+URLsForApplicationsToOpenURL:
+URLsForDirectory:inDomains:
+Unable to compute offline CustomerInfo when purchasing consumable products.
+Unable to compute offline CustomerInfo with no product entitlement mapping.
+Unable to create a discount offer, the product is missing a subscriptionGroupIdentifier.
+Unable to decode response returned from login.
+Unable to decode response returned from posting offer for signing.
+Unable to extract a periodTypeString
+Unable to extract a storeString
+Unable to extract an purchaseOwnershipTypeString
+Unable to find root view controller to present Test Store purchase alert.
+Unable to get intro eligibility for appUserID: 
+Unable to instantiate a CustomerInfoResponse due to malformed json.
+Unable to instantiate a CustomerInfoResponse, CustomerInfo in response was nil.
+Unable to load receipt, ensure you are logged in to a valid Apple account.
+Unable to merge remote config blob data for topic '
+Unable to perform promotional purchase from App Store: product '
+Unable to resolve workflow '
+Unavailable code reached
+Unavailable for conversion.
+UnavailablePurchaseService
+Unexpected nil value and nil error
+Unexpected response type: 
+UnexpectedBackendResponseError
+Unexpectedly received PaymentQueueWrapperDelegate call with SK1 enabled
+Unhandled DecodingError: 
+Unhandled EncodingError: 
+UnicodeScalarLiteralType
+Unix Epoch will be used instead for the transaction within the app.
+Unknown RefundRequestError type from the AppStore: 
+Unknown RefundRequestStatus returned from AppStore
+Unknown StoreKit error. Error: '
+Unknown error encountered while getting offerings.
+Unknown error type returned from AppStore: 
+Unknown secure item: 
+Unlimited conversions and tools
+Unrecognized PaymentMode: 
+Unrecognized Product.PurchaseResult: 
+Unrecognized StoreKit Environment: 
+Unrecognized StoreKit Transaction Reason: 
+Unrecognized StoreKit Transaction Revocation Reason: 
+Unrecognized billing plan type. Will not return a product identifier 
+Unrecognized product: 
+Unsupported file type
+Unsynced attributes: 
+Updating CustomerInfo '
+Use this crop, as the same share of each image, for every image
+UserSpecificConfiguration
+Using a Test Store API key.
+Using a simulator with a Test Store API key. Test Store products are fetched from RevenueCat's backend, so purchases are simulated and don't rely on StoreKit.
+Using a simulator. Ensure you have a StoreKit Config file set up before trying to fetch products or make purchases.
+Using the default preview mode appUserID. The passed appUserID was ignored.
+V to paste an image. Drag to move or resize it.
+Vector artwork could not be rasterized: 
+Vector artwork has invalid dimensions.
+Vector artwork is too large or contains entity declarations.
+Vector artwork layout could not be measured.
+Vector artwork rendering timed out.
+Vending CustomerInfo from cache.
+Vending Offerings from disk cache
+Vending Offerings from memory cache
+Vending VirtualCurrencies from cache.
+Vendor/PowerPoint/PowerPoint
+VerificationResult.failed
+VerificationResult.notRequested
+VerificationResult.verified
+VerificationResult.verifiedOnDevice
+VerifiedHTTPResponse(
+Video preview is unavailable for this file. You can still export at the selected speed.
+Video preview is unavailable for this file. You can still export the selected range.
+Video preview position
+Video speed preview at 
+Video thumbnail timeline
+Video timeline. Drag to scrub.
+Video trim preview at 
+VideoCompressionOptions
+VideoCompressionStrength
+VideoRedactionTimeline
+VirtualCurrencies cache is stale, updating from network.
+VirtualCurrencies spent on the network.
+VirtualCurrencies updated from the network.
+VirtualCurrenciesCallback
+VirtualCurrenciesResponse
+VirtualCurrencyManager
+VirtualCurrencyManagerType
+VirtualCurrencyResponse
+VirtualCurrencyReward
+VirtualCurrencyStrings
+WWWKWWWWWWWWWWWWWWWWWW
+Warming up intro eligibility cache for 
+Warming up paywall fonts cache: 
+Warming up paywall images cache: 
+Warming up paywall video cache: 
+Warming up workflow caches for 
+Waveform unavailable. You can still adjust the range.
+Waveform visualization preview
+We can try checking your Apple account for any previous purchases
+We can't find the cached response, but call has already been retried. 
+We could not find any purchases with your account. If you think this is an error, please contact support.
+We restored your past purchases and applied them to your account.
+Web purchase redeemed successfully.
+Web view component ID must not be blank.
+Web view component URL must be a resolved HTTPS URL with a host.
+WebBillingProductsCallback
+WebBillingProductsResponse
+WebBundleURLBatcherType
+WebOfferingProductsCallback
+WebOfferingProductsResponse
+WebPurchaseRedemption
+WebPurchaseRedemptionHelper
+WebPurchaseRedemptionHelperType
+WebPurchaseRedemptionResult
+WebViewDataStoreIdentifierStore
+WeightedSourceRandomizer
+WeightedSourceSelector
+WelcomeContinueButton
+WelcomeFolderAccessIllustration
+WelcomeFolderAccessView
+WelcomeWindowController
+WelcomeWindowControls
+WelcomeWindowDragArea
+WelcomeWindowDragView
+WelcomeWindowHoverArea
+WelcomeWindowHoverView
+WheelModifierSettings
+Will be considered not eligible.
+WinBackEligibilityOfferType
+WinBackEligibilityPricingTermsType
+WinBackEligibilityProductType
+WinBackEligibilityRenewalInfoType
+WinBackEligibilityStatusType
+WinBackEligibilitySubscriptionInfoType
+WinBackOfferEligibilityCalculator
+WinBackOfferEligibilityCalculatorType
+Won't initialize EventsManager: not available on current device.
+WorkflowAssetPrewarmingType
+WorkflowResolutionError
+WorkflowTriggerAction
+WorkflowsConfigProvider
+WorkflowsConfigProviderType
+Wrong type for LocalizationData
+X-Apple-Device-Identifier
+X-Client-Build-Version
+X-Custom-Entitlements-Computation
+X-Installation-Method
+X-Observer-Mode-Enabled
+X-Platform-Flavor-Version
+X-RC-Last-Refresh-Time
+X-RevenueCat-Fortress
+X-RevenueCat-Request-Time
+You can reference this package by its identifier ('
+You have an active subscription from the Amazon Appstore. You can manage your subscription in the Amazon Appstore app.
+You have an active subscription from the Apple App Store. You can manage your subscription by using the App Store app on an Apple device.
+You have an active subscription from the Google Play Store
+You have an active subscription that was purchased on the web. You can manage your subscription using the button below.
+You have configured the SDK with 
+You have configured the SDK with an API key from a store that has no products registered in the RevenueCat dashboard for your offerings.
+You may have duplicated subscriptions
+You may not specify this many codes in a single spend transaction.
+You might be subscribed both on the web and through the App Store.To avoid being charged twice, please cancel your iOS subscription in your device settings.
+Your active lifetime subscription
+ZeroDecimalPlaceCountries

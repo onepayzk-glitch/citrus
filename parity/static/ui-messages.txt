@@ -1,0 +1,2201 @@
+normalDuration
+introDuration
+introDurationType
+introPrice
+subscriptionGroup
+discounts
+trialDuration
+RawValue
+productsFetcherSK1
+diagnosticsTracker
+systemInfo
+dateProvider
+_productsFetcherSK2
+RawValue
+AllCases
+Value
+automaticAdServicesAttributionTokenCollection
+subscriberAttributesManager
+currentUserProvider
+attributionPoster
+systemInfo
+delegate
+syncAttributesAndOfferingsIfNeededHandler
+apiKey
+_storeFrontCountryCode
+productIdentifier
+paymentModeRawValue
+currencyCode
+storeCountry
+priceString
+normalDuration
+introDuration
+introDurationTypeRawValue
+introPriceString
+subscriptionGroup
+discounts
+presentedPaywall
+unsyncedAttributes
+metadata
+aadAttributionToken
+offeringIdentifier
+placementIdentifier
+targetingContextRevision
+targetingContextRuleId
+offerIdentifier
+localizedPriceString
+paymentMode
+subscriptionPeriod
+numberOfPeriods
+type
+transactionId
+productDataWrapper
+purchasedTransactionDataWrapper
+encodedAppleReceipt
+originalPurchasesAreCompletedBy
+sdkOriginated
+cache
+package
+product
+promotionalOffer
+quantity
+introductoryOfferEligibilityJWS
+winBackOffer
+metadata
+storeKit2ConfirmInOptions
+privateDelegate
+operationDispatcher
+attribution
+attributionFetcher
+attributionPoster
+_authentication
+externalPurchaseManager
+backend
+deviceCache
+paywallCache
+identityManager
+tokenManager
+userDefaults
+notificationCenter
+offeringsFactory
+offeringsManager
+workflowManager
+offlineEntitlementsManager
+productsManager
+customerInfoManager
+eventsManager
+remoteConfigManager
+_adTracker
+trialOrIntroPriceEligibilityChecker
+purchasedProductsFetcher
+purchasesOrchestrator
+transactionMetadataSyncHelper
+receiptFetcher
+requestFetcher
+paymentQueueWrapper
+systemInfo
+storeMessagesHelper
+customerInfoObservationDisposable
+healthManager
+syncAttributesAndOfferingsIfNeededRateLimiter
+overridePreferredUILocaleRateLimiter
+diagnosticsTracker
+virtualCurrencyManager
+webBundleEventBus
+currentConfiguration
+subscriptionHistoryTracker
+configuredStoreEnvironment
+RawValue
+delegate
+_allowSharingAppStoreAccount
+cachedPurchaseContextByProductID
+purchaseCompleteCallbacksByProductID
+inFlightPurchasesByProductID
+isSyncingCachedTransactionMetadata
+productsManager
+paymentQueueWrapper
+simulatedStorePurchaseHandler
+systemInfo
+attribution
+operationDispatcher
+receiptFetcher
+receiptParser
+transactionFetcher
+customerInfoManager
+backend
+transactionPoster
+currentUserProvider
+transactionsManager
+deviceCache
+offeringsManager
+manageSubscriptionsHelper
+beginRefundRequestHelper
+storeMessagesHelper
+winBackOfferEligibilityCalculator
+eventsManager
+webPurchaseRedemptionHelper
+dateProvider
+checkpointsManager
+checkpointResolver
+storeKit2ProductPurchaser
+notificationCenter
+_storeKit2TransactionListener
+_storeKit2PurchaseIntentListener
+_storeKit2StorefrontListener
+_diagnosticsSynchronizer
+_diagnosticsTracker
+_storeKit2ObserverModePurchaseDetector
+offeringContext
+paywallEvent
+cacheDate
+customerInfoManager
+attribution
+currentUserProvider
+operationDispatcher
+transactionPoster
+isSyncing
+productsManager
+receiptFetcher
+transactionFetcher
+backend
+paymentQueueWrapper
+systemInfo
+operationDispatcher
+localTransactionMetadataStore
+isRestore
+initiationSource
+presentedOfferingContext
+presentedPaywall
+unsyncedAttributes
+metadata
+aadAttributionToken
+storeCountry
+restore
+purchase
+queue
+AllCases
+requestFetcher
+receiptParser
+fileReader
+lastReceiptRefreshRequest
+systemInfo
+loadedEmptyReceipt
+retryUntilProductIsFound
+always
+onlyIfEmpty
+never
+requestTimeout
+backend
+deviceCache
+$defaultActor
+purchaseUI
+dateProvider
+currentPurchaseTask
+failure
+success
+cancel
+title
+callback
+style
+error
+cancel
+simulateFailure
+simulateSuccess
+systemInfo
+destructive
+default
+productIdentifier
+purchaseDate
+transactionIdentifier
+storefront
+jwsRepresentation
+environment
+reason
+revocationDate
+revocationReason
+paymentQueue
+$__lazy_storage_$_purchaseIntentsAPIAvailable
+delegate
+requestTimeout
+productsRequestFactory
+cachedProductsByIdentifier
+productsByRequests
+completionHandlers
+queue
+identifiers
+retriesLeft
+delegate
+finishedTransactionCallbacks
+paymentQueue
+operationDispatcher
+observerMode
+sandboxEnvironmentDetector
+diagnosticsTracker
+requestFactory
+receiptRefreshRequest
+receiptRefreshCompletionHandlers
+operationDispatcher
+$defaultActor
+deviceCache
+allTransactionsProvider
+productIdentifier
+productPlanIdentifier
+$defaultActor
+installmentsInfoFactory
+productsRequestError
+bundleId
+originalApplicationVersion
+originalPurchaseDate
+environment
+confirmInWindow
+systemInfo
+offerID
+compactJWS
+$defaultActor
+taskHandle
+delegate
+_updates
+purchaseIntent
+environment
+subscriptionStatusBySubscriptionGroupId
+transactions
+bundleId
+originalApplicationVersion
+originalPurchaseDate
+state
+renewalInfoJWSToken
+transactionJWSToken
+rawValue
+RawValue
+taskHandle
+delegate
+updates
+userDefaults
+diagnosticsTracker
+$defaultActor
+taskHandle
+delegate
+diagnosticsTracker
+_updates
+offer
+pricingTerms
+renewalInfo
+subscriptionInfo
+status
+currencyCode
+billingPlanType
+systemInfo
+rawValue
+receipt
+sk2receipt
+empty
+RawValue
+discount
+signedData
+identifier
+keyIdentifier
+nonce
+signature
+timestamp
+failedToDecodeSignature
+RawValue
+rawValue
+underlyingSK1Product
+priceFormatterProvider
+underlyingSK1Discount
+offerIdentifier
+currencyCode
+price
+paymentMode
+subscriptionPeriod
+numberOfPeriods
+type
+priceFormatterProvider
+underlyingSK1Transaction
+productIdentifier
+purchaseDate
+transactionIdentifier
+quantity
+underlyingSK1Storefront
+identifier
+countryCode
+_underlyingSK2Product
+compoundProductIdentifier
+priceFormatterProvider
+installmentsInfo
+_pricingTerms
+underlyingSK2Discount
+offerIdentifier
+currencyCode
+price
+paymentMode
+subscriptionPeriod
+numberOfPeriods
+type
+underlyingSK2Transaction
+productIdentifier
+purchaseDate
+transactionIdentifier
+quantity
+storefront
+jwsRepresentation
+environment
+reason
+revocationDate
+revocationReason
+underlyingSK2Storefront
+identifier
+countryCode
+production
+sandbox
+xcode
+RawValue
+product
+RawValue
+discount
+offerIdentifier
+currencyCode
+price
+localizedPriceString
+paymentMode
+subscriptionPeriod
+numberOfPeriods
+type
+transaction
+storefront
+RawValue
+value
+unit
+localizedTitle
+price
+currencyCode
+localizedPriceString
+localizedPricePerDay
+localizedPricePerWeek
+localizedPricePerMonth
+localizedPricePerYear
+productIdentifier
+productType
+localizedDescription
+subscriptionGroupIdentifier
+subscriptionPeriod
+isFamilyShareable
+introductoryDiscount
+discounts
+locale
+installmentsInfo
+priceFormatterProvider
+identifier
+price
+localizedPriceString
+paymentMode
+subscriptionPeriod
+numberOfPeriods
+type
+productIdentifier
+purchaseDate
+transactionIdentifier
+quantity
+storefront
+jwsRepresentation
+environment
+reason
+revocationDate
+revocationReason
+purchase
+renewal
+RawValue
+discount
+receiptParser
+systemInfo
+receiptFetcher
+introEligibilityCalculator
+backend
+currentUserProvider
+operationDispatcher
+productsManager
+diagnosticsTracker
+dateProvider
+workflowsConfigProvider
+paywallCache
+operationDispatcher
+webBundleURLBatcher
+parse
+unresolvedVariable
+typeMismatch
+unsupportedOperator
+unknown
+lock
+current
+bool
+float
+string
+array
+object
+null
+undefined
+rawValue
+description
+baseQuery
+apiKey
+clock
+informational
+enforced
+disabled
+path
+iamEnabled
+message
+requestHeaders
+requestBody
+nonce
+etag
+requestDate
+useFallbackPath
+intermediatePublicKey
+intermediateKeyExpiration
+intermediateKeySignature
+salt
+payload
+AllCases
+RawValue
+Value
+email
+phoneNumber
+displayName
+pushToken
+idfa
+idfv
+gpsAdId
+consentStatus
+deviceVersion
+adjustID
+appsFlyerID
+appstackID
+fBAnonID
+mpParticleID
+oneSignalID
+oneSignalUserID
+airshipChannelID
+cleverTapID
+airbridgeDeviceID
+kochavaDeviceID
+mixpanelDistinctID
+firebaseAppInstanceID
+tenjinAnalyticsInstallationID
+postHogUserID
+amplitudeUserID
+amplitudeDeviceID
+solarEngineDistinctId
+solarEngineAccountId
+solarEngineVisitorId
+singularDeviceID
+mediaSource
+campaign
+adGroup
+keyword
+creative
+RawValue
+setTime
+value
+isSynced
+ignoreTimeInCacheIdentity
+backend
+deviceCache
+operationDispatcher
+attributionFetcher
+attributionDataMigrator
+automaticDeviceIdentifierCollectionEnabled
+lock
+delegate
+RawValue
+systemInfo
+customerInfoManager
+currentUserProvider
+systemInfo
+customerInfoManager
+currentUserProvider
+canMakePayments
+purchases
+failedConnectingToAPI
+failedFetchingOfferings
+failedMakingSignedRequest
+unknown
+invalidAPIKey
+backend
+identityManager
+paymentAuthorizationProvider
+RawValue
+AllCases
+$defaultActor
+systemInfo
+showStoreMessagesAutomatically
+storeMessagesProvider
+deferredMessages
+balance
+name
+code
+serverDescription
+identityManager
+deviceCache
+backend
+systemInfo
+redemptionToken
+$defaultActor
+backend
+identityManager
+customerInfoManager
+success
+error
+expired
+invalidToken
+purchaseBelongsToOtherUser
+AirDrop isn
+t available for these files on this Mac.
+Tangerine.AirDropSharingController
+Contradictory frame constraints specified.
+Drag on the image to draw. Drag an annotation to move it.
+Drag over the image to highlight.
+Press Image to choose files, or press 
+V to paste an image. Drag to move or resize it.
+Choose a zoom level, then click the detail to place a magnifier bubble.
+Click to add numbered callouts; drag to move them. Their size stays fixed.
+Press Text to add another box. Drag its border to move it and its side handles to change width.
+Drag to draw. Use Clear Drawing to remove all drawn strokes.
+Drag from the tail toward the arrowhead. Drag an annotation to move it.
+Annotation color
+Undo last annotation
+Delete selected annotation
+Remove all drawn strokes
+Magnifier zoom level
+arrow.uturn.backward
+Arrow 
+ drag from the tail
+photo.badge.plus
+plus.magnifyingglass
+Annotation preview
+annotationCanvas
+Drag to resize from the 
+Move or edit text annotation
+Drag to move; click to edit
+Drag the border to move text
+Resize text from right
+Drag to change text width
+Resize text from left
+View.task @ Tangerine/AnnotationEditorView.swift:
+Add at least one annotation.
+Keep annotations inside the image.
+Make drawn annotations a little larger.
+Choose an image to place on the canvas.
+Enter text for the text box.
+Draw a slightly longer freehand line.
+Could not prepare the annotated image.
+Tangerine-annotation-paste-
+System
+Rounded
+Serif
+Mono
+arrow
+freehand
+rectangle
+ellipse
+highlighter
+number
+magnifier
+Tangerine.AppDelegate
+Monitoring drag-to-convert gestures
+hasSeenWelcomeV2
+Couldn
+t copy file paths
+Couldn
+t copy files
+[Tangerine] Drop: %@ -> %@
+[Tangerine] Operation failed: %@
+[Tangerine] Created: %@
+[Tangerine] Tool: %@ -> %@
+[Tangerine] Tool: %ld files -> %@
+Couldn
+t AirDrop files
+Couldn
+t move files
+Couldn
+t open terminal
+Tangerine-archive-
+The source archive is empty.
+Could not create the RAR archive.
+RAR output cannot store 
+ because its file type is unsupported.
+com.th.Tangerine.conversionFanThemeDidChange
+Spacing & background
+Fill cells (crop edges)
+Fit whole images
+Landscape 
+ 4:3
+conversionProfile.
+quality
+preserveMetadata
+videoMaxHeight
+audioBitrate
+audioSampleDepth
+gifFrameRate
+gifMaxWidth
+compression
+epubLayout
+epubReflowVersion
+pdfOfficeLayout
+editable
+preservePages
+adjustableText
+fast
+balanced
+maximum
+matchSource
+bit16
+bit24
+bit32
+float32
+compact
+high
+Keep every page as a sharp image, including tables, equations, and scanned content. Text cannot be edited.
+Creates a native Pages document directly on your Mac.
+Create normal paragraphs, headings, and tables that reflow when edited. Recognize scanned text with OCR. Keep illustrations as inline images.
+Create a fixed layout book of page images. Text resizing, selection, and search are unavailable.
+Create adjustable, selectable text with parsed headings and tables. Keep illustrations and complex equations as separate artwork.
+Maximum video height
+Preserve metadata
+This format has no adjustable conversion settings.
+Preserve original pages
+Editable paragraphs
+Tangerine/ConversionOverlay.swift
+Drop only accessible files
+Size unavailable
+No tools available
+No shared actions for selected files
+No installed converter for 
+Unsupported file type
+Drop at least one item
+com.tangerine.wheel-highlight-sound
+Incorrect actor executor assumption; Expected same executor as 
+Tangerine.FormatDropTarget
+fan.centerLabel.background
+fan.centerLabel.solidBackground
+fan.centerLabel.text
+tangerine.transition.path
+tangerine.transition.label
+tangerine.transition.border
+ is unavailable for this file type.
+The source file could not be read.
+The converter finished without creating an output file.
+The conversion process failed.
+ is required for this conversion.
+Conversion from 
+ is unavailable.
+This file type is not supported.
+createNew
+addToExisting
+glass
+metallic
+floatWheelBehavior
+soundsAndHapticsEnabled
+conversionFanTheme
+Tangerine/ConversionTaskStore.swift
+Tangerine-reflow-
+<Relationship Id="fonts" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/fontTable" Target="fontTable.xml"/><Relationship Id="styles" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles" Target="styles.xml"/><Relationship Id="settings" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/settings" Target="settings.xml"/>
+word/document.xml
+<w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" xmlns:pic="http://schemas.openxmlformats.org/drawingml/2006/picture"><w:body>
+</w:body></w:document>
+word/fontTable.xml
+word/settings.xml
+<w:settings xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"><w:compat><w:compatSetting w:name="compatibilityMode" w:uri="http://schemas.microsoft.com/office/word" w:val="15"/></w:compat></w:settings>
+word/_rels/fontTable.xml.rels
+<w:style w:type="paragraph" w:styleId="Heading
+"><w:name w:val="heading 
+"/><w:basedOn w:val="Normal"/><w:pPr><w:keepNext/><w:outlineLvl w:val="
+"/></w:pPr></w:style>
+<w:styles xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"><w:style w:type="paragraph" w:default="1" w:styleId="Normal"><w:name w:val="Normal"/></w:style>
+word/_rels/document.xml.rels
+<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
+</Relationships>
+<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="document" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/></Relationships>
+[Content_Types].xml
+<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Default Extension="png" ContentType="image/png"/><Default Extension="odttf" ContentType="application/vnd.openxmlformats-officedocument.obfuscatedFont"/><Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/><Override PartName="/word/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.styles+xml"/><Override PartName="/word/fontTable.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.fontTable+xml"/>
+<Override PartName="/word/settings.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.settings+xml"/>
+<Relationship Id="rId
+" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/image" Target="media/
+PDF illustration 
+<wp:inline distT="0" distB="0" distL="0" distR="0">
+<w:p><w:pPr><w:spacing w:after="160"/></w:pPr>
+<w:r><w:drawing><wp:anchor distT="0" distB="0" distL="0" distR="0" simplePos="0" relativeHeight="
+" behindDoc="0" locked="0" layoutInCell="1" allowOverlap="1">
+<wp:simplePos x="0" y="0"/><wp:positionH relativeFrom="page"><wp:posOffset>
+</wp:posOffset></wp:positionH>
+<wp:positionV relativeFrom="page"><wp:posOffset>
+</wp:posOffset></wp:positionV>
+<wp:extent cx="
+"/><wp:wrapNone/><wp:docPr id="
+<wp:cNvGraphicFramePr><a:graphicFrameLocks noChangeAspect="1"/></wp:cNvGraphicFramePr>
+<a:graphic><a:graphicData uri="http://schemas.openxmlformats.org/drawingml/2006/picture"><pic:pic>
+<pic:nvPicPr><pic:cNvPr id="
+"/><pic:cNvPicPr/></pic:nvPicPr>
+<pic:blipFill><a:blip r:embed="rId
+"/><a:stretch><a:fillRect/></a:stretch></pic:blipFill>
+<pic:spPr><a:xfrm><a:off x="0" y="0"/><a:ext cx="
+"/></a:xfrm><a:prstGeom prst="rect"><a:avLst/></a:prstGeom></pic:spPr>
+</pic:pic></a:graphicData></a:graphic></wp:anchor></w:drawing></w:r>
+A PDF page could not be rendered.
+/Users/thameem/Dev/LeapStudio/mac tools/Tangerine/Morph/DocumentConverter.swift
+The native Pages writer is unavailable.
+tangerineRandomBytes
+tangerinePagesProgress
+The native Pages writer failed: 
+<Relationship Id="
+" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/font" Target="fonts/
+<w:fonts xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships">
+<w:font w:name="
+}" w:subsetted="0"/>
+<w:sectPr><w:type w:val="continuous"/><w:pgSz w:w="
+"/><w:pgMar w:top="
+"/><w:cols w:num="
+-]\s+
+={}[]()|+
+^[A-Za-z]{1,4}\([^)]{1,20}\)$
+^(chapter|part|book)\s+
+^\d+(?:\.\d+)*[.)]?\s+(?=\S*\p{L})\S
+heading-%04d-%03d
+acknowledgements
+^(figure|table)\s+\d
+^(?:chapter|section|part)\s+
+^\d+(?:\.\d+)*[.)]?\s+
+em;vertical-align:-
+ from the PDF"/></span>
+Mathematical expression
+-((?:</(?:em|strong|sup|sub|a)>)*?)$
+^[0-9]{1,9}[.)]\s+
+<p data-pdf-align="center" dir="auto">
+ data-pdf-align="center"
+<div data-pdf-columns="
+" data-pdf-gap="
+ class="equation"
+/usr/share/dict/words
+^\[[0-9,;
+ -]+\][.,;:]?(?:[0-9]+)?$
+^(?:[0-9]+|[a-z])(?:st|nd|rd|th)$
+^[a-z
+][A-Z0-9]+$
+^[A-Za-z
+]{2}[0-9]?$
+A PDF page has invalid dimensions.
+^(?:figure|table)\s+\d+[.:]\s
+//tr[1]/*[self::td or self::th]
+</tbody></table>
+XObject
+Subtype
+Matrix
+Resources
+BaseFont
+Encoding
+FirstChar
+FontDescriptor
+FontBBox
+DescendantFonts
+MissingWidth
+Widths
+Differences
+^(?:[
+-]|[0-9]+[.)])\s+
+^(?:[0-9]+\s*[|
+]|.*[|
+]\s*[0-9]+$)
+^[0-9]+(?=\s*[|
+(?<=\s)[0-9]+\s*$
+^[\s|
+-]*(?:page\s+)?(?:[0-9]+|[ivxlcdm]+)(?:\s*(?:of|/)\s*[0-9]+)?[\s|
+-]*$
+Text recognition could not read a scanned PDF page: 
+CTBaselineOffset
+data-pdf-columns
+PDF illustration
+<w:tc><w:tcPr><w:tcW w:w="
+" w:type="dxa"/>
+<w:shd w:val="clear" w:color="auto" w:fill="EDEDED"/>
+<w:trPr><w:tblHeader/></w:trPr>
+ w:val="single" w:sz="4" w:color="B8B8B8"/>
+<w:tbl><w:tblPr><w:tblW w:w="
+" w:type="dxa"/><w:tblBorders>
+</w:tblBorders></w:tblPr><w:tblGrid>
+<w:gridCol w:w="
+<w:p><w:pPr><w:spacing w:before="0" w:after="0" w:line="20" w:lineRule="exact"/><w:rPr><w:sz w:val="2"/></w:rPr>
+<w:p><w:pPr><w:spacing w:after="160" w:line="276" w:lineRule="auto"/><w:widowControl/>
+<w:ind w:left="360" w:hanging="240"/>
+<w:bidi/><w:jc w:val="right"/>
+<w:pStyle w:val="Heading
+"/><w:keepNext/><w:outlineLvl w:val="
+<w:r><w:t xml:space="preserve">
+" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/hyperlink" Target="
+" TargetMode="External"/>
+PDF inline illustration
+Tangerine/DocumentConverter.swift
+<w:rFonts w:ascii="
+"/><w:sz w:val="
+"/><w:szCs w:val="
+"/><w:color w:val="
+</w:rPr><w:t xml:space="preserve">
+<w:hyperlink r:id="
+<w:u w:val="single"/>
+Apple SD Gothic Neo
+latin modern roman
+Arial Unicode MS
+\s*:\s*[0-9]+(?:\.[0-9]+)?(?:em|pt|%)
+[0-9]+(?:\.[0-9]+)?
+A PDF page has invalid dimensions or exceeds Word's 22-inch page limit.
+Tangerine.SDVectorRenderer
+await Promise.all(Array.from(document.images).map(i=>i.decode())); await document.fonts.ready; const r=document.getElementById('art').getBoundingClientRect(); return {x:r.x,y:r.y,width:r.width,height:r.height};
+Vector artwork layout could not be measured.
+Vector artwork has invalid dimensions.
+Vector artwork could not be rasterized: 
+An embedded Pages image could not be decoded.
+Tangerine.EPUBPDFRenderer
+An EPUB chapter could not load: 
+An EPUB chapter could not be rendered.
+The generated PDF could not be verified.
+if (fixedLayout) {
+    const printStyle = document.createElement('style');
+    printStyle.textContent = '@page { margin: 0; }';
+    document.head.appendChild(printStyle);
+const images = Array.from(document.images);
+for (const image of images) image.loading = 'eager';
+await Promise.allSettled(images.map(image => image.decode()));
+await document.fonts.ready;
+document.body.getBoundingClientRect();
+return true;
+An EPUB chapter's images or fonts could not be prepared.
+Tangerine-epub-chapter-
+EPUB rendering timed out.
+Tangerine.OfficePDFRenderer
+Document to PDF failed: 
+Document to PDF failed: The document could not be printed as PDF.
+Document to PDF failed: A rendered page is missing.
+Document to PDF failed: The generated PDF could not be saved.
+Document to PDF failed: The generated PDF could not be verified.
+return await selectOfficePage(index);
+Document to PDF failed: The document's page size could not be read.
+startxref\s+(\d+)\s+%%EOF
+(?m)^0000000000 00000 n
+0000000000 65535 f
+try { return await prepareOffice(input); } catch (error) { return {error: String(error)}; }
+The document has no pages.
+Tangerine-document-images-
+Tangerine-pdf-markdown-
+data:image/png;base64,
+pt;height:auto;max-width:100%"/>
+<!-- list break -->
+(?m)^( {0,3})([+\-=])(?=\s|[+\-=]|$)
+(?m)^( {0,3}\d{1,9})([.)])(?=\s)
+pt;max-width:100%;vertical-align:
+<col style="width:
+<table><colgroup>
+white-space:pre-wrap;
+<br style="break-after:page"/>
+" role="doc-noteref"><sup>
+break-before:page;
+text-decoration:
+;font-size:smaller;
+background-color:#
+font-style:italic;
+font-weight:bold;
+The PDF cannot be read, is empty, or is password-protected.
+This PDF does not allow copying its content.
+The PDF has invalid or oversized page dimensions.
+The document has too many sections.
+Invalid document paper size.
+The document is nested too deeply.
+The document has too many blocks.
+A document table is too large or has invalid widths.
+Document artwork exceeds the conversion limit.
+The document text exceeds the conversion limit.
+A document note is missing its text.
+Invalid paragraph formatting.
+PDF artwork exceeds the document conversion limit.
+EPUB blocks are nested too deeply.
+An EPUB table is too large.
+An EPUB table has invalid spans.
+background-color
+EPUB content is nested too deeply or too large.
+An EPUB contains media that editable document formats cannot preserve.
+An EPUB image has no source.
+An EPUB image is missing or too large.
+An EPUB embedded image is unreadable or too large.
+<!\s*(?:DOCTYPE|ENTITY)\b
+Vector artwork is too large or contains entity declarations.
+TangerineOfflineVector
+[{"trigger":{"url-filter":"^https?://"},"action":{"type":"block"}},{"trigger":{"url-filter":"^file://"},"action":{"type":"block"}}]
+Offline vector rendering could not be prepared: 
+<!doctype html><html><head><meta charset="utf-8"><style>body{margin:0;background:white}#art{display:inline-block;font-size:16px;padding:8px;overflow:visible}#art svg,#art math{vertical-align:top}</style></head><body><div id="art">
+</div></body></html>
+Vector artwork rendering timed out.
+A document resource uses an unsafe path.
+A document resource escapes its folder.
+A document XML part is too large.
+The document contains malformed XML.
+Document XML is nested too deeply or too large.
+encoding=["']UTF-16["']
+encoding="UTF-8"
+Document XML entity declarations are not supported.
+<!DOCTYPE\s+html\s*>
+EPUB rendering must run as a background conversion.
+[{"trigger":{"url-filter":"^https?://"},"action":{"type":"block"}}]
+TangerineOfflineEPUB
+Could not prepare the offline EPUB renderer.
+META-INF/encryption.xml
+META-INF/container.xml
+The EPUB container document is malformed.
+//*[local-name()='rootfile']
+The EPUB does not identify a readable package document.
+The EPUB package document is malformed.
+//*[local-name()='metadata']/*[local-name()='meta' and @property='rendition:layout']
+//*[local-name()='manifest']/*[local-name()='item']
+The EPUB manifest contains an incomplete item.
+The EPUB manifest contains duplicate item identifiers.
+//*[local-name()='spine']/*[local-name()='itemref']
+The EPUB spine is malformed.
+The EPUB spine contains an incomplete item reference.
+rendition:layout-pre-paginated
+The EPUB spine contains a missing or unsupported chapter.
+application/xhtml+xml
+//*[local-name()='metadata']/*[local-name()='title']
+The EPUB has no readable chapters.
+application/oebps-package+xml
+Encrypted or font-obfuscated EPUB files are not supported.
+An EPUB fixed-layout chapter is too large.
+//*[local-name()='head']/*[local-name()='meta' and translate(@name,'VIEWPORT','viewport')='viewport']/@content
+Swift/arm64e-apple-macos.swiftinterface
+Duplicate values for key: '
+An EPUB package document is too large.
+The EPUB contains malformed XML.
+EPUB package documents cannot contain DTD or entity declarations.
+The EPUB archive is too large to open safely.
+The EPUB expands beyond Tangerine's safety limit.
+EPUB symbolic links are not supported.
+The EPUB contains a damaged file: 
+application/epub+zip
+The file is not a valid EPUB container.
+The EPUB ZIP container is damaged or unsupported.
+1.2.12
+The EPUB contains an unsafe filename.
+Encrypted or unsupported EPUB ZIP entries cannot be opened.
+The EPUB contains duplicate or colliding archive paths.
+The EPUB mimetype entry must be the first physical entry and uncompressed.
+The PDF cannot be read or is password-protected.
+This PDF has no selectable text. Scanned pages need OCR before text can be exported.
+Tangerine-office-
+<Relationship Id="fontTable" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/fontTable" Target="fontTable.xml"/><Relationship Id="settings" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/settings" Target="settings.xml"/>
+<w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"
+xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"
+xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing"
+xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main"
+xmlns:pic="http://schemas.openxmlformats.org/drawingml/2006/picture"
+xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w10="urn:schemas-microsoft-com:office:word"><w:body>
+<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/></Relationships>
+<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Default Extension="png" ContentType="image/png"/><Default Extension="odttf" ContentType="application/vnd.openxmlformats-officedocument.obfuscatedFont"/><Override PartName="/word/fontTable.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.fontTable+xml"/><Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<w:type w:val="nextPage"/>
+/><w:pgMar w:top="0" w:right="0" w:bottom="0" w:left="0" w:header="0" w:footer="0" w:gutter="0"/></w:sectPr>
+ w:orient="landscape"
+Could not create the PDF.
+The text could not be completely laid out in the PDF.
+The PDF could not be verified.
+The text could not be laid out on a PDF page.
+com.apple.TextEncoding
+The file has invalid text encoding or too much text. Save it as UTF-8 in TextEdit and try again.
+The text file is unreadable or exceeds the 32 MB import limit.
+Tangerine-pdf-epub-
+<?xml version="1.0" encoding="UTF-8"?>
+<container version="1.0" xmlns="urn:oasis:names:tc:opendocument:xmlns:container">
+  <rootfiles><rootfile full-path="EPUB/package.opf" media-type="application/oebps-package+xml"/></rootfiles>
+</container>
+10\.[0-9]{4,9}/[-._;()/:A-Za-z0-9]+
+<item id="nav" href="nav.xhtml" media-type="application/xhtml+xml" properties="nav"/>
+<?xml version="1.0" encoding="UTF-8"?>
+The PDF contains no text or page artwork that can be exported.
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:white}img{display:block;width:100%;height:100%;object-fit:contain}
+<item id="style" href="style.css" media-type="text/css"/>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops">
+  <head><title>Contents</title></head><body><nav epub:type="toc" id="toc">
+    <h1>Contents</h1><ol>
+</ol>
+  </nav><nav epub:type="landmarks" hidden="hidden">
+    <h2>Landmarks</h2><ol><li><a epub:type="cover" href="
+">Cover</a></li></ol>
+  </nav></body>
+</html>
+<meta property="rendition:layout">reflowable</meta>
+<package xmlns="http://www.idpf.org/2007/opf" version="3.0" unique-identifier="book-id">
+  <metadata xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <dc:identifier id="book-id">
+</dc:identifier><dc:title>
+</dc:title>
+    <dc:language>und</dc:language>
+<meta property="dcterms:modified">
+    <meta name="cover" content="
+  </metadata><manifest>
+</manifest><spine>
+</spine>
+  <guide><reference type="cover" title="Cover" href="
+"/></guide>
+</package>
+The generated EPUB could not be verified.
+<meta property="rendition:layout">pre-paginated</meta><meta property="rendition:spread">none</meta>
+body{line-height:1.5;margin:1em auto;max-width:42em;overflow-wrap:break-word}h1,h2,h3{line-height:1.2;break-after:avoid}p{margin:0 0 1em}figure{margin:1em 0;text-align:center;break-inside:avoid}figure img{max-width:100%;height:auto;object-fit:contain}.equation img{vertical-align:middle}.inline-equation{white-space:nowrap}.inline-equation img{display:inline-block;max-width:100%;object-fit:contain}table{border-collapse:collapse;max-width:100%;margin:1em 0}td,th{border:1px solid currentColor;padding:.35em;text-align:start}ul,ol{padding-inline-start:1.5em}.source-page{display:contents}
+" class="source-page"
+ epub:type="cover"
+Could not create the PNG image.
+Could not finish the PNG image.
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xml:lang="und"><head>
+  <title>
+</title><meta name="viewport" content="width=device-width"/>
+  <link rel="stylesheet" href="style.css"/>
+</head><body>
+" media-type="application/xhtml+xml"/>
+<itemref idref="
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops"><head><title>
+</title>
+  <meta name="viewport" content="width=
+  <link rel="stylesheet" href="style.css"/>
+</head><body
+"/></body></html>
+<item id="image-
+" media-type="image/jpeg"
+<itemref idref="page-
+ properties="cover-image"
+" href="images/cover.jpg" media-type="image/jpeg" properties="cover-image"/>
+<dc:source>https://doi.org/
+The EPUB workspace is incomplete.
+The generated EPUB is too large.
+An EPUB filename is too long.
+An EPUB output path escaped its workspace.
+An EPUB output path is invalid.
+chapter-%04d.xhtml
+QuickLook/Preview.pdf
+tangerineFontFamily
+<!doctype html><html><head><meta charset="utf-8"><title>Document</title></head><body></body></html>
+This Pages document could not be read: 
+This file is not a readable DOCX document.
+<(?:\w+:)?(?:altChunk|OLEObject|chart)\b
+This DOCX contains an embedded object that cannot be rendered locally. Export it as PDF in its document app to preserve that object.
+(?i)encoding\s*=\s*["']UTF-16(?:LE|BE)?["']
+Document rendering must run as a background conversion.
+The document is empty or exceeds the 128 MB rendering limit.
+TangerineOfflineOffice
+Document to PDF failed: Could not prepare offline document rendering.
+Document to PDF failed: Document rendering timed out.
+The document is empty or exceeds the 128 MB import limit.
+The Pages package contains unsafe entries or is too large.
+Tangerine-structured-
+The exported document exceeds the 128 MB document limit.
+An EPUB chapter has no readable XHTML body.
+An EPUB stylesheet is too large or unreadable.
+([^{}]+)\{([^{}]*)\}
+The text document exceeds the paragraph or text limit.
+The text document has too many paragraphs.
+Markdown has too many lines.
+Markdown is nested too deeply.
+Markdown has too many blocks.
+Markdown HTML is too large or contains entity declarations.
+(?<=>)[ \t\r\n]+(?=<)
+</p>
+This RTF refers to missing attachments. Use its complete RTFD package instead.
+Rich text exceeds the conversion limit.
+An RTFD attachment is missing or unreadable.
+Rich text has invalid table spans.
+A rich text attachment is missing, too large, or is not an image.
+RTF embedded objects cannot be preserved as editable text.
+The file is not valid RTF.
+RTF contains unbalanced groups or trailing content.
+RTF is nested too deeply or too large.
+RTF contains an unsupported picture. PNG and JPEG pictures are supported.
+RTF picture dimensions exceed the conversion limit.
+ \appleattachmentpadding0 \appleembedtype0 \appleaqc }
+RTFD contains unsafe files or exceeds the 128 MB package limit.
+This text clipping has an unsupported or malformed format.
+com.apple.flat-rtfd
+public.utf8-plain-text
+public.utf16-external-plain-text
+public.plain-text
+The clipping contains no supported text.
+com.apple.ResourceFork
+The clipping contains no readable text resource.
+word/numbering.xml
+docProps/core.xml
+DOCX blocks are nested too deeply or too large.
+DOCX imported HTML chunks are not supported.
+DOCX content is nested too deeply or too large.
+footnoteReference
+endnoteReference
+A DOCX image is missing or refers to external media.
+An image crop has invalid dimensions.
+A DOCX note is missing its text.
+This DOCX contains an embedded object or equation that direct conversion cannot preserve.
+keepLinesTogether
+DOCX styles contain a cycle or excessive inheritance.
+A DOCX table is too large.
+Invalid DOCX table grid.
+Invalid DOCX table span.
+Invalid DOCX vertical table merge.
+The document's paper size cannot be used in Pages.
+" role="doc-footnote"><p>
+<!DOCTYPE html><html lang="
+"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>
+</title><meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src data:; style-src 'unsafe-inline'"/><style>
+body{font:12pt Arial,sans-serif;line-height:1.35;margin:2em;color:#000}h1,h2,h3,h4,h5,h6{break-after:avoid}p{orphans:2;widows:2}table{border-collapse:collapse;max-width:100%;table-layout:fixed}td,th{border:1px solid #aaa;padding:0.4em;vertical-align:top;overflow-wrap:break-word}th{background:#eee}img{max-width:100%;height:auto}header,footer{font-size:0.9em}section{break-before:page}section:first-child{break-before:auto}
+</style></head><body>
+<section><header>
+</footer></section>
+xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" xmlns:pic="http://schemas.openxmlformats.org/drawingml/2006/picture"
+<Override PartName="/
+" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.
+Reference w:type="default" r:id="
+><w:compat><w:compatSetting w:name="compatibilityMode" w:uri="http://schemas.microsoft.com/office/word" w:val="15"/></w:compat></w:settings>
+<w:style w:type="paragraph" w:default="1" w:styleId="Normal"><w:name w:val="Normal"/><w:pPr><w:spacing w:after="160" w:line="276" w:lineRule="auto"/></w:pPr><w:rPr><w:rFonts w:ascii="Arial" w:hAnsi="Arial"/><w:sz w:val="24"/></w:rPr></w:style>
+"/></w:pPr><w:rPr><w:b/><w:sz w:val="
+"/></w:rPr></w:style>
+<w:styles xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" xmlns:pic="http://schemas.openxmlformats.org/drawingml/2006/picture">
+"><w:start w:val="
+"/><w:numFmt w:val="
+"/><w:lvlText w:val="
+"/><w:lvlJc w:val="left"/><w:pPr><w:ind w:left="
+" w:hanging="240"/></w:pPr></w:lvl>
+<w:abstractNum w:abstractNumId="
+"><w:multiLevelType w:val="multilevel"/>
+</w:abstractNum>
+<w:num w:numId="
+"><w:abstractNumId w:val="
+<w:numbering xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" xmlns:pic="http://schemas.openxmlformats.org/drawingml/2006/picture">
+<Override PartName="/word/numbering.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.numbering+xml"/>
+<w:footnote w:id="-1" w:type="separator"><w:p><w:r><w:separator/></w:r></w:p></w:footnote><w:footnote w:id="0" w:type="continuationSeparator"><w:p><w:r><w:continuationSeparator/></w:r></w:p></w:footnote>
+word/footnotes.xml
+<w:footnote w:id="
+"><w:p><w:r><w:footnoteRef/></w:r></w:p>
+<w:footnotes xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" xmlns:pic="http://schemas.openxmlformats.org/drawingml/2006/picture">
+<Override PartName="/word/footnotes.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.footnotes+xml"/>
+<Override PartName="/word/fontTable.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.fontTable+xml"/>
+<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="main" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/><Relationship Id="core" Type="http://schemas.openxmlformats.org/package/2006/relationships/metadata/core-properties" Target="docProps/core.xml"/></Relationships>
+<cp:coreProperties xmlns:cp="http://schemas.openxmlformats.org/package/2006/metadata/core-properties" xmlns:dc="http://purl.org/dc/elements/1.1/"><dc:title>
+</dc:title><dc:creator>
+</dc:creator><dc:language>
+</dc:language></cp:coreProperties>
+<Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Default Extension="png" ContentType="image/png"/><Default Extension="odttf" ContentType="application/vnd.openxmlformats-officedocument.obfuscatedFont"/>
+<Override PartName="/word/
+.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.
+<Override PartName="/docProps/core.xml" ContentType="application/vnd.openxmlformats-package.core-properties+xml"/>
+<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">
+<w:type w:val="nextPage"/><w:pgSz w:w="
+" w:gutter="0"/></w:sectPr>
+" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/
+ TargetMode="External"
+<?xml version="1.0" encoding="UTF-8"?>
+<w:spacing w:before="
+" w:lineRule="auto"/>
+<w:bookmarkStart w:id="
+<w:bookmarkEnd w:id="
+<w:numPr><w:ilvl w:val="
+"/><w:numId w:val="
+"/><w:outlineLvl w:val="
+<w:hyperlink w:anchor="
+<w:fldSimple w:instr="
+<w:t xml:space="preserve">
+<w:br w:type="page"/>
+<w:footnoteReference w:id="
+<w:vertAlign w:val="
+<w:color w:val="
+<w:r><w:drawing><wp:inline distT="0" distB="0" distL="0" distR="0"><wp:extent cx="
+"/><wp:docPr id="
+" name="Illustration 
+"/><a:graphic><a:graphicData uri="http://schemas.openxmlformats.org/drawingml/2006/picture"><pic:pic><pic:nvPicPr><pic:cNvPr id="
+"/><pic:cNvPicPr/></pic:nvPicPr><pic:blipFill><a:blip r:embed="
+"/><a:stretch><a:fillRect/></a:stretch></pic:blipFill><pic:spPr><a:xfrm><a:off x="0" y="0"/><a:ext cx="
+"/></a:xfrm><a:prstGeom prst="rect"><a:avLst/></a:prstGeom></pic:spPr></pic:pic></a:graphicData></a:graphic></wp:inline></w:drawing></w:r>
+<w:tblPr><w:tblW w:w="
+ w:val="single" w:sz="4" w:color="AAAAAA"/>
+</w:tblBorders><w:tblLayout w:type="fixed"/><w:tblCellMar><w:top w:w="80" w:type="dxa"/><w:left w:w="80" w:type="dxa"/><w:bottom w:w="80" w:type="dxa"/><w:right w:w="80" w:type="dxa"/></w:tblCellMar></w:tblPr><w:tblGrid>
+<w:vMerge w:val="restart"/>
+<w:gridSpan w:val="
+<container version="1.0" xmlns="urn:oasis:names:tc:opendocument:xmlns:container"><rootfiles><rootfile full-path="EPUB/package.opf" media-type="application/oebps-package+xml"/></rootfiles></container>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="
+</title><link rel="stylesheet" href="style.css"/></head><body>
+" epub:type="footnote"><p>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops"><head><title>Contents</title></head><body><nav epub:type="toc" id="toc"><h1>Contents</h1><ol>
+</ol></nav></body></html>
+<item id="chapter-
+<item id="nav" href="nav.xhtml" media-type="application/xhtml+xml" properties="nav"/><item id="css" href="style.css" media-type="text/css"/>
+" media-type="image/png"/>
+<itemref idref="chapter-
+<package xmlns="http://www.idpf.org/2007/opf" version="3.0" unique-identifier="book-id"><metadata xmlns:dc="http://purl.org/dc/elements/1.1/"><dc:identifier id="book-id">urn:uuid:
+</dc:title><dc:language>
+</meta></metadata><manifest>
+</spine></package>
+The Pages archive exceeds the 128 MB import limit.
+Pages content could not be read directly: 
+An unsupported Pages attachment cannot be converted directly.
+Invalid Pages table merge.
+Bundled spreadsheet converter
+Bundled spreadsheet runtime
+Tangerine-spreadsheet-
+The spreadsheet is empty or exceeds the 128 MB conversion limit.
+-XX:TieredStopAtLevel=1
+-XX:ReservedCodeCacheSize=64m
+-XX:+UseSerialGC
+-XX:-UsePerfData
+-Djava.awt.headless=true
+-Djava.io.tmpdir=
+TangerineSpreadsheet
+The converted spreadsheet could not be verified.
+The converted PDF could not be verified.
+ document could not be converted.
+ converter stopped or exceeded its five-minute limit.
+TANGERINE_OFFICE_RESOURCES
+Vendor/PowerPoint/PowerPoint
+lib/tangerine-powerpoint.jar
+.tangerine-pdf-pages-
+A PDF page has invalid dimensions or could not be rendered.
+Could not create the PDF page image.
+Could not save the PDF page image.
+Bundled PowerPoint converter
+Bundled PowerPoint runtime
+Tangerine-powerpoint-
+The document is empty or exceeds the 128 MB conversion limit.
+TangerinePowerPoint
+Tangerine-powerpoint-output-
+Tangerine/DragGestureMonitor.swift
+[Tangerine] Drag shortcut monitor started
+[Tangerine] Drag modifiers: %@
+/opt/homebrew/bin/cwebp
+/usr/local/bin/cwebp
+/opt/homebrew/bin/ffmpeg
+/usr/local/bin/ffmpeg
+APP_SANDBOX_CONTAINER_ID
+Bundled ExifTool
+ExifTool/tangerine_metadata.pl
+macOS Perl runtime
+tangerine-metadata-
+The image could not be verified. No output was saved.
+Metadata Removed
+Only local files and folders can be copied.
+The files couldn
+t be placed on the clipboard.
+Tangerine/FileClipboardController.swift
+Only local file and folder paths can be copied.
+The paths couldn
+t be placed on the clipboard.
+Tangerine/FileMoveAction.swift
+Only local files and folders can be moved.
+Tangerine.FileMove
+No items were moved.
+The destination must be an existing local folder.
+Only files and folders can be moved.
+Choose a destination outside 
+The move was not completed.
+Choose a destination folder for 
+The page order must include every page exactly once.
+This PDF has no pages.
+Add split points at least 0.05 seconds apart, inside the video.
+Remove a clip to join the rest into one video.
+Keep at least one clip.
+Add a frame to save.
+Loading video
+Make the crop at least 2 
+ 2 pixels.
+This file has no playable audio track.
+Choose an image for the visualization.
+Set a start and duration within the file.
+Could not read the image.
+One or more files have no audio track.
+This file has no audio track.
+Loading preview
+Draw a rectangle over the area to hide.
+File size unavailable.
+Choose a reduction from 1% to 99% that leaves at least 1 KB per file.
+This file is already smaller than 1 KB.
+Enter a target size of at least 1 KB.
+Target size cannot exceed the original file size.
+Loading file details
+Tangerine/FileToolOptionsModel.swift
+Could not read one or more selected files.
+Could not preview PDF page 
+Redact one still photo at a time. Export the frames or pages first.
+Tangerine-normalization-
+Normalized preview unavailable. You can still normalize this audio.
+Waveform unavailable. You can still adjust the range.
+Channel waveforms unavailable. You can still convert the audio.
+Video preview is unavailable for this file. You can still export the selected range.
+Video preview is unavailable for this file. You can still export at the selected speed.
+Playback is unavailable for this video. You can still scrub the timeline and export.
+Playback is unavailable for this video. Use the frame slider to preview your rectangles.
+Could not decode the selected frame preview.
+Choose a visualization image
+Tangerine-channel-output-
+Could not play the output preview. 
+Audio preview is unavailable for this file. You can still export the selected range.
+Normalized audio preview is unavailable. You can still export with these settings.
+Choose a valid audio range to preview.
+Tangerine-bleep-
+Could not play the bleep preview. 
+Could not detect 
+ are already selected.
+Choose a background image
+File size unavailable
+Tangerine-channel-
+Could not play this audio channel. 
+Choose a valid audio channel to preview.
+aformat=channel_layouts=stereo,pan=stereo|c0=
+aformat=channel_layouts=mono,pan=stereo|c0=c0|c1=c0
+For photos, Remove All also clears hidden camera and processing data. HDR and portrait effects may change.
+Remove metadata now and save a new file. Photo cleanup includes private blocks that cannot be removed individually. The original stays unchanged.
+resetPhotoRedactions
+Create Visualization
+Save Organized PDF
+Export One Video
+Save Bleeped Copy
+Save Redacted Copy
+Save with Background
+Save Annotated Copy
+Save Edited Copy
+exclamationmark.triangle
+orderedSourceList
+line.3.horizontal
+Output channel preview
+Play the complete Mono or Stereo output with the selected volume balance
+audioChannelsOutputPreview
+Order the files by name, as Finder lists them
+sortSourcesByName
+pdfOrganizerGrid
+Make all pages the same width
+pdfOrganizerEqualWidths
+Pages are scaled proportionally to match the narrowest page; their heights may still differ.
+, originally page 
+ degrees clockwise
+Drag to change its position, or use Rotate to turn it clockwise
+ 90 degrees clockwise
+pdfOrganizerRotatePage
+pdfOrganizerResetOrder
+frameImagePreview
+Custom background
+Choose a custom background color
+Choose an image background
+Choose image background
+Change image background
+frameGradientStrip
+frameSolidColorStrip
+arrow.counterclockwise
+minus.magnifyingglass
+compressionOriginalSize
+Compression preset
+Smaller files with more quality loss.
+Smaller files with less quality loss.
+Target file size
+The target is calculated separately from each original file.
+Output will be at most 
+File size reduction
+compressionReductionPercentage
+Compression mode
+compressionTargetMode
+No readable metadata found.
+ channel waveform
+Drag to change the preview time
+ channel preview
+Stop channel preview
+Pinch to zoom, drag to pan, or double-click to reset zoom
+Tangerine.FileToolOptionsWindowController
+changeVideoSpeed
+compress
+removeMetadata
+editImage
+annotateImage
+frameImage
+cropImage
+normalizeAudio
+muteVideo
+trimVideo
+splitPDF
+organizePDF
+extractArchive
+createPDF
+mergePDF
+cropVideo
+joinVideos
+videoSnapshots
+splitVideo
+audioToVideo
+trimAudio
+audioChannels
+createCollage
+readQRCode
+redactImage
+redactVideo
+redactAudio
+videoCompression.defaultStrength
+strong
+imageCompression.defaultStrength
+imageCompression.defaultSize
+Choose valid background settings.
+Choose a target from 
+70 to 
+5 LUFS, a loudness range from 1 to 50 LU, and a true peak from 
+9 to 0 dBTP.
+Open terminal in folder
+Copy file and folder paths
+Move files and folders to a chosen folder
+Copy files and folders
+Float file or folder thumbnail
+Share files and folders with AirDrop
+Convert Audio Channels
+Audio Visualizer
+Change Video Speed
+Normalize Volume
+waveform.badge.minus
+qrcode.viewfinder
+rectangle.3.group
+rectangle.split.2x1
+speaker.slash.fill
+pencil.and.outline
+slider.horizontal.3
+arrow.down.right.and.arrow.up.left
+compatible_brands
+PDFKit could not write the combined PDF.
+.tangerine-tool-
+Choose a reduction from 1% to 99% that leaves a target of at least 1 KB.
+Enter a target size between 1 KB and 1 TB.
+Tangerine-target-
+The encoder produced 
+, above the target. Try a larger target
+ or Accurate mode
+Compressed output would exceed the original or target file size.
+Could not reach the target size. Smallest attempt was 
+. Try a larger target.
+Native target-size compression requires a still WebP image.
+Bundled WebP encoder
+The WebP encoder could not meet this target. Try a larger size.
+Could not create the compressed PDF.
+/System/Library/Filters/Reduce File Size.qfilter
+The compressed PDF could not be verified.
+The macOS PDF compression filter is unavailable.
+Could not read PDF page 
+ has invalid dimensions.
+Target size compression
+Target size compression cannot preserve this animation. Use a preset with original dimensions.
+The target is too small after audio and container overhead. Choose a larger size.
+The target leaves too little space for video.
+h264_videotoolbox
+-constant_bit_rate
+The encoder could not fit this video within the target. Choose a larger size.
+The compressed video's duration or tracks could not be verified.
+The target is too small for this duration. Choose a larger size.
+hevc_videotoolbox
+-compression_level
+Could not create the resized PNG.
+Could not save the resized PNG.
+Choose original dimensions to preserve this image's animation.
+ImageIO could not create the compressed JPEG.
+ImageIO could not finish the compressed JPEG.
+ImageIO could not create the output image.
+ImageIO could not finish the image.
+\,ih)':force_original_aspect_ratio=decrease
+One of these fields cannot be edited.
+This metadata field is not supported.
+This format could not save the change to 
+. The original file is unchanged.
+use_metadata_tags
+PDFKit could not write the cleaned PDF.
+Could not write page 
+PDFKit could not write the organized PDF.
+The organized PDF could not be verified.
+Page rotations must be 90-degree turns for pages in this PDF.
+Could not create the organized PDF.
+Reading QR codes
+Creating collage
+Converting channels
+Creating visualization
+Saving snapshots
+Extracting archive
+Normalizing volume
+Adding background
+Annotating photo
+ px longest edge
+Keep original dimensions
+waveform
+staticImage
+clips
+merged
+accurate
+preset
+fileSize
+percentage
+automatic
+square
+landscape
+portrait
+citrus
+mesh
+meadow
+whisper
+orchid
+oasis
+lagoon
+aqua
+dream
+sorbet
+frost
+emerald
+sunset
+mint
+violet
+graphite
+white
+yellow
+lime
+green
+teal
+cyan
+cobalt
+navy
+purple
+lavender
+rose
+coral
+orange
+brown
+gray
+black
+custom
+Accessing Environment's value outside of being installed on a View. This will always read the default value and will not update.
+. Drag to move or detach.
+Drop to add
+items to it
+Drop to add
+item to it
+xmark.circle.fill
+Close Float without deleting files
+float.summaryMove
+Move Float; drag near an edge to attach, or away to detach
+Collapse Float, 
+. Drag to carry all files.
+Tangerine.FloatingFileWindowController
+Tangerine.FloatingFileHostingView
+init(coder:rootView:)
+Tangerine.FloatingFileContextMenuController
+Remove from Float
+No Applications Available
+Tangerine/FloatingFileWindowController.swift
+floatingFileThumbnail
+File selection area. Drag empty space to select multiple files.
+. Double-click to open; drag to carry the file.
+. Selected with 
+ items; drag to carry selection.
+View.task @ Tangerine/FloatingFileWindowController.swift:
+FloatPaperClipFigmaBack
+FloatPaperClipFigmaFront
+Tangerine/FolderAccess.swift
+Tangerine saves results beside the originals. Allow access to 
+ so it can save there. 
+Choosing a parent folder, such as your home folder, also covers every folder inside it.
+Tangerine still can
+t save to 
+ or a folder that contains it.
+folderAccessBookmarks
+.tangerine-access-
+Tangerine saves results beside the originals. macOS asks you to allow each output folder once. Allowing a parent folder, such as your home folder, also covers every folder inside it.
+No folders allowed yet.
+Choose a folder where Tangerine may save results. Every folder inside it is included.
+Remove access to 
+ImageIO could not create the 
+ImageIO could not finish the conversion.
+.tangerine-images-
+ImageIO could not create page 
+ImageIO could not finish page 
+Could not read the encoded WebP container.
+tiff:Orientation
+exif:PixelXDimension
+exif:PixelYDimension
+ImageIO could not prepare the WebP conversion.
+This frame would be too large. Use less padding or a closer output ratio.
+Set a start and end within the file.
+Keep each rectangle inside the preview.
+Keep the crop inside the image.
+The crop must be at least 1 
+ 1 pixel.
+Choose a canvas and spacing that leave at least 8 
+ 8 pixels for each image (maximum canvas: 8192 
+ 8192).
+Could not read the image 
+CIExposureAdjust
+CIHighlightShadowAdjust
+inputHighlightAmount
+inputShadowAmount
+CITemperatureAndTint
+inputTargetNeutral
+Could not render the photo adjustments.
+CIRandomGenerator
+CISoftLightBlendMode
+CINoiseReduction
+CISharpenLuminance
+This PDF cannot be read or is password-protected.
+Could not render PDF page 
+Could not create the collage canvas.
+Could not render the collage.
+Could not create the cropped image.
+Could not save the cropped image.
+Could not create the edited image.
+Could not save the edited image.
+Could not prepare the image background.
+Could not finish adding the background.
+Choose a background image.
+Could not prepare the redacted photo.
+Could not blur the selected area.
+Solid
+Blur
+transparent
+grid
+horizontal
+featured
+topLeft
+topRight
+right
+bottomRight
+bottom
+bottomLeft
+left
+webp
+heic
+tiff
+avif
+flac
+opus
+aiff
+webm
+docx
+pages
+pptx
+rtfd
+textClipping
+html
+epub
+xlsx
+Index/Document.iwa
+com.apple.finder.textclipping
+net.daringfireball.markdown
+public.tab-separated-values-text
+org.oasis-open.opendocument.spreadsheet
+com.microsoft.excel.xls
+org.openxmlformats.spreadsheetml.sheet
+org.openxmlformats.presentationml.presentation
+com.microsoft.powerpoint.ppt
+com.microsoft.bmp
+org.webmproject.webp
+Tangerine/LoginItemController.swift
+Couldn
+t update launch at login. You can try again, or set it up later in System Settings.
+macOS couldn
+t change this setting. Try again in Login Items.
+Open Login Items
+Allow Tangerine in macOS Login Items to finish setup.
+\,iw):-2:force_original_aspect_ratio=decrease,split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse
+This source uses more than 32-bit integer audio. Choose an output bit depth in settings.
+asetpts=PTS-STARTPTS,aeval=exprs='if(gt(
+,0),0.18*sin(2*PI*1000*t),val(ch))':c=same
+Add at least one bleep range.
+Choose a positive time range within the file
+s duration.
+Select at least two videos to join.
+Every selected file must contain a video track.
+:force_original_aspect_ratio=decrease:force_divisible_by=2,pad=
+:(ow-iw)/2:(oh-ih)/2,setsar=1,fps=30
+anullsrc=r=48000:cl=stereo
+:mode=cline:rate=30:colors=0xff5200:scale=sqrt,format=yuv420p[visualizer]
+Tangerine-visualizer-
+:(ow-iw)/2:(oh-ih)/2,setsar=1
+Choose Mono or Stereo for a file with an audio track.
+Add split points inside the video, at least 0.05 seconds from either end.
+Split points must be at least 0.05 seconds apart.
+Remove a clip to join the rest into one video, or export separate clips.
+Select at least one frame within the video.
+Choose a speed between 0.25
+ and 4
+setpts=(PTS-STARTPTS)/
+Keep the crop inside the video frame.
+The crop must be at least 2 
+ 2 pixels.
+setpts=PTS-STARTPTS
+:enable='between(t,
+:exact=1,gblur=sigma=
+Frame %03d - %.3fs.png
+,setpts=PTS-STARTPTS[v
+,asetpts=PTS-STARTPTS[a
+.tangerine-parts-
+Choose a silence threshold between 
+80 and 
+10 dB.
+silencedetect=noise=
+The selected range is silent at this threshold. Lower the threshold or turn off automatic trimming.
+silence_start: ([0-9.eE+-]+)
+silence_end: ([0-9.eE+-]+)
+Choose a preview range within the audio.
+Tangerine.MonitorView
+init(frame:)
+Choose a static image
+Portrait 
+ 9:16
+Landscape 
+ 16:9
+Visualization style
+Trim silent ends automatically
+Silence threshold in decibels
+Silence threshold
+Play Selected Range
+Click a clip in the timeline and press Delete to remove it. Space plays the result.
+splitRestoreClips
+videoSpeedPlaybackToggle
+Crop width in pixels
+Crop height in pixels
+Use this crop, as the same share of each image, for every image
+Crop selection. Drag to reposition.
+16 LUFS is a balanced default for spoken audio and music. The true peak limit helps prevent clipping after encoding.
+Preview selected frame
+Preview frame at 
+Remove selected frame
+Remove frame at 
+Play preview (Space)
+Pause preview (Space)
+Waveform visualization preview
+. Range applies to all files, up to the shortest file
+s duration.
+audioTrimWaveform
+Playback position
+Loading waveform
+Drag to scrub and play from a time
+Drag the ends to trim
+Detecting silence
+Drag the handles to mark a bleep
+videoTrimPlaybackToggle
+videoTrimTimeline
+Video preview position
+Loading timeline
+Video trim preview at 
+videoSplitTimeline
+Video thumbnail timeline
+Clip removed at 
+Video preview at 
+Video speed preview at 
+Playhead position in seconds
+normalizationPlaybackToggle
+Previewing the first of 
+ files. Settings apply to every selected file.
+Updating preview
+: drag to adjust, or use arrow keys for 0.01-second steps
+Duration: (\d+):(\d+):([0-9.]+)
+Could not read the duration of 
+This file has no playable duration.
+rotation of (-?[0-9.]+) degrees
+, (?:s[0-9]+|u[0-9]+)(?:p)? \(([0-9]+) bit\)
+^pcm_[suf]([0-9]+)
+, (?:s|u)([0-9]+)(?:p)?(?:,|$)
+Video: [^,]+, ([^ ,(]+)
+(?:^|[, ])([0-9]{1,6})x([0-9]{1,6})(?:[ ,\[]|$)
+Stream #\d+:(\d+)
+pad=ceil(iw/2)*2:ceil(ih/2)*2
+This file has no playable video track.
+Tangerine-frame-
+No frame is available at this time. Choose an earlier frame.
+:force_original_aspect_ratio=decrease
+This file has no playable audio.
+Could not read the audio waveform.
+Choose valid audio channel settings.
+video:([0-9.]+)KiB
+Could not read the video bitrate for cropping.
+Tangerine.MenuBarController
+Tangerine is working
+arrow.triangle.2.circlepath
+Unlock Tangerine
+Getting Started
+checkmark.circle
+Tangerine is ready
+Tangerine conversions
+Tangerine.OperationProgressWindowController
+Tangerine/OperationProgressWindowController.swift
+Operation in progress
+Finished with errors
+Couldn
+t finish
+The operation couldn
+t be completed.
+Conversion failed!
+Operation failed!
+Tangerine.OutputPublication
+The conversion finished, but 
+ could not be confirmed in its destination folder.
+operationProgress
+operationProgressIndicator
+Operation failures
+Tangerine.PaywallWindowController
+Tangerine/PaywallWindowController.swift
+Unlock Tangerine
+tangerinePaywall
+Restore Purchase
+Purchases aren
+t available right now. Please try again later.
+https://www.apple.com/legal/internet-services/itunes/dev/stdeula/
+https://tangerineformac.com/privacy
+No previous purchase was found for this Apple Account.
+Unlock Unavailable
+Unlimited conversions and tools
+square.stack.3d.up
+Batch drops of any size
+One-time purchase, no subscription
+ free uses left.
+ve used all 
+ uses, but only 
+Fatal error
+Down-casted Array element failed to match the target type
+Expected 
+NSArray element failed to match the Swift Array Element type
+Expected 
+RevenueCatAPIKey
+[Tangerine] RevenueCat API key is missing; purchases are disabled
+(FloatingFileItem in _1501125B0384CD647E9F2965EE08FBCB)
+Tangerine/Purchases.swift
+(FloatingFileDragSourceView in _1501125B0384CD647E9F2965EE08FBCB)
+FormatDropTarget
+(SDMarkdownNode in _C672BFB2C0FA86AD23F9E5517404B050)
+Tangerine/QRCodeResultsWindowController.swift
+Tangerine.QRCodeResultsWindowController
+init(window:)
+No QR codes found
+Copy QR code text from 
+Drag across the Bleep layer to add a section, then drag a clip or either edge to adjust it.
+Play or pause the timeline preview (Space)
+detectPhotoFaces
+Blur softens details. Use Solid for sensitive information.
+Start time in seconds
+End time in seconds
+Video timeline. Drag to scrub.
+Redaction preview. Draw rectangles to cover areas.
+Resize redaction 
+Redaction rectangle
+Audio waveform layer. Drag to move the playhead.
+Playback position 
+Add bleep at playhead
+Drag to add a bleep
+Drag to move. Drag either end to change duration.
+Bleep Entire Audio
+Redaction layer 
+Add redaction at playhead
+Show for Entire Video
+Delete Redaction
+Tangerine/SettingsWindowController.swift
+Tangerine.SettingsWindowController
+Tangerine Settings
+TangerineColumnSettingsWindow
+mailto:hello@leapstudio.io?subject=RE%3A%20Tangerine%20App
+CFBundleShortVersionString
+Conversion formats
+Conversion defaults are configured on the output format you choose.
+This output format has no adjustable conversion defaults.
+Conversion Settings
+Restore Defaults
+Compression Settings
+defaultVideoCompressionStrength
+Much smaller files with more visible quality loss.
+Restore Compression Defaults
+Better visual quality with moderate file-size savings.
+Image Compression
+defaultImageCompressionStrength
+defaultImageCompressionSize
+Input and output format.
+Output-only format.
+Input-only format.
+Unavailable for conversion.
+Sound and haptic feedback
+conversionWheelDragModifierMask
+toolsWheelDragModifierMask
+actionsWheelDragModifierMask
+com.apple.Terminal
+fileActionsTerminalApplication
+Add Files to an Existing Float
+Create a New Float
+Format Compatibility
+settingsFreeUses
+checkmark.seal.fill
+settingsFullVersion
+No previous purchase was found.
+images
+documents
+spreadsheets
+audio
+video
+archives
+subtitles
+photo.on.rectangle.angled
+No valid subtitle cues were found.
+The subtitle file is not valid UTF-8.
+Tangerine/TerminalFileAction.swift
+Only local files and folders can open a terminal.
+com.googlecode.iterm2
+ isn
+t installed. Choose another terminal app in Settings 
+ General.
+The terminal app
+ (Not installed)
+freeUsesConsumed
+Tangerine/Unlock.swift
+com.th.Tangerine.usage
+Tangerine/WelcomeModel.swift
+hasCompletedWelcome
+conversion
+tools
+actions
+View.task @ Tangerine/WelcomeView.swift:
+animatePage(duration:updates:)
+Choose whether Tangerine launches at login. You can change these options and your shortcuts in Settings.
+Results are saved next to the originals. Allow your home folder once so macOS doesn
+t ask again.
+Find the Tangerine icon near the clock in your menu bar
+Close onboarding
+Minimize onboarding
+Full version unlocked
+welcomeFullVersion
+Unlock everything
+ free uses left. One-time purchase.
+One more step: allow Tangerine in macOS Login Items.
+welcomeLaunchAtLogin
+Ready whenever you turn on your Mac.
+Allow Home Folder Access
+welcomeAllowFolderAccess
+Skip for now and macOS will ask per folder.
+Change access in Settings 
+ Folders.
+Manage access in Settings 
+ Folders.
+Home folder access enabled
+welcomeFolderAccessGranted
+Click Allow Access to let Tangerine save results beside files anywhere in your home folder.
+welcomePracticeWheel
+Step 1. Drag files.
+Step 2. While dragging, tap 
+Tangerine.WelcomeWindowController
+Welcome to Tangerine
+tangerineWelcome
+didMigrateToolsWheelToCommand
+Conversion wheel
+Tap the chosen modifier combination while dragging files.
+Tangerine/GeneratedAssetSymbols.swift
+com.revenuecat.purchases.lock
+RevenueCat.AdTracker
+adapter
+manual
+RevenueCat.MediatorName
+RevenueCat.AdFormat
+RevenueCat.AdFailedToLoad
+RevenueCat.AdLoaded
+RevenueCat.AdDisplayed
+RevenueCat.AdOpened
+RevenueCat.AdRevenue
+RevenueCat.Precision
+adFormat
+mediatorErrorCode
+publisher_defined
+rewarded_interstitial
+Invalid number of keys found, expected one.
+rewardEarnedUnverified
+rewardFailedToVerify
+Ad event store size limit reached. Clearing oldest events to free up space.
+Error checking ad event file size: 
+Error emptying ad event file: 
+Error removing first 
+Error fetching ad events: 
+Error storing ad event: 
+Storing an ad event. There was an error trying to print it
+Storing ad event: 
+Error initializing AdEventStore: 
+AdEventStore: unable to resolve persistence directory
+Initializing AdEventStore: 
+RevenueCat/AdEventStore.swift
+isEventStoreTooBig()
+createDefault(persistenceDirectory:)
+unsupported_reward
+virtual_currency
+RevenueCat/AdReward.swift
+decode(from:typeKey:codeKey:amountKey:entitlementIdKey:entitlementExpiresAtKey:)
+rewardVerificationEnabled
+networkName
+mediatorName
+placement
+adUnitId
+impressionId
+rewardType
+rewardVirtualCurrencyCode
+rewardVirtualCurrencyAmount
+rewardEntitlementId
+rewardEntitlementExpiresAt
+offline_entitlements
+paywall_event_store
+external_purchase
+RevenueCat/AdEventsRequest.swift
+init(storedEvent:)
+rc_ads_ad_reward_sdk_granted
+rc_ads_ad_reward_sdk_failed_to_verify
+rc_ads_ad_reward_sdk_verified
+rc_ads_ad_reward_sdk_earned
+rc_ads_ad_revenue
+rc_ads_ad_opened
+rc_ads_ad_displayed
+rc_ads_ad_loaded
+rc_ads_ad_failed_to_load
+version
+timestampMs
+captureMethod
+revenueMicros
+currency
+precision
+rewardFailureReason
+https://a.revenue.cat
+event
+userId
+RevenueCat/GetRewardVerificationStatusOperation.swift
+getRewardVerificationStatus(completion:)
+RevenueCat/RewardVerificationStatusResponse.swift
+decodeStatus(_:from:)
+decodeMoreRewards(from:)
+status
+reward
+failureReason
+message
+moreRewards
+decodeReward(from:)
+amount
+expiresAt
+RevenueCat/Poller.swift
+run(clientTransactionID:)
+exhaustionReason(for:clientTransactionID:)
+pollOnce(clientTransactionID:)
+RevenueCat/Purchases.swift
+NFVqragvsvreZnantre
+nqiregvfvatVqragvsvre
+genpxvatNhgubevmngvbaFgnghf
+RevenueCat/AttributionFetcher.swift
+fetchAuthorizationStatus
+NGGenpxvatZnantre
+realAdServicesToken
+identifierForAdvertisers
+RevenueCat/IdentityManager.swift
+currentAppUserID is nil. This might happen if the cache in UserDefaults is unintentionally cleared.
+RevenueCat/AttributionPoster.swift
+markAdServicesToken(_:asSyncedFor:)
+post(attributionData:fromNetwork:networkUserId:)
+rc_attribution_network_id
+getNewDictToCache(currentAppUserID:idfa:network:networkUserId:)
+store(postponedAttributionData:fromNetwork:forNetworkUserId:)
+post(adServicesToken:completion:)
+RevenueCat/Authentication.swift
+identifyCurrentUser(as:completion:)
+Providing an alias for the current user is unsupported when using IAM identities
+identifyCurrentUser(as:)
+RevenueCat.Authentication
+Unexpected nil value and nil error
+logOut(userInitiated:completion:)
+Missing internal auth delegate
+Token login requires .with(iamEnabled: true)
+logIn(using:userInitiated:completion:)
+RevenueCat/TokenManager.swift
+STALE
+NOT_FOUND
+VALID
+NOT_CHECKED
+algo
+sha256
+sha384
+sha512
+com.revenuecat.userdefaults.subscriberAttributes
+com.revenuecat.userdefaults.productEntitlementMappingLastUpdated
+com.revenuecat.userdefaults.productEntitlementMapping
+com.revenuecat.userdefaults.appUserID.new
+com.revenuecat.userdefaults.appUserID
+com.revenuecat.userdefaults.attribution.
+RevenueCat/DeviceCache.swift
+latestAdvertisingIdsByNetworkSent(appUserID:)
+com.revenuecat.userdefaults.virtualCurrenciesLastUpdated.
+com.revenuecat.userdefaults.virtualCurrencies.
+com.revenuecat.userdefaults.syncedSK2ObserverModeTransactionIDs
+com.revenuecat.userdefaults.subscriberAttributes.
+com.revenuecat.userdefaults.offerings.
+com.revenuecat.userdefaults.subscriberDimensions.
+com.revenuecat.userdefaults.purchaserInfoLastUpdated.
+com.revenuecat.userdefaults.purchaserInfo.
+Offerings response must be a JSON object
+deleteOldFileIfNeeded(for:)
+deleteOldDocumentsDirectoryIfEmpty()
+deleteAllAttributes(_:appUserID:)
+com.revenuecat.userdefaults.
+copySubscriberAttributes(oldAppUserID:newAppUserID:)
+RevenueCat/FileRepository.swift
+generateOrGetCachedFileURL(for:withChecksum:)
+saveCachedFile(url:fromBytes:withChecksum:)
+RevenueCat/LargeItemCacheType.swift
+saveData(_:to:checksum:)
+RevenueCat/CheckpointWorkflowResolver.swift
+resolve(identifier:params:)
+attemptResolveConfiguredWorkflow(identifier:params:)
+unservable(_:reason:)
+its initial step was not found
+a UI workflow cannot contain offering steps
+an offering step cannot be mixed with other steps
+offering_identifier
+the offering step has no valid offering identifier
+' is unavailable
+no offering identifier is configured
+offeringID(for:)
+' could not be read
+CheckpointParams(customVariables=
+Expected a string, number, or boolean.
+Unable to extract a periodTypeString
+Unable to extract an purchaseOwnershipTypeString
+RevenueCat/PurchaseOwnershipType+Extensions.swift
+Unable to extract a storeString
+{{ duration }} for {{ price }}
+{{ price }} during {{ duration }}
+{{ duration }} for free
+then {{ price }}
+{{ count }} characters
+Failed to send, please try again.
+Enter your email
+Create a support ticket
+Apple has received the refund request
+{{ price }}. Expires on {{ date }} without changes.
+Free trial until {{ date }}.
+{{ price }} afterwards.
+Renews on {{ date }}. Last paid {{ price }}.
+Renews on {{ date }}.
+Renews on {{ date }} for {{ price }}.
+Expires on {{ date }} without further charges.
+Paid {{ price }}.
+You might be subscribed both on the web and through the App Store.To avoid being charged twice, please cancel your iOS subscription in your device settings.
+You may have duplicated subscriptions
+It doesn't look like you've purchased any in-app currencies.
+See all in-app currencies
+In-App Currencies
+One-time Purchase
+External Purchases
+Google Play Store
+Grace Period Expires At
+Billing Issue Detected At
+Latest Purchase Date
+Original Download Date
+Introductory Price
+Shared through family member
+Purchase History
+Expired Subscriptions
+Active Subscriptions
+Expires on {{ date }}
+Renews on {{ date }}
+Expired on {{ date }}
+Purchased on {{ date }}
+See All Purchases
+Your active lifetime subscription
+ve been granted a subscription that doesn

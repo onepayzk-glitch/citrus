@@ -102,6 +102,10 @@ final class ToolWindowManager: NSObject, NSWindowDelegate {
             return NSSize(width: 820, height: 560)
         case .organizePDF, .createCollage, .joinVideos:
             return NSSize(width: 940, height: 620)
+        case .extractArchive:
+            return NSSize(width: 640, height: 420)
+        case .muteVideo:
+            return NSSize(width: 640, height: 400)
         default:
             return NSSize(width: 1040, height: 700)
         }
@@ -147,6 +151,10 @@ struct ToolRootView: View {
             case .mergePDF: MergePDFToolView(session: session)
             case .organizePDF: OrganizePDFToolView(session: session)
             case .splitPDF: SplitPDFToolView(session: session)
+            case .annotateImage: AnnotateImageToolView(session: session)
+            case .muteVideo: MuteVideoToolView(session: session)
+            case .extractArchive: ExtractArchiveToolView(session: session)
+            case .readQRCode: ReadQRCodeToolView(session: session)
             }
         }
         .frame(minWidth: 560, minHeight: 360)

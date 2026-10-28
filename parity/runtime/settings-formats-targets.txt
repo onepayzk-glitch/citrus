@@ -1,0 +1,41 @@
+Formats tab controls (ordered):
+ - JPG
+ - PNG
+ - WEBP
+ - HEIC
+ - TIFF
+ - SVG
+ - AVIF
+ - BMP
+ - PDF
+ - DOCX
+ - PAGES
+ - PPT
+ - PPTX
+ - TXT
+ - MD
+ - RTF
+ - RTFD
+ - TEXTCLIPPING
+ - HTML
+ - EPUB
+ - XLSX
+ - XLS
+ - ODS
+ - CSV
+ - TSV
+ - MP3
+ - M4A
+ - WAV
+ - FLAC
+ - OGG
+ - OPUS
+ - AIFF
+ - WMA
+ - Restore Defaults
+ - Restore Compression Defaults
+
+Count of format target buttons: 33
+
+Compatibility tab renders a source x target matrix; AX exposes only the source list (AXButton labels above).
+Target columns observed in top matrix header (images): JPG PNG WEBP HEIC TIFF SVG AVIF BMP PDF DOCX PAGES PPT PPTX TXT MD RTF RTFD TEXTCLIPPING HTML EPUB XLSX XLS ODS CSV TSV MP3 M4A WAV FLAC OGG OPUS AIFF WMA

@@ -92,5 +92,58 @@ import PDFKit
         precondition(SubtitleParser.format(59.9999, separator: ",") == "00:01:00,000")
         precondition(SubtitleParser.parseTimestamp("nan") == nil)
         print("PASS SRT/VTT round trip + both TXT exports; millisecond carry and invalid timestamp")
+        // Tangerine parity routes: text, documents, spreadsheets, EPUB and archives.
+        try "# Title\n\nBody paragraph & <tag>.".write(to: url("notes.md"), atomically: true, encoding: .utf8)
+        for target in [FileFormat.docx, .pdf, .epub] {
+            let out = try await convert(url("notes.md"), .md, target, "notes.\(target.fileExtension)")
+            precondition(fm.fileExists(atPath: out.path))
+            print("PASS MD -> \(target)")
+        }
+        let htmlOut = try await convert(url("notes.md"), .md, .html, "notes.html")
+        precondition(try! String(contentsOf: htmlOut, encoding: .utf8).contains("Body paragraph"))
+        let docxOut = try await convert(url("notes.md"), .md, .docx, "notes-roundtrip.docx")
+        let docxText = try await convert(docxOut, .docx, .txt, "notes.txt")
+        precondition(try! String(contentsOf: docxText, encoding: .utf8).contains("Body paragraph"))
+        print("PASS MD -> DOCX -> TXT round trip")
+
+        try "name,value\nalpha,1\nbeta,2\n".write(to: url("table.csv"), atomically: true, encoding: .utf8)
+        let xlsxOut = try await convert(url("table.csv"), .csv, .xlsx, "table.xlsx")
+        let backToCSV = try await convert(xlsxOut, .xlsx, .csv, "table-back.csv")
+        let csvBack = try String(contentsOf: backToCSV, encoding: .utf8)
+        precondition(csvBack.contains("alpha") && csvBack.contains("beta"))
+        let tsvOut = try await convert(xlsxOut, .xlsx, .tsv, "table.tsv")
+        precondition(try! String(contentsOf: tsvOut, encoding: .utf8).contains("\t"))
+        let odsOut = try await convert(xlsxOut, .xlsx, .ods, "table.ods")
+        let csvFromODS = try await convert(odsOut, .ods, .csv, "table-ods.csv")
+        precondition(try! String(contentsOf: csvFromODS, encoding: .utf8).contains("alpha"))
+        print("PASS CSV -> XLSX -> CSV/TSV/ODS")
+
+        let epubOut = try await convert(url("notes.md"), .md, .epub, "notes-roundtrip.epub")
+        let epubPDF = try await convert(epubOut, .epub, .pdf, "notes-epub.pdf")
+        precondition(try! PDFOps.document(epubPDF).pageCount > 0)
+        let epubText = try await convert(epubOut, .epub, .txt, "notes-epub.txt")
+        precondition(try! String(contentsOf: epubText, encoding: .utf8).contains("Body paragraph"))
+        print("PASS MD -> EPUB -> PDF/TXT")
+
+        let pdfMD = try await convert(pdf, .pdf, .md, "text.md")
+        precondition(try! String(contentsOf: pdfMD, encoding: .utf8).contains("Open Tangerine"))
+        print("PASS PDF -> MD")
+
+        let zipSource = url("bundle.zip")
+        let zipResult = try await Shell.run("/usr/bin/zip", ["-q", "bundle.zip", "input.txt"], currentDirectory: root)
+        precondition(zipResult.succeeded)
+        let tarOut = try await convert(zipSource, .zip, .tar, "bundle.tar")
+        precondition(fm.fileExists(atPath: tarOut.path))
+        let extractDir = url("extracted")
+        try fm.createDirectory(at: extractDir, withIntermediateDirectories: true)
+        try await ArchiveEngine().extract(zipSource, format: .zip, into: extractDir)
+        precondition(fm.fileExists(atPath: extractDir.appendingPathComponent("input.txt").path))
+        print("PASS ZIP -> TAR + extraction")
+
+        let imageTools = ToolID.available(for: [.png])
+        precondition(imageTools.contains(.annotateImage) && imageTools.contains(.readQRCode))
+        precondition(ToolID.available(for: [.mp4]).contains(.muteVideo))
+        precondition(ToolID.available(for: [.zip]).contains(.extractArchive))
+        print("PASS new Tangerine tools are offered for the right file kinds")
     }
 }

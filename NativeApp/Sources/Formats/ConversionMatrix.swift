@@ -1,12 +1,13 @@
 import Foundation
 
 enum ConversionMatrix {
+    /// The full Tangerine conversion wheel: inputs and the exact output set per input.
+    /// Mirrors the published matrix (275 options): images 57, audio 56, video 48, PDF 9,
+    /// documents 51, EPUB 6, TXT 8, slides 6, spreadsheets 21, subtitles 4, archives 9.
     static func targets(for source: FileFormat) -> [FileFormat] {
         let list: [FileFormat]
         switch source {
-        case .jpg, .png:
-            list = FileFormat.imageTargets + [.docx]
-        case .webp, .heic, .tiff, .svg, .avif, .bmp:
+        case .jpg, .png, .webp, .heic, .tiff, .svg, .avif, .bmp:
             list = FileFormat.imageTargets
         case .mp3, .m4a, .wav, .flac, .ogg, .opus, .aiff, .wma:
             list = FileFormat.audio
@@ -15,17 +16,25 @@ enum ConversionMatrix {
         case .gif:
             list = FileFormat.video
         case .pdf:
-            list = [.docx, .jpg, .png, .txt]
+            list = [.docx, .pages, .pptx, .xlsx, .jpg, .png, .epub, .txt, .md]
+        case .ppt, .pptx:
+            list = [.pdf, .jpg, .png]
+        case .xlsx, .xls, .ods, .csv, .tsv:
+            list = FileFormat.spreadsheets + [.pdf]
+        case .docx, .pages, .md, .rtf, .rtfd, .textClipping:
+            list = FileFormat.documentTargets
+        case .epub:
+            list = [.pdf, .docx, .pages, .txt, .md, .html]
         case .txt:
-            list = [.pdf, .jpg, .png, .srt, .vtt]
+            list = [.docx, .pages, .pdf, .md, .html, .epub, .jpg, .png]
         case .srt, .vtt:
             list = FileFormat.subtitles + [.txt]
-        case .zip, .tar, .gz, .rar:
-            list = [] // Archive engine is disabled; do not offer operations that always fail.
-        case .docx:
+        case .html:
             list = []
+        case .zip, .tar, .gz, .rar:
+            list = [.zip, .tar, .gz]
         }
-        return list.filter { $0 != source }
+        return list.filter { $0 != source && !FileFormat.inputOnly.contains($0) }
     }
 
     static func targets(for sources: [FileFormat]) -> [FileFormat] {
@@ -84,4 +93,3 @@ enum ConversionMatrix {
         return String(fileName[..<dot])
     }
 }
-

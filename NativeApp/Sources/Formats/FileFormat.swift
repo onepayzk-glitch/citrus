@@ -36,7 +36,8 @@ enum FileFormat: String, CaseIterable, Identifiable, Hashable {
     case jpg, png, webp, heic, tiff, svg, avif, bmp, gif
     case mp3, m4a, wav, flac, ogg, opus, aiff, wma
     case mp4, mov, mkv, webm, avi, wmv
-    case pdf, docx, txt
+    case pdf, docx, pages, md, txt, html, epub, rtf, rtfd, textClipping
+    case ppt, pptx, xlsx, xls, ods, csv, tsv
     case srt, vtt
     case zip, tar, gz, rar
 
@@ -48,6 +49,12 @@ enum FileFormat: String, CaseIterable, Identifiable, Hashable {
     static let video: [FileFormat] = [.mp4, .mov, .mkv, .webm, .avi, .wmv]
     static let subtitles: [FileFormat] = [.srt, .vtt]
     static let archives: [FileFormat] = [.zip, .tar, .gz, .rar]
+    static let documents: [FileFormat] = [.docx, .pages, .md, .rtf, .rtfd, .textClipping]
+    static let spreadsheets: [FileFormat] = [.xlsx, .xls, .ods, .csv, .tsv]
+    static let slideShows: [FileFormat] = [.ppt, .pptx]
+    static let documentTargets: [FileFormat] = [.docx, .pages, .pdf, .txt, .md, .html, .epub, .png, .jpg]
+    /// Formats that can be dragged in but are never offered as an output.
+    static let inputOnly: Set<FileFormat> = [.rar, .ppt, .xls, .rtf, .rtfd, .textClipping]
 
     var category: FormatCategory {
         switch self {
@@ -55,7 +62,8 @@ enum FileFormat: String, CaseIterable, Identifiable, Hashable {
         case .gif: return .video
         case .mp3, .m4a, .wav, .flac, .ogg, .opus, .aiff, .wma: return .audio
         case .mp4, .mov, .mkv, .webm, .avi, .wmv: return .video
-        case .pdf, .docx, .txt: return .document
+        case .pdf, .docx, .pages, .md, .txt, .html, .epub, .rtf, .rtfd, .textClipping,
+             .ppt, .pptx, .xlsx, .xls, .ods, .csv, .tsv: return .document
         case .srt, .vtt: return .subtitle
         case .zip, .tar, .gz, .rar: return .archive
         }
@@ -64,6 +72,8 @@ enum FileFormat: String, CaseIterable, Identifiable, Hashable {
     var displayName: String {
         switch self {
         case .gz: return "GZIP"
+        case .md: return "MD"
+        case .textClipping: return "TEXT CLIPPING"
         default: return rawValue.uppercased()
         }
     }
@@ -84,8 +94,22 @@ enum FileFormat: String, CaseIterable, Identifiable, Hashable {
         case .mp4: return ["mp4", "m4v"]
         case .mov: return ["mov", "qt"]
         case .gz: return ["gz", "tgz"]
-        case .txt: return ["txt", "text", "md", "log"]
+        case .txt: return ["txt", "text", "log"]
+        case .md: return ["md", "markdown"]
+        case .html: return ["html", "htm", "xhtml"]
         case .aiff: return ["aiff", "aif"]
+        case .pages: return ["pages"]
+        case .epub: return ["epub"]
+        case .rtf: return ["rtf"]
+        case .rtfd: return ["rtfd"]
+        case .textClipping: return ["textclipping"]
+        case .pptx: return ["pptx"]
+        case .ppt: return ["ppt"]
+        case .xlsx: return ["xlsx"]
+        case .xls: return ["xls"]
+        case .ods: return ["ods"]
+        case .csv: return ["csv"]
+        case .tsv: return ["tsv"]
         default: return [rawValue]
         }
     }
@@ -117,7 +141,21 @@ enum FileFormat: String, CaseIterable, Identifiable, Hashable {
         case .wmv: return UTType("com.microsoft.windows-media-wmv")
         case .pdf: return .pdf
         case .docx: return UTType("org.openxmlformats.wordprocessingml.document")
+        case .pages: return UTType("com.apple.iwork.pages.pages")
+        case .md: return UTType("net.daringfireball.markdown")
         case .txt: return .plainText
+        case .html: return .html
+        case .epub: return UTType("org.idpf.epub-container")
+        case .rtf: return .rtf
+        case .rtfd: return UTType("com.apple.rtfd")
+        case .textClipping: return UTType("com.apple.finder.textclipping")
+        case .ppt: return UTType("com.microsoft.powerpoint.ppt")
+        case .pptx: return UTType("org.openxmlformats.presentationml.presentation")
+        case .xlsx: return UTType("org.openxmlformats.spreadsheetml.sheet")
+        case .xls: return UTType("com.microsoft.excel.xls")
+        case .ods: return UTType("org.oasis-open.opendocument.spreadsheet")
+        case .csv: return .commaSeparatedText
+        case .tsv: return .tabSeparatedText
         case .srt: return UTType("com.subrip.srt") ?? .plainText
         case .vtt: return UTType("org.w3.webvtt") ?? .plainText
         case .zip: return .zip
@@ -142,4 +180,3 @@ enum FileFormat: String, CaseIterable, Identifiable, Hashable {
 
     var isMultiTrack: Bool { category == .video || category == .audio }
 }
-

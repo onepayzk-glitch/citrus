@@ -9,6 +9,8 @@ Local processing, no account, no subscription. GPL-3.0-only. Safety limits apply
 
 **Mac status: 0.1.10 developer trial — ad-hoc signed, not Apple-notarized.** This is an independent project, not affiliated with Tangerine. It builds on [Satsuma](https://github.com/plyght/satsuma), with its MIT attribution preserved. It is not yet a complete replacement for Tangerine. See [limitations](#limitations).
 
+**Tangerine parity build (this fork).** The conversion wheel now mirrors Tangerine's 275 options, every Tangerine tool (26) plus QR reading, the six file actions (AirDrop/Float/Copy/Move/Copy Path/Terminal), and the ⇧/⌘/⌃ drag wheels. See [parity/parity-matrix.md](parity/parity-matrix.md) for the feature-by-feature comparison and remaining gaps, and [parity/verification.md](parity/verification.md) for build and test evidence.
+
 ## Windows and Linux desktop edition
 
 The new **0.2.2 early desktop trial** is a separate implementation with a smaller feature set. [Download status and installation](https://sintaxerrorpvtltd.github.io/Open-Tangerine/#desktop) · [Desktop source and guide](Desktop/README.md) · [Windows/Linux build checks](https://github.com/sintaxerrorpvtltd/Open-Tangerine/actions/workflows/desktop.yml).
