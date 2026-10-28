@@ -248,7 +248,12 @@ struct ImageEngine: ConversionEngine {
             try await DocxWriter.write(paragraphs: [], images: [temp], to: request.destination)
         default:
             let quality = AppSettings.shared.jpegQuality
-            try await ImageIOBridge.writeAnyFormat(image, to: request.destination, format: request.target, quality: quality)
+            let metadata = AppSettings.shared.preserveMetadata ? ImageIOBridge.properties(request.source) : nil
+            if ImageIOBridge.canEncodeNatively(request.target) {
+                try ImageIOBridge.write(image, to: request.destination, format: request.target, quality: quality, metadata: metadata)
+            } else {
+                try await ImageIOBridge.writeAnyFormat(image, to: request.destination, format: request.target, quality: quality)
+            }
         }
         request.progress(1)
     }

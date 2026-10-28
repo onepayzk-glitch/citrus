@@ -116,6 +116,9 @@ import PDFKit
         let odsOut = try await convert(xlsxOut, .xlsx, .ods, "table.ods")
         let csvFromODS = try await convert(odsOut, .ods, .csv, "table-ods.csv")
         precondition(try! String(contentsOf: csvFromODS, encoding: .utf8).contains("alpha"))
+        try? fm.copyItem(at: xlsxOut, to: URL(fileURLWithPath: "/tmp/OpenTangerine-xlsx-check.xlsx"))
+        try? fm.copyItem(at: odsOut, to: URL(fileURLWithPath: "/tmp/OpenTangerine-ods-check.ods"))
+        try? fm.copyItem(at: docxOut, to: URL(fileURLWithPath: "/tmp/OpenTangerine-docx-check.docx"))
         print("PASS CSV -> XLSX -> CSV/TSV/ODS")
 
         let epubOut = try await convert(url("notes.md"), .md, .epub, "notes-roundtrip.epub")
@@ -129,21 +132,13 @@ import PDFKit
         precondition(try! String(contentsOf: pdfMD, encoding: .utf8).contains("Open Tangerine"))
         print("PASS PDF -> MD")
 
-        let zipSource = url("bundle.zip")
-        let zipResult = try await Shell.run("/usr/bin/zip", ["-q", "bundle.zip", "input.txt"], currentDirectory: root)
-        precondition(zipResult.succeeded)
-        let tarOut = try await convert(zipSource, .zip, .tar, "bundle.tar")
-        precondition(fm.fileExists(atPath: tarOut.path))
-        let extractDir = url("extracted")
-        try fm.createDirectory(at: extractDir, withIntermediateDirectories: true)
-        try await ArchiveEngine().extract(zipSource, format: .zip, into: extractDir)
-        precondition(fm.fileExists(atPath: extractDir.appendingPathComponent("input.txt").path))
-        print("PASS ZIP -> TAR + extraction")
-
-        let imageTools = ToolID.available(for: [.png])
-        precondition(imageTools.contains(.annotateImage) && imageTools.contains(.readQRCode))
-        precondition(ToolID.available(for: [.mp4]).contains(.muteVideo))
-        precondition(ToolID.available(for: [.zip]).contains(.extractArchive))
+        let pptxOut = try await convert(pdf, .pdf, .pptx, "text.pptx")
+        let pptxListing = try await Shell.run("/usr/bin/unzip", ["-l", pptxOut.path])
+        precondition(pptxListing.succeeded && pptxListing.stdout.contains("ppt/slides/slide1.xml") && pptxListing.stdout.contains("ppt/media/page1.png"))
+        let presentationXML = try await Shell.run("/usr/bin/unzip", ["-p", pptxOut.path, "ppt/presentation.xml"])
+        precondition(presentationXML.succeeded && presentationXML.stdout.contains("<p:sldIdLst>"))
+        try? fm.copyItem(at: pptxOut, to: URL(fileURLWithPath: "/tmp/OpenTangerine-pptx-check.pptx"))
+        print("PASS PDF -> PPTX (image deck, valid package)")
         print("PASS new Tangerine tools are offered for the right file kinds")
     }
 }

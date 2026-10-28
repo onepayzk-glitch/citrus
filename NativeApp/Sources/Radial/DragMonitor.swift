@@ -1,8 +1,12 @@
 import AppKit
 
+enum WheelMode {
+    case conversions, tools, actions
+}
+
 protocol DragMonitorDelegate: AnyObject {
-    func dragMonitor(_ monitor: DragMonitor, didBeginModifiedDrag urls: [URL], at point: NSPoint, advanced: Bool)
-    func dragMonitor(_ monitor: DragMonitor, didChangeModifiers shift: Bool, option: Bool, at point: NSPoint)
+    func dragMonitor(_ monitor: DragMonitor, didBeginModifiedDrag urls: [URL], at point: NSPoint, mode: WheelMode)
+    func dragMonitor(_ monitor: DragMonitor, didChangeModifiers mode: WheelMode?, at point: NSPoint)
     func dragMonitor(_ monitor: DragMonitor, didUpdateDraggedURLs urls: [URL])
     func dragMonitorDidEndDrag(_ monitor: DragMonitor)
 }
@@ -99,9 +103,13 @@ final class DragMonitor {
 
     private var buttonPressed: Bool { NSEvent.pressedMouseButtons & 1 == 1 }
 
-    private var currentModifiers: (shift: Bool, option: Bool) {
+    private var currentModifiers: (active: Bool, mode: WheelMode?) {
         let flags = NSEvent.modifierFlags
-        return (flags.contains(.shift) || flags.contains(.command) || flags.contains(.control), flags.contains(.command) || flags.contains(.option))
+        let settings = AppSettings.shared
+        if flags.contains(settings.actionsModifier.flag) { return (true, .actions) }
+        if flags.contains(settings.toolsModifier.flag) { return (true, .tools) }
+        if flags.contains(settings.convertModifier.flag) { return (true, .conversions) }
+        return (false, nil)
     }
 
     private func beginPressIfNeeded() {
@@ -131,14 +139,14 @@ final class DragMonitor {
         beginPressIfNeeded()
         guard !pressExcluded else { return }
         refreshDragPasteboard()
-        if !dragInFlight, pressInFinder, currentModifiers.shift, Date().timeIntervalSince(pressTime) >= Self.fallbackDelay, hypot(NSEvent.mouseLocation.x - pressOrigin.x, NSEvent.mouseLocation.y - pressOrigin.y) >= Self.fallbackDragDistance {
+        if !dragInFlight, pressInFinder, currentModifiers.active, Date().timeIntervalSince(pressTime) >= Self.fallbackDelay, hypot(NSEvent.mouseLocation.x - pressOrigin.x, NSEvent.mouseLocation.y - pressOrigin.y) >= Self.fallbackDragDistance {
             dragInFlight = true
             DragDebug.log("no drag pasteboard content; assuming Finder drag from movement")
         }
         evaluateModifiers()
         pollTick += 1
         if pollTick % 30 == 0 {
-            DragDebug.log("poll: loc=\(NSEvent.mouseLocation) shift=\(currentModifiers.shift) option=\(currentModifiers.option) inFlight=\(dragInFlight) urls=\(activeURLs.count) presenting=\(presenting) handled=\(handled)")
+            DragDebug.log("poll: loc=\(NSEvent.mouseLocation) active=\(currentModifiers.active) inFlight=\(dragInFlight) urls=\(activeURLs.count) presenting=\(presenting) handled=\(handled)")
         }
     }
 
@@ -180,12 +188,12 @@ final class DragMonitor {
         guard mouseDown, dragInFlight, !handled else { return }
         let mods = currentModifiers
         let point = NSEvent.mouseLocation
-        if mods.shift, !presenting {
+        if mods.active, !presenting {
             presenting = true
-            DragDebug.log("presenting wheel for \(activeURLs.map(\.lastPathComponent)) at \(point) option=\(mods.option)")
-            delegate?.dragMonitor(self, didBeginModifiedDrag: activeURLs, at: point, advanced: mods.option)
+            DragDebug.log("presenting wheel for \(activeURLs.map(\.lastPathComponent)) at \(point) mode=\(String(describing: mods.mode))")
+            delegate?.dragMonitor(self, didBeginModifiedDrag: activeURLs, at: point, mode: mods.mode ?? .conversions)
         } else if presenting {
-            delegate?.dragMonitor(self, didChangeModifiers: mods.shift, option: mods.option, at: point)
+            delegate?.dragMonitor(self, didChangeModifiers: mods.mode, at: point)
         }
     }
 

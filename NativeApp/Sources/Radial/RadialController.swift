@@ -28,30 +28,31 @@ final class RadialController: DragMonitorDelegate {
     private var formats: [FileFormat] = []
     private var advanced = false
     private var actions = false
+    private var mode: WheelMode = .conversions
     private var visible = false
     private var pickerMode = false
     private var outsideClickMonitor: Any?
 
     weak var dragMonitor: DragMonitor?
 
-    func dragMonitor(_ monitor: DragMonitor, didBeginModifiedDrag urls: [URL], at point: NSPoint, advanced: Bool) {
+    func dragMonitor(_ monitor: DragMonitor, didBeginModifiedDrag urls: [URL], at point: NSPoint, mode: WheelMode) {
         dragMonitor = monitor
         pickerMode = false
-        actions = NSEvent.modifierFlags.contains(.control)
-        present(urls: urls, at: point, advanced: advanced)
+        apply(mode: mode)
+        present(urls: urls, at: point, advanced: mode == .tools)
     }
 
-    func dragMonitor(_ monitor: DragMonitor, didChangeModifiers shift: Bool, option: Bool, at point: NSPoint) {
+    func dragMonitor(_ monitor: DragMonitor, didChangeModifiers mode: WheelMode?, at point: NSPoint) {
         guard !pickerMode else { return }
-        if !shift { return }
-        let newActions = NSEvent.modifierFlags.contains(.control)
-        if actions != newActions { actions = newActions; reloadItems() }
+        // Releasing the modifier keeps the wheel open until the drag ends.
+        guard let mode else { return }
         if !visible {
-            present(urls: urls, at: point, advanced: option)
+            apply(mode: mode)
+            present(urls: urls, at: point, advanced: mode == .tools)
             return
         }
-        if option != advanced {
-            advanced = option
+        if mode != self.mode {
+            apply(mode: mode)
             reloadItems()
         }
         // AppKit can delay destination updates while the source app owns the drag.
@@ -59,6 +60,12 @@ final class RadialController: DragMonitorDelegate {
         if let panel {
             panel.radialView.updateHighlight(forWindowPoint: panel.convertPoint(fromScreen: point))
         }
+    }
+
+    private func apply(mode: WheelMode) {
+        self.mode = mode
+        advanced = mode == .tools
+        actions = mode == .actions
     }
 
     func dragMonitor(_ monitor: DragMonitor, didUpdateDraggedURLs urls: [URL]) {
@@ -75,6 +82,8 @@ final class RadialController: DragMonitorDelegate {
 
     func presentPicker(for urls: [URL], advanced: Bool = false, actions: Bool = false) {
         self.actions = actions
+        self.advanced = advanced
+        self.mode = actions ? .actions : (advanced ? .tools : .conversions)
         pickerMode = true
         let point = NSEvent.mouseLocation
         present(urls: urls, at: point, advanced: advanced)

@@ -85,6 +85,56 @@ enum NotchSurface: String, CaseIterable, Identifiable {
     var title: String { self == .black ? "Pure black" : "Glass" }
 }
 
+enum DragModifier: String, CaseIterable, Identifiable {
+    case shift, command, control, option
+
+    var id: String { rawValue }
+
+    var title: String {
+        switch self {
+        case .shift: return "Shift (⇧)"
+        case .command: return "Command (⌘)"
+        case .control: return "Control (⌃)"
+        case .option: return "Option (⌥)"
+        }
+    }
+
+    var flag: NSEvent.ModifierFlags {
+        switch self {
+        case .shift: return .shift
+        case .command: return .command
+        case .control: return .control
+        case .option: return .option
+        }
+    }
+}
+
+enum WheelKind {
+    case conversions, tools, actions
+}
+
+enum TerminalApplication: String, CaseIterable, Identifiable {
+    case terminal, iTerm2, systemDefault
+
+    var id: String { rawValue }
+
+    var title: String {
+        switch self {
+        case .terminal: return "Terminal"
+        case .iTerm2: return "iTerm2"
+        case .systemDefault: return "System default"
+        }
+    }
+
+    var applicationURL: URL? {
+        switch self {
+        case .terminal: return URL(fileURLWithPath: "/System/Applications/Utilities/Terminal.app")
+        case .iTerm2: return URL(fileURLWithPath: "/Applications/iTerm.app")
+        case .systemDefault: return nil
+        }
+    }
+}
+
 final class AppSettings: ObservableObject {
     static let shared = AppSettings()
 
@@ -140,6 +190,26 @@ final class AppSettings: ObservableObject {
         }
     }
 
+    @Published var convertModifier: DragModifier {
+        didSet { defaults.set(convertModifier.rawValue, forKey: "convertModifier") }
+    }
+
+    @Published var toolsModifier: DragModifier {
+        didSet { defaults.set(toolsModifier.rawValue, forKey: "toolsModifier") }
+    }
+
+    @Published var actionsModifier: DragModifier {
+        didSet { defaults.set(actionsModifier.rawValue, forKey: "actionsModifier") }
+    }
+
+    @Published var terminalApplication: TerminalApplication {
+        didSet { defaults.set(terminalApplication.rawValue, forKey: "terminalApplication") }
+    }
+
+    @Published var preserveMetadata: Bool {
+        didSet { defaults.set(preserveMetadata, forKey: "preserveMetadata") }
+    }
+
     private init() {
         excludedApplications = defaults.dictionary(forKey: "excludedApplications") as? [String: String] ?? [:]
         compressionPreset = CompressionPreset(rawValue: defaults.string(forKey: "compressionPreset") ?? "") ?? .balanced
@@ -157,6 +227,11 @@ final class AppSettings: ObservableObject {
         ffmpegPath = defaults.string(forKey: "ffmpegPath") ?? ""
         jpegQuality = defaults.object(forKey: "jpegQuality") as? Double ?? 0.9
         appearanceMode = AppearanceMode(rawValue: defaults.string(forKey: "appearanceMode") ?? "") ?? .system
+        convertModifier = DragModifier(rawValue: defaults.string(forKey: "convertModifier") ?? "") ?? .shift
+        toolsModifier = DragModifier(rawValue: defaults.string(forKey: "toolsModifier") ?? "") ?? .command
+        actionsModifier = DragModifier(rawValue: defaults.string(forKey: "actionsModifier") ?? "") ?? .control
+        terminalApplication = TerminalApplication(rawValue: defaults.string(forKey: "terminalApplication") ?? "") ?? .terminal
+        preserveMetadata = defaults.object(forKey: "preserveMetadata") as? Bool ?? true
         if #available(macOS 13.0, *) {
             launchAtLogin = SMAppService.mainApp.status == .enabled
         } else {

@@ -19,10 +19,12 @@ struct TextDocumentEngine: ConversionEngine {
         .csv, .tsv, .xlsx, .xls, .ods, .ppt, .pptx, .pdf,
     ]
     static let writable: Set<FileFormat> = [
-        .txt, .md, .html, .docx, .epub, .pdf, .png, .jpg, .csv, .tsv, .xlsx, .ods, .srt, .vtt,
+        .txt, .md, .html, .docx, .epub, .pdf, .png, .jpg, .csv, .tsv, .xlsx, .ods, .srt, .vtt, .pptx, .pages,
     ]
 
     func supports(from: FileFormat, to: FileFormat) -> Bool {
+        if to == .pptx { return from == .pdf }
+        if to == .pages { return PagesExporter.canExport(from: from) }
         guard Self.readable.contains(from), Self.writable.contains(to) else { return false }
         // Existing DocumentEngine already owns these pairs; avoid duplicate claims.
         if from == .pdf, [.docx, .jpg, .png, .txt].contains(to) { return false }
@@ -31,6 +33,36 @@ struct TextDocumentEngine: ConversionEngine {
     }
 
     func convert(_ request: ConversionRequest) async throws {
+        if request.target == .pptx, request.sourceFormat == .pdf {
+            try await PptxWriter.writePDFSlides(request.source, to: request.destination, progress: request.progress)
+            return
+        }
+        if request.target == .pages {
+            if request.sourceFormat == .pdf {
+                // Pages cannot import a PDF, so build a temporary image DOCX and let Pages save it as PAGES.
+                let staging = FileManager.default.temporaryDirectory.appendingPathComponent("opentangerine-pages-\(UUID().uuidString)")
+                try FileManager.default.createDirectory(at: staging, withIntermediateDirectories: true)
+                defer { try? FileManager.default.removeItem(at: staging) }
+                let document = try PDFOps.document(request.source)
+                var images: [URL] = []
+                for index in 0..<document.pageCount {
+                    guard let page = document.page(at: index), let image = PDFRenderer.render(page: page, dpi: 150) else {
+                        throw OpenTangerineError.encodeFailed("PDF page \(index + 1)")
+                    }
+                    let imageURL = staging.appendingPathComponent("page\(index + 1).png")
+                    try ImageIOBridge.write(image, to: imageURL, format: .png)
+                    images.append(imageURL)
+                    request.progress(Double(index + 1) / Double(max(1, document.pageCount)) * 0.5)
+                }
+                let docxURL = staging.appendingPathComponent("pages-import.docx")
+                try await DocxWriter.write(paragraphs: [], images: images, to: docxURL)
+                try await PagesExporter.export(docxURL, from: .docx, to: request.destination)
+            } else {
+                try await PagesExporter.export(request.source, from: request.sourceFormat, to: request.destination)
+            }
+            request.progress(1)
+            return
+        }
         let document = try await TextDocumentReader.read(request.source, format: request.sourceFormat, progress: request.progress)
         try await TextDocumentWriter.write(document, format: request.target, to: request.destination, progress: request.progress)
         request.progress(1)

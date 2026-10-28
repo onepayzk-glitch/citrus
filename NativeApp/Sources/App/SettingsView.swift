@@ -6,6 +6,7 @@ enum SettingsTab: String, CaseIterable, Identifiable {
     case general
     case appearance
     case conversion
+    case compatibility
     case about
 
     var id: String { rawValue }
@@ -15,6 +16,7 @@ enum SettingsTab: String, CaseIterable, Identifiable {
         case .general: return "General"
         case .appearance: return "Appearance"
         case .conversion: return "Formats"
+        case .compatibility: return "Compatibility"
         case .about: return "About"
         }
     }
@@ -24,6 +26,7 @@ enum SettingsTab: String, CaseIterable, Identifiable {
         case .general: return "gearshape"
         case .appearance: return "paintbrush"
         case .conversion: return "arrow.triangle.2.circlepath"
+        case .compatibility: return "tablecells"
         case .about: return "info.circle"
         }
     }
@@ -124,6 +127,7 @@ struct SettingsView: View {
                         case .general: general
                         case .appearance: appearance
                         case .conversion: conversion
+                        case .compatibility: compatibility
                         case .about: about
                         }
                     }
@@ -151,6 +155,7 @@ struct SettingsView: View {
         case .general: return "A few thoughtful defaults. A smoother day."
         case .appearance: return "Make your workspace feel like yours."
         case .conversion: return "Find the balance between detail and size."
+        case .compatibility: return "Every source. Every output. At a glance."
         case .about: return "Small utility. Open possibilities."
         }
     }
@@ -172,17 +177,22 @@ struct SettingsView: View {
             }
         }
         Section {
-            LabeledContent("Conversion wheel") {
-                Label("Shift", systemImage: "shift").labelStyle(.titleAndIcon)
+            Picker("Conversion wheel", selection: modifierBinding(.conversions)) {
+                ForEach(DragModifier.allCases) { Text($0.title).tag($0) }
             }
-            LabeledContent("Tools wheel") {
-                Label("Command (or Option + Shift)", systemImage: "option").labelStyle(.titleAndIcon)
+            Picker("Tools wheel", selection: modifierBinding(.tools)) {
+                ForEach(DragModifier.allCases) { Text($0.title).tag($0) }
             }
-            LabeledContent("File actions", value: "Control")
+            Picker("File actions", selection: modifierBinding(.actions)) {
+                ForEach(DragModifier.allCases) { Text($0.title).tag($0) }
+            }
+            Picker("Terminal app", selection: $settings.terminalApplication) {
+                ForEach(TerminalApplication.allCases) { Text($0.title).tag($0) }
+            }
         } header: {
             Text("Drag Modifiers")
         } footer: {
-            Text("Hold the modifier while dragging files in Finder.")
+            Text("Hold the chosen modifier while dragging files in Finder. Tangerine's defaults are ⇧ Shift, ⌘ Command and ⌃ Control. Picking a key that another wheel already uses swaps the two.")
         }
         Section("Excluded applications") {
             Text("Drag shortcuts stay off when a drag starts in these apps. Add CorelDRAW or other design tools here. You can still use Convert Files from the menu bar.")
@@ -274,6 +284,15 @@ struct SettingsView: View {
                  : "Strong prioritizes the smallest file, with visible quality loss.")
         }
         Section {
+            Toggle("Preserve metadata in conversions", isOn: $settings.preserveMetadata)
+        } header: {
+            Text("Metadata")
+        } footer: {
+            Text(settings.preserveMetadata
+                 ? "Image conversions keep the original camera, GPS and processing tags."
+                 : "Image conversions write clean files without camera, GPS or processing tags.")
+        }
+        Section {
             HStack {
                 TextField("Auto-detect (Homebrew, MacPorts, /usr/local/bin)", text: $settings.ffmpegPath)
                     .textFieldStyle(.roundedBorder)
@@ -291,6 +310,69 @@ struct SettingsView: View {
         } footer: {
             Text("Open Tangerine uses Apple frameworks for most work. FFmpeg fills the gaps: MP3, FLAC, OGG, Opus, WMA, MKV, WebM, AVI, WMV, GIF and AVIF/WebP encoding on older systems.")
         }
+    }
+
+    @ViewBuilder private var compatibility: some View {
+        Section {
+            Text("Every supported source format and the outputs the conversion wheel offers. \(ConversionMatrix.totalConversions) routes in total.")
+                .font(.caption).foregroundStyle(.secondary)
+            ForEach(FileFormat.allCases) { source in
+                let targets = ConversionMatrix.targets(for: source)
+                if !targets.isEmpty {
+                    VStack(alignment: .leading, spacing: 4) {
+                        HStack(spacing: 8) {
+                            Text(source.displayName)
+                                .font(.system(size: 12, weight: .semibold, design: .monospaced))
+                            Spacer()
+                            Text("\(targets.count)")
+                                .font(.caption.monospacedDigit())
+                                .foregroundStyle(.secondary)
+                        }
+                        Text(targets.map(\.displayName).joined(separator: "  ·  "))
+                            .font(.caption2)
+                            .foregroundStyle(.secondary)
+                            .fixedSize(horizontal: false, vertical: true)
+                    }
+                    .padding(.vertical, 2)
+                }
+            }
+        } header: {
+            Text("Conversion compatibility")
+        }
+    }
+
+    private func modifierBinding(_ wheel: WheelKind) -> Binding<DragModifier> {
+        Binding(
+            get: {
+                switch wheel {
+                case .conversions: return settings.convertModifier
+                case .tools: return settings.toolsModifier
+                case .actions: return settings.actionsModifier
+                }
+            },
+            set: { newValue in
+                let old: DragModifier
+                switch wheel {
+                case .conversions: old = settings.convertModifier
+                case .tools: old = settings.toolsModifier
+                case .actions: old = settings.actionsModifier
+                }
+                guard newValue != old else { return }
+                switch wheel {
+                case .conversions: break
+                case .tools: if settings.convertModifier == newValue { settings.convertModifier = old }
+                case .actions: break
+                }
+                if wheel != .conversions, settings.convertModifier == newValue { settings.convertModifier = old }
+                if wheel != .tools, settings.toolsModifier == newValue { settings.toolsModifier = old }
+                if wheel != .actions, settings.actionsModifier == newValue { settings.actionsModifier = old }
+                switch wheel {
+                case .conversions: settings.convertModifier = newValue
+                case .tools: settings.toolsModifier = newValue
+                case .actions: settings.actionsModifier = newValue
+                }
+            }
+        )
     }
 
     @ViewBuilder private var about: some View {

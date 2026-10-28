@@ -117,9 +117,9 @@ enum FileAction: String, CaseIterable, Hashable {
             NSPasteboard.general.setString(urls.map(\.path).joined(separator: "\n"), forType: .string)
         case .openTerminal:
             let folder = urls[0].hasDirectoryPath ? urls[0] : urls[0].deletingLastPathComponent()
-            let terminal = URL(fileURLWithPath: "/System/Applications/Utilities/Terminal.app")
-            if FileManager.default.fileExists(atPath: terminal.path) {
-                NSWorkspace.shared.open([folder], withApplicationAt: terminal, configuration: NSWorkspace.OpenConfiguration()) { _, error in
+            let preferred = AppSettings.shared.terminalApplication.applicationURL
+            if let preferred, FileManager.default.fileExists(atPath: preferred.path) {
+                NSWorkspace.shared.open([folder], withApplicationAt: preferred, configuration: NSWorkspace.OpenConfiguration()) { _, error in
                     if error != nil { NSWorkspace.shared.open(folder) }
                 }
             } else {

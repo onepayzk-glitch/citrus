@@ -9,11 +9,11 @@
 | 维度 | Tangerine 官方 | 本仓库现状 | 匹配度 |
 |---|---|---|---|
 | 转换路由（格式对） | 275 | 275（`ConversionMatrix.totalConversions == 275`，测试断言） | **275/275 声明一致** |
-| 可执行引擎覆盖 | 275 | **266/275**（9 条已识别为未支持，见 §3.3） | 96.7%，缺口逐条列出 |
+| 可执行引擎覆盖 | 275 | **275/275**（267 条无外部依赖；8 条 →PAGES 走本机 Pages.app + Automation 授权，见 §3.3） | 100%（含依赖说明） |
 | 文件工具 | 26（+ 读 QR，2.0.2 新增） | 29 = 26/26 + QR + Resize + Rotate 两个额外工具 | **26/26 全覆盖**（超集） |
 | 文件动作 | 6（AirDrop/Float/Copy/Move/Copy Path/Terminal） | 6/6 + 3 个额外动作（Reveal/Duplicate/SHA-256） | **6/6 全覆盖** |
-| 拖拽交互 | ⇧ 格式轮盘 / ⌘ 工具轮盘 / ⌃ 动作轮盘，松键后轮盘保持到 drop | 同（合成事件实测见 §6） | 交互语义一致；设置内重映射未做 |
-| 设置项（5 tab） | General / Formats / Compatibility / Folders / About | 部分（见 §7） | ~50%，非核心功能 |
+| 拖拽交互 | ⇧ 格式轮盘 / ⌘ 工具轮盘 / ⌃ 动作轮盘，松键后轮盘保持到 drop | 同，且三键可重映射；轮盘支持 Esc/Enter/方向键 | 一致 |
+| 设置项（5 tab） | General / Formats / Compatibility / Folders / About | 5 tab 对齐；General 含修饰键重映射与 Terminal 选择，Compatibility 为矩阵表格；Folders 不适用（开源版不沙盒） | 核心项已对齐 |
 | 付费墙 | 免费 20 个文件后一次性买断 | 无付费墙、无用量计数 | 有意的开源差异（§8） |
 | 输出命名 | `Compressed`/`Edited`/`Annotated.png`/`Speed 2x`/`Clips`/`Pages` 等后缀 | 采用同族命名（§5） | 语义一致 |
 
@@ -71,14 +71,14 @@
 | `SubtitleEngine` | srt↔vtt、→txt | `Engines/SubtitleEngine.swift` |
 | `ArchiveEngine`（已启用） | zip/tar/gz/rar → zip/tar/gz（含解压中间层） | `Engines/ArchiveEngine.swift` |
 
-### 3.3 未支持的 9 条（有意列出，不静默降级）
+### 3.3 依赖与保真说明
 
-| # | 路由 | 原因 | 替代路径 |
-|---|---|---|---|
-| 1-8 | docx/md/rtf/rtfd/textclipping/pdf/epub/txt → **PAGES**（8 条） | `.pages` 是 iWork iwa/protobuf 包，需要 Pages 才能生成；开源侧未复制 Apple 私有格式写入器 | 先导出 PDF/DOCX，再用 Pages 另存 |
-| 9 | pdf → **PPTX** | 需要幻灯片母版/布局渲染器（官方走 Java+POI），开源侧未内嵌等价渲染器 | PDF→PNG 后手工组版；或用 Keynote 导入 PDF |
-
-> 其余 266 条均可执行。Office 类转换（DOCX/PPTX/XLSX/ODS）为**文本级/表格级**重建，不保证版式像素级还原；官方 Java/POI + JS 渲染器同样属于重建，保真度差异已在 §7 注明。
+| 路由组 | 依赖 | 说明 |
+|---|---|---|
+| 8 条 `→ PAGES`（docx/md/rtf/rtfd/textclipping/epub/txt/pdf） | 本机 `Pages.app` + 首次 macOS Automation 授权 | 通过 Pages 自动化保存为 `.pages`；PDF→PAGES 先渲染页面为图片 DOCX 再交给 Pages。Tangerine 内置 iWork 写入引擎、无需授权——这是与官方的已知运行差异 |
+| `pdf → pptx` | 无 | 自研纯 OOXML PPTX 写入器：每页 PDF 渲染为图片，一页一张幻灯片 |
+| Office 类（DOCX/PPTX/XLSX/ODS/EPUB） | 无 | 文本/表格级重建，不保证版式像素级还原；官方 Java/POI+JS 渲染同样属于重建 |
+| MP3/FLAC/OGG/Opus/WMA/MKV/WebM/AVI/WMV/GIF 部分编码 | 可选系统 `ffmpeg` | 缺失时图片/字幕/压缩包/文档仍可用，相关按钮会给出提示 |
 
 ## 4. 文件工具（Tangerine 26 项 → 26/26 + 3 额外）
 
@@ -142,8 +142,8 @@
 | 多文件批量、目标取交集 | ✅（`ConversionMatrix.targets(for:)`，BatchTests 覆盖） |
 | 每个任务独立进度窗 / 刘海进度 / 完成后 Finder 显示 | ✅（`Core/JobRunner.swift`、`UI/NotchCompanion.swift`） |
 | 菜单栏常驻、菜单内入口 | ✅（菜单栏含 Convert/Open Tool/File Actions/Settings/About/Updates/Logs/Quit） |
-| 快捷键选格式（Enter 打开菜单、方向键、Esc） | ⚠️ 部分（轮盘键盘导航存在，未逐项对标官方文档） |
-| 修饰键可在设置内重映射 | ❌ 未实现（官方 Settings → General → 三行下拉框） |
+| 轮盘键盘操作（Esc 取消、Enter 确认、方向键切换） | ✅ `Radial/RadialView.swift` keyDown |
+| 修饰键可在设置内重映射（⇧/⌘/⌃/⌥ 任选，重复自动互换） | ✅ Settings → General → 三个下拉框（`AppSettings.convertModifier/toolsModifier/actionsModifier`） |
 
 ## 7. 设置与其它差异
 
@@ -152,14 +152,17 @@
 | General：Glass/Solid 外观 | ✅ | 刘海样式黑/玻璃 |
 | General：Launch at login | ✅ | `SMAppService` |
 | General：Sound and haptic feedback | ⚠️ 部分 | 未逐项对标 |
-| General：Drag Modifiers 重映射 | ❌ | 见 §6 |
-| General：Float Behaviour | ⚠️ 部分 | Float 动作已实现，行为选项未做 |
-| General：Terminal app 选择（Terminal/iTerm2） | ❌ | 目前固定 Terminal |
-| Formats：33 个源格式面板 + Preserve metadata + 压缩预设 | ⚠️ 部分 | 转换矩阵/压缩预设已有；按格式的面板与 Preserve metadata 开关未做 |
-| Compatibility：源×目标矩阵 UI | ❌ | 数据已在 `ConversionMatrix`，未做可视化表格 |
+| General：Drag Modifiers 重映射 | ✅ | 三行下拉框，重复键自动互换 |
+| General：Float Behaviour | ⚠️ 部分 | Float 悬浮架已实现，行为选项未做 |
+| General：Terminal app 选择（Terminal/iTerm2/系统默认） | ✅ | `AppSettings.terminalApplication` |
+| Formats：源格式面板 + Preserve metadata + 压缩预设 | ⚠️ 部分 | 压缩预设/质量/长边/FFmpeg/Preserve metadata 已做；按格式的细分设置面板未做 |
+| Compatibility：源×目标矩阵 UI | ✅ | Settings → Compatibility：逐源格式列出全部目标与总数（275） |
 | Folders：安全作用域书签 | ❌ | 开源版不沙盒，无需书签 |
 | About：版本/免费额度/Restore Purchase | ⚠️ | 有 About；无付费墙故无额度/恢复购买 |
 | 首启引导 6 页 | ❌ | 未复刻引导流程（直接打开设置） |
+| Sound and haptic feedback | ⚠️ 部分 | 未逐项对标 |
+
+> PAGES 输出依赖本机 Pages.app 与 Automation 授权；其余 267 条路由不依赖任何外部应用（音视频部分格式可选依赖系统 ffmpeg）。
 
 ## 8. 付费墙（有意差异）
 
@@ -179,11 +182,13 @@
 
 > 保真度说明：官方对 Office 的转换同样是重建（Java/POI + JS 渲染），不是像素级回放。开源实现按「可打开、内容不丢、版式近似」交付；PDF→DOCX/PNG/JPG 继承基线（含 300 DPI 渲染、扫描页图片回填）。
 
-## 10. 未完成项清单（按优先级）
+## 10. 未完成项清单（均为非核心项）
 
-1. `.pages` 输出 8 条（§3.3 #1-8）——需要 Pages/iWork 写入器；可先用 PDF/DOCX 中转。
-2. `pdf → pptx`（§3.3 #9）——需要幻灯片渲染器。
-3. 修饰键重映射、Compatibility 矩阵 UI、Formats 面板、Folders 书签（§6/§7）。
-4. 首启引导、Getting Started、Unlock 面板（付费墙移除后不适用）。
-5. Office 版式级保真（当前为文本级重建）。
-6. FFmpeg 内置化（当前为可选外部依赖；无网络安装时图片/字幕/压缩包/文档仍可用）。
+1. 首启引导 6 页与「Getting Started…」入口未复刻（付费墙相关页面按开源版要求移除）。
+2. Settings → Formats 的「按格式细分设置」面板未做（质量/压缩/长边/Preserve metadata 已集中提供）。
+3. Sound and haptic feedback、Float Behaviour 的细分选项（Float 悬浮架本身已实现）。
+4. Office 转换的版式级保真（当前为文本/表格级重建；官方同为重建，但用 Java/POI + JS 渲染器，保真度更高）。
+5. FFmpeg 未内置：官方内置 22 MB LGPL 版；本仓库使用系统可选 ffmpeg，缺失时部分音视频编码不可用（会明确提示）。
+6. PAGES 输出依赖本机 Pages.app 与首次 Automation 授权（Tangerine 内置引擎无此依赖）。
+
+核心功能（275 条转换路由、26 个工具 + QR、6 个文件动作、⇧/⌘/⌃ 轮盘、批量/进度/输出位置）已全部对齐。
