@@ -77,7 +77,8 @@
 |---|---|---|
 | 8 条 `→ PAGES`（docx/md/rtf/rtfd/textclipping/epub/txt/pdf） | 本机 `Pages.app` + 首次 macOS Automation 授权 | 通过 Pages 自动化保存为 `.pages`；PDF→PAGES 先渲染页面为图片 DOCX 再交给 Pages。Tangerine 内置 iWork 写入引擎、无需授权——这是与官方的已知运行差异 |
 | `pdf → pptx` | 无 | 自研纯 OOXML PPTX 写入器：每页 PDF 渲染为图片，一页一张幻灯片 |
-| Office 类（DOCX/PPTX/XLSX/ODS/EPUB） | 无 | 文本/表格级重建，不保证版式像素级还原；官方 Java/POI+JS 渲染同样属于重建 |
+| Office 类（DOCX/PPTX/XLSX/ODS/RTF/HTML/CSV） | 本机 LibreOffice（自动检测，L2） | 检测到 LibreOffice 时用其导出 PDF/PNG/JPG（保真接近官方）；未安装时回退内置文本/表格级重建。不捆绑、不下载 |
+| EPUB | 无 | 文本级重建（LibreOffice 26.8 不支持 EPUB 导入，实测拒绝） |
 | MP3/FLAC/OGG/Opus/WMA/MKV/WebM/AVI/WMV/GIF 部分编码 | 可选系统 `ffmpeg` | 缺失时图片/字幕/压缩包/文档仍可用，相关按钮会给出提示 |
 
 ## 4. 文件工具（Tangerine 26 项 → 26/26 + 3 额外）
@@ -177,7 +178,7 @@
 | FFmpeg | 内置 22 MB（8.0.3，LGPL，VideoToolbox + libmp3lame + libwebp，无 x264/x265/VPx/AV1 编码器） | 使用系统 `ffmpeg`（可选依赖，Homebrew 已装）；缺失时原生路径仍可完成大部分图片/视频/音频 |
 | WebP 编码 | 内置 `cwebp` | 原生/FFmpeg，缺失时内置 VP8L 无损兜底 |
 | 元数据 | 内置 ExifTool 13.59 + 两个自研 Perl 桥 | 原生 MetadataOps（读写删），未内嵌 ExifTool |
-| Office | Java 21 jlink + POI 5.5.1/PDFBox 3.0.6 + 自研 jar（1–1000 页限制） | `TextDocumentEngine` 纯原生重建（文本/表格级），无 Java 依赖 |
+| Office | Java 21 jlink + POI 5.5.1/PDFBox 3.0.6 + 自研 jar（1–1000 页限制） | 检测本机 LibreOffice 作为可选高保真引擎（`Engines/OfficeEngine.swift`，L2，不捆绑）；无 LibreOffice 时用纯原生文本/表格重建（无 Java 依赖） |
 | iWork | JavaScriptCore + iWork 模板 | 只读 `.pages` 的 QuickLook 预览 PDF；不做 iWork 写入 |
 
 > 保真度说明：官方对 Office 的转换同样是重建（Java/POI + JS 渲染），不是像素级回放。开源实现按「可打开、内容不丢、版式近似」交付；PDF→DOCX/PNG/JPG 继承基线（含 300 DPI 渲染、扫描页图片回填）。
@@ -187,7 +188,7 @@
 1. 首启引导 6 页与「Getting Started…」入口未复刻（付费墙相关页面按开源版要求移除）。
 2. Settings → Formats 的「按格式细分设置」面板未做（质量/压缩/长边/Preserve metadata 已集中提供）。
 3. Sound and haptic feedback、Float Behaviour 的细分选项（Float 悬浮架本身已实现）。
-4. Office 转换的版式级保真（当前为文本/表格级重建；官方同为重建，但用 Java/POI + JS 渲染器，保真度更高）。
+4. Office 转换的版式级保真：已改走本机 LibreOffice（L2，检测复用，0 捆绑）；未安装 LibreOffice 的机器回退文本级重建，保真度低于官方自研渲染器。
 5. FFmpeg 未内置：官方内置 22 MB LGPL 版；本仓库使用系统可选 ffmpeg，缺失时部分音视频编码不可用（会明确提示）。
 6. PAGES 输出依赖本机 Pages.app 与首次 Automation 授权（Tangerine 内置引擎无此依赖）。
 

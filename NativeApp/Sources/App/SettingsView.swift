@@ -41,6 +41,7 @@ struct SettingsView: View {
     @EnvironmentObject private var settings: AppSettings
     @ObservedObject var model: SettingsTabModel
     @State private var ffmpegHealth: FFmpeg.Health = .missing
+    @State private var officeHealth: OfficeEngine.Health = .missing
 
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @Environment(\.accessibilityReduceTransparency) private var reduceTransparency
@@ -148,6 +149,7 @@ struct SettingsView: View {
         .onReceive(NotificationCenter.default.publisher(for: .init("OpenTangerineShowAbout"))) { _ in model.tab = .about }
         .onReceive(NotificationCenter.default.publisher(for: NSApplication.didBecomeActiveNotification)) { _ in settings.refreshLoginStatus() }
         .task(id: settings.ffmpegPath) { ffmpegHealth = await FFmpeg.checkHealth() }
+        .task(id: settings.officeEnginePath) { officeHealth = await OfficeEngine.checkHealth() }
     }
 
     private var tabDescription: String {
@@ -292,6 +294,7 @@ struct SettingsView: View {
                  ? "Image conversions keep the original camera, GPS and processing tags."
                  : "Image conversions write clean files without camera, GPS or processing tags.")
         }
+        officeEngineSection
         Section {
             HStack {
                 TextField("Auto-detect (Homebrew, MacPorts, /usr/local/bin)", text: $settings.ffmpegPath)
@@ -309,6 +312,27 @@ struct SettingsView: View {
             Text("FFmpeg (optional)")
         } footer: {
             Text("Open Tangerine uses Apple frameworks for most work. FFmpeg fills the gaps: MP3, FLAC, OGG, Opus, WMA, MKV, WebM, AVI, WMV, GIF and AVIF/WebP encoding on older systems.")
+        }
+    }
+
+    @ViewBuilder private var officeEngineSection: some View {
+        Section {
+            HStack {
+                TextField("Auto-detect (LibreOffice.app, Homebrew soffice)", text: $settings.officeEnginePath)
+                    .textFieldStyle(.roundedBorder)
+                Button("Choose…") { chooseOfficeEngine() }
+            }
+            HStack(alignment: .firstTextBaseline, spacing: 6) {
+                Image(systemName: officeHealthSymbol)
+                    .foregroundStyle(officeHealthColor)
+                Text(officeHealthText)
+                    .font(.caption)
+                    .textSelection(.enabled)
+            }
+        } header: {
+            Text("Office engine (optional)")
+        } footer: {
+            Text("Detects an installed LibreOffice for high-fidelity DOCX/PPTX/XLSX/ODS → PDF, PNG and JPG. Nothing is downloaded or bundled; when it is missing, Office conversions fall back to the built-in text engine.")
         }
     }
 
@@ -447,6 +471,36 @@ struct SettingsView: View {
         panel.directoryURL = URL(fileURLWithPath: "/opt/homebrew/bin")
         if panel.runModal() == .OK, let url = panel.url {
             settings.ffmpegPath = url.path
+        }
+    }
+
+    private var officeHealthSymbol: String {
+        switch officeHealth {
+        case .ready: return "checkmark.circle.fill"
+        case .broken: return "xmark.octagon.fill"
+        case .missing: return "info.circle"
+        }
+    }
+
+    private var officeHealthColor: Color {
+        switch officeHealth {
+        case .ready: return .green
+        case .broken: return .orange
+        case .missing: return .secondary
+        }
+    }
+
+    private var officeHealthText: String { officeHealth.summary }
+
+    private func chooseOfficeEngine() {
+        let panel = NSOpenPanel()
+        panel.canChooseFiles = true
+        panel.canChooseDirectories = false
+        panel.allowsMultipleSelection = false
+        panel.showsHiddenFiles = true
+        panel.directoryURL = URL(fileURLWithPath: "/Applications/LibreOffice.app/Contents/MacOS")
+        if panel.runModal() == .OK, let url = panel.url {
+            settings.officeEnginePath = url.path
         }
     }
 }

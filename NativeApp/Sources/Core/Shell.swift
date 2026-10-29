@@ -80,6 +80,24 @@ enum Shell {
         return result
     }
 
+    /// Runs the process and terminates it when the deadline passes.
+    static func run(_ executable: String, _ arguments: [String], currentDirectory: URL? = nil, timeout: TimeInterval) async throws -> ShellResult {
+        try await withThrowingTaskGroup(of: ShellResult.self) { group in
+            group.addTask {
+                try await run(executable, arguments, currentDirectory: currentDirectory)
+            }
+            group.addTask {
+                try await Task.sleep(nanoseconds: UInt64(max(0.1, timeout) * 1_000_000_000))
+                throw OpenTangerineError.toolFailed((executable as NSString).lastPathComponent, "Timed out after \(Int(timeout)) seconds.")
+            }
+            defer { group.cancelAll() }
+            guard let result = try await group.next() else {
+                throw OpenTangerineError.toolFailed(executable, "No result")
+            }
+            return result
+        }
+    }
+
     static func which(_ name: String, extra: [String] = []) -> String? {
         let fm = FileManager.default
         var candidates = extra

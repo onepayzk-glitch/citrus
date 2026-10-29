@@ -105,6 +105,16 @@ FileAction.allCases.count          // 9 = 官方 6 + Reveal/Duplicate/SHA-256
 | Preserve metadata | 图片转换保留/剥离原始元数据（`ImageEngine`） |
 | Compatibility 矩阵页 | Settings 新 tab，逐源格式列出目标与总数（275） |
 | 轮盘键盘操作 | Esc 取消 / Enter 确认 / 方向键切换（既已实现，本轮纳入对照） |
+| Office 引擎（L2） | `Engines/OfficeEngine.swift`：自动检测本机 LibreOffice，DOCX/PPTX/XLSX/ODS/RTF/HTML/CSV/TSV → PDF/PNG/JPG；不捆绑、不下载；未检测到时回退文本引擎 |
+| 共享 LibreOffice profile | `~/Library/Application Support/OpenTangerine/LibreOfficeProfile`，串行化进程；失败自动换新 profile 重试 |
+| 设置入口 | Settings → Formats → 「Office engine (optional)」：路径、选择按钮、健康状态（版本/路径/未安装提示） |
+
+### Office 引擎实测
+
+- 检测：`LibreOffice 26.8.1.1 … /Applications/LibreOffice.app/Contents/MacOS/soffice`
+- 新增套件 `OfficeEngineTests`：DOCX→PDF、DOCX→PNG、XLSX→PDF、PPTX→PDF 全部 PASS
+- 性能：单次转换约 0.6–0.8 秒（进程启动+转换）；冷/暖 profile 差异主要来自 LO 进程启动
+- 实测数据：brew 安装 805MB；裁剪 help/extensions/gallery/template/wizards/basic/java/Python + 图标主题后 484MB，转换仍正常（仅作评估记录，本方案不捆绑）
 
 ## 8. 已知未验证项
 

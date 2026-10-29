@@ -172,6 +172,10 @@ final class AppSettings: ObservableObject {
         didSet { defaults.set(ffmpegPath, forKey: "ffmpegPath") }
     }
 
+    @Published var officeEnginePath: String {
+        didSet { defaults.set(officeEnginePath, forKey: "officeEnginePath") }
+    }
+
     @Published var launchAtLogin: Bool {
         didSet { if !refreshingLoginStatus { applyLaunchAtLogin() } }
     }
@@ -225,6 +229,7 @@ final class AppSettings: ObservableObject {
             defaults.set(true, forKey: "notchDefaultV012")
         }
         ffmpegPath = defaults.string(forKey: "ffmpegPath") ?? ""
+        officeEnginePath = defaults.string(forKey: "officeEnginePath") ?? ""
         jpegQuality = defaults.object(forKey: "jpegQuality") as? Double ?? 0.9
         appearanceMode = AppearanceMode(rawValue: defaults.string(forKey: "appearanceMode") ?? "") ?? .system
         convertModifier = DragModifier(rawValue: defaults.string(forKey: "convertModifier") ?? "") ?? .shift

@@ -18,6 +18,7 @@ enum Engines {
         ImageEngine(),
         AudioEngine(),
         VideoEngine(),
+        OfficeEngine(),
         DocumentEngine(),
         TextDocumentEngine(),
         SubtitleEngine(),
