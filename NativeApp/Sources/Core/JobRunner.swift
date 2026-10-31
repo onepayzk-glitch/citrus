@@ -53,7 +53,7 @@ final class JobRunner: ObservableObject {
     func convert(_ urls: [URL], to target: FileFormat) {
         DiagnosticLog.log("convert \(urls.map(\.lastPathComponent)) -> \(target.displayName)")
         for url in urls {
-            let job = Job(title: "Converting to \(target.displayName)", detail: url.lastPathComponent, symbol: target.category.symbol)
+            let job = Job(title: L10n.format("Converting to %@", target.displayName), detail: url.lastPathComponent, symbol: target.category.symbol)
             guard let source = FileFormat.detect(url) else {
                 enqueue(job) { _ in
                     throw OpenTangerineError.invalidInput("Unsupported file type: \(url.lastPathComponent)")

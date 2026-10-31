@@ -48,7 +48,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         if let button = item.button {
             button.image = BrandArtwork.image(size: 24, template: true)
             button.imageScaling = .scaleProportionallyDown
-            button.toolTip = "Open Tangerine: hold Shift while dragging a file"
+            button.toolTip = L10n.t("Open Tangerine: hold Shift while dragging a file")
         }
         let menu = NSMenu()
         menu.addItem(withTitle: "Convert Files…", action: #selector(convertFiles), keyEquivalent: "o").target = self
@@ -73,6 +73,9 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             if let symbol = symbols[entry.title] {
                 entry.image = NSImage(systemSymbolName: symbol, accessibilityDescription: entry.title)
             }
+        }
+        for entry in menu.items where !entry.isSeparatorItem {
+            entry.title = L10n.t(entry.title)
         }
         item.menu = menu
         statusItem = item

@@ -63,14 +63,37 @@ xattr -cr "$app" 2>/dev/null || true
 if [[ -n "${DEVELOPER_ID_APPLICATION:-}" ]]; then
   codesign --force --options runtime --timestamp --sign "$DEVELOPER_ID_APPLICATION" "$app"
 else
-  # File-provider synced folders re-attach FinderInfo right after it is cleared, so retry.
-  for attempt in 1 2 3 4; do
+  # File-provider synced folders re-attach FinderInfo right after it is cleared, so sign
+  # and verify in one retry loop instead of trusting a single codesign call.
+  signed=0
+  for attempt in 1 2 3 4 5 6 7 8; do
     xattr -cr "$app" 2>/dev/null || true
-    if codesign --force --sign - "$app" 2>/dev/null; then break; fi
+    if codesign --force --sign - "$app" 2>/dev/null && codesign --verify --deep --strict "$app" 2>/dev/null; then
+      signed=1
+      break
+    fi
     sleep 1
   done
+  if [[ "$signed" != "1" ]]; then
+    echo "codesign failed after retries; check extended attributes on $app" >&2
+    exit 1
+  fi
 fi
-codesign --verify --deep --strict --verbose=2 "$app"
+# Verify in a retry loop: the synced workspace can re-attach FinderInfo between
+# signing and verification, which makes a single codesign check flaky.
+verified=0
+for attempt in 1 2 3 4 5 6 7 8; do
+  xattr -cr "$app" 2>/dev/null || true
+  if codesign --verify --deep --strict --verbose=2 "$app" 2>/dev/null; then
+    verified=1
+    break
+  fi
+  sleep 1
+done
+if [[ "$verified" != "1" ]]; then
+  echo "codesign verification failed after retries" >&2
+  exit 1
+fi
 test -x "$app/Contents/MacOS/OpenTangerine"
 plutil -lint "$app/Contents/Info.plist"
 printf 'Built %s (%s, macOS %s+)\n' "$app" "$(xcrun lipo -archs "$app/Contents/MacOS/OpenTangerine")" "$MIN_MACOS"

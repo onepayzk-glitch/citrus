@@ -13,11 +13,11 @@ enum SettingsTab: String, CaseIterable, Identifiable {
 
     var title: String {
         switch self {
-        case .general: return "General"
-        case .appearance: return "Appearance"
-        case .conversion: return "Formats"
-        case .compatibility: return "Compatibility"
-        case .about: return "About"
+        case .general: return L10n.t("General")
+        case .appearance: return L10n.t("Appearance")
+        case .conversion: return L10n.t("Formats")
+        case .compatibility: return L10n.t("Compatibility")
+        case .about: return L10n.t("About")
         }
     }
 
@@ -91,9 +91,9 @@ struct SettingsView: View {
                 }
                 Spacer()
                 VStack(alignment: .leading, spacing: 8) {
-                    Label("On your Mac", systemImage: "lock.shield")
+                    Label(L10n.t("On your Mac"), systemImage: "lock.shield")
                         .font(.system(size: 12, weight: .semibold))
-                    Text("Your files. Your workflow.")
+                    Text(L10n.t("Your files. Your workflow."))
                         .font(.caption).foregroundStyle(.secondary)
                     Text("OPEN SOURCE  /  \(Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "Development")")
                         .font(.system(size: 9, weight: .bold, design: .monospaced))
@@ -155,28 +155,33 @@ struct SettingsView: View {
 
     private var tabDescription: String {
         switch model.tab {
-        case .general: return "A few thoughtful defaults. A smoother day."
-        case .appearance: return "Make your workspace feel like yours."
-        case .conversion: return "Find the balance between detail and size."
-        case .compatibility: return "Every source. Every output. At a glance."
-        case .about: return "Small utility. Open possibilities."
+        case .general: return L10n.t("A few thoughtful defaults. A smoother day.")
+        case .appearance: return L10n.t("Make your workspace feel like yours.")
+        case .conversion: return L10n.t("Find the balance between detail and size.")
+        case .compatibility: return L10n.t("Every source. Every output. At a glance.")
+        case .about: return L10n.t("Small utility. Open possibilities.")
         }
     }
 
     @ViewBuilder private var general: some View {
-        Section("Output") {
-            Picker("Save converted files", selection: $settings.outputLocation) {
+        Section(L10n.t("Output")) {
+            Picker(L10n.t("Save converted files"), selection: $settings.outputLocation) {
                 ForEach(OutputLocation.allCases) { Text($0.title).tag($0) }
             }
-            Toggle("Reveal results in Finder", isOn: $settings.revealInFinder)
+            Toggle(L10n.t("Reveal results in Finder"), isOn: $settings.revealInFinder)
         }
-        Section("General") {
-            Toggle("Start automatically at login", isOn: $settings.launchAtLogin)
-            Toggle("Sound and haptic feedback", isOn: $settings.soundAndHaptics)
-            Picker("Float behaviour", selection: $settings.floatBehaviour) {
+        Section(L10n.t("General")) {
+            Toggle(L10n.t("Start automatically at login"), isOn: $settings.launchAtLogin)
+            Toggle(L10n.t("Sound and haptic feedback"), isOn: $settings.soundAndHaptics)
+            Picker(L10n.t("Float behaviour"), selection: $settings.floatBehaviour) {
                 ForEach(FloatBehaviour.allCases) { Text($0.title).tag($0) }
             }
-            Text("Keep Open Tangerine ready in the menu bar after you restart and sign in. Move the app to Applications before enabling.")
+            Picker(L10n.t("Language"), selection: $settings.language) {
+                ForEach(AppLanguage.allCases) { Text($0.title).tag($0) }
+            }
+            Text(L10n.t("Restart the app to apply menu and guide language changes."))
+                .font(.caption).foregroundStyle(.secondary)
+            Text(L10n.t("Keep Open Tangerine ready in the menu bar after you restart and sign in. Move the app to Applications before enabling."))
                 .font(.caption).foregroundStyle(.secondary)
             if let message = settings.loginMessage {
                 Text(message).font(.caption).foregroundStyle(.orange)
@@ -184,20 +189,20 @@ struct SettingsView: View {
             }
         }
         Section {
-            Picker("Conversion wheel", selection: modifierBinding(.conversions)) {
+            Picker(L10n.t("Conversion wheel"), selection: modifierBinding(.conversions)) {
                 ForEach(DragModifier.allCases) { Text($0.title).tag($0) }
             }
-            Picker("Tools wheel", selection: modifierBinding(.tools)) {
+            Picker(L10n.t("Tools wheel"), selection: modifierBinding(.tools)) {
                 ForEach(DragModifier.allCases) { Text($0.title).tag($0) }
             }
-            Picker("File actions", selection: modifierBinding(.actions)) {
+            Picker(L10n.t("File actions"), selection: modifierBinding(.actions)) {
                 ForEach(DragModifier.allCases) { Text($0.title).tag($0) }
             }
-            Picker("Terminal app", selection: $settings.terminalApplication) {
+            Picker(L10n.t("Terminal app"), selection: $settings.terminalApplication) {
                 ForEach(TerminalApplication.allCases) { Text($0.title).tag($0) }
             }
         } header: {
-            Text("Drag Modifiers")
+            Text(L10n.t("Drag Modifiers"))
         } footer: {
             Text("Hold the chosen modifier while dragging files in Finder. Tangerine's defaults are ⇧ Shift, ⌘ Command and ⌃ Control. Picking a key that another wheel already uses swaps the two.")
         }
@@ -264,7 +269,7 @@ struct SettingsView: View {
 
     @ViewBuilder private var conversion: some View {
         formatSettingsSection
-        Section("Images") {
+        Section(L10n.t("Images")) {
             HStack {
                 Text("JPEG / HEIC / WebP quality")
                 Slider(value: $settings.jpegQuality, in: 0.3...1.0)
@@ -285,16 +290,16 @@ struct SettingsView: View {
                 Text("px (0 = keep size)").foregroundStyle(.secondary)
             }
         } header: {
-            Text("Compression")
+            Text(L10n.t("Compression"))
         } footer: {
             Text(settings.compressionPreset == .balanced
                  ? "Balanced keeps detail while trimming size noticeably."
                  : "Strong prioritizes the smallest file, with visible quality loss.")
         }
         Section {
-            Toggle("Preserve metadata in conversions", isOn: $settings.preserveMetadata)
+            Toggle(L10n.t("Preserve metadata in conversions"), isOn: $settings.preserveMetadata)
         } header: {
-            Text("Metadata")
+            Text(L10n.t("Metadata"))
         } footer: {
             Text(settings.preserveMetadata
                  ? "Image conversions keep the original camera, GPS and processing tags."
@@ -315,7 +320,7 @@ struct SettingsView: View {
                     .textSelection(.enabled)
             }
         } header: {
-            Text("FFmpeg (optional)")
+            Text(L10n.t("FFmpeg (optional)"))
         } footer: {
             Text("Open Tangerine uses Apple frameworks for most work. FFmpeg fills the gaps: MP3, FLAC, OGG, Opus, WMA, MKV, WebM, AVI, WMV, GIF and AVIF/WebP encoding on older systems.")
         }
@@ -336,7 +341,7 @@ struct SettingsView: View {
                     .textSelection(.enabled)
             }
         } header: {
-            Text("Office engine (optional)")
+            Text(L10n.t("Office engine (optional)"))
         } footer: {
             Text("Detects an installed LibreOffice for high-fidelity DOCX/PPTX/XLSX/ODS → PDF, PNG and JPG. Nothing is downloaded or bundled; when it is missing, Office conversions fall back to the built-in text engine.")
         }
@@ -372,7 +377,7 @@ struct SettingsView: View {
             .padding(.vertical, 4)
 
             VStack(alignment: .leading, spacing: 4) {
-                Text("\(formatSelection.displayName) → \(formatTargets.count) outputs")
+                Text(L10n.format("%@ → %d outputs", formatSelection.displayName, formatTargets.count))
                     .font(.system(size: 12, weight: .semibold, design: .monospaced))
                 Text(formatTargets.map(\.displayName).joined(separator: "  ·  "))
                     .font(.caption2)
@@ -382,15 +387,15 @@ struct SettingsView: View {
 
             if formatSelection.category == .image {
                 HStack {
-                    Text("Image quality")
+                    Text(L10n.t("Image quality"))
                     Slider(value: $settings.jpegQuality, in: 0.3...1.0)
                     Text("\(Int(settings.jpegQuality * 100))%")
                         .font(.caption.monospacedDigit())
                         .frame(width: 40, alignment: .trailing)
                 }
-                Toggle("Preserve metadata when converting", isOn: $settings.preserveMetadata)
+                Toggle(L10n.t("Preserve metadata when converting"), isOn: $settings.preserveMetadata)
             } else if formatSelection.category == .video || formatSelection.category == .audio {
-                Picker("Compression preset", selection: $settings.compressionPreset) {
+                Picker(L10n.t("Compression preset"), selection: $settings.compressionPreset) {
                     ForEach(CompressionPreset.allCases) { Text($0.title).tag($0) }
                 }
                 .pickerStyle(.segmented)
@@ -405,14 +410,14 @@ struct SettingsView: View {
             }
 
             HStack {
-                Button("Restore Defaults") { restoreFormatDefaults() }
-                Button("Restore Compression Defaults") {
+                Button(L10n.t("Restore Defaults")) { restoreFormatDefaults() }
+                Button(L10n.t("Restore Compression Defaults")) {
                     settings.compressionPreset = .balanced
                     settings.compressionResizeLongEdge = 0
                 }
             }
         } header: {
-            Text("Format settings")
+            Text(L10n.t("Format settings"))
         } footer: {
             Text("Pick a source format to see every output and the settings that affect it. The conversion wheel uses this same matrix.")
         }
@@ -450,7 +455,7 @@ struct SettingsView: View {
                 }
             }
         } header: {
-            Text("Conversion compatibility")
+            Text(L10n.t("Conversion compatibility"))
         }
     }
 

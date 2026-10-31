@@ -17,8 +17,8 @@ struct RadialItem: Identifiable, Hashable {
 
     init(fileAction: FileAction) {
         action = .fileAction(fileAction)
-        label = fileAction.rawValue
-        detail = fileAction.rawValue
+        label = fileAction.localizedTitle
+        detail = fileAction.localizedTitle
         symbol = fileAction.symbol
     }
 
@@ -31,8 +31,8 @@ struct RadialItem: Identifiable, Hashable {
 
     init(tool: ToolID) {
         action = .tool(tool)
-        label = tool.radialLabel
-        detail = tool.title
+        label = L10n.t(tool.radialLabel)
+        detail = tool.localizedTitle
         symbol = tool.symbol
     }
 }

@@ -30,6 +30,8 @@ enum FileAction: String, CaseIterable, Hashable {
         }
     }
 
+    var localizedTitle: String { L10n.t(rawValue) }
+
     var detail: String {
         switch self {
         case .airDrop: return "Share files and folders through the macOS recipient picker."

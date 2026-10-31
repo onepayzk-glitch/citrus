@@ -133,6 +133,19 @@ FileAction.allCases.count          // 9 = 官方 6 + Reveal/Duplicate/SHA-256
 
 各工具输出后缀按官方站点模拟表统一为 Title Case：`Compressed`、`No Metadata`、`Edited`、`Background`、`Cropped`、`Redacted`、`Normalized`、`Trimmed`、`Bleeped`、`Speed 2x`、`Annotated`、`Muted`、`Organized`、`Mono`/`Channels`、`Visualizer`，分片文件夹 `Clips`/`Pages`，解压目录 `Extracted`。改动后 `./scripts/test.sh` 仍为 exit 0，`build-app.sh` exit 0。
 
+## 7.6 中文本地化（本轮）
+
+- `Core/L10n.swift` 提供 `AppLanguage`（跟随系统 / English / 简体中文）与 `L10n.t` 翻译表；
+  设置 → 通用 → 语言可切换，重启后菜单与引导完全生效。
+- 已实测截图：
+  - 中文首启引导：标题「拖文件，按一个键，完成。」、按钮「跳过 / 继续」；
+  - 中文设置「格式」页：侧栏「通用/外观/格式/兼容性/关于」、格式按钮网格、`JPG → 7 个输出`、
+    「图片质量」「转换时保留元数据」「在你的 Mac 上」。
+- 覆盖范围：菜单、首启引导、设置、工具窗口标题、轮盘工具/动作名、作业标题、输出命名；
+  各工具窗口内的字段说明与 About 正文仍为英文。
+- 构建脚本同时修了签名稳定性：签名与 `codesign --verify` 都改为重试循环（同步目录会重新附加
+  FinderInfo），`build-app.sh` 在 `dist/` 下可重复 exit 0。
+
 ## 8. 已知未验证项
 
 - 真实鼠标拖拽路径（⇧/⌘/⌃ 轮盘出现→松手转换）未做端到端自动化：Tangerine 与开源版都依赖

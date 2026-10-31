@@ -97,16 +97,16 @@ struct OnboardingView: View {
                 .frame(width: 96, height: 96)
 
                 VStack(alignment: .leading, spacing: 10) {
-                    Text(isLast ? "FINISH SETUP" : slides[page].kicker)
+                    Text(isLast ? L10n.t("FINISH SETUP") : L10n.t(slides[page].kicker))
                         .font(.system(size: 10, weight: .bold, design: .monospaced))
                         .tracking(2)
                         .foregroundStyle(Theme.accent)
-                    Text(isLast ? "A couple of defaults, then you're set." : slides[page].title)
+                    Text(isLast ? L10n.t("A couple of defaults, then you're set.") : L10n.t(slides[page].title))
                         .font(.system(size: 27, weight: .bold, design: .rounded))
                         .fixedSize(horizontal: false, vertical: true)
-                    Text(isLast
+                    Text(L10n.t(isLast
                          ? "Open Tangerine stays in the menu bar and starts again after you sign in if you leave that on. You can change every option later in Settings."
-                         : slides[page].body)
+                         : slides[page].body))
                         .font(.system(size: 13))
                         .foregroundStyle(.secondary)
                         .fixedSize(horizontal: false, vertical: true)
@@ -116,7 +116,7 @@ struct OnboardingView: View {
                                 .font(.system(size: 26, weight: .semibold, design: .rounded))
                                 .frame(width: 44, height: 44)
                                 .background(Theme.accent.opacity(0.12), in: RoundedRectangle(cornerRadius: 10, style: .continuous))
-                            Text("Hold while dragging")
+                            Text(L10n.t("Hold while dragging"))
                                 .font(.callout)
                                 .foregroundStyle(.secondary)
                         }
@@ -130,8 +130,8 @@ struct OnboardingView: View {
 
             if isLast {
                 VStack(alignment: .leading, spacing: 12) {
-                    Toggle("Start automatically at login", isOn: $settings.launchAtLogin)
-                    Toggle("Sound and haptic feedback", isOn: $settings.soundAndHaptics)
+                    Toggle(L10n.t("Start automatically at login"), isOn: $settings.launchAtLogin)
+                    Toggle(L10n.t("Sound and haptic feedback"), isOn: $settings.soundAndHaptics)
                 }
                 .padding(18)
                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -143,7 +143,7 @@ struct OnboardingView: View {
             Spacer(minLength: 0)
 
             HStack(spacing: 10) {
-                Button("Skip") { finish() }
+                Button(L10n.t("Skip")) { finish() }
                     .controlSize(.large)
                 Spacer()
                 HStack(spacing: 6) {
@@ -155,10 +155,10 @@ struct OnboardingView: View {
                 }
                 Spacer()
                 if page > 0 {
-                    Button("Back") { withAnimation(.snappy(duration: 0.2)) { page -= 1 } }
+                    Button(L10n.t("Back")) { withAnimation(.snappy(duration: 0.2)) { page -= 1 } }
                         .controlSize(.large)
                 }
-                Button(isLast ? "Finish" : "Continue") {
+                Button(isLast ? L10n.t("Finish") : L10n.t("Continue")) {
                     if isLast { finish() } else { withAnimation(.snappy(duration: 0.2)) { page += 1 } }
                 }
                 .buttonStyle(.borderedProminent)

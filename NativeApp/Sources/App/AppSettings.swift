@@ -9,7 +9,7 @@ enum CompressionPreset: String, CaseIterable, Identifiable {
 
     var id: String { rawValue }
 
-    var title: String { rawValue.capitalized }
+    var title: String { L10n.t(rawValue.capitalized) }
 
     var imageQuality: Double { self == .balanced ? 0.72 : 0.5 }
     var videoScale: Double { self == .balanced ? 1.0 : 0.75 }
@@ -26,9 +26,9 @@ enum OutputLocation: String, CaseIterable, Identifiable {
 
     var title: String {
         switch self {
-        case .besideOriginal: return "Next to the original"
-        case .downloads: return "Downloads"
-        case .desktop: return "Desktop"
+        case .besideOriginal: return L10n.t("Next to the original")
+        case .downloads: return L10n.t("Downloads")
+        case .desktop: return L10n.t("Desktop")
         }
     }
 
@@ -50,9 +50,9 @@ enum AppearanceMode: String, CaseIterable, Identifiable {
 
     var title: String {
         switch self {
-        case .system: return "System"
-        case .light: return "Light"
-        case .dark: return "Dark"
+        case .system: return L10n.t("System")
+        case .light: return L10n.t("Light")
+        case .dark: return L10n.t("Dark")
         }
     }
 
@@ -73,8 +73,8 @@ enum ProgressStyle: String, CaseIterable, Identifiable {
 
     var title: String {
         switch self {
-        case .card: return "Card"
-        case .pill: return "Notch pill"
+        case .card: return L10n.t("Card")
+        case .pill: return L10n.t("Notch pill")
         }
     }
 }
@@ -82,7 +82,7 @@ enum ProgressStyle: String, CaseIterable, Identifiable {
 enum NotchSurface: String, CaseIterable, Identifiable {
     case black, glass
     var id: String { rawValue }
-    var title: String { self == .black ? "Pure black" : "Glass" }
+    var title: String { self == .black ? L10n.t("Pure black") : L10n.t("Glass") }
 }
 
 enum DragModifier: String, CaseIterable, Identifiable {
@@ -120,8 +120,8 @@ enum FloatBehaviour: String, CaseIterable, Identifiable {
 
     var title: String {
         switch self {
-        case .newShelf: return "Create a new Float"
-        case .addToExisting: return "Add to the current Float"
+        case .newShelf: return L10n.t("Create a new Float")
+        case .addToExisting: return L10n.t("Add to the current Float")
         }
     }
 }
@@ -133,9 +133,9 @@ enum TerminalApplication: String, CaseIterable, Identifiable {
 
     var title: String {
         switch self {
-        case .terminal: return "Terminal"
+        case .terminal: return L10n.t("Terminal")
         case .iTerm2: return "iTerm2"
-        case .systemDefault: return "System default"
+        case .systemDefault: return L10n.t("System default")
         }
     }
 
@@ -235,6 +235,10 @@ final class AppSettings: ObservableObject {
         didSet { defaults.set(floatBehaviour.rawValue, forKey: "floatBehaviour") }
     }
 
+    @Published var language: AppLanguage {
+        didSet { defaults.set(language.rawValue, forKey: "appLanguage") }
+    }
+
     private init() {
         excludedApplications = defaults.dictionary(forKey: "excludedApplications") as? [String: String] ?? [:]
         compressionPreset = CompressionPreset(rawValue: defaults.string(forKey: "compressionPreset") ?? "") ?? .balanced
@@ -260,6 +264,7 @@ final class AppSettings: ObservableObject {
         preserveMetadata = defaults.object(forKey: "preserveMetadata") as? Bool ?? true
         soundAndHaptics = defaults.object(forKey: "soundAndHaptics") as? Bool ?? true
         floatBehaviour = FloatBehaviour(rawValue: defaults.string(forKey: "floatBehaviour") ?? "") ?? .newShelf
+        language = AppLanguage(rawValue: defaults.string(forKey: "appLanguage") ?? "") ?? .system
         if #available(macOS 13.0, *) {
             launchAtLogin = SMAppService.mainApp.status == .enabled
         } else {

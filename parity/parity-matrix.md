@@ -155,6 +155,7 @@
 | General：Launch at login | ✅ | `SMAppService` |
 | General：Sound and haptic feedback | ✅ | 开关 + 成功音/触感（`Feedback.swift`） |
 | General：Drag Modifiers 重映射 | ✅ | 三行下拉框，重复键自动互换 |
+| General：Language（跟随系统 / English / 简体中文） | ✅ | `Core/L10n.swift`：菜单、引导、设置、工具名、轮盘、动作、作业标题与输出命名中文化；格式名（JPG/PNG/PDF…）保持原文 |
 | General：Float Behaviour | ✅ | Create a new Float / Add to the current Float（`AppSettings.floatBehaviour`） |
 | General：Terminal app 选择（Terminal/iTerm2/系统默认） | ✅ | `AppSettings.terminalApplication` |
 | Formats：源格式面板 + Preserve metadata + 压缩预设 | ✅ | 「Format settings」面板：全部可转换源格式按钮网格、所选格式的输出清单、按类别的质量/压缩/元数据控件、Restore Defaults / Restore Compression Defaults |
@@ -163,6 +164,8 @@
 | About：版本/免费额度/Restore Purchase | ⚠️ | 有 About；无付费墙故无额度/恢复购买 |
 | 首启引导 6 页 | ✅ | `App/OnboardingView.swift`：欢迎 → ⇧ 转换 → ⌘ 工具 → ⌃ 动作 → 隐私 → 完成设置；菜单「Getting Started…」可重开 |
 
+> 中文本地化：菜单 / 首启引导 / 设置 / 工具窗口标题 / 轮盘工具与动作名 / 作业标题 / 输出命名已覆盖；各工具窗口内的字段说明、About 正文与部分页脚仍为英文（后续可补）。
+>
 > PAGES 输出依赖本机 Pages.app 与 Automation 授权；其余 267 条路由不依赖任何外部应用（音视频部分格式可选依赖系统 ffmpeg）。
 
 ## 8. 付费墙（有意差异）

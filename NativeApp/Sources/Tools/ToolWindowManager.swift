@@ -37,7 +37,7 @@ final class ToolWindowManager: NSObject, NSWindowDelegate {
             .environmentObject(AppSettings.shared)
         let controller = NSHostingController(rootView: root)
         let window = NSWindow(contentViewController: controller)
-        window.title = tool.title
+        window.title = tool.localizedTitle
         window.subtitle = files.count == 1 ? files[0].lastPathComponent : "\(files.count) files"
         window.styleMask = [.titled, .closable, .miniaturizable, .resizable]
         window.toolbarStyle = .unified
@@ -189,9 +189,9 @@ struct WindowChrome<Content: View>: View {
                 .font(.callout)
                 .foregroundStyle(.secondary)
                 Spacer()
-                Button("Cancel") { ToolWindowManager.shared.close(session) }
+                Button(L10n.t("Cancel")) { ToolWindowManager.shared.close(session) }
                     .keyboardShortcut(.cancelAction)
-                Button(saveTitle) { onSave() }
+                Button(L10n.t(saveTitle)) { onSave() }
                     .buttonStyle(.borderedProminent)
                     .keyboardShortcut(.defaultAction)
                     .disabled(!saveEnabled)

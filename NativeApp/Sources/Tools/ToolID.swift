@@ -73,6 +73,8 @@ enum ToolID: String, CaseIterable, Identifiable {
         }
     }
 
+    var localizedTitle: String { L10n.t(title) }
+
     var progressTitle: String {
         switch self {
         case .compress: return "Compressing"
