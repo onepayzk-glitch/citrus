@@ -41,7 +41,7 @@ osascript -e 'tell application "Open Tangerine" to quit'
 ./scripts/test.sh
 ```
 
-结果：**exit 0**，8 个套件全部通过：
+结果：**exit 0**，9 个套件全部通过：
 
 | 套件 | 结果 |
 |---|---|
@@ -53,6 +53,7 @@ osascript -e 'tell application "Open Tangerine" to quit'
 | BatchTests | passed |
 | ImageToolsTests | passed |
 | MediaIntegrationTests | 55 passed, 0 failed |
+| OfficeEngineTests | LibreOffice 26.8.1.1 检测成功；DOCX→PDF/PNG、XLSX→PDF、PPTX→PDF 全部 PASS |
 
 ## 4. 转换对照用例（DocumentTests）
 
@@ -115,6 +116,16 @@ FileAction.allCases.count          // 9 = 官方 6 + Reveal/Duplicate/SHA-256
 - 新增套件 `OfficeEngineTests`：DOCX→PDF、DOCX→PNG、XLSX→PDF、PPTX→PDF 全部 PASS
 - 性能：单次转换约 0.6–0.8 秒（进程启动+转换）；冷/暖 profile 差异主要来自 LO 进程启动
 - 实测数据：brew 安装 805MB；裁剪 help/extensions/gallery/template/wizards/basic/java/Python + 图标主题后 484MB，转换仍正常（仅作评估记录，本方案不捆绑）
+
+## 7.5 首启引导与反馈（本轮）
+
+- `App/OnboardingView.swift`：6 步引导（欢迎 / ⇧ 转换 / ⌘ 工具 / ⌃ 动作 / 隐私 / 完成设置），
+  完成页含「Start automatically at login」「Sound and haptic feedback」开关。
+- 验证方式：重置 `hasCompletedWelcome` 后启动 App，用 System Events 逐页点击并按截图核对；
+  6 页全部渲染正常，Finish 后 `hasCompletedWelcome=1`、`hasOpenedSettings=1` 且窗口关闭。
+- 菜单新增「Getting Started…」可随时重开引导。
+- 反馈：`UI/Feedback.swift`（成功音 + 触感，可在设置关闭）；`Float Behaviour`
+  支持「新建 Float / 加入当前 Float」。
 
 ## 8. 已知未验证项
 

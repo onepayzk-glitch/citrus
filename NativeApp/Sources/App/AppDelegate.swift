@@ -26,8 +26,12 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         }
         dragMonitor.delegate = radial
         dragMonitor.start()
-        // Login-item launches stay quietly in the menu bar; show onboarding once.
-        if !UserDefaults.standard.bool(forKey: "hasOpenedSettings") {
+        // Login-item launches stay quietly in the menu bar; show the welcome guide once.
+        if !UserDefaults.standard.bool(forKey: "hasCompletedWelcome") {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+                OnboardingWindowController.shared.show()
+            }
+        } else if !UserDefaults.standard.bool(forKey: "hasOpenedSettings") {
             UserDefaults.standard.set(true, forKey: "hasOpenedSettings")
             openSettings()
         }
@@ -50,6 +54,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         menu.addItem(withTitle: "Convert Files…", action: #selector(convertFiles), keyEquivalent: "o").target = self
         menu.addItem(withTitle: "Open Tool for Files…", action: #selector(openTool), keyEquivalent: "t").target = self
         menu.addItem(withTitle: "File Actions…", action: #selector(fileActions), keyEquivalent: "a").target = self
+        menu.addItem(withTitle: "Getting Started…", action: #selector(showOnboarding), keyEquivalent: "").target = self
         menu.addItem(.separator())
         menu.addItem(withTitle: "Settings…", action: #selector(openSettings), keyEquivalent: ",").target = self
         menu.addItem(withTitle: "About Open Tangerine", action: #selector(about), keyEquivalent: "").target = self
@@ -61,7 +66,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         menu.addItem(.separator())
         menu.addItem(withTitle: "Quit Open Tangerine", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q")
         let symbols = ["Convert Files…": "arrow.triangle.2.circlepath", "Open Tool for Files…": "wrench.and.screwdriver",
-                       "File Actions…": "doc.on.doc", "Settings…": "gearshape", "About Open Tangerine": "info.circle",
+                       "File Actions…": "doc.on.doc", "Getting Started…": "sparkles", "Settings…": "gearshape", "About Open Tangerine": "info.circle",
                        "Check for Updates on Website…": "arrow.clockwise", "Show Logs": "doc.text.magnifyingglass",
                        "Quit Open Tangerine": "power"]
         for entry in menu.items {
@@ -79,6 +84,9 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     @objc private func convertFiles() {
         pickFiles { [weak self] urls in self?.radial.presentPicker(for: urls, advanced: false) }
     }
+
+    @MainActor
+    @objc private func showOnboarding() { OnboardingWindowController.shared.show() }
 
     @objc private func fileActions() {
         pickFiles { [weak self] urls in self?.radial.presentPicker(for: urls, actions: true) }

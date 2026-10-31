@@ -171,6 +171,10 @@ struct SettingsView: View {
         }
         Section("General") {
             Toggle("Start automatically at login", isOn: $settings.launchAtLogin)
+            Toggle("Sound and haptic feedback", isOn: $settings.soundAndHaptics)
+            Picker("Float behaviour", selection: $settings.floatBehaviour) {
+                ForEach(FloatBehaviour.allCases) { Text($0.title).tag($0) }
+            }
             Text("Keep Open Tangerine ready in the menu bar after you restart and sign in. Move the app to Applications before enabling.")
                 .font(.caption).foregroundStyle(.secondary)
             if let message = settings.loginMessage {

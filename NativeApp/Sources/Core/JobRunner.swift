@@ -109,6 +109,7 @@ final class JobRunner: ObservableObject {
                 job.outputs = outputs
                 job.progress = 1
                 job.status = .done
+                Feedback.success()
                 DiagnosticLog.log("job done: \(job.detail) -> \(outputs.map(\.lastPathComponent))")
                 if AppSettings.shared.revealInFinder, !outputs.isEmpty {
                     NSWorkspace.shared.activateFileViewerSelecting(outputs)

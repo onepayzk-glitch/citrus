@@ -113,6 +113,19 @@ enum WheelKind {
     case conversions, tools, actions
 }
 
+enum FloatBehaviour: String, CaseIterable, Identifiable {
+    case newShelf, addToExisting
+
+    var id: String { rawValue }
+
+    var title: String {
+        switch self {
+        case .newShelf: return "Create a new Float"
+        case .addToExisting: return "Add to the current Float"
+        }
+    }
+}
+
 enum TerminalApplication: String, CaseIterable, Identifiable {
     case terminal, iTerm2, systemDefault
 
@@ -214,6 +227,14 @@ final class AppSettings: ObservableObject {
         didSet { defaults.set(preserveMetadata, forKey: "preserveMetadata") }
     }
 
+    @Published var soundAndHaptics: Bool {
+        didSet { defaults.set(soundAndHaptics, forKey: "soundAndHaptics") }
+    }
+
+    @Published var floatBehaviour: FloatBehaviour {
+        didSet { defaults.set(floatBehaviour.rawValue, forKey: "floatBehaviour") }
+    }
+
     private init() {
         excludedApplications = defaults.dictionary(forKey: "excludedApplications") as? [String: String] ?? [:]
         compressionPreset = CompressionPreset(rawValue: defaults.string(forKey: "compressionPreset") ?? "") ?? .balanced
@@ -237,6 +258,8 @@ final class AppSettings: ObservableObject {
         actionsModifier = DragModifier(rawValue: defaults.string(forKey: "actionsModifier") ?? "") ?? .control
         terminalApplication = TerminalApplication(rawValue: defaults.string(forKey: "terminalApplication") ?? "") ?? .terminal
         preserveMetadata = defaults.object(forKey: "preserveMetadata") as? Bool ?? true
+        soundAndHaptics = defaults.object(forKey: "soundAndHaptics") as? Bool ?? true
+        floatBehaviour = FloatBehaviour(rawValue: defaults.string(forKey: "floatBehaviour") ?? "") ?? .newShelf
         if #available(macOS 13.0, *) {
             launchAtLogin = SMAppService.mainApp.status == .enabled
         } else {

@@ -144,6 +144,7 @@
 | 每个任务独立进度窗 / 刘海进度 / 完成后 Finder 显示 | ✅（`Core/JobRunner.swift`、`UI/NotchCompanion.swift`） |
 | 菜单栏常驻、菜单内入口 | ✅（菜单栏含 Convert/Open Tool/File Actions/Settings/About/Updates/Logs/Quit） |
 | 轮盘键盘操作（Esc 取消、Enter 确认、方向键切换） | ✅ `Radial/RadialView.swift` keyDown |
+| 声音与触感反馈 | ✅ 任务成功播放系统音并触发触感（`UI/Feedback.swift`），设置里可关闭 |
 | 修饰键可在设置内重映射（⇧/⌘/⌃/⌥ 任选，重复自动互换） | ✅ Settings → General → 三个下拉框（`AppSettings.convertModifier/toolsModifier/actionsModifier`） |
 
 ## 7. 设置与其它差异
@@ -152,16 +153,15 @@
 |---|---|---|
 | General：Glass/Solid 外观 | ✅ | 刘海样式黑/玻璃 |
 | General：Launch at login | ✅ | `SMAppService` |
-| General：Sound and haptic feedback | ⚠️ 部分 | 未逐项对标 |
+| General：Sound and haptic feedback | ✅ | 开关 + 成功音/触感（`Feedback.swift`） |
 | General：Drag Modifiers 重映射 | ✅ | 三行下拉框，重复键自动互换 |
-| General：Float Behaviour | ⚠️ 部分 | Float 悬浮架已实现，行为选项未做 |
+| General：Float Behaviour | ✅ | Create a new Float / Add to the current Float（`AppSettings.floatBehaviour`） |
 | General：Terminal app 选择（Terminal/iTerm2/系统默认） | ✅ | `AppSettings.terminalApplication` |
 | Formats：源格式面板 + Preserve metadata + 压缩预设 | ⚠️ 部分 | 压缩预设/质量/长边/FFmpeg/Preserve metadata 已做；按格式的细分设置面板未做 |
 | Compatibility：源×目标矩阵 UI | ✅ | Settings → Compatibility：逐源格式列出全部目标与总数（275） |
 | Folders：安全作用域书签 | ❌ | 开源版不沙盒，无需书签 |
 | About：版本/免费额度/Restore Purchase | ⚠️ | 有 About；无付费墙故无额度/恢复购买 |
-| 首启引导 6 页 | ❌ | 未复刻引导流程（直接打开设置） |
-| Sound and haptic feedback | ⚠️ 部分 | 未逐项对标 |
+| 首启引导 6 页 | ✅ | `App/OnboardingView.swift`：欢迎 → ⇧ 转换 → ⌘ 工具 → ⌃ 动作 → 隐私 → 完成设置；菜单「Getting Started…」可重开 |
 
 > PAGES 输出依赖本机 Pages.app 与 Automation 授权；其余 267 条路由不依赖任何外部应用（音视频部分格式可选依赖系统 ffmpeg）。
 
@@ -185,11 +185,9 @@
 
 ## 10. 未完成项清单（均为非核心项）
 
-1. 首启引导 6 页与「Getting Started…」入口未复刻（付费墙相关页面按开源版要求移除）。
-2. Settings → Formats 的「按格式细分设置」面板未做（质量/压缩/长边/Preserve metadata 已集中提供）。
-3. Sound and haptic feedback、Float Behaviour 的细分选项（Float 悬浮架本身已实现）。
-4. Office 转换的版式级保真：已改走本机 LibreOffice（L2，检测复用，0 捆绑）；未安装 LibreOffice 的机器回退文本级重建，保真度低于官方自研渲染器。
-5. FFmpeg 未内置：官方内置 22 MB LGPL 版；本仓库使用系统可选 ffmpeg，缺失时部分音视频编码不可用（会明确提示）。
-6. PAGES 输出依赖本机 Pages.app 与首次 Automation 授权（Tangerine 内置引擎无此依赖）。
+1. Settings → Formats 的「按格式细分设置」面板未做（质量/压缩/长边/Preserve metadata/Office 引擎已集中提供）。
+2. Office 转换的版式级保真：已改走本机 LibreOffice（L2，检测复用，0 捆绑）；未安装 LibreOffice 的机器回退文本级重建，保真度低于官方自研渲染器。
+3. FFmpeg 未内置：官方内置 22 MB LGPL 版；本仓库使用系统可选 ffmpeg，缺失时部分音视频编码不可用（会明确提示）。
+4. PAGES 输出依赖本机 Pages.app 与首次 Automation 授权（Tangerine 内置引擎无此依赖）。
 
 核心功能（275 条转换路由、26 个工具 + QR、6 个文件动作、⇧/⌘/⌃ 轮盘、批量/进度/输出位置）已全部对齐。
