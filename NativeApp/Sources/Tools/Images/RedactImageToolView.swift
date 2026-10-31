@@ -133,7 +133,7 @@ struct RedactImageToolView: View {
     private func save() {
         guard let original = document.original else { return }
         let redactions = redactions
-        ImageToolSupport.save(session, suffix: "redacted") {
+        ImageToolSupport.save(session, suffix: "Redacted") {
             let output = ImageOps.redact(CIImage(cgImage: original), redactions: redactions)
             guard let image = ImageToolSupport.cgImage(output) else { throw OpenTangerineError.encodeFailed("Rendering failed") }
             return image

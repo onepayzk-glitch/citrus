@@ -109,7 +109,7 @@ struct CropImageToolView: View {
 
     private func save() {
         guard let original = document.original, let rect = cropRect else { return }
-        ImageToolSupport.save(session, suffix: "cropped") {
+        ImageToolSupport.save(session, suffix: "Cropped") {
             ImageIOBridge.cropped(original, to: rect.integral)
         }
     }

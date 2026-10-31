@@ -129,6 +129,10 @@ FileAction.allCases.count          // 9 = 官方 6 + Reveal/Duplicate/SHA-256
 - Settings → Formats「Format settings」面板已实现并截图核对：源格式按钮网格（JPG/PNG/WEBP/HEIC/TIFF/SVG/AVIF/BMP/GIF/音频/文档…）、
   所选格式输出清单、按类别的质量/压缩/元数据控件、Restore Defaults 按钮；与 Compatibility 页共用 `ConversionMatrix` 数据。
 
+### 输出命名对齐
+
+各工具输出后缀按官方站点模拟表统一为 Title Case：`Compressed`、`No Metadata`、`Edited`、`Background`、`Cropped`、`Redacted`、`Normalized`、`Trimmed`、`Bleeped`、`Speed 2x`、`Annotated`、`Muted`、`Organized`、`Mono`/`Channels`、`Visualizer`，分片文件夹 `Clips`/`Pages`，解压目录 `Extracted`。改动后 `./scripts/test.sh` 仍为 exit 0，`build-app.sh` exit 0。
+
 ## 8. 已知未验证项
 
 - 真实鼠标拖拽路径（⇧/⌘/⌃ 轮盘出现→松手转换）未做端到端自动化：Tangerine 与开源版都依赖

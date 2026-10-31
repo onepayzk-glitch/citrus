@@ -97,7 +97,7 @@ struct CropVideoToolView: View {
         let url = session.primary
         let even = CGRect(x: rect.minX.rounded(), y: rect.minY.rounded(), width: (rect.width / 2).rounded(.down) * 2, height: (rect.height / 2).rounded(.down) * 2)
         let output: CGSize? = keepSize ? nil : CGSize(width: (CGFloat(outWidth) / 2).rounded(.down) * 2, height: (CGFloat(outHeight) / 2).rounded(.down) * 2)
-        let destination = session.outputURL(suffix: "cropped", ext: "mp4")
+        let destination = session.outputURL(suffix: "Cropped", ext: "mp4")
         session.run(title: "Cropping", detail: "\(url.lastPathComponent)") { progress in
             try await VideoOps.crop(url, rect: even, outputSize: output, to: destination, progress: progress)
             return [destination]
@@ -149,7 +149,7 @@ struct VideoSpeedToolView: View {
 
     private func save() {
         let url = session.primary, factor = factor, pitch = preservePitch
-        let destination = session.outputURL(suffix: String(format: "%gx", factor), ext: "mp4")
+        let destination = session.outputURL(suffix: String(format: "Speed %gx", factor), ext: "mp4")
         session.run(title: "Changing speed", detail: "\(url.lastPathComponent)") { progress in
             try await VideoOps.changeSpeed(url, factor: factor, preservePitch: pitch, to: destination, progress: progress)
             return [destination]

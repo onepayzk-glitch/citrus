@@ -263,7 +263,7 @@ struct RedactVideoToolView: View {
             if let range = ranges[overlay.id] { r.start = range.lowerBound; r.end = range.upperBound }
             return r
         }
-        let destination = session.outputURL(suffix: "redacted", ext: "mp4")
+        let destination = session.outputURL(suffix: "Redacted", ext: "mp4")
         session.run(title: "Redacting", detail: "\(url.lastPathComponent)") { progress in
             try await VideoOps.redact(url, redactions: redactions, displaySize: size, to: destination, progress: progress)
             return [destination]

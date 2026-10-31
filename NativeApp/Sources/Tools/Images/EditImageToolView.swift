@@ -83,7 +83,7 @@ struct EditImageToolView: View {
     private func save() {
         guard let original = document.original else { return }
         let adjustments = adjustments
-        ImageToolSupport.save(session, suffix: "edited") {
+        ImageToolSupport.save(session, suffix: "Edited") {
             let output = ImageOps.adjusted(CIImage(cgImage: original), adjustments)
             guard let image = ImageToolSupport.cgImage(output) else { throw OpenTangerineError.encodeFailed("Rendering failed") }
             return image

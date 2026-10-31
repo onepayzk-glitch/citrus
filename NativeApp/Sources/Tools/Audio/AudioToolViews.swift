@@ -57,7 +57,7 @@ struct TrimAudioToolView: View {
     private func save() {
         let url = session.primary, start = start, end = end
         let format = AudioOps.outputFormat(for: url)
-        let destination = session.outputURL(suffix: "trimmed", ext: format.fileExtension)
+        let destination = session.outputURL(suffix: "Trimmed", ext: format.fileExtension)
         session.run(title: "Trimming", detail: "\(url.lastPathComponent)") { progress in
             try await AudioOps.trim(url, start: start, end: end, to: destination, format: format, progress: progress)
             return [destination]
@@ -126,7 +126,7 @@ struct NormalizeAudioToolView: View {
         let files = session.files, target = target, range = range, peak = truePeak
         let outputs = files.map { url -> (URL, FileFormat) in
             let format = AudioOps.outputFormat(for: url)
-            return (ConversionMatrix.uniqueURL(directory: AppSettings.shared.outputLocation.directory(for: url), baseName: ConversionMatrix.strippedBaseName(url.lastPathComponent), suffix: "normalized", ext: format.fileExtension), format)
+            return (ConversionMatrix.uniqueURL(directory: AppSettings.shared.outputLocation.directory(for: url), baseName: ConversionMatrix.strippedBaseName(url.lastPathComponent), suffix: "Normalized", ext: format.fileExtension), format)
         }
         session.run(title: "Normalizing", detail: "\(files.count) file\(files.count == 1 ? "" : "s")") { progress in
             for (index, url) in files.enumerated() {
@@ -246,7 +246,7 @@ struct AudioChannelsToolView: View {
     private func save() {
         let url = session.primary, mode = mode, left = left, right = right
         let format = AudioOps.outputFormat(for: url)
-        let destination = session.outputURL(suffix: mode == .mono ? "mono" : "channels", ext: format.fileExtension)
+        let destination = session.outputURL(suffix: mode == .mono ? "Mono" : "Channels", ext: format.fileExtension)
         session.run(title: "Converting channels", detail: "\(url.lastPathComponent)") { progress in
             try await AudioOps.convertChannels(url, mode: mode, leftGain: left, rightGain: right, to: destination, format: format, progress: progress)
             return [destination]
@@ -337,7 +337,7 @@ struct RedactAudioToolView: View {
     private func save() {
         let url = session.primary, ranges = ranges, frequency = frequency
         let format = AudioOps.outputFormat(for: url)
-        let destination = session.outputURL(suffix: "bleeped", ext: format.fileExtension)
+        let destination = session.outputURL(suffix: "Bleeped", ext: format.fileExtension)
         session.run(title: "Bleeping", detail: "\(url.lastPathComponent)") { progress in
             try await AudioOps.bleep(url, ranges: ranges, frequency: frequency, to: destination, format: format, progress: progress)
             return [destination]
@@ -431,7 +431,7 @@ struct AudioToVideoToolView: View {
     private func save() {
         let url = session.primary, style = style, orientation = orientation, imageURL = imageURL
         let accentHex = accent.nsColor.ffmpegHex, backgroundHex = background.nsColor.ffmpegHex
-        let destination = session.outputURL(suffix: "visualizer", ext: "mp4")
+        let destination = session.outputURL(suffix: "Visualizer", ext: "mp4")
         session.run(title: "Creating visualizer", detail: "\(url.lastPathComponent)") { progress in
             try await AudioOps.visualize(url, style: style, orientation: orientation, accent: accentHex, background: backgroundHex, image: imageURL, to: destination, progress: progress)
             return [destination]

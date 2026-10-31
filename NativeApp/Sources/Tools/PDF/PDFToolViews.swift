@@ -122,7 +122,7 @@ struct SplitPDFToolView: View {
 
     private func save() {
         let url = session.primary, mode = mode, every = every, ranges = ranges
-        let folder = ConversionMatrix.uniqueDirectory(directory: session.outputDirectory, name: "\(session.baseName) pages")
+        let folder = ConversionMatrix.uniqueDirectory(directory: session.outputDirectory, name: "\(session.baseName) Pages")
         session.run(title: "Splitting", detail: "\(url.lastPathComponent)") { _ in
             try PDFOps.split(url, mode: mode, every: every, ranges: ranges, into: folder)
         }
@@ -255,7 +255,7 @@ struct OrganizePDFToolView: View {
 
     private func save() {
         let pages = pages
-        let destination = session.outputURL(suffix: "organized", ext: "pdf")
+        let destination = session.outputURL(suffix: "Organized", ext: "pdf")
         session.run(title: "Organizing", detail: "\(session.primary.lastPathComponent)") { _ in
             try PDFOps.assemble(pages: pages, to: destination)
             return [destination]

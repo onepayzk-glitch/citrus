@@ -51,7 +51,7 @@ struct TrimVideoToolView: View {
 
     private func save() {
         let url = session.primary, start = start, end = end
-        let destination = session.outputURL(suffix: "trimmed", ext: url.pathExtension)
+        let destination = session.outputURL(suffix: "Trimmed", ext: url.pathExtension)
         session.run(title: "Trimming", detail: "\(url.lastPathComponent)") { progress in
             try await VideoOps.trim(url, start: start, end: end, to: destination, progress: progress)
             return [destination]
@@ -131,7 +131,7 @@ struct SplitVideoToolView: View {
         let url = session.primary
         let points = effectivePoints
         let duration = media.duration
-        let folder = ConversionMatrix.uniqueDirectory(directory: session.outputDirectory, name: "\(session.baseName) clips")
+        let folder = ConversionMatrix.uniqueDirectory(directory: session.outputDirectory, name: "\(session.baseName) Clips")
         session.run(title: "Splitting", detail: "\(url.lastPathComponent)") { progress in
             try await VideoOps.split(url, at: points, duration: duration, into: folder, progress: progress)
         }

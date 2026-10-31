@@ -130,7 +130,7 @@
 
 额外保留：Reveal / Duplicate / SHA-256（开源基线已有，不冲突）。官方强调「文件动作不消耗转换额度」——开源版本来就没有额度。
 
-**输出命名词表**（与官方站点模拟一致，见 `parity/spec/tools-actions.json`）：`Compressed.*`、`No Metadata.*`、`Edited.*`、`Annotated.png`、`Background.*`、`Cropped.*`、`Redacted.*`、`Normalized.*`、`Muted.*`、`Trimmed.*`、`Bleeped.*`、`Speed 2x.*`、`Snapshot.png`、`Clips/`、`Pages/`、`Organized.pdf`、`Extracted/`、`Visualizer.mp4`、`Mono.*`。
+**输出命名词表**（已按官方站点模拟的命名表把各工具输出后缀统一为 Title Case，见 `parity/spec/tools-actions.json`）：`Compressed.*`、`No Metadata.*`、`Edited.*`、`Annotated.png`、`Background.*`、`Cropped.*`、`Redacted.*`、`Normalized.*`、`Muted.*`、`Trimmed.*`、`Bleeped.*`、`Speed 2x.*`、`Snapshot.png`、`Clips/`、`Pages/`、`Organized.pdf`、`Extracted/`、`Visualizer.mp4`、`Mono.*`。
 
 ## 6. 交互
 
