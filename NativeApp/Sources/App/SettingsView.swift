@@ -42,6 +42,7 @@ struct SettingsView: View {
     @ObservedObject var model: SettingsTabModel
     @State private var ffmpegHealth: FFmpeg.Health = .missing
     @State private var officeHealth: OfficeEngine.Health = .missing
+    @State private var formatSelection: FileFormat = .jpg
 
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @Environment(\.accessibilityReduceTransparency) private var reduceTransparency
@@ -262,6 +263,7 @@ struct SettingsView: View {
     }
 
     @ViewBuilder private var conversion: some View {
+        formatSettingsSection
         Section("Images") {
             HStack {
                 Text("JPEG / HEIC / WebP quality")
@@ -338,6 +340,89 @@ struct SettingsView: View {
         } footer: {
             Text("Detects an installed LibreOffice for high-fidelity DOCX/PPTX/XLSX/ODS → PDF, PNG and JPG. Nothing is downloaded or bundled; when it is missing, Office conversions fall back to the built-in text engine.")
         }
+    }
+
+    private var formatInputs: [FileFormat] {
+        FileFormat.allCases.filter { !ConversionMatrix.targets(for: $0).isEmpty }
+    }
+
+    private var formatTargets: [FileFormat] {
+        ConversionMatrix.targets(for: formatSelection)
+    }
+
+    @ViewBuilder private var formatSettingsSection: some View {
+        Section {
+            LazyVGrid(columns: [GridItem(.adaptive(minimum: 62), spacing: 6)], alignment: .leading, spacing: 6) {
+                ForEach(formatInputs) { format in
+                    Button {
+                        formatSelection = format
+                    } label: {
+                        Text(format.displayName)
+                            .font(.system(size: 10, weight: formatSelection == format ? .semibold : .regular, design: .monospaced))
+                            .frame(maxWidth: .infinity)
+                            .padding(.vertical, 5)
+                            .padding(.horizontal, 4)
+                            .foregroundStyle(formatSelection == format ? Color.white : Color.primary)
+                            .background(Capsule().fill(formatSelection == format ? Theme.accent : Color.secondary.opacity(0.14)))
+                    }
+                    .buttonStyle(.plain)
+                    .help("\(format.displayName): \(ConversionMatrix.targets(for: format).count) outputs")
+                }
+            }
+            .padding(.vertical, 4)
+
+            VStack(alignment: .leading, spacing: 4) {
+                Text("\(formatSelection.displayName) → \(formatTargets.count) outputs")
+                    .font(.system(size: 12, weight: .semibold, design: .monospaced))
+                Text(formatTargets.map(\.displayName).joined(separator: "  ·  "))
+                    .font(.caption2)
+                    .foregroundStyle(.secondary)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
+
+            if formatSelection.category == .image {
+                HStack {
+                    Text("Image quality")
+                    Slider(value: $settings.jpegQuality, in: 0.3...1.0)
+                    Text("\(Int(settings.jpegQuality * 100))%")
+                        .font(.caption.monospacedDigit())
+                        .frame(width: 40, alignment: .trailing)
+                }
+                Toggle("Preserve metadata when converting", isOn: $settings.preserveMetadata)
+            } else if formatSelection.category == .video || formatSelection.category == .audio {
+                Picker("Compression preset", selection: $settings.compressionPreset) {
+                    ForEach(CompressionPreset.allCases) { Text($0.title).tag($0) }
+                }
+                .pickerStyle(.segmented)
+            } else if formatSelection.category == .document {
+                HStack(spacing: 6) {
+                    Image(systemName: OfficeEngine.isAvailable ? "checkmark.circle.fill" : "info.circle")
+                        .foregroundStyle(OfficeEngine.isAvailable ? .green : .secondary)
+                    Text(OfficeEngine.binary.map { "Office fidelity via detected \((($0 as NSString).lastPathComponent))" }
+                         ?? "No LibreOffice detected — documents use the built-in text engine")
+                        .font(.caption)
+                }
+            }
+
+            HStack {
+                Button("Restore Defaults") { restoreFormatDefaults() }
+                Button("Restore Compression Defaults") {
+                    settings.compressionPreset = .balanced
+                    settings.compressionResizeLongEdge = 0
+                }
+            }
+        } header: {
+            Text("Format settings")
+        } footer: {
+            Text("Pick a source format to see every output and the settings that affect it. The conversion wheel uses this same matrix.")
+        }
+    }
+
+    private func restoreFormatDefaults() {
+        settings.jpegQuality = 0.9
+        settings.compressionPreset = .balanced
+        settings.compressionResizeLongEdge = 0
+        settings.preserveMetadata = true
     }
 
     @ViewBuilder private var compatibility: some View {

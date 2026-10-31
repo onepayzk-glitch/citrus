@@ -126,6 +126,8 @@ FileAction.allCases.count          // 9 = 官方 6 + Reveal/Duplicate/SHA-256
 - 菜单新增「Getting Started…」可随时重开引导。
 - 反馈：`UI/Feedback.swift`（成功音 + 触感，可在设置关闭）；`Float Behaviour`
   支持「新建 Float / 加入当前 Float」。
+- Settings → Formats「Format settings」面板已实现并截图核对：源格式按钮网格（JPG/PNG/WEBP/HEIC/TIFF/SVG/AVIF/BMP/GIF/音频/文档…）、
+  所选格式输出清单、按类别的质量/压缩/元数据控件、Restore Defaults 按钮；与 Compatibility 页共用 `ConversionMatrix` 数据。
 
 ## 8. 已知未验证项
 

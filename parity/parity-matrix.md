@@ -157,7 +157,7 @@
 | General：Drag Modifiers 重映射 | ✅ | 三行下拉框，重复键自动互换 |
 | General：Float Behaviour | ✅ | Create a new Float / Add to the current Float（`AppSettings.floatBehaviour`） |
 | General：Terminal app 选择（Terminal/iTerm2/系统默认） | ✅ | `AppSettings.terminalApplication` |
-| Formats：源格式面板 + Preserve metadata + 压缩预设 | ⚠️ 部分 | 压缩预设/质量/长边/FFmpeg/Preserve metadata 已做；按格式的细分设置面板未做 |
+| Formats：源格式面板 + Preserve metadata + 压缩预设 | ✅ | 「Format settings」面板：全部可转换源格式按钮网格、所选格式的输出清单、按类别的质量/压缩/元数据控件、Restore Defaults / Restore Compression Defaults |
 | Compatibility：源×目标矩阵 UI | ✅ | Settings → Compatibility：逐源格式列出全部目标与总数（275） |
 | Folders：安全作用域书签 | ❌ | 开源版不沙盒，无需书签 |
 | About：版本/免费额度/Restore Purchase | ⚠️ | 有 About；无付费墙故无额度/恢复购买 |
@@ -187,7 +187,7 @@
 
 1. Settings → Formats 的「按格式细分设置」面板未做（质量/压缩/长边/Preserve metadata/Office 引擎已集中提供）。
 2. Office 转换的版式级保真：已改走本机 LibreOffice（L2，检测复用，0 捆绑）；未安装 LibreOffice 的机器回退文本级重建，保真度低于官方自研渲染器。
-3. FFmpeg 未内置：官方内置 22 MB LGPL 版；本仓库使用系统可选 ffmpeg，缺失时部分音视频编码不可用（会明确提示）。
-4. PAGES 输出依赖本机 Pages.app 与首次 Automation 授权（Tangerine 内置引擎无此依赖）。
+2. FFmpeg 未内置：官方内置 22 MB LGPL 版；本仓库使用系统可选 ffmpeg，缺失时部分音视频编码不可用（会明确提示）。
+3. PAGES 输出依赖本机 Pages.app 与首次 Automation 授权（Tangerine 内置引擎无此依赖）。
 
 核心功能（275 条转换路由、26 个工具 + QR、6 个文件动作、⇧/⌘/⌃ 轮盘、批量/进度/输出位置）已全部对齐。
