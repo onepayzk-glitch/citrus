@@ -11,6 +11,8 @@ Local processing, no account, no subscription. GPL-3.0-only. Safety limits apply
 
 **Author:** 假宝玉 · [github.com/onepayzk-glitch](https://github.com/onepayzk-glitch) · Feedback: use **Feedback…** in the menu bar or Settings → About; copied diagnostics contain only version, macOS version, architecture, language and whether the optional engines are installed. Roadmap: [parity/roadmap-1.x.md](parity/roadmap-1.x.md).
 
+**Version 1.0.0.** Attached release artifacts are ZIP/DMG builds of this repository; the app itself is built by `scripts/build-app.sh` with the version above.
+
 **Assembly build (1.0).** External engines are not bundled. The app checks for LibreOffice, FFmpeg and Pages when a feature needs them, explains what is missing, and helps the user install it (Terminal command, official download page or the Mac App Store). Office conversions can fall back to the built-in text engine. See [parity/dependencies.md](parity/dependencies.md).
 
 **Tangerine parity build (this fork).** The conversion wheel mirrors Tangerine's 275 options (267 routes need no external app; the 8 `→PAGES` routes use the installed Pages app), every Tangerine tool (26) plus QR reading, the six file actions (AirDrop/Float/Copy/Move/Copy Path/Terminal), remappable ⇧/⌘/⌃ drag wheels, a six-step first-run guide (English and 简体中文, switchable in Settings), sound/haptic feedback, a compatibility matrix in Settings, and Office conversions through an installed LibreOffice when one is detected (nothing is bundled; without it, Office files use the built-in text engine). See [parity/parity-matrix.md](parity/parity-matrix.md) for the feature-by-feature comparison and remaining gaps, [parity/verification.md](parity/verification.md) for build and test evidence, and [parity/manual-verification-checklist.md](parity/manual-verification-checklist.md) for the five-minute drag-and-drop check that only a human can run.
@@ -63,6 +65,20 @@ The Windows glass wheel and tray are adapted from [VandanPatell’s contribution
 </details>
 
 *These are illustrated workflows, not screen recordings or conversion-speed benchmarks. The glass effect is an illustration of the native material. macOS 15+ developer trial; native Liquid Glass on macOS 26.*
+
+## Release build (signed ZIP + DMG)
+
+```bash
+MARKETING_VERSION=1.0.0 BUILD_NUMBER=1 \
+DEVELOPER_ID_APPLICATION="Developer ID Application: <Name> (TEAMID)" \
+NOTARY_PROFILE="open-tangerine-notary" \
+./scripts/package-release.sh
+```
+
+The script builds, signs with hardened runtime, packages a ZIP and a DMG, notarizes and
+staples both, then writes `SHA256SUMS.txt`. Without a Developer ID certificate it produces
+ad-hoc artifacts for local testing only. Full prerequisites and troubleshooting:
+[parity/release-1.0.md](parity/release-1.0.md). Test report: [parity/test-report-1.0.md](parity/test-report-1.0.md).
 
 ## Install from source
 

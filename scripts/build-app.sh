@@ -9,6 +9,8 @@ mkdir -p "$app/Contents/MacOS" "$module_cache" "$PWD/.build"
 # macOS 15 (Sequoia) is the minimum supported release. Intel (x86_64) builds are
 # first-class; set BUILD_UNIVERSAL=1 to produce one app for Intel and Apple silicon.
 MIN_MACOS="${MACOSX_DEPLOYMENT_TARGET:-15.0}"
+MARKETING_VERSION="${MARKETING_VERSION:-1.0.0}"
+BUILD_NUMBER="${BUILD_NUMBER:-1}"
 if [[ "${BUILD_UNIVERSAL:-0}" == "1" || "${ARCHS:-}" == "universal" ]]; then
   archs=(x86_64 arm64)
 else
@@ -43,8 +45,8 @@ cat > "$app/Contents/Info.plist" <<PLIST
 <key>CFBundleName</key><string>Open Tangerine</string>
 <key>CFBundleIconFile</key><string>AppIcon</string>
 <key>CFBundlePackageType</key><string>APPL</string>
-<key>CFBundleShortVersionString</key><string>0.1.10</string>
-<key>CFBundleVersion</key><string>11</string>
+<key>CFBundleShortVersionString</key><string>${MARKETING_VERSION}</string>
+<key>CFBundleVersion</key><string>${BUILD_NUMBER}</string>
 <key>LSMinimumSystemVersion</key><string>15.0</string>
 <key>LSUIElement</key><true/>
 <key>NSHighResolutionCapable</key><true/>
@@ -96,4 +98,4 @@ if [[ "$verified" != "1" ]]; then
 fi
 test -x "$app/Contents/MacOS/OpenTangerine"
 plutil -lint "$app/Contents/Info.plist"
-printf 'Built %s (%s, macOS %s+)\n' "$app" "$(xcrun lipo -archs "$app/Contents/MacOS/OpenTangerine")" "$MIN_MACOS"
+printf 'Built %s (%s, macOS %s+, version %s build %s)\n' "$app" "$(xcrun lipo -archs "$app/Contents/MacOS/OpenTangerine")" "$MIN_MACOS" "$MARKETING_VERSION" "$BUILD_NUMBER"
