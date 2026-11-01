@@ -42,23 +42,23 @@ struct CropVideoToolView: View {
             }
             .padding(12)
         } sidebar: {
-            SidebarSection(title: "Aspect ratio") {
+            SidebarSection(title: L10n.t("Aspect ratio")) {
                 Picker("", selection: $aspect) {
                     ForEach(AspectPreset.all) { Text($0.title).tag($0) }
                 }
                 .labelsHidden()
             }
-            SidebarSection(title: "Crop area") {
+            SidebarSection(title: L10n.t("Crop area")) {
                 if let rect = cropRect {
                     Text("\(Int(rect.width)) × \(Int(rect.height)) at \(Int(rect.minX)), \(Int(rect.minY))").font(.callout.monospacedDigit())
                 }
                 Text("Video: \(Int(videoSize.width)) × \(Int(videoSize.height))").font(.caption2).foregroundStyle(.secondary)
             }
-            SidebarSection(title: "Output dimensions") {
-                Toggle("Same as crop area", isOn: $keepSize)
+            SidebarSection(title: L10n.t("Output dimensions")) {
+                Toggle(L10n.t("Same as crop area"), isOn: $keepSize)
                 NumberField(title: "Width", value: $outWidth, suffix: "px").disabled(keepSize)
                 NumberField(title: "Height", value: $outHeight, suffix: "px").disabled(keepSize)
-                Text("Audio is kept as is. Output is MP4 (H.264).").font(.caption2).foregroundStyle(.secondary)
+                Text(L10n.t("Audio is kept as is. Output is MP4 (H.264).")).font(.caption2).foregroundStyle(.secondary)
             }
         }
         .onChange(of: media.currentTime) { _ in loadFrame() }
@@ -122,7 +122,7 @@ struct VideoSpeedToolView: View {
             PlayerSurface(player: media.player)
                 .background(Color.black)
         } sidebar: {
-            SidebarSection(title: "Speed") {
+            SidebarSection(title: L10n.t("Speed")) {
                 LabeledSlider(title: "Factor", value: $factor, range: 0.1...8) { String(format: "%.2f×", $0) }
                 HStack {
                     ForEach([0.25, 0.5, 1.5, 2, 4], id: \.self) { value in
@@ -131,11 +131,11 @@ struct VideoSpeedToolView: View {
                 }
                 Text("New length: \(TimeFormatter.clock(media.duration / factor))").font(.callout.monospacedDigit())
             }
-            SidebarSection(title: "Audio") {
-                Toggle("Preserve pitch", isOn: $preservePitch).disabled(!media.info.hasAudio)
+            SidebarSection(title: L10n.t("Audio")) {
+                Toggle(L10n.t("Preserve pitch"), isOn: $preservePitch).disabled(!media.info.hasAudio)
                 Text(media.info.hasAudio ? "Pitch is kept natural; disable for a classic tape-speed effect." : "This video has no audio track.").font(.caption2).foregroundStyle(.secondary)
             }
-            SidebarSection(title: "Preview") {
+            SidebarSection(title: L10n.t("Preview")) {
                 Button(media.isPlaying ? "Pause" : "Play at \(String(format: "%g", factor))×") {
                     if media.isPlaying { media.pause() } else {
                         media.player.currentItem?.audioTimePitchAlgorithm = preservePitch ? .spectral : .varispeed
@@ -175,13 +175,13 @@ struct JoinVideosToolView: View {
         ToolShell(session: session, saveTitle: "Join \(files.count) clips", saveEnabled: files.count >= 2, onSave: save) {
             OrderedFileList(files: $files, thumbnails: thumbs, allowedTypes: [.movie, .video, .mpeg4Movie, .quickTimeMovie], addTitle: "Add clips…")
         } sidebar: {
-            SidebarSection(title: "Canvas") {
+            SidebarSection(title: L10n.t("Canvas")) {
                 if let first = files.first, let info = infos[first] {
                     Text("\(Int(info.naturalSize.width)) × \(Int(info.naturalSize.height)) from the first clip").font(.callout)
                 }
-                Text("Other clips are scaled to fit and letterboxed if their aspect ratio differs. Output is a single MP4.").font(.caption2).foregroundStyle(.secondary)
+                Text(L10n.t("Other clips are scaled to fit and letterboxed if their aspect ratio differs. Output is a single MP4.")).font(.caption2).foregroundStyle(.secondary)
             }
-            SidebarSection(title: "Summary") {
+            SidebarSection(title: L10n.t("Summary")) {
                 Text("\(files.count) clips · \(TimeFormatter.clock(totalDuration))").font(.callout.monospacedDigit())
             }
         }

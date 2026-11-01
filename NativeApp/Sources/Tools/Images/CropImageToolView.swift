@@ -36,24 +36,24 @@ struct CropImageToolView: View {
                 }
             }
         } sidebar: {
-            SidebarSection(title: "Aspect ratio") {
+            SidebarSection(title: L10n.t("Aspect ratio")) {
                 Picker("", selection: $aspect) {
                     ForEach(AspectPreset.all) { Text($0.title).tag($0) }
                 }
                 .labelsHidden()
             }
-            SidebarSection(title: "Dimensions") {
+            SidebarSection(title: L10n.t("Dimensions")) {
                 NumberField(title: "Width", value: $width, suffix: "px")
                 NumberField(title: "Height", value: $height, suffix: "px")
                 Text("Original: \(Int(document.size.width)) × \(Int(document.size.height))").font(.caption2).foregroundStyle(.secondary)
                 HStack {
-                    Button("Center") { centerCrop() }
-                    Button("Whole image") { setCrop(CGRect(origin: .zero, size: document.size)) }
+                    Button(L10n.t("Center")) { centerCrop() }
+                    Button(L10n.t("Whole image")) { setCrop(CGRect(origin: .zero, size: document.size)) }
                 }
                 .controlSize(.small)
             }
-            SidebarSection(title: "How to") {
-                Text("Drag on the photo to draw the crop. Drag the corners to resize, or type pixel dimensions. The copy is saved at full resolution.")
+            SidebarSection(title: L10n.t("How to")) {
+                Text(L10n.t("Drag on the photo to draw the crop. Drag the corners to resize, or type pixel dimensions. The copy is saved at full resolution."))
                     .font(.caption2).foregroundStyle(.secondary)
             }
         }

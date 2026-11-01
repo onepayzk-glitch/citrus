@@ -41,7 +41,7 @@ struct ResizeImageToolView: View {
             }
             .listStyle(.inset)
         } sidebar: {
-            SidebarSection(title: "Resize by") {
+            SidebarSection(title: L10n.t("Resize by")) {
                 Picker("", selection: $mode) {
                     ForEach(Mode.allCases) { Text($0.title).tag($0) }
                 }
@@ -59,11 +59,11 @@ struct ResizeImageToolView: View {
                 case .exact:
                     NumberField(title: "Width", value: $width, suffix: "px")
                     NumberField(title: "Height", value: $height, suffix: "px")
-                    Toggle("Keep aspect ratio (fit inside)", isOn: $lockAspect)
+                    Toggle(L10n.t("Keep aspect ratio (fit inside)"), isOn: $lockAspect)
                 }
             }
-            SidebarSection(title: "Notes") {
-                Text("Images are never enlarged beyond the requested size with the long-edge mode. Output keeps the original format where it can be written natively.")
+            SidebarSection(title: L10n.t("Notes")) {
+                Text(L10n.t("Images are never enlarged beyond the requested size with the long-edge mode. Output keeps the original format where it can be written natively."))
                     .font(.caption2).foregroundStyle(.secondary)
             }
         }
@@ -147,19 +147,19 @@ struct RotateImageToolView: View {
                 }
             }
         } sidebar: {
-            SidebarSection(title: "Rotate") {
+            SidebarSection(title: L10n.t("Rotate")) {
                 HStack {
-                    Button { quarterTurns = (quarterTurns + 3) % 4 } label: { Label("Left", systemImage: "rotate.left") }
-                    Button { quarterTurns = (quarterTurns + 1) % 4 } label: { Label("Right", systemImage: "rotate.right") }
+                    Button { quarterTurns = (quarterTurns + 3) % 4 } label: { Label(L10n.t("Left"), systemImage: "rotate.left") }
+                    Button { quarterTurns = (quarterTurns + 1) % 4 } label: { Label(L10n.t("Right"), systemImage: "rotate.right") }
                 }
                 Text("\(quarterTurns * 90)°").font(.callout.monospacedDigit()).foregroundStyle(.secondary)
             }
-            SidebarSection(title: "Flip") {
-                Toggle("Flip horizontally", isOn: $flipH)
-                Toggle("Flip vertically", isOn: $flipV)
+            SidebarSection(title: L10n.t("Flip")) {
+                Toggle(L10n.t("Flip horizontally"), isOn: $flipH)
+                Toggle(L10n.t("Flip vertically"), isOn: $flipV)
             }
             if session.files.count > 1 {
-                SidebarSection(title: "Batch") {
+                SidebarSection(title: L10n.t("Batch")) {
                     Text("The same rotation and flips are applied to all \(session.files.count) images.").font(.caption2).foregroundStyle(.secondary)
                 }
             }

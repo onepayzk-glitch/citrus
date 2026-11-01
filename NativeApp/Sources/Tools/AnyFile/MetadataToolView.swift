@@ -32,13 +32,13 @@ struct MetadataToolView: View {
             VStack(spacing: 0) {
                 HStack {
                     if session.files.count > 1 {
-                        Picker("File", selection: $selectedFile) {
+                        Picker(L10n.t("File"), selection: $selectedFile) {
                             ForEach(session.files, id: \.self) { Text($0.lastPathComponent).tag($0) }
                         }
                         .frame(maxWidth: 320)
                     }
                     Spacer()
-                    TextField("Search fields", text: $search)
+                    TextField(L10n.t("Search fields"), text: $search)
                         .textFieldStyle(.roundedBorder)
                         .frame(width: 220)
                 }
@@ -47,7 +47,7 @@ struct MetadataToolView: View {
                 if loading {
                     LoadingOrError(error: nil)
                 } else if fields.isEmpty {
-                    Text("No metadata found.").foregroundStyle(.secondary).frame(maxWidth: .infinity, maxHeight: .infinity)
+                    Text(L10n.t("No metadata found.")).foregroundStyle(.secondary).frame(maxWidth: .infinity, maxHeight: .infinity)
                 } else {
                     List {
                         ForEach(groups, id: \.0) { group, items in
@@ -64,21 +64,21 @@ struct MetadataToolView: View {
                 }
             }
         } sidebar: {
-            SidebarSection(title: "Remove") {
-                Toggle("Remove all metadata", isOn: $removeAll)
-                Toggle("Remove camera, GPS and processing data", isOn: $removeSensitive).disabled(removeAll)
-                Text("Orientation and color profile are kept. Removing sensitive data clears all audio/video tags, and author/creator details from PDFs. Images may be re-encoded.")
+            SidebarSection(title: L10n.t("Remove")) {
+                Toggle(L10n.t("Remove all metadata"), isOn: $removeAll)
+                Toggle(L10n.t("Remove camera, GPS and processing data"), isOn: $removeSensitive).disabled(removeAll)
+                Text(L10n.t("Orientation and color profile are kept. Removing sensitive data clears all audio/video tags, and author/creator details from PDFs. Images may be re-encoded."))
                     .font(.caption2).foregroundStyle(.secondary)
             }
-            SidebarSection(title: "Editing") {
-                Text("Editable fields show a text box. Clear a value to remove that field. Changes apply to a new copy; the original stays as is.")
+            SidebarSection(title: L10n.t("Editing")) {
+                Text(L10n.t("Editable fields show a text box. Clear a value to remove that field. Changes apply to a new copy; the original stays as is."))
                     .font(.caption2).foregroundStyle(.secondary)
                 if session.files.count > 1 {
-                    Text("Edited field values are applied to every selected file; removal options apply to all.")
+                    Text(L10n.t("Edited field values are applied to every selected file; removal options apply to all."))
                         .font(.caption2).foregroundStyle(.secondary)
                 }
             }
-            SidebarSection(title: "Summary") {
+            SidebarSection(title: L10n.t("Summary")) {
                 let sensitive = fields.filter(\.sensitive).count
                 Text("\(fields.count) fields · \(sensitive) sensitive").font(.callout.monospacedDigit())
             }

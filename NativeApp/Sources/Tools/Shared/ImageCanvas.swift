@@ -266,7 +266,7 @@ struct LoadingOrError: View {
                 Text(error).foregroundStyle(.secondary).multilineTextAlignment(.center)
             } else {
                 ProgressView()
-                Text("Loading…").foregroundStyle(.secondary)
+                Text(L10n.t("Loading…")).foregroundStyle(.secondary)
             }
         }
         .padding()

@@ -19,9 +19,9 @@ struct MergePDFToolView: View {
         ToolShell(session: session, saveTitle: "Merge", saveEnabled: files.count >= 1, onSave: save) {
             OrderedFileList(files: $files, thumbnails: thumbs, allowedTypes: [.pdf], addTitle: "Add PDFs…")
         } sidebar: {
-            SidebarSection(title: "Summary") {
+            SidebarSection(title: L10n.t("Summary")) {
                 Text("\(files.count) document\(files.count == 1 ? "" : "s") · \(files.reduce(0) { $0 + (pageCounts[$1] ?? 0) }) pages").font(.callout.monospacedDigit())
-                Text("Documents are merged in list order, starting with the Finder selection order. Password-protected PDFs are skipped with an error.").font(.caption2).foregroundStyle(.secondary)
+                Text(L10n.t("Documents are merged in list order, starting with the Finder selection order. Password-protected PDFs are skipped with an error.")).font(.caption2).foregroundStyle(.secondary)
             }
         }
         .task(id: files) {
@@ -79,7 +79,7 @@ struct SplitPDFToolView: View {
                 .padding(16)
             }
         } sidebar: {
-            SidebarSection(title: "Split") {
+            SidebarSection(title: L10n.t("Split")) {
                 Picker("", selection: $mode) {
                     ForEach(PDFOps.SplitMode.allCases) { Text($0.title).tag($0) }
                 }
@@ -90,13 +90,13 @@ struct SplitPDFToolView: View {
                 case .everyN:
                     Stepper("Pages per file: \(every)", value: $every, in: 1...max(1, pageCount))
                 case .ranges:
-                    TextField("e.g. 1-3, 4, 5-8", text: $ranges).textFieldStyle(.roundedBorder)
-                    Text("Comma-separated pages or ranges. Each entry becomes one file.").font(.caption2).foregroundStyle(.secondary)
+                    TextField(L10n.t("e.g. 1-3, 4, 5-8"), text: $ranges).textFieldStyle(.roundedBorder)
+                    Text(L10n.t("Comma-separated pages or ranges. Each entry becomes one file.")).font(.caption2).foregroundStyle(.secondary)
                 }
             }
-            SidebarSection(title: "Summary") {
+            SidebarSection(title: L10n.t("Summary")) {
                 Text("\(pageCount) pages → \(outputCount) file\(outputCount == 1 ? "" : "s")").font(.callout.monospacedDigit())
-                Text("Output files are placed in one folder next to the original.").font(.caption2).foregroundStyle(.secondary)
+                Text(L10n.t("Output files are placed in one folder next to the original.")).font(.caption2).foregroundStyle(.secondary)
             }
         }
         .task {
@@ -152,14 +152,14 @@ struct OrganizePDFToolView: View {
                             PageCell(index: index, page: page, image: thumbnails[key(page)], selected: selected.contains(page.id), sourceLabel: sources.count > 1 ? page.sourceURL.lastPathComponent : nil)
                                 .onTapGesture { toggle(page.id) }
                                 .contextMenu {
-                                    Button("Rotate left") { rotate([page.id], by: -90) }
-                                    Button("Rotate right") { rotate([page.id], by: 90) }
-                                    Button("Duplicate") { duplicate([page.id]) }
+                                    Button(L10n.t("Rotate left")) { rotate([page.id], by: -90) }
+                                    Button(L10n.t("Rotate right")) { rotate([page.id], by: 90) }
+                                    Button(L10n.t("Duplicate")) { duplicate([page.id]) }
                                     Divider()
-                                    Button("Move to start") { move(page.id, to: 0) }
-                                    Button("Move to end") { move(page.id, to: pages.count) }
+                                    Button(L10n.t("Move to start")) { move(page.id, to: 0) }
+                                    Button(L10n.t("Move to end")) { move(page.id, to: pages.count) }
                                     Divider()
-                                    Button("Remove", role: .destructive) { remove([page.id]) }
+                                    Button(L10n.t("Remove"), role: .destructive) { remove([page.id]) }
                                 }
                                 .onDrag { NSItemProvider(object: page.id.uuidString as NSString) }
                                 .onDrop(of: [.plainText], delegate: PageDropDelegate(target: page.id, pages: $pages))
@@ -169,25 +169,25 @@ struct OrganizePDFToolView: View {
                 }
             }
         } sidebar: {
-            SidebarSection(title: "Selection") {
+            SidebarSection(title: L10n.t("Selection")) {
                 Text(selected.isEmpty ? "Click pages to select. Drag to reorder." : "\(selected.count) selected").font(.callout)
                 HStack {
-                    Button("All") { selected = Set(pages.map(\.id)) }
-                    Button("None") { selected.removeAll() }
+                    Button(L10n.t("All")) { selected = Set(pages.map(\.id)) }
+                    Button(L10n.t("None")) { selected.removeAll() }
                 }
                 .controlSize(.small)
             }
-            SidebarSection(title: "Pages") {
+            SidebarSection(title: L10n.t("Pages")) {
                 let targets = selected.isEmpty ? pages.map(\.id) : Array(selected)
                 HStack {
-                    Button { rotate(targets, by: -90) } label: { Label("Left", systemImage: "rotate.left") }
-                    Button { rotate(targets, by: 90) } label: { Label("Right", systemImage: "rotate.right") }
+                    Button { rotate(targets, by: -90) } label: { Label(L10n.t("Left"), systemImage: "rotate.left") }
+                    Button { rotate(targets, by: 90) } label: { Label(L10n.t("Right"), systemImage: "rotate.right") }
                 }
-                Button("Duplicate") { duplicate(targets) }.disabled(selected.isEmpty)
-                Button("Remove", role: .destructive) { remove(targets) }.disabled(selected.isEmpty || selected.count == pages.count)
-                Button("Reverse order") { pages.reverse() }
+                Button(L10n.t("Duplicate")) { duplicate(targets) }.disabled(selected.isEmpty)
+                Button(L10n.t("Remove"), role: .destructive) { remove(targets) }.disabled(selected.isEmpty || selected.count == pages.count)
+                Button(L10n.t("Reverse order")) { pages.reverse() }
             }
-            SidebarSection(title: "Summary") {
+            SidebarSection(title: L10n.t("Summary")) {
                 Text("\(pages.count) page\(pages.count == 1 ? "" : "s")").font(.callout.monospacedDigit())
                 if sources.count > 1 {
                     Text("Pages from \(sources.count) documents are combined into one.").font(.caption2).foregroundStyle(.secondary)

@@ -36,32 +36,32 @@ struct EditImageToolView: View {
                 }
             }
         } sidebar: {
-            SidebarSection(title: "Light") {
+            SidebarSection(title: L10n.t("Light")) {
                 LabeledSlider(title: "Exposure", value: $adjustments.exposure, range: -2...2)
                 LabeledSlider(title: "Brightness", value: $adjustments.brightness, range: -0.5...0.5)
                 LabeledSlider(title: "Contrast", value: $adjustments.contrast, range: 0.5...1.5)
                 LabeledSlider(title: "Highlights", value: $adjustments.highlights, range: 0.3...1)
                 LabeledSlider(title: "Shadows", value: $adjustments.shadows, range: -1...1)
             }
-            SidebarSection(title: "Color") {
+            SidebarSection(title: L10n.t("Color")) {
                 LabeledSlider(title: "Saturation", value: $adjustments.saturation, range: 0...2)
                 LabeledSlider(title: "Vibrance", value: $adjustments.vibrance, range: -1...1)
                 LabeledSlider(title: "Temperature", value: $adjustments.temperature, range: 3000...10000) { String(format: "%.0fK", $0) }
                 LabeledSlider(title: "Tint", value: $adjustments.tint, range: -100...100) { String(format: "%.0f", $0) }
-                Toggle("Monochrome", isOn: $adjustments.monochrome)
+                Toggle(L10n.t("Monochrome"), isOn: $adjustments.monochrome)
                 LabeledSlider(title: "Sepia", value: $adjustments.sepia, range: 0...1)
             }
-            SidebarSection(title: "Detail") {
+            SidebarSection(title: L10n.t("Detail")) {
                 LabeledSlider(title: "Sharpness", value: $adjustments.sharpness, range: 0...2)
                 LabeledSlider(title: "Clarity", value: $adjustments.clarity, range: 0...1)
                 LabeledSlider(title: "Dehaze", value: $adjustments.dehaze, range: 0...1)
                 LabeledSlider(title: "Noise reduction", value: $adjustments.noiseReduction, range: 0...1)
             }
-            SidebarSection(title: "Effects") {
+            SidebarSection(title: L10n.t("Effects")) {
                 LabeledSlider(title: "Grain", value: $adjustments.grain, range: 0...1)
                 LabeledSlider(title: "Vignette", value: $adjustments.vignette, range: 0...2)
             }
-            Button("Reset all") { adjustments = PhotoAdjustments() }
+            Button(L10n.t("Reset all")) { adjustments = PhotoAdjustments() }
                 .buttonStyle(.link)
         }
         .onChange(of: adjustments) { _ in scheduleRender() }

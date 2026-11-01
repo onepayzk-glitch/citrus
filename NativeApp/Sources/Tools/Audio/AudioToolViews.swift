@@ -24,29 +24,29 @@ struct TrimAudioToolView: View {
             }
             .padding(12)
         } sidebar: {
-            SidebarSection(title: "Range") {
+            SidebarSection(title: L10n.t("Range")) {
                 TimecodeField(title: "Start", seconds: $start, maximum: media.duration)
                 TimecodeField(title: "End", seconds: $end, maximum: media.duration)
                 HStack {
-                    Button("Start at playhead") { start = min(media.currentTime, end - 0.01) }
-                    Button("End at playhead") { end = max(media.currentTime, start + 0.01) }
+                    Button(L10n.t("Start at playhead")) { start = min(media.currentTime, end - 0.01) }
+                    Button(L10n.t("End at playhead")) { end = max(media.currentTime, start + 0.01) }
                 }
                 .controlSize(.small)
                 Text("Length: \(TimeFormatter.clock(max(0, end - start)))").font(.callout.monospacedDigit())
             }
-            SidebarSection(title: "Silence") {
-                Button("Remove silence from beginning and end") {
+            SidebarSection(title: L10n.t("Silence")) {
+                Button(L10n.t("Remove silence from beginning and end")) {
                     if let silence { start = silence.leading; end = silence.trailing }
                 }
                 .disabled(silence == nil)
                 if let silence {
                     Text("Detected \(TimeFormatter.clock(silence.leading)) leading and \(TimeFormatter.clock(media.duration - silence.trailing)) trailing silence.").font(.caption2).foregroundStyle(.secondary)
                 } else {
-                    Text("Analyzing…").font(.caption2).foregroundStyle(.secondary)
+                    Text(L10n.t("Analyzing…")).font(.caption2).foregroundStyle(.secondary)
                 }
             }
-            SidebarSection(title: "Preview") {
-                Button("Play selection") { media.playRange(start, end) }
+            SidebarSection(title: L10n.t("Preview")) {
+                Button(L10n.t("Play selection")) { media.playRange(start, end) }
             }
         }
         .onAppear { media.loadWaveform() }
@@ -96,22 +96,22 @@ struct NormalizeAudioToolView: View {
             }
             .padding(12)
         } sidebar: {
-            SidebarSection(title: "Loudness") {
+            SidebarSection(title: L10n.t("Loudness")) {
                 LabeledSlider(title: "Target loudness", value: $target, range: -30...(-8)) { String(format: "%.1f LUFS", $0) }
                 LabeledSlider(title: "Loudness range", value: $range, range: 1...20) { String(format: "%.0f LU", $0) }
                 LabeledSlider(title: "True peak", value: $truePeak, range: -9...0) { String(format: "%.1f dBTP", $0) }
             }
-            SidebarSection(title: "Presets") {
+            SidebarSection(title: L10n.t("Presets")) {
                 HStack {
-                    Button("Podcast") { target = -16; range = 11; truePeak = -1.5 }
-                    Button("Music") { target = -14; range = 9; truePeak = -1 }
-                    Button("Broadcast") { target = -23; range = 7; truePeak = -2 }
+                    Button(L10n.t("Podcast")) { target = -16; range = 11; truePeak = -1.5 }
+                    Button(L10n.t("Music")) { target = -14; range = 9; truePeak = -1 }
+                    Button(L10n.t("Broadcast")) { target = -23; range = 7; truePeak = -2 }
                 }
                 .controlSize(.small)
             }
             if !FFmpeg.isAvailable {
-                SidebarSection(title: "Note") {
-                    Text("Without FFmpeg, OpenTangerine applies peak normalization instead of EBU R128 loudness. Set an FFmpeg path in Settings for full loudness control.").font(.caption2).foregroundStyle(.secondary)
+                SidebarSection(title: L10n.t("Note")) {
+                    Text(L10n.t("Without FFmpeg, OpenTangerine applies peak normalization instead of EBU R128 loudness. Set an FFmpeg path in Settings for full loudness control.")).font(.caption2).foregroundStyle(.secondary)
                 }
             }
         }
@@ -197,7 +197,7 @@ struct AudioChannelsToolView: View {
                     .frame(maxHeight: .infinity)
                 TransportBar(controller: media, showFrameSteps: false)
                 HStack {
-                    Text("Preview").font(.callout)
+                    Text(L10n.t("Preview")).font(.callout)
                     Picker("", selection: $previewChannel) {
                         ForEach(PreviewChannel.allCases) { Text($0.title).tag($0) }
                     }
@@ -209,17 +209,17 @@ struct AudioChannelsToolView: View {
             }
             .padding(12)
         } sidebar: {
-            if !FFmpeg.isAvailable { Text("Channel conversion requires FFmpeg. Set its path in Settings.").font(.caption).foregroundStyle(.secondary) }
-            SidebarSection(title: "Channels") {
+            if !FFmpeg.isAvailable { Text(L10n.t("Channel conversion requires FFmpeg. Set its path in Settings.")).font(.caption).foregroundStyle(.secondary) }
+            SidebarSection(title: L10n.t("Channels")) {
                 Picker("", selection: $mode) {
                     ForEach(AudioOps.ChannelMode.allCases) { Text($0.title).tag($0) }
                 }
                 .pickerStyle(.radioGroup).labelsHidden()
             }
-            SidebarSection(title: "Volume") {
+            SidebarSection(title: L10n.t("Volume")) {
                 LabeledSlider(title: "Left", value: $left, range: 0...2) { String(format: "%.0f%%", $0 * 100) }
                 LabeledSlider(title: "Right", value: $right, range: 0...2) { String(format: "%.0f%%", $0 * 100) }
-                Button("Reset") { left = 1; right = 1 }.controlSize(.small)
+                Button(L10n.t("Reset")) { left = 1; right = 1 }.controlSize(.small)
             }
         }
         .onAppear { media.loadWaveform() }
@@ -287,7 +287,7 @@ struct RedactAudioToolView: View {
             .padding(12)
         } sidebar: {
             SidebarSection(title: "Bleeps (\(ranges.count))") {
-                Button("Add bleep at playhead") {
+                Button(L10n.t("Add bleep at playhead")) {
                     let start = media.currentTime
                     let range = AudioOps.BleepRange(start: start, end: min(media.duration, start + 1))
                     ranges.append(range)
@@ -307,20 +307,20 @@ struct RedactAudioToolView: View {
                 }
             }
             if let i = selectedIndex {
-                SidebarSection(title: "Selected bleep") {
+                SidebarSection(title: L10n.t("Selected bleep")) {
                     TimecodeField(title: "Start", seconds: Binding(get: { ranges[i].start }, set: { ranges[i].start = min($0, ranges[i].end - 0.01) }), maximum: media.duration)
                     TimecodeField(title: "End", seconds: Binding(get: { ranges[i].end }, set: { ranges[i].end = max($0, ranges[i].start + 0.01) }), maximum: media.duration)
                     HStack {
-                        Button("Nudge −0.1 s") { shift(i, -0.1) }
-                        Button("Nudge +0.1 s") { shift(i, 0.1) }
+                        Button(L10n.t("Nudge −0.1 s")) { shift(i, -0.1) }
+                        Button(L10n.t("Nudge +0.1 s")) { shift(i, 0.1) }
                     }
                     .controlSize(.small)
                 }
             }
-            SidebarSection(title: "Tone") {
+            SidebarSection(title: L10n.t("Tone")) {
                 LabeledSlider(title: "Frequency", value: $frequency, range: 300...2000) { String(format: "%.0f Hz", $0) }
             }
-            SidebarSection(title: "Compare") {
+            SidebarSection(title: L10n.t("Compare")) {
                 Text(FFmpeg.isAvailable ? "Play a bleep row to hear the original section. The saved copy replaces those sections with the tone." : "Bleep requires FFmpeg. Set its path in Settings.").font(.caption2).foregroundStyle(.secondary)
             }
         }
@@ -370,7 +370,7 @@ struct AudioToVideoToolView: View {
                         if let image {
                             Image(nsImage: image).resizable().aspectRatio(contentMode: .fit)
                         } else {
-                            Text("Choose an image").foregroundStyle(.white.opacity(0.7))
+                            Text(L10n.t("Choose an image")).foregroundStyle(.white.opacity(0.7))
                         }
                     } else {
                         WaveformShape(samples: media.waveform.isEmpty ? Array(repeating: 0.3, count: 120) : media.waveform)
@@ -386,7 +386,7 @@ struct AudioToVideoToolView: View {
             }
             .padding(12)
         } sidebar: {
-            SidebarSection(title: "Style") {
+            SidebarSection(title: L10n.t("Style")) {
                 Picker("", selection: $style) {
                     ForEach(AudioOps.VisualizerStyle.allCases) { Text($0.title).tag($0) }
                 }
@@ -395,24 +395,24 @@ struct AudioToVideoToolView: View {
                     HStack {
                         Text(imageURL?.lastPathComponent ?? "No image").font(.callout).lineLimit(1)
                         Spacer()
-                        Button("Choose…") { chooseImage() }
+                        Button(L10n.t("Choose…")) { chooseImage() }
                     }
                 }
             }
-            SidebarSection(title: "Video") {
+            SidebarSection(title: L10n.t("Video")) {
                 Picker("", selection: $orientation) {
                     ForEach(AudioOps.VisualizerOrientation.allCases) { Text($0.title).tag($0) }
                 }
                 .pickerStyle(.segmented).labelsHidden()
                 Text("\(Int(orientation.size.width)) × \(Int(orientation.size.height)) · 30 fps · H.264 + AAC").font(.caption2).foregroundStyle(.secondary)
             }
-            SidebarSection(title: "Colors") {
+            SidebarSection(title: L10n.t("Colors")) {
                 if style != .stillImage { ColorSwatchPicker(title: "Accent", color: $accent) }
                 ColorSwatchPicker(title: "Background", color: $background)
             }
             if !FFmpeg.isAvailable {
-                SidebarSection(title: "Requires FFmpeg") {
-                    Text("Rendering a visualizer needs FFmpeg. Set its path in Settings.").font(.caption2).foregroundStyle(.secondary)
+                SidebarSection(title: L10n.t("Requires FFmpeg")) {
+                    Text(L10n.t("Rendering a visualizer needs FFmpeg. Set its path in Settings.")).font(.caption2).foregroundStyle(.secondary)
                 }
             }
         }

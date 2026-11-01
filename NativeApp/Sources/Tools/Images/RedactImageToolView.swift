@@ -50,7 +50,7 @@ struct RedactImageToolView: View {
                 }
             }
         } sidebar: {
-            SidebarSection(title: "Redaction style") {
+            SidebarSection(title: L10n.t("Redaction style")) {
                 Picker("", selection: styleBinding) {
                     ForEach(RedactionStyle.allCases) { Text($0.title).tag($0) }
                 }
@@ -62,7 +62,7 @@ struct RedactImageToolView: View {
             }
             SidebarSection(title: "Areas (\(rects.count))") {
                 if rects.isEmpty {
-                    Text("Drag on the photo to cover an area. Drag areas to move them and their corners to resize.").font(.caption2).foregroundStyle(.secondary)
+                    Text(L10n.t("Drag on the photo to cover an area. Drag areas to move them and their corners to resize.")).font(.caption2).foregroundStyle(.secondary)
                 }
                 ForEach(rects) { overlay in
                     HStack {
@@ -76,11 +76,11 @@ struct RedactImageToolView: View {
                     .onTapGesture { selected = overlay.id }
                 }
                 if !rects.isEmpty {
-                    Button("Remove all") { rects.removeAll(); styles.removeAll(); selected = nil }.controlSize(.small)
+                    Button(L10n.t("Remove all")) { rects.removeAll(); styles.removeAll(); selected = nil }.controlSize(.small)
                 }
             }
-            SidebarSection(title: "Preview") {
-                Toggle("Show result", isOn: $showPreview)
+            SidebarSection(title: L10n.t("Preview")) {
+                Toggle(L10n.t("Show result"), isOn: $showPreview)
             }
         }
         .onChange(of: rects) { _ in relabel(); scheduleRender() }

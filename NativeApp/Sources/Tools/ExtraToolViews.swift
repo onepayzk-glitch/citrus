@@ -24,7 +24,7 @@ struct AnnotateImageToolView: View {
                 }
             }
         } sidebar: {
-            SidebarSection(title: "Markup") {
+            SidebarSection(title: L10n.t("Markup")) {
                 Picker("", selection: $kind) {
                     ForEach(AnnotationItem.Kind.allCases) { kind in
                         Label(kind.title, systemImage: kind.symbol).tag(kind)
@@ -33,7 +33,7 @@ struct AnnotateImageToolView: View {
                 .pickerStyle(.segmented)
                 .labelsHidden()
                 if kind == .text || kind == .step {
-                    TextField("Text", text: $text)
+                    TextField(L10n.t("Text"), text: $text)
                         .textFieldStyle(.roundedBorder)
                 }
                 Picker("", selection: $color) {
@@ -46,7 +46,7 @@ struct AnnotateImageToolView: View {
             }
             SidebarSection(title: "Annotations (\(items.count))") {
                 if items.isEmpty {
-                    Text("Drag on the photo to add the selected markup.")
+                    Text(L10n.t("Drag on the photo to add the selected markup."))
                         .font(.caption)
                         .foregroundStyle(.secondary)
                 } else {
@@ -65,7 +65,7 @@ struct AnnotateImageToolView: View {
                         }
                         .font(.callout)
                     }
-                    Button("Clear all") { items.removeAll() }
+                    Button(L10n.t("Clear all")) { items.removeAll() }
                         .controlSize(.small)
                 }
             }
@@ -195,7 +195,7 @@ struct MuteVideoToolView: View {
 
     var body: some View {
         FormShell(session: session, saveTitle: "Remove Audio", onSave: save) {
-            FormHeading("Remove audio")
+            FormHeading(L10n.t("Remove audio"))
             Text("Exports a new copy of \(session.primary.lastPathComponent) with every audio track removed. The original file is not changed.")
                 .foregroundStyle(.secondary)
             Text("Output keeps the original video dimensions and frame rate. A new file named “\(session.baseName) Muted.mp4” is saved next to the original.")
@@ -222,12 +222,12 @@ struct ExtractArchiveToolView: View {
 
     var body: some View {
         FormShell(session: session, saveTitle: "Extract", onSave: save) {
-            FormHeading("Extract archive")
+            FormHeading(L10n.t("Extract archive"))
             Text(session.primary.lastPathComponent)
                 .font(.title3.weight(.semibold))
-            Text("The archive is unpacked into a new folder named “Extracted” beside it. The original archive is not changed.")
+            Text(L10n.t("The archive is unpacked into a new folder named “Extracted” beside it. The original archive is not changed."))
                 .foregroundStyle(.secondary)
-            Text("RAR archives use the system bsdtar; if your archive needs a different extractor, install `unar` first.")
+            Text(L10n.t("RAR archives use the system bsdtar; if your archive needs a different extractor, install `unar` first."))
                 .font(.callout)
                 .foregroundStyle(.secondary)
             if let error { Text(error).foregroundStyle(.red) }
@@ -258,13 +258,13 @@ struct ReadQRCodeToolView: View {
 
     var body: some View {
         FormShell(session: session, saveTitle: "Done", saveEnabled: true, onSave: { ToolWindowManager.shared.close(session) }) {
-            FormHeading("QR codes")
+            FormHeading(L10n.t("QR codes"))
             if let error {
                 Text(error).foregroundStyle(.red)
             } else if results.isEmpty {
                 HStack {
                     ProgressView()
-                    Text("Reading codes…").foregroundStyle(.secondary)
+                    Text(L10n.t("Reading codes…")).foregroundStyle(.secondary)
                 }
             } else {
                 ForEach(results) { result in
@@ -272,7 +272,7 @@ struct ReadQRCodeToolView: View {
                         Text(result.payload)
                             .font(.body)
                             .textSelection(.enabled)
-                        Button("Copy") {
+                        Button(L10n.t("Copy")) {
                             NSPasteboard.general.clearContents()
                             NSPasteboard.general.setString(result.payload, forType: .string)
                             copied = true
@@ -284,7 +284,7 @@ struct ReadQRCodeToolView: View {
                     .card()
                 }
             }
-            if copied { Text("Copied to the clipboard.").font(.caption).foregroundStyle(.secondary) }
+            if copied { Text(L10n.t("Copied to the clipboard.")).font(.caption).foregroundStyle(.secondary) }
         }
         .task { read() }
     }

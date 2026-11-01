@@ -37,9 +37,9 @@ struct OrderedFileList: View {
             Divider()
             HStack {
                 Button(addTitle) { add() }
-                Button("Sort by name") { files.sort { $0.lastPathComponent.localizedStandardCompare($1.lastPathComponent) == .orderedAscending } }
+                Button(L10n.t("Sort by name")) { files.sort { $0.lastPathComponent.localizedStandardCompare($1.lastPathComponent) == .orderedAscending } }
                 Spacer()
-                Text("Drag rows to reorder").font(.caption).foregroundStyle(.secondary)
+                Text(L10n.t("Drag rows to reorder")).font(.caption).foregroundStyle(.secondary)
             }
             .padding(10)
         }
@@ -110,15 +110,15 @@ struct CreatePDFToolView: View {
         ToolShell(session: session, saveTitle: "Create PDF", saveEnabled: !files.isEmpty, onSave: save) {
             OrderedFileList(files: $files, thumbnails: thumbs.images)
         } sidebar: {
-            SidebarSection(title: "Pages") {
+            SidebarSection(title: L10n.t("Pages")) {
                 Picker("", selection: $pageMode) {
                     ForEach(PageMode.allCases) { Text($0.title).tag($0) }
                 }
                 .labelsHidden()
-                Text("One page per image, in list order. HEIC, WebP, SVG and other formats are rasterized as needed.")
+                Text(L10n.t("One page per image, in list order. HEIC, WebP, SVG and other formats are rasterized as needed."))
                     .font(.caption2).foregroundStyle(.secondary)
             }
-            SidebarSection(title: "Summary") {
+            SidebarSection(title: L10n.t("Summary")) {
                 Text("\(files.count) page\(files.count == 1 ? "" : "s")").font(.callout)
             }
         }
@@ -187,23 +187,23 @@ struct CollageToolView: View {
                 .frame(minWidth: 320)
             }
         } sidebar: {
-            SidebarSection(title: "Layout") {
+            SidebarSection(title: L10n.t("Layout")) {
                 Picker("", selection: $layout) {
                     ForEach(ImageOps.CollageLayout.allCases) { Text($0.title).tag($0) }
                 }
                 .pickerStyle(.segmented).labelsHidden()
             }
-            SidebarSection(title: "Final size") {
+            SidebarSection(title: L10n.t("Final size")) {
                 NumberField(title: "Width", value: $width, suffix: "px")
                 NumberField(title: "Height", value: $height, suffix: "px")
                 HStack {
-                    Button("Square") { width = 2400; height = 2400 }
-                    Button("Landscape") { width = 3000; height = 2000 }
-                    Button("Portrait") { width = 2000; height = 3000 }
+                    Button(L10n.t("Square")) { width = 2400; height = 2400 }
+                    Button(L10n.t("Landscape")) { width = 3000; height = 2000 }
+                    Button(L10n.t("Portrait")) { width = 2000; height = 3000 }
                 }
                 .controlSize(.mini)
             }
-            SidebarSection(title: "Style") {
+            SidebarSection(title: L10n.t("Style")) {
                 LabeledSlider(title: "Spacing", value: $spacing, range: 0...200) { String(format: "%.0f px", $0) }
                 LabeledSlider(title: "Corner radius", value: $corner, range: 0...200) { String(format: "%.0f px", $0) }
                 ColorSwatchPicker(title: "Background", color: $background)

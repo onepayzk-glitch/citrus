@@ -107,7 +107,7 @@ struct SettingsView: View {
             VStack(spacing: 0) {
                 HStack(alignment: .center, spacing: 12) {
                     VStack(alignment: .leading, spacing: 10) {
-                        Text("MAKE ROOM FOR FLOW")
+                        Text(L10n.t("MAKE ROOM FOR FLOW"))
                             .font(.system(size: 10, weight: .bold, design: .monospaced))
                             .tracking(2).foregroundStyle(Theme.accent)
                         Text(model.tab.title)
@@ -185,7 +185,7 @@ struct SettingsView: View {
                 .font(.caption).foregroundStyle(.secondary)
             if let message = settings.loginMessage {
                 Text(message).font(.caption).foregroundStyle(.orange)
-                Button("Open Login Items…") { settings.openLoginSettings() }
+                Button(L10n.t("Open Login Items…")) { settings.openLoginSettings() }
             }
         }
         Section {
@@ -204,21 +204,21 @@ struct SettingsView: View {
         } header: {
             Text(L10n.t("Drag Modifiers"))
         } footer: {
-            Text("Hold the chosen modifier while dragging files in Finder. Tangerine's defaults are ⇧ Shift, ⌘ Command and ⌃ Control. Picking a key that another wheel already uses swaps the two.")
+            Text(L10n.t("Hold the chosen modifier while dragging files in Finder. Tangerine's defaults are ⇧ Shift, ⌘ Command and ⌃ Control. Picking a key that another wheel already uses swaps the two."))
         }
-        Section("Excluded applications") {
-            Text("Drag shortcuts stay off when a drag starts in these apps. Add CorelDRAW or other design tools here. You can still use Convert Files from the menu bar.")
+        Section(L10n.t("Excluded applications")) {
+            Text(L10n.t("Drag shortcuts stay off when a drag starts in these apps. Add CorelDRAW or other design tools here. You can still use Convert Files from the menu bar."))
                 .font(.caption).foregroundStyle(.secondary)
             ForEach(settings.excludedApplications.keys.sorted(), id: \.self) { identifier in
                 HStack {
                     Text(settings.excludedApplications[identifier] ?? identifier)
                     Spacer()
-                    Button("Remove", systemImage: "minus.circle") {
+                    Button(L10n.t("Remove"), systemImage: "minus.circle") {
                         settings.excludedApplications.removeValue(forKey: identifier)
                     }.help("Enable drag shortcuts in this application")
                 }
             }
-            Button("Add Application…", systemImage: "plus.circle", action: addExcludedApplication)
+            Button(L10n.t("Add Application…"), systemImage: "plus.circle", action: addExcludedApplication)
         }
     }
 
@@ -242,24 +242,24 @@ struct SettingsView: View {
     }
 
     @ViewBuilder private var appearance: some View {
-        Section("Theme") {
-            Picker("Theme", selection: $settings.appearanceMode) {
+        Section(L10n.t("Theme")) {
+            Picker(L10n.t("Theme"), selection: $settings.appearanceMode) {
                 ForEach(AppearanceMode.allCases) { Text($0.title).tag($0) }
             }
             .pickerStyle(.segmented)
         }
         Section {
-            Picker("Progress", selection: $settings.progressStyle) {
+            Picker(L10n.t("Progress"), selection: $settings.progressStyle) {
                 ForEach(ProgressStyle.allCases) { Text($0.title).tag($0) }
             }
             .pickerStyle(.segmented)
             if settings.progressStyle == .pill {
-                Picker("Notch surface", selection: $settings.notchSurface) {
+                Picker(L10n.t("Notch surface"), selection: $settings.notchSurface) {
                     ForEach(NotchSurface.allCases) { Text($0.title).tag($0) }
                 }.pickerStyle(.segmented)
             }
         } header: {
-            Text("Progress")
+            Text(L10n.t("Progress"))
         } footer: {
             Text(settings.progressStyle == .card
                  ? "A floating card in the top right corner with the file name and percentage."
@@ -271,23 +271,23 @@ struct SettingsView: View {
         formatSettingsSection
         Section(L10n.t("Images")) {
             HStack {
-                Text("JPEG / HEIC / WebP quality")
+                Text(L10n.t("JPEG / HEIC / WebP quality"))
                 Slider(value: $settings.jpegQuality, in: 0.3...1.0)
                 Text("\(Int(settings.jpegQuality * 100))%").contentTransition(.numericText()).monospacedDigit().frame(width: 44, alignment: .trailing)
             }
         }
         Section {
-            Picker("Preset", selection: $settings.compressionPreset) {
+            Picker(L10n.t("Preset"), selection: $settings.compressionPreset) {
                 ForEach(CompressionPreset.allCases) { Text($0.title).tag($0) }
             }
             .pickerStyle(.segmented)
             HStack {
-                Text("Resize long edge to")
-                TextField("Off", value: $settings.compressionResizeLongEdge, format: .number)
+                Text(L10n.t("Resize long edge to"))
+                TextField(L10n.t("Off"), value: $settings.compressionResizeLongEdge, format: .number)
                     .labelsHidden()
                     .textFieldStyle(.roundedBorder)
                     .frame(width: 80)
-                Text("px (0 = keep size)").foregroundStyle(.secondary)
+                Text(L10n.t("px (0 = keep size)")).foregroundStyle(.secondary)
             }
         } header: {
             Text(L10n.t("Compression"))
@@ -308,9 +308,9 @@ struct SettingsView: View {
         officeEngineSection
         Section {
             HStack {
-                TextField("Auto-detect (Homebrew, MacPorts, /usr/local/bin)", text: $settings.ffmpegPath)
+                TextField(L10n.t("Auto-detect (Homebrew, MacPorts, /usr/local/bin)"), text: $settings.ffmpegPath)
                     .textFieldStyle(.roundedBorder)
-                Button("Choose…") { chooseFFmpeg() }
+                Button(L10n.t("Choose…")) { chooseFFmpeg() }
             }
             HStack(alignment: .firstTextBaseline, spacing: 6) {
                 Image(systemName: ffmpegHealthSymbol)
@@ -322,16 +322,16 @@ struct SettingsView: View {
         } header: {
             Text(L10n.t("FFmpeg (optional)"))
         } footer: {
-            Text("Open Tangerine uses Apple frameworks for most work. FFmpeg fills the gaps: MP3, FLAC, OGG, Opus, WMA, MKV, WebM, AVI, WMV, GIF and AVIF/WebP encoding on older systems.")
+            Text(L10n.t("Open Tangerine uses Apple frameworks for most work. FFmpeg fills the gaps: MP3, FLAC, OGG, Opus, WMA, MKV, WebM, AVI, WMV, GIF and AVIF/WebP encoding on older systems."))
         }
     }
 
     @ViewBuilder private var officeEngineSection: some View {
         Section {
             HStack {
-                TextField("Auto-detect (LibreOffice.app, Homebrew soffice)", text: $settings.officeEnginePath)
+                TextField(L10n.t("Auto-detect (LibreOffice.app, Homebrew soffice)"), text: $settings.officeEnginePath)
                     .textFieldStyle(.roundedBorder)
-                Button("Choose…") { chooseOfficeEngine() }
+                Button(L10n.t("Choose…")) { chooseOfficeEngine() }
             }
             HStack(alignment: .firstTextBaseline, spacing: 6) {
                 Image(systemName: officeHealthSymbol)
@@ -343,7 +343,7 @@ struct SettingsView: View {
         } header: {
             Text(L10n.t("Office engine (optional)"))
         } footer: {
-            Text("Detects an installed LibreOffice for high-fidelity DOCX/PPTX/XLSX/ODS → PDF, PNG and JPG. Nothing is downloaded or bundled; when it is missing, Office conversions fall back to the built-in text engine.")
+            Text(L10n.t("Detects an installed LibreOffice for high-fidelity DOCX/PPTX/XLSX/ODS → PDF, PNG and JPG. Nothing is downloaded or bundled; when it is missing, Office conversions fall back to the built-in text engine."))
         }
     }
 
@@ -419,7 +419,7 @@ struct SettingsView: View {
         } header: {
             Text(L10n.t("Format settings"))
         } footer: {
-            Text("Pick a source format to see every output and the settings that affect it. The conversion wheel uses this same matrix.")
+            Text(L10n.t("Pick a source format to see every output and the settings that affect it. The conversion wheel uses this same matrix."))
         }
     }
 
@@ -501,8 +501,8 @@ struct SettingsView: View {
                     .shadow(color: Theme.accent.opacity(0.18), radius: 12, y: 6)
                     .accessibilityLabel("Open Tangerine icon")
                 VStack(spacing: 6) {
-                    Text("Open Tangerine").font(.system(size: 25, weight: .bold, design: .rounded))
-                    Text("A little less friction. A little more flow.")
+                    Text(L10n.t("Open Tangerine")).font(.system(size: 25, weight: .bold, design: .rounded))
+                    Text(L10n.t("A little less friction. A little more flow."))
                         .font(.system(size: 13)).foregroundStyle(.secondary)
                 }
                 Text("VERSION \(Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "Development")  ·  DEVELOPER TRIAL")
@@ -510,21 +510,21 @@ struct SettingsView: View {
                     .tracking(1.1).foregroundStyle(.secondary)
                 Divider().padding(.horizontal, 30)
                 VStack(spacing: 7) {
-                    Text("Sintax Error Private Limited").font(.system(size: 13, weight: .semibold))
-                    Text("Free to use. Open to make better.")
+                    Text(L10n.t("Sintax Error Private Limited")).font(.system(size: 13, weight: .semibold))
+                    Text(L10n.t("Free to use. Open to make better."))
                         .font(.caption).foregroundStyle(.secondary)
                 }
                 HStack(spacing: 5) {
-                    Text("Made with")
+                    Text(L10n.t("Made with"))
                     Image(systemName: "heart.fill").foregroundStyle(Theme.accent).accessibilityLabel("love")
-                    Text("by")
+                    Text(L10n.t("by"))
                     Link("Hemaangg", destination: URL(string: "https://www.instagram.com/hemaangg/")!)
                         .fontWeight(.semibold)
                         .help("Visit Hemaangg on Instagram")
                 }
                 .font(.system(size: 13))
                 .padding(.top, 2)
-                Text("GPL-3.0-only · Based on Satsuma by plyght (MIT).\nIndependent of Tangerine. Some features remain experimental.")
+                Text(L10n.t("GPL-3.0-only · Based on Satsuma by plyght (MIT).\nIndependent of Tangerine. Some features remain experimental."))
                     .font(.system(size: 10)).foregroundStyle(.secondary)
                     .multilineTextAlignment(.center).lineSpacing(3)
             }

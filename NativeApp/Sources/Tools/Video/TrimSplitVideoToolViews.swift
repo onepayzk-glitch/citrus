@@ -19,22 +19,22 @@ struct TrimVideoToolView: View {
                 RangeTrack(duration: media.duration, start: $start, end: $end, playhead: media.currentTime, onScrub: { media.seek($0) })
             }
         } sidebar: {
-            SidebarSection(title: "Range") {
+            SidebarSection(title: L10n.t("Range")) {
                 TimecodeField(title: "Start", seconds: $start, maximum: media.duration)
                 TimecodeField(title: "End", seconds: $end, maximum: media.duration)
                 HStack {
-                    Button("Set start to playhead") { start = min(media.currentTime, end - 0.05) }
-                    Button("Set end") { end = max(media.currentTime, start + 0.05) }
+                    Button(L10n.t("Set start to playhead")) { start = min(media.currentTime, end - 0.05) }
+                    Button(L10n.t("Set end")) { end = max(media.currentTime, start + 0.05) }
                 }
                 .controlSize(.small)
                 Text("Length: \(TimeFormatter.clock(max(0, end - start)))").font(.callout.monospacedDigit())
             }
-            SidebarSection(title: "Preview") {
-                Button("Play selection") { media.playRange(start, end) }
-                Text("Use the frame buttons or ← → to step frame by frame while the video is paused.").font(.caption2).foregroundStyle(.secondary)
+            SidebarSection(title: L10n.t("Preview")) {
+                Button(L10n.t("Play selection")) { media.playRange(start, end) }
+                Text(L10n.t("Use the frame buttons or ← → to step frame by frame while the video is paused.")).font(.caption2).foregroundStyle(.secondary)
             }
-            SidebarSection(title: "Output") {
-                Text("The selection is copied without re-encoding when the format allows it, so the trim is fast and lossless.").font(.caption2).foregroundStyle(.secondary)
+            SidebarSection(title: L10n.t("Output")) {
+                Text(L10n.t("The selection is copied without re-encoding when the format allows it, so the trim is fast and lossless.")).font(.caption2).foregroundStyle(.secondary)
             }
         }
         .onChange(of: media.duration) { duration in if end == 0 { end = duration } }
@@ -95,14 +95,14 @@ struct SplitVideoToolView: View {
                 RangeTrack(duration: media.duration, start: $unusedStart, end: $unusedEnd, playhead: media.currentTime, markers: effectivePoints, onScrub: { media.seek($0) })
             }
         } sidebar: {
-            SidebarSection(title: "Split") {
+            SidebarSection(title: L10n.t("Split")) {
                 Picker("", selection: $mode) {
                     ForEach(Mode.allCases) { Text($0.title).tag($0) }
                 }
                 .pickerStyle(.segmented).labelsHidden()
                 switch mode {
                 case .points:
-                    Button("Add split at playhead") {
+                    Button(L10n.t("Add split at playhead")) {
                         let t = media.currentTime
                         if t > 0.1, t < media.duration - 0.1, !points.contains(where: { abs($0 - t) < 0.05 }) { points.append(t) }
                     }
@@ -120,8 +120,8 @@ struct SplitVideoToolView: View {
                     Text("Each clip lasts about \(TimeFormatter.clock(media.duration / Double(parts))).").font(.caption2).foregroundStyle(.secondary)
                 }
             }
-            SidebarSection(title: "Output") {
-                Text("All clips are placed in one folder next to the original, numbered in order. Clips are copied without re-encoding when possible.").font(.caption2).foregroundStyle(.secondary)
+            SidebarSection(title: L10n.t("Output")) {
+                Text(L10n.t("All clips are placed in one folder next to the original, numbered in order. Clips are copied without re-encoding when possible.")).font(.caption2).foregroundStyle(.secondary)
             }
         }
         .onChange(of: media.duration) { unusedEnd = $0 }

@@ -43,7 +43,7 @@ struct FrameImageToolView: View {
                 }
             }
         } sidebar: {
-            SidebarSection(title: "Background") {
+            SidebarSection(title: L10n.t("Background")) {
                 Picker("", selection: $backgroundKind) {
                     ForEach(Kind.allCases) { Text($0.title).tag($0) }
                 }
@@ -59,13 +59,13 @@ struct FrameImageToolView: View {
                     HStack {
                         Text(backgroundImageURL?.lastPathComponent ?? "Same photo, blurred").font(.callout).lineLimit(1)
                         Spacer()
-                        Button("Choose…") { chooseBackground() }
+                        Button(L10n.t("Choose…")) { chooseBackground() }
                     }
                     LabeledSlider(title: "Blur", value: $backgroundBlur, range: 0...100) { String(format: "%.0f", $0) }
                 }
             }
-            SidebarSection(title: "Canvas") {
-                Picker("Aspect ratio", selection: $aspect) {
+            SidebarSection(title: L10n.t("Canvas")) {
+                Picker(L10n.t("Aspect ratio"), selection: $aspect) {
                     ForEach(AspectPreset.all.filter { $0.ratio != nil }) { Text($0.title).tag($0) }
                 }
                 LabeledSlider(title: "Spacing", value: $padding, range: 0...0.3) { String(format: "%.0f%%", $0 * 100) }

@@ -60,25 +60,25 @@ struct VideoSnapshotsToolView: View {
                 }
             }
         } sidebar: {
-            SidebarSection(title: "Frames") {
-                Toggle("Every N seconds", isOn: $intervalMode)
+            SidebarSection(title: L10n.t("Frames")) {
+                Toggle(L10n.t("Every N seconds"), isOn: $intervalMode)
                 if intervalMode {
                     LabeledSlider(title: "Interval", value: $everySeconds, range: 0.5...60) { String(format: "%.1f s", $0) }
                     Text("\(plannedTimes.count) frames").font(.caption.monospacedDigit()).foregroundStyle(.secondary)
                 } else {
-                    Button("Add current frame") { addCurrent() }
+                    Button(L10n.t("Add current frame")) { addCurrent() }
                         .keyboardShortcut("f", modifiers: [])
                     Text("Step with ← → to pick exact frames, then press F or the button. \(frames.count) chosen.").font(.caption2).foregroundStyle(.secondary)
                 }
             }
-            SidebarSection(title: "Format") {
+            SidebarSection(title: L10n.t("Format")) {
                 Picker("", selection: $format) {
-                    Text("PNG (lossless)").tag(FileFormat.png)
+                    Text(L10n.t("PNG (lossless)")).tag(FileFormat.png)
                     Text("JPG").tag(FileFormat.jpg)
                     Text("HEIC").tag(FileFormat.heic)
                 }
                 .pickerStyle(.radioGroup).labelsHidden()
-                Text("Frames are exported at full video resolution into one folder.").font(.caption2).foregroundStyle(.secondary)
+                Text(L10n.t("Frames are exported at full video resolution into one folder.")).font(.caption2).foregroundStyle(.secondary)
             }
         }
         .background(KeyCaptureView { key in
@@ -175,24 +175,24 @@ struct RedactVideoToolView: View {
             }
             .padding(12)
         } sidebar: {
-            SidebarSection(title: "Style") {
+            SidebarSection(title: L10n.t("Style")) {
                 Picker("", selection: styleBinding) {
                     ForEach(RedactionStyle.allCases) { Text($0.title).tag($0) }
                 }
                 .pickerStyle(.segmented).labelsHidden()
             }
-            SidebarSection(title: "Time range") {
+            SidebarSection(title: L10n.t("Time range")) {
                 if let selected, let range = ranges[selected] {
                     TimecodeField(title: "From", seconds: Binding(get: { range.lowerBound }, set: { updateRange(lower: $0) }), maximum: media.duration)
                     TimecodeField(title: "To", seconds: Binding(get: { range.upperBound }, set: { updateRange(upper: $0) }), maximum: media.duration)
-                    Button("Whole video") { ranges[selected] = 0...media.duration }.controlSize(.small)
+                    Button(L10n.t("Whole video")) { ranges[selected] = 0...media.duration }.controlSize(.small)
                 } else {
-                    Text("Select an area to set when it is covered. New areas cover the whole video.").font(.caption2).foregroundStyle(.secondary)
+                    Text(L10n.t("Select an area to set when it is covered. New areas cover the whole video.")).font(.caption2).foregroundStyle(.secondary)
                 }
             }
             SidebarSection(title: "Areas (\(rects.count))") {
                 if rects.isEmpty {
-                    Text("Drag on the frame to add a redaction. Each area can have its own time range.").font(.caption2).foregroundStyle(.secondary)
+                    Text(L10n.t("Drag on the frame to add a redaction. Each area can have its own time range.")).font(.caption2).foregroundStyle(.secondary)
                 }
                 ForEach(rects) { overlay in
                     HStack {

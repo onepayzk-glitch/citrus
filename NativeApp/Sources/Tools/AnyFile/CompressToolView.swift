@@ -80,27 +80,27 @@ struct CompressToolView: View {
                 FormRow(title: "Image size") {
                     SegmentedPicker(selection: imageSize, options: ImageSize.allCases.map { ($0, $0.title) })
                 }
-                FormHint("Longest edge of each image. Smaller images are never upscaled.")
+                FormHint(L10n.t("Longest edge of each image. Smaller images are never upscaled."))
             }
 
             VStack(alignment: .leading, spacing: 14) {
                 Toggle(isOn: $useTarget.animation(.easeInOut(duration: 0.18))) {
-                    Text("Target file size")
+                    Text(L10n.t("Target file size"))
                 }
                 .toggleStyle(.switch)
 
                 if useTarget {
                     HStack(spacing: 10) {
-                        TextField("Size", value: $targetValue, format: .number)
+                        TextField(L10n.t("Size"), value: $targetValue, format: .number)
                             .textFieldStyle(.roundedBorder)
                             .multilineTextAlignment(.trailing)
                             .frame(width: 96)
                         SegmentedPicker(selection: $targetUnit, options: SizeUnit.allCases.map { ($0, $0.rawValue) })
-                        Text("per file")
+                        Text(L10n.t("per file"))
                             .font(.callout)
                             .foregroundStyle(.secondary)
                     }
-                    FormHint("Images use a quality search and downscale if needed. Videos and audio pick a bitrate from the duration (FFmpeg required).")
+                    FormHint(L10n.t("Images use a quality search and downscale if needed. Videos and audio pick a bitrate from the duration (FFmpeg required)."))
                 }
             }
             .padding(16)
