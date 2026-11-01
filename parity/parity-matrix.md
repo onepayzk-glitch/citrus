@@ -15,6 +15,7 @@
 | 拖拽交互 | ⇧ 格式轮盘 / ⌘ 工具轮盘 / ⌃ 动作轮盘，松键后轮盘保持到 drop | 同，且三键可重映射；轮盘支持 Esc/Enter/方向键 | 一致 |
 | 设置项（5 tab） | General / Formats / Compatibility / Folders / About | 5 tab 对齐；General 含修饰键重映射与 Terminal 选择，Compatibility 为矩阵表格；Folders 不适用（开源版不沙盒） | 核心项已对齐 |
 | 付费墙 | 免费 20 个文件后一次性买断 | 无付费墙、无用量计数 | 有意的开源差异（§8） |
+| 外部引擎（组装版本） | 全部内置 | 不捆绑；用时检测、缺失提示并提供安装帮助，Office 可回退内置引擎 | 见 `parity/dependencies.md` |
 | 输出命名 | `Compressed`/`Edited`/`Annotated.png`/`Speed 2x`/`Clips`/`Pages` 等后缀 | 采用同族命名（§5） | 语义一致 |
 
 **判定口径**：「功能 100% 匹配」= Tangerine 对外可见的每一个操作入口都能在开源版找到等价入口并产出对应结果文件。品牌、付费墙、Apple 私有资源不复制；无法等价实现的引擎项单独列出，不静默降级。
@@ -179,10 +180,10 @@
 
 | 项 | Tangerine | 本仓库 |
 |---|---|---|
-| FFmpeg | 内置 22 MB（8.0.3，LGPL，VideoToolbox + libmp3lame + libwebp，无 x264/x265/VPx/AV1 编码器） | 使用系统 `ffmpeg`（可选依赖，Homebrew 已装）；缺失时原生路径仍可完成大部分图片/视频/音频 |
+| FFmpeg | 内置 22 MB（8.0.3，LGPL，VideoToolbox + libmp3lame + libwebp，无 x264/x265/VPx/AV1 编码器） | 组装版本：用时检测；缺失时提示并帮助安装（Homebrew 命令或官方下载页），无 FFmpeg 的路由明确报错，其余路由不受影响 |
 | WebP 编码 | 内置 `cwebp` | 原生/FFmpeg，缺失时内置 VP8L 无损兜底 |
 | 元数据 | 内置 ExifTool 13.59 + 两个自研 Perl 桥 | 原生 MetadataOps（读写删），未内嵌 ExifTool |
-| Office | Java 21 jlink + POI 5.5.1/PDFBox 3.0.6 + 自研 jar（1–1000 页限制） | 检测本机 LibreOffice 作为可选高保真引擎（`Engines/OfficeEngine.swift`，L2，不捆绑）；无 LibreOffice 时用纯原生文本/表格重建（无 Java 依赖） |
+| Office | Java 21 jlink + POI 5.5.1/PDFBox 3.0.6 + 自研 jar（1–1000 页限制） | 组装版本：检测本机 LibreOffice 作为高保真引擎；缺失时弹提示并提供安装帮助，可选择回退内置文本/表格引擎 |
 | iWork | JavaScriptCore + iWork 模板 | 只读 `.pages` 的 QuickLook 预览 PDF；不做 iWork 写入 |
 
 > 保真度说明：官方对 Office 的转换同样是重建（Java/POI + JS 渲染），不是像素级回放。开源实现按「可打开、内容不丢、版式近似」交付；PDF→DOCX/PNG/JPG 继承基线（含 300 DPI 渲染、扫描页图片回填）。

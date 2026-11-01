@@ -369,6 +369,20 @@ enum L10n {
         "GPL-3.0-only · Based on Satsuma by plyght (MIT).\nIndependent of Tangerine. Some features remain experimental.": "GPL-3.0-only · 基于 plyght 的 Satsuma（MIT）。\n与 Tangerine 无关联，部分功能仍属实验性。",
         "e.g. 1-3, 4, 5-8": "例如 1-3, 4, 5-8",
 
+        "LibreOffice gives Office documents their original layout when converting DOCX, PPTX, XLSX and ODS. Without it the built-in text engine still converts the content, with approximate layout.": "LibreOffice 能让 DOCX、PPTX、XLSX、ODS 转换时尽量保留原始版式；没有它时内置文本引擎仍会转换内容，但版式只是近似。",
+        "FFmpeg adds MP3, FLAC, OGG, Opus, WMA, MKV, WebM, AVI, WMV and GIF support. Without it these routes cannot run.": "FFmpeg 提供 MP3、FLAC、OGG、Opus、WMA、MKV、WebM、AVI、WMV 与 GIF 支持；没有它这些路由无法执行。",
+        "Exporting to PAGES uses the Pages app installed on this Mac. Pages is a free Apple app.": "导出 PAGES 需要本机安装的 Pages App（Apple 免费应用）。",
+        "Continue with the built-in text engine": "用内置文本引擎继续",
+        "%@ is needed": "需要 %@",
+        "Help me install": "帮助我安装",
+        "Help me install LibreOffice": "帮助我安装 LibreOffice",
+        "Help me install FFmpeg": "帮助我安装 FFmpeg",
+        "Install command copied": "已复制安装命令",
+        "%@ has been copied to the clipboard. Paste it into Terminal and press Return. When the installation finishes, drag the files again.": "已把「%@」复制到剪贴板。请粘贴到终端并回车；安装完成后重新拖拽文件即可。",
+        "OK": "好",
+        "Convert to %@": "转换为 %@",
+        "Tool: %@": "工具：%@",
+
         // File actions
         "AirDrop": "AirDrop",
         "Float": "Float",

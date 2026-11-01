@@ -194,9 +194,33 @@ final class RadialController: DragMonitorDelegate {
             case .fileAction(let action):
                 action.run(selectedURLs)
             case .convert(let target):
+                let sourceFormats = selectedURLs.compactMap(FileFormat.detect)
+                if let dependency = DependencyAdvisor.missingDependency(source: sourceFormats.first, target: target),
+                   !DependencyPrompt.alreadyAcceptedFallback(dependency) {
+                    switch DependencyPrompt.ask(dependency,
+                                                allowFallback: dependency.fallbackDescription != nil,
+                                                context: L10n.format("Convert to %@", target.displayName)) {
+                    case .install:
+                        DependencyPrompt.helpInstall(dependency)
+                        return
+                    case .fallback:
+                        break
+                    case .cancel:
+                        return
+                    }
+                }
                 JobRunner.shared.convert(selectedURLs, to: target)
             case .tool(let tool):
                 DiagnosticLog.log("open tool \(tool.rawValue)")
+                if let dependency = DependencyAdvisor.missingDependency(forTool: tool) {
+                    switch DependencyPrompt.ask(dependency, allowFallback: false, context: L10n.format("Tool: %@", tool.localizedTitle)) {
+                    case .install:
+                        DependencyPrompt.helpInstall(dependency)
+                        return
+                    case .fallback, .cancel:
+                        return
+                    }
+                }
                 ToolWindowManager.shared.open(tool, files: selectedURLs)
             }
         }

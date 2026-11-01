@@ -148,6 +148,15 @@ FileAction.allCases.count          // 9 = 官方 6 + Reveal/Duplicate/SHA-256
 - 构建脚本同时修了签名稳定性：签名与 `codesign --verify` 都改为重试循环（同步目录会重新附加
   FinderInfo），`build-app.sh` 在 `dist/` 下可重复 exit 0。
 
+## 7.7 组装版本依赖按需获取（本轮）
+
+- 策略与行为见 [`dependencies.md`](dependencies.md)：不捆绑、用时检测、缺失提示、帮助安装（Homebrew 命令 + Terminal / 官方下载页 / Mac App Store）。
+- 代码：`Core/ExternalDependencies.swift`（纯判断逻辑）、`UI/DependencyPrompt.swift`（提示与帮助）、
+  轮盘选择转换/打开工具前接入、设置页缺失时显示「帮助我安装」。
+- 测试：新增 `DependencyTests` 套件（Office / FFmpeg / Pages 的提示与不提示边界），已并入 `scripts/test.sh`。
+- 未做运行时 UI 验证的原因同前：提示由轮盘选择触发，而合成拖拽事件无法进入轮盘；逻辑层已有单元测试覆盖，
+  手动验证步骤写在 `dependencies.md` 的「手动验证（3 分钟）」。
+
 ## 8. 已知未验证项
 
 - 真实鼠标拖拽路径（⇧/⌘/⌃ 轮盘出现→松手转换）未做端到端自动化：Tangerine 与开源版都依赖

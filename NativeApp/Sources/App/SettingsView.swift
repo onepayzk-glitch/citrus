@@ -319,6 +319,10 @@ struct SettingsView: View {
                     .font(.caption)
                     .textSelection(.enabled)
             }
+            if !ffmpegHealth.isReady {
+                Button(L10n.t("Help me install FFmpeg")) { DependencyPrompt.helpInstall(.ffmpeg) }
+                    .controlSize(.small)
+            }
         } header: {
             Text(L10n.t("FFmpeg (optional)"))
         } footer: {
@@ -339,6 +343,10 @@ struct SettingsView: View {
                 Text(officeHealthText)
                     .font(.caption)
                     .textSelection(.enabled)
+            }
+            if !officeHealth.isReady {
+                Button(L10n.t("Help me install LibreOffice")) { DependencyPrompt.helpInstall(.libreOffice) }
+                    .controlSize(.small)
             }
         } header: {
             Text(L10n.t("Office engine (optional)"))

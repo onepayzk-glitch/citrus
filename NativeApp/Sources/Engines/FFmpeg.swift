@@ -21,6 +21,11 @@ enum FFmpeg {
         case missing
         case broken(path: String, reason: String)
         case ready(path: String, version: String)
+
+        var isReady: Bool {
+            if case .ready = self { return true }
+            return false
+        }
     }
 
     static func checkHealth() async -> Health {
