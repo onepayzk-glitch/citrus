@@ -55,6 +55,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         menu.addItem(withTitle: "Open Tool for Files…", action: #selector(openTool), keyEquivalent: "t").target = self
         menu.addItem(withTitle: "File Actions…", action: #selector(fileActions), keyEquivalent: "a").target = self
         menu.addItem(withTitle: "Getting Started…", action: #selector(showOnboarding), keyEquivalent: "").target = self
+        menu.addItem(withTitle: "Feedback…", action: #selector(openFeedback), keyEquivalent: "").target = self
         menu.addItem(.separator())
         menu.addItem(withTitle: "Settings…", action: #selector(openSettings), keyEquivalent: ",").target = self
         menu.addItem(withTitle: "About Open Tangerine", action: #selector(about), keyEquivalent: "").target = self
@@ -66,7 +67,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         menu.addItem(.separator())
         menu.addItem(withTitle: "Quit Open Tangerine", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q")
         let symbols = ["Convert Files…": "arrow.triangle.2.circlepath", "Open Tool for Files…": "wrench.and.screwdriver",
-                       "File Actions…": "doc.on.doc", "Getting Started…": "sparkles", "Settings…": "gearshape", "About Open Tangerine": "info.circle",
+                       "File Actions…": "doc.on.doc", "Getting Started…": "sparkles", "Feedback…": "bubble.left.and.text.bubble.right", "Settings…": "gearshape", "About Open Tangerine": "info.circle",
                        "Check for Updates on Website…": "arrow.clockwise", "Show Logs": "doc.text.magnifyingglass",
                        "Quit Open Tangerine": "power"]
         for entry in menu.items {
@@ -90,6 +91,12 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
     @MainActor
     @objc private func showOnboarding() { OnboardingWindowController.shared.show() }
+
+    @MainActor
+    @objc private func openFeedback() {
+        openSettings()
+        NotificationCenter.default.post(name: .init("OpenTangerineShowAbout"), object: nil)
+    }
 
     @objc private func fileActions() {
         pickFiles { [weak self] urls in self?.radial.presentPicker(for: urls, actions: true) }

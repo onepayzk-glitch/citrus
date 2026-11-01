@@ -157,6 +157,16 @@ FileAction.allCases.count          // 9 = 官方 6 + Reveal/Duplicate/SHA-256
 - 未做运行时 UI 验证的原因同前：提示由轮盘选择触发，而合成拖拽事件无法进入轮盘；逻辑层已有单元测试覆盖，
   手动验证步骤写在 `dependencies.md` 的「手动验证（3 分钟）」。
 
+## 7.8 作者信息与反馈入口（本轮）
+
+- About 页：作者「假宝玉」、`github.com/onepayzk-glitch`、反馈问题区（发送邮件反馈 / 复制诊断信息 / 复制邮箱地址）、
+  隐私说明；邮箱不出现在界面明文，只在点击时由运行时拼装（mailto / 剪贴板）。
+- 菜单栏新增「反馈问题…」，打开设置并定位到 About。
+- 诊断信息仅含：App 版本、macOS 版本、架构、界面语言、LibreOffice/FFmpeg/Pages 是否安装；单测断言不含 `/Users/`、`.app/`、邮箱。
+- 实机截图核对：About 页中文署名、GitHub 链接、反馈按钮与隐私说明均正常。
+- 新增 `AppInfoTests` 套件（总套件数 11），`scripts/test.sh` 全过。
+- 规划文档：[`roadmap-1.x.md`](roadmap-1.x.md)（1.1 反馈与信任 → 1.2 个性化 → 1.3 有趣功能 → 1.4 效率 → 2.0 生态；打赏不锁功能）。
+
 ## 8. 已知未验证项
 
 - 真实鼠标拖拽路径（⇧/⌘/⌃ 轮盘出现→松手转换）未做端到端自动化：Tangerine 与开源版都依赖

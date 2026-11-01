@@ -383,6 +383,15 @@ enum L10n {
         "Convert to %@": "转换为 %@",
         "Tool: %@": "工具：%@",
 
+        "Author": "作者",
+        "Feedback": "反馈问题",
+        "Feedback…": "反馈问题…",
+        "Send email": "发送邮件反馈",
+        "Copy diagnostics": "复制诊断信息",
+        "Copy email address": "复制邮箱地址",
+        "Found a problem? Send a report with the environment details below. Do not attach private files.": "遇到问题？可以在反馈里附上下面的环境信息；请勿附私人文件。",
+        "Diagnostics contain only the app version, macOS version, architecture, language and whether the optional engines are installed. No file names, paths or personal data.": "诊断信息只包含 App 版本、macOS 版本、架构、语言与可选引擎是否安装；不含文件名、路径或个人信息。",
+
         // File actions
         "AirDrop": "AirDrop",
         "Float": "Float",

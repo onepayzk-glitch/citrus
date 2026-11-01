@@ -43,6 +43,7 @@ struct SettingsView: View {
     @State private var ffmpegHealth: FFmpeg.Health = .missing
     @State private var officeHealth: OfficeEngine.Health = .missing
     @State private var formatSelection: FileFormat = .jpg
+    @State private var feedbackCopied = false
 
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @Environment(\.accessibilityReduceTransparency) private var reduceTransparency
@@ -518,19 +519,51 @@ struct SettingsView: View {
                     .tracking(1.1).foregroundStyle(.secondary)
                 Divider().padding(.horizontal, 30)
                 VStack(spacing: 7) {
-                    Text(L10n.t("Sintax Error Private Limited")).font(.system(size: 13, weight: .semibold))
+                    HStack(spacing: 6) {
+                        Text(L10n.t("Author")).font(.caption).foregroundStyle(.secondary)
+                        Text(AppAuthor.name).font(.system(size: 13, weight: .semibold))
+                    }
+                    if let github = AppAuthor.githubURL {
+                        Link(destination: github) {
+                            Label("github.com/\(AppAuthor.githubUsername)", systemImage: "link")
+                                .font(.caption)
+                        }
+                    }
                     Text(L10n.t("Free to use. Open to make better."))
                         .font(.caption).foregroundStyle(.secondary)
                 }
-                HStack(spacing: 5) {
-                    Text(L10n.t("Made with"))
-                    Image(systemName: "heart.fill").foregroundStyle(Theme.accent).accessibilityLabel("love")
-                    Text(L10n.t("by"))
-                    Link("Hemaangg", destination: URL(string: "https://www.instagram.com/hemaangg/")!)
-                        .fontWeight(.semibold)
-                        .help("Visit Hemaangg on Instagram")
+
+                // Feedback: limited public identity, environment-only diagnostics.
+                Divider().padding(.horizontal, 30)
+                VStack(spacing: 9) {
+                    Text(L10n.t("Feedback")).font(.system(size: 13, weight: .semibold))
+                    Text(L10n.t("Found a problem? Send a report with the environment details below. Do not attach private files."))
+                        .font(.caption).foregroundStyle(.secondary)
+                        .multilineTextAlignment(.center)
+                    HStack(spacing: 10) {
+                        Button(L10n.t("Send email")) {
+                            if let url = AppAuthor.mailtoURL() { NSWorkspace.shared.open(url) }
+                        }
+                        Button(L10n.t("Copy diagnostics")) {
+                            FeedbackReport.copyToPasteboard()
+                            feedbackCopied = true
+                        }
+                        Button(L10n.t("Copy email address")) {
+                            let pasteboard = NSPasteboard.general
+                            pasteboard.clearContents()
+                            pasteboard.setString(AppAuthor.emailAddress, forType: .string)
+                            feedbackCopied = true
+                        }
+                    }
+                    .controlSize(.small)
+                    Text(L10n.t("Diagnostics contain only the app version, macOS version, architecture, language and whether the optional engines are installed. No file names, paths or personal data."))
+                        .font(.system(size: 10)).foregroundStyle(.tertiary)
+                        .multilineTextAlignment(.center)
+                    if feedbackCopied {
+                        Text(L10n.t("Copied to the clipboard."))
+                            .font(.caption2).foregroundStyle(.secondary)
+                    }
                 }
-                .font(.system(size: 13))
                 .padding(.top, 2)
                 Text(L10n.t("GPL-3.0-only · Based on Satsuma by plyght (MIT).\nIndependent of Tangerine. Some features remain experimental."))
                     .font(.system(size: 10)).foregroundStyle(.secondary)
