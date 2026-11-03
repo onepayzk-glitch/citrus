@@ -2,7 +2,7 @@
 
 日期：2026-10-28（第 2 轮收尾）
 仓库：`/Users/zhukun/Documents/HARNESS/dsh-mac/tangerine-oss`（Open-Tangerine 基线 + 本次补齐）
-产物：`dist/Open Tangerine.app`（arm64，ad-hoc 签名，未公证）
+产物：`dist/Citrus.app`（arm64，ad-hoc 签名，未公证）
 
 ## 1. 构建
 
@@ -14,10 +14,10 @@ cd tangerine-oss
 结果：**exit 0**
 
 ```
-dist/Open Tangerine.app: valid on disk
-dist/Open Tangerine.app: satisfies its Designated Requirement
-dist/Open Tangerine.app/Contents/Info.plist: OK
-Built /Users/zhukun/Documents/HARNESS/dsh-mac/tangerine-oss/dist/Open Tangerine.app (arm64, macOS 15.0+)
+dist/Citrus.app: valid on disk
+dist/Citrus.app: satisfies its Designated Requirement
+dist/Citrus.app/Contents/Info.plist: OK
+Built /Users/zhukun/Documents/HARNESS/dsh-mac/tangerine-oss/dist/Citrus.app (arm64, macOS 15.0+)
 ```
 
 修复的构建问题：工作区位于文件提供程序同步路径，系统会在 bundle 上重新附加
@@ -27,10 +27,10 @@ Built /Users/zhukun/Documents/HARNESS/dsh-mac/tangerine-oss/dist/Open Tangerine.
 ## 2. 启动
 
 ```bash
-open "dist/Open Tangerine.app"
+open "dist/Citrus.app"
 sleep 4
-pgrep -fl OpenTangerine          # → .../dist/Open Tangerine.app/Contents/MacOS/OpenTangerine
-osascript -e 'tell application "Open Tangerine" to quit'
+pgrep -fl Citrus          # → .../dist/Citrus.app/Contents/MacOS/Citrus
+osascript -e 'tell application "Citrus" to quit'
 ```
 
 结果：进程存活、菜单栏 App 正常注册、退出后无残留。`LSUIElement=true`，无 Dock 图标。
@@ -71,14 +71,14 @@ osascript -e 'tell application "Open Tangerine" to quit'
 
 ## 5. 生成文件的外部解析验证
 
-测试会把产物复制到 `/tmp/OpenTangerine-*check*`，用与实现无关的第三方解析器校验：
+测试会把产物复制到 `/tmp/Citrus-*check*`，用与实现无关的第三方解析器校验：
 
 | 文件 | 校验工具 | 结果 |
 |---|---|---|
-| `/tmp/OpenTangerine-pptx-check.pptx` | `python-pptx` 1.0.2 | `slides: 1, size: 12192000×6858000`，1 张图片（5299363×6858000） |
-| `/tmp/OpenTangerine-docx-check.docx` | `python-docx` 1.2.0 | 段落：`['# Title', '', 'Body paragraph & <tag>.']` |
-| `/tmp/OpenTangerine-xlsx-check.xlsx` | `openpyxl` 3.1.5 | 行：`[['name','value'],['alpha','1'],['beta','2']]` |
-| `/tmp/OpenTangerine-ods-check.ods` | `zipfile` | 含 `mimetype`/`META-INF/manifest.xml`/`content.xml`，mimetype 正确 |
+| `/tmp/Citrus-pptx-check.pptx` | `python-pptx` 1.0.2 | `slides: 1, size: 12192000×6858000`，1 张图片（5299363×6858000） |
+| `/tmp/Citrus-docx-check.docx` | `python-docx` 1.2.0 | 段落：`['# Title', '', 'Body paragraph & <tag>.']` |
+| `/tmp/Citrus-xlsx-check.xlsx` | `openpyxl` 3.1.5 | 行：`[['name','value'],['alpha','1'],['beta','2']]` |
+| `/tmp/Citrus-ods-check.ods` | `zipfile` | 含 `mimetype`/`META-INF/manifest.xml`/`content.xml`，mimetype 正确 |
 
 > 备注：`qlmanage` 缩略图校验在本机测试进程里会挂起（QuickLook 服务阻塞），已从测试中移除，改用上述解析器验证。
 
@@ -107,7 +107,7 @@ FileAction.allCases.count          // 9 = 官方 6 + Reveal/Duplicate/SHA-256
 | Compatibility 矩阵页 | Settings 新 tab，逐源格式列出目标与总数（275） |
 | 轮盘键盘操作 | Esc 取消 / Enter 确认 / 方向键切换（既已实现，本轮纳入对照） |
 | Office 引擎（L2） | `Engines/OfficeEngine.swift`：自动检测本机 LibreOffice，DOCX/PPTX/XLSX/ODS/RTF/HTML/CSV/TSV → PDF/PNG/JPG；不捆绑、不下载；未检测到时回退文本引擎 |
-| 共享 LibreOffice profile | `~/Library/Application Support/OpenTangerine/LibreOfficeProfile`，串行化进程；失败自动换新 profile 重试 |
+| 共享 LibreOffice profile | `~/Library/Application Support/Citrus/LibreOfficeProfile`，串行化进程；失败自动换新 profile 重试 |
 | 设置入口 | Settings → Formats → 「Office engine (optional)」：路径、选择按钮、健康状态（版本/路径/未安装提示） |
 
 ### Office 引擎实测

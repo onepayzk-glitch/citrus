@@ -111,7 +111,7 @@ struct NormalizeAudioToolView: View {
             }
             if !FFmpeg.isAvailable {
                 SidebarSection(title: L10n.t("Note")) {
-                    Text(L10n.t("Without FFmpeg, OpenTangerine applies peak normalization instead of EBU R128 loudness. Set an FFmpeg path in Settings for full loudness control.")).font(.caption2).foregroundStyle(.secondary)
+                    Text(L10n.t("Without FFmpeg, Citrus applies peak normalization instead of EBU R128 loudness. Set an FFmpeg path in Settings for full loudness control.")).font(.caption2).foregroundStyle(.secondary)
                 }
             }
         }

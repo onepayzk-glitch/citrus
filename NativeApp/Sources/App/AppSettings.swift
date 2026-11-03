@@ -283,7 +283,7 @@ final class AppSettings: ObservableObject {
         launchAtLogin = status == .enabled || status == .requiresApproval
         if !preserveError {
             loginMessage = status == .requiresApproval
-                ? "Allow Open Tangerine in System Settings → General → Login Items."
+                ? "Allow Citrus in System Settings → General → Login Items."
                 : nil
         }
     }

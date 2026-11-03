@@ -1,6 +1,8 @@
 # Credits
 
-## This fork (Open Tangerine 1.0)
+**Citrus 1.0** — an independent fork (formerly published under the Open Tangerine name).
+
+## This fork (Citrus 1.0)
 
 - **假宝玉** — maintainer of this fork (GPL-3.0-only additions, Chinese localization,
   assembly dependency model, release pipeline, documentation).

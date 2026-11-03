@@ -14,10 +14,10 @@ import PDFKit
             try await Engines.convert(ConversionRequest(source: source, sourceFormat: from, target: to, destination: output, progress: { _ in }))
             return output
         }
-        let text = "Open Tangerine document test\nCafé & <content>\n\nSecond paragraph."
+        let text = "Citrus document test\nCafé & <content>\n\nSecond paragraph."
         try text.write(to: url("input.txt"), atomically: true, encoding: .utf8)
         let pdf = try await convert(url("input.txt"), .txt, .pdf, "text.pdf")
-        precondition(PDFDocument(url: pdf)!.string!.contains("Open Tangerine"))
+        precondition(PDFDocument(url: pdf)!.string!.contains("Citrus"))
         for target: FileFormat in [.png, .jpg, .srt, .vtt] {
             let out = try await convert(url("input.txt"), .txt, target, "text.\(target.fileExtension)")
             if target == .png || target == .jpg { precondition(try! ImageIOBridge.load(out).width == 1275) }
@@ -28,10 +28,10 @@ import PDFKit
             let out = try await convert(pdf, .pdf, target, "pdf.\(target.fileExtension)")
             switch target {
             case .png, .jpg: precondition(try! ImageIOBridge.load(out).width == 2550)
-            case .txt: precondition(try! String(contentsOf: out, encoding: .utf8).contains("Open Tangerine"))
+            case .txt: precondition(try! String(contentsOf: out, encoding: .utf8).contains("Citrus"))
             case .docx:
                 let result = try await Shell.run("/usr/bin/unzip", ["-p", out.path, "word/document.xml"])
-                precondition(result.succeeded && result.stdout.contains("Open Tangerine") && result.stdout.contains("&amp;"))
+                precondition(result.succeeded && result.stdout.contains("Citrus") && result.stdout.contains("&amp;"))
             default: break
             }
             print("PASS PDF -> \(target)")
@@ -75,7 +75,7 @@ import PDFKit
         try PDFOps.merge([imagePDF, pdf], to: mixed)
         let mixedDocx = try await convert(mixed, .pdf, .docx, "mixed.docx")
         let mixedXML = try await Shell.run("/usr/bin/unzip", ["-p", mixedDocx.path, "word/document.xml"])
-        precondition(mixedXML.stdout.range(of: "<w:drawing>")!.lowerBound < mixedXML.stdout.range(of: "Open Tangerine")!.lowerBound)
+        precondition(mixedXML.stdout.range(of: "<w:drawing>")!.lowerBound < mixedXML.stdout.range(of: "Citrus")!.lowerBound)
         precondition(mixedXML.stdout.contains("w:type=\"page\""))
         print("PASS mixed scanned/text PDF -> DOCX preserves page order and breaks")
         print("PASS PDF merge/reorder/rotate, images-to-PDF, multipage export, scanned DOCX, scanned/locked rejection")
@@ -129,7 +129,7 @@ import PDFKit
         print("PASS MD -> EPUB -> PDF/TXT")
 
         let pdfMD = try await convert(pdf, .pdf, .md, "text.md")
-        precondition(try! String(contentsOf: pdfMD, encoding: .utf8).contains("Open Tangerine"))
+        precondition(try! String(contentsOf: pdfMD, encoding: .utf8).contains("Citrus"))
         print("PASS PDF -> MD")
 
         let pptxOut = try await convert(pdf, .pdf, .pptx, "text.pptx")

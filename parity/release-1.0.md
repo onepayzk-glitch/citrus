@@ -1,6 +1,6 @@
 # 对外分发：签名与公证流程（1.0）
 
-本文档描述如何把 `Open Tangerine.app` 打成对外可分发的 DMG/ZIP，并用 Apple Developer ID
+本文档描述如何把 `Citrus.app` 打成对外可分发的 DMG/ZIP，并用 Apple Developer ID
 签名 + 公证（notarization）+ stapling。仓库内脚本：`scripts/build-app.sh`（构建/签名）、
 `scripts/package-release.sh`（打包/公证/staple/校验和）。
 
@@ -12,8 +12,8 @@
 
 | 产物 | 用途 |
 |---|---|
-| `dist/release/OpenTangerine-<版本>.dmg` | 对外主下载：拖入 Applications 安装 |
-| `dist/release/OpenTangerine-<版本>.zip` | 备用下载 / 自动更新 / GitHub Release 附件 |
+| `dist/release/Citrus-<版本>.dmg` | 对外主下载：拖入 Applications 安装 |
+| `dist/release/Citrus-<版本>.zip` | 备用下载 / 自动更新 / GitHub Release 附件 |
 | `dist/release/SHA256SUMS.txt` | 校验和，发布页一并提供 |
 
 ## 1. 前置条件
@@ -93,21 +93,21 @@ NOTARY_PROFILE="open-tangerine-notary" \
 Processing complete
 status: Accepted
 The staple and validate action worked!
-dist/release/Open Tangerine.app: accepted
+dist/release/Citrus.app: accepted
 ```
 
 ## 4. 手工验收（发布前）
 
 ```bash
 # 1) 签名与公证
-codesign -dv --verbose=4 "dist/Open Tangerine.app"
-spctl --assess --type execute --verbose=2 "dist/Open Tangerine.app"
+codesign -dv --verbose=4 "dist/Citrus.app"
+spctl --assess --type execute --verbose=2 "dist/Citrus.app"
 
 # 2) DMG 可挂载、App 可启动
-hdiutil attach "dist/release/OpenTangerine-1.0.0.dmg" -nobrowse -readonly
-open "/Volumes/Open Tangerine/Open Tangerine.app"
+hdiutil attach "dist/release/Citrus-1.0.0.dmg" -nobrowse -readonly
+open "/Volumes/Citrus/Citrus.app"
 # 检查：首次启动是否无 Gatekeeper 拦截、引导/设置/About/反馈是否正常
-hdiutil detach "/Volumes/Open Tangerine"
+hdiutil detach "/Volumes/Citrus"
 
 # 3) 校验和
 shasum -a 256 -c "dist/release/SHA256SUMS.txt"

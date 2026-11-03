@@ -5,8 +5,8 @@
 
 日志（可选，排障用）：从终端启动可打开诊断日志：
 ```bash
-OPEN_TANGERINE_DEBUG=1 "/Users/zhukun/Documents/HARNESS/dsh-mac/tangerine-oss/dist/Open Tangerine.app/Contents/MacOS/OpenTangerine"
-# 日志：$TMPDIR/OpenTangerine-Diagnostics/debug.log
+OPEN_TANGERINE_DEBUG=1 "/Users/zhukun/Documents/HARNESS/dsh-mac/tangerine-oss/dist/Citrus.app/Contents/MacOS/Citrus"
+# 日志：$TMPDIR/Citrus-Diagnostics/debug.log
 ```
 
 准备：桌面新建一个测试文件夹，放入以下文件（可从 `/tmp/tangerine-probes/` 复制，若已清理可用任意文件）：

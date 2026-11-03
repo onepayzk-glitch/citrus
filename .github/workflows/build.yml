@@ -1,4 +1,4 @@
-name: macOS build and tests
+name: Citrus build and tests
 on:
   push:
   pull_request:
@@ -29,9 +29,9 @@ jobs:
       - name: Build
         run: ./scripts/build-app.sh
       - name: Verify universal architectures
-        run: xcrun lipo 'dist/Open Tangerine.app/Contents/MacOS/OpenTangerine' -verify_arch arm64 x86_64
+        run: xcrun lipo 'dist/Citrus.app/Contents/MacOS/Citrus' -verify_arch arm64 x86_64
       - name: Package trial
-        run: ditto -c -k --sequesterRsrc --keepParent "dist/Open Tangerine.app" dist/Open-Tangerine-macOS.zip
+        run: ditto -c -k --sequesterRsrc --keepParent "dist/Citrus.app" dist/Citrus-macOS.zip
       - uses: actions/upload-artifact@v4
         with:
           name: Open-Tangerine-${{ matrix.os }}

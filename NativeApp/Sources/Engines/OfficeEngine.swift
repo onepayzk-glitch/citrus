@@ -57,7 +57,7 @@ struct OfficeEngine: ConversionEngine {
 
     private static let profileURL: URL = {
         let base = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first?
-            .appendingPathComponent("OpenTangerine", isDirectory: true)
+            .appendingPathComponent("Citrus", isDirectory: true)
             .appendingPathComponent("LibreOfficeProfile", isDirectory: true)
         let fallback = FileManager.default.temporaryDirectory.appendingPathComponent("opentangerine-libreoffice-profile", isDirectory: true)
         let url = base ?? fallback

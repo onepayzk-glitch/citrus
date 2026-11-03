@@ -2,7 +2,7 @@
 set -euo pipefail
 # 0.1.10: reliable drag hover, per-app exclusions and two-second notch dismissal.
 cd "$(dirname "$0")/.."
-app="$PWD/dist/Open Tangerine.app"
+app="$PWD/dist/Citrus.app"
 module_cache="$PWD/.build/module-cache"
 mkdir -p "$app/Contents/MacOS" "$module_cache" "$PWD/.build"
 
@@ -11,7 +11,7 @@ mkdir -p "$app/Contents/MacOS" "$module_cache" "$PWD/.build"
 MIN_MACOS="${MACOSX_DEPLOYMENT_TARGET:-15.0}"
 MARKETING_VERSION="${MARKETING_VERSION:-1.0.0}"
 BUILD_NUMBER="${BUILD_NUMBER:-1}"
-BUNDLE_ID="${BUNDLE_ID:-com.syntaxerror.opentangerine}"
+BUNDLE_ID="${BUNDLE_ID:-com.onepayzk.citrus}"
 GITHUB_REPO="${GITHUB_REPO:-}"
 if [[ "${BUILD_UNIVERSAL:-0}" == "1" || "${ARCHS:-}" == "universal" ]]; then
   archs=(x86_64 arm64)
@@ -21,7 +21,7 @@ fi
 
 binaries=()
 for arch in "${archs[@]}"; do
-  binary="$PWD/.build/OpenTangerine-$arch"
+  binary="$PWD/.build/Citrus-$arch"
   find NativeApp/Sources -name '*.swift' -print0 | xargs -0 xcrun swiftc \
     -swift-version 5 -O -parse-as-library \
     -target "$arch-apple-macosx$MIN_MACOS" \
@@ -31,25 +31,26 @@ for arch in "${archs[@]}"; do
 done
 
 if (( ${#binaries[@]} > 1 )); then
-  xcrun lipo -create "${binaries[@]}" -output "$app/Contents/MacOS/OpenTangerine"
+  xcrun lipo -create "${binaries[@]}" -output "$app/Contents/MacOS/Citrus"
 else
-  cp "${binaries[0]}" "$app/Contents/MacOS/OpenTangerine"
+  cp "${binaries[0]}" "$app/Contents/MacOS/Citrus"
 fi
-chmod +x "$app/Contents/MacOS/OpenTangerine"
+chmod +x "$app/Contents/MacOS/Citrus"
 
 # Preserve the legacy bundle identifier so existing settings and login registration survive updates.
 cat > "$app/Contents/Info.plist" <<PLIST
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0"><dict>
-<key>CFBundleExecutable</key><string>OpenTangerine</string>
+<key>CFBundleExecutable</key><string>Citrus</string>
 <key>CFBundleIdentifier</key><string>${BUNDLE_ID}</string>
-<key>CFBundleName</key><string>Open Tangerine</string>
+<key>CFBundleName</key><string>Citrus</string>
 <key>CFBundleIconFile</key><string>AppIcon</string>
 <key>CFBundlePackageType</key><string>APPL</string>
 <key>CFBundleShortVersionString</key><string>${MARKETING_VERSION}</string>
 <key>CFBundleVersion</key><string>${BUILD_NUMBER}</string>
 <key>OTGitHubRepo</key><string>${GITHUB_REPO}</string>
+<key>CFBundleDisplayName</key><string>Citrus</string>
 <key>LSMinimumSystemVersion</key><string>15.0</string>
 <key>LSUIElement</key><true/>
 <key>NSHighResolutionCapable</key><true/>
@@ -99,6 +100,6 @@ if [[ "$verified" != "1" ]]; then
   echo "codesign verification failed after retries" >&2
   exit 1
 fi
-test -x "$app/Contents/MacOS/OpenTangerine"
+test -x "$app/Contents/MacOS/Citrus"
 plutil -lint "$app/Contents/Info.plist"
-printf 'Built %s (%s, macOS %s+, version %s build %s, bundle %s)\n' "$app" "$(xcrun lipo -archs "$app/Contents/MacOS/OpenTangerine")" "$MIN_MACOS" "$MARKETING_VERSION" "$BUILD_NUMBER" "$BUNDLE_ID"
+printf 'Built %s (%s, macOS %s+, version %s build %s, bundle %s)\n' "$app" "$(xcrun lipo -archs "$app/Contents/MacOS/Citrus")" "$MIN_MACOS" "$MARKETING_VERSION" "$BUILD_NUMBER" "$BUNDLE_ID"

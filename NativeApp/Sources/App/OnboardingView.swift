@@ -42,7 +42,7 @@ private struct OnboardingSlide {
         OnboardingSlide(
             kicker: "WELCOME",
             title: "Drop. Tap a key. Done.",
-            body: "Open Tangerine lives in the menu bar. Drag files in Finder, tap a modifier while you drag, and pick what you want from the wheel around your pointer.",
+            body: "Citrus lives in the menu bar. Drag files in Finder, tap a modifier while you drag, and pick what you want from the wheel around your pointer.",
             symbol: "arrow.down.right.and.arrow.up.left",
             key: nil
         ),
@@ -105,7 +105,7 @@ struct OnboardingView: View {
                         .font(.system(size: 27, weight: .bold, design: .rounded))
                         .fixedSize(horizontal: false, vertical: true)
                     Text(L10n.t(isLast
-                         ? "Open Tangerine stays in the menu bar and starts again after you sign in if you leave that on. You can change every option later in Settings."
+                         ? "Citrus stays in the menu bar and starts again after you sign in if you leave that on. You can change every option later in Settings."
                          : slides[page].body))
                         .font(.system(size: 13))
                         .foregroundStyle(.secondary)

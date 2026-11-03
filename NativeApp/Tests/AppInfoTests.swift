@@ -3,7 +3,7 @@ import Foundation
 @main struct AppInfoTests {
     @MainActor static func main() async throws {
         let diagnostics = FeedbackReport.diagnostics()
-        precondition(diagnostics.contains("Open Tangerine"))
+        precondition(diagnostics.contains("Citrus"))
         precondition(diagnostics.contains("macOS"))
         precondition(diagnostics.contains("LibreOffice:"))
         precondition(diagnostics.contains("FFmpeg:"))

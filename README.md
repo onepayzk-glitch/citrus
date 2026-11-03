@@ -1,4 +1,4 @@
-# Open Tangerine（假宝玉 fork）
+# Citrus（假宝玉 fork）
 
 A local file converter and toolbox for **macOS**. Drag files in Finder, tap a modifier key, and pick what you need from the wheel around your pointer. Everything runs on your Mac: no account, no upload, no telemetry.
 
@@ -20,10 +20,10 @@ A local file converter and toolbox for **macOS**. Drag files in Finder, tap a mo
 Requires macOS 15+, Xcode / Command Line Tools. No package manager or third-party Swift dependencies.
 
 ```bash
-git clone <your-repository-url> OpenTangerine
-cd OpenTangerine
+git clone <your-repository-url> Citrus
+cd Citrus
 ./scripts/build-app.sh            # version 1.0.0 by default
-open "dist/Open Tangerine.app"
+open "dist/Citrus.app"
 ```
 
 Local builds are **ad-hoc signed**. macOS may ask you to confirm the first launch.

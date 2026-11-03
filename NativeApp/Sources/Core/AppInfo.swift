@@ -37,7 +37,7 @@ enum AppAuthor {
         URL(string: "https://github.com/" + githubUsername)
     }
 
-    static func mailtoURL(subject: String = "Open Tangerine 反馈") -> URL? {
+    static func mailtoURL(subject: String = "Citrus 反馈") -> URL? {
         var components = URLComponents()
         components.scheme = "mailto"
         components.path = emailAddress
@@ -70,7 +70,7 @@ enum FeedbackReport {
 
     static func diagnostics() -> String {
         var lines: [String] = []
-        lines.append("Open Tangerine \(appVersion)")
+        lines.append("Citrus \(appVersion)")
         lines.append("macOS \(ProcessInfo.processInfo.operatingSystemVersionString) · \(architecture)")
         lines.append("Language: \(AppLanguage.resolved.rawValue)")
         lines.append("LibreOffice: \(ExternalDependency.libreOffice.isInstalled ? "installed" : "missing")")

@@ -13,19 +13,19 @@
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
-APP_NAME="Open Tangerine"
+APP_NAME="Citrus"
 MARKETING_VERSION="${MARKETING_VERSION:-1.0.0}"
 BUILD_NUMBER="${BUILD_NUMBER:-1}"
 APP="dist/$APP_NAME.app"
 RELEASE_DIR="dist/release"
 IDENTITY="${DEVELOPER_ID_APPLICATION:-}"
-BUNDLE_ID="${BUNDLE_ID:-com.onepayzk.opentangerine}"
+BUNDLE_ID="${BUNDLE_ID:-com.onepayzk.citrus}"
 GITHUB_REPO="${GITHUB_REPO:-}"
 NOTARY_PROFILE="${NOTARY_PROFILE:-}"
 
 mkdir -p "$RELEASE_DIR"
-ZIP="$RELEASE_DIR/OpenTangerine-$MARKETING_VERSION.zip"
-DMG="$RELEASE_DIR/OpenTangerine-$MARKETING_VERSION.dmg"
+ZIP="$RELEASE_DIR/Citrus-$MARKETING_VERSION.zip"
+DMG="$RELEASE_DIR/Citrus-$MARKETING_VERSION.dmg"
 SHA="$RELEASE_DIR/SHA256SUMS.txt"
 rm -f "$ZIP" "$DMG" "$SHA"
 

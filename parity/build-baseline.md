@@ -33,8 +33,8 @@ cd tangerine-oss && ./scripts/build-app.sh
 结果：**exit 1**。编译阶段成功，日志尾部：
 
 ```
-dist/Open Tangerine.app: replacing existing signature
-dist/Open Tangerine.app: resource fork, Finder information, or similar detritus not allowed
+dist/Citrus.app: replacing existing signature
+dist/Citrus.app: resource fork, Finder information, or similar detritus not allowed
 BUILD_EXIT=1
 ```
 
@@ -42,25 +42,25 @@ BUILD_EXIT=1
 
 ## 3. 失败根因
 
-- `xattr -lr "dist/Open Tangerine.app"` 显示：bundle 根带 `com.apple.FinderInfo`、`com.apple.fileprovider.fpfs#P`，所有内容文件带 `com.apple.provenance`。
+- `xattr -lr "dist/Citrus.app"` 显示：bundle 根带 `com.apple.FinderInfo`、`com.apple.fileprovider.fpfs#P`，所有内容文件带 `com.apple.provenance`。
 - 该工作目录落在文件提供程序（iCloud / CloudStorage 类）同步路径下；对已存在的 `dist/` 做增量重打包时，系统会把这些扩展属性写回 bundle。
 - `codesign` 拒绝带 FinderInfo 的 bundle，`set -euo pipefail` 使脚本在该步直接终止，因此其后的 `codesign --verify --deep --strict`、`plutil -lint`、`test -x` 都没执行到。
-- 失败后产物处于「二进制已就位、bundle 未签名」状态：`codesign -dv` 当时显示 `Identifier=OpenTangerine-arm64`、`Signature=adhoc (linker-signed)`，即只有链接期签名，不是 `com.syntaxerror.opentangerine` 的 bundle 签名。
+- 失败后产物处于「二进制已就位、bundle 未签名」状态：`codesign -dv` 当时显示 `Identifier=Citrus-arm64`、`Signature=adhoc (linker-signed)`，即只有链接期签名，不是 `com.syntaxerror.opentangerine` 的 bundle 签名。
 
 ## 4. 修复（只动 dist/，未改源码与脚本）
 
 ```
-xattr -cr "dist/Open Tangerine.app"
-codesign --force --sign - "dist/Open Tangerine.app"
-codesign --verify --deep --strict --verbose=2 "dist/Open Tangerine.app"
-plutil -lint "dist/Open Tangerine.app/Contents/Info.plist"
+xattr -cr "dist/Citrus.app"
+codesign --force --sign - "dist/Citrus.app"
+codesign --verify --deep --strict --verbose=2 "dist/Citrus.app"
+plutil -lint "dist/Citrus.app/Contents/Info.plist"
 ```
 
 结果：
 
 ```
-dist/Open Tangerine.app: valid on disk
-dist/Open Tangerine.app: satisfies its Designated Requirement
+dist/Citrus.app: valid on disk
+dist/Citrus.app: satisfies its Designated Requirement
 VERIFY_EXIT=0
 Identifier=com.syntaxerror.opentangerine
 Format=app bundle with Mach-O thin (arm64)
@@ -73,31 +73,31 @@ Info.plist: OK
 ## 5. 启动、存活与退出验证
 
 ```
-open "dist/Open Tangerine.app"; sleep 5
-pgrep -fl OpenTangerine
+open "dist/Citrus.app"; sleep 5
+pgrep -fl Citrus
 ps -o pid,etime,comm -p 42691
-osascript -e 'tell application "System Events" to tell process "Open Tangerine" to return (count windows) & " windows; UI elements: " & (count of UI elements of menu bar 1)'
+osascript -e 'tell application "System Events" to tell process "Citrus" to return (count windows) & " windows; UI elements: " & (count of UI elements of menu bar 1)'
 ```
 
 结果：
 
-- `PID 42691 …/dist/Open Tangerine.app/Contents/MacOS/OpenTangerine` 在 5 秒后仍存活
+- `PID 42691 …/dist/Citrus.app/Contents/MacOS/Citrus` 在 5 秒后仍存活
 - System Events 返回 `1 个窗口`、菜单栏 `6` 个 UI 元素 → 窗口与常驻菜单栏均存在
-- 同一时刻还看到 `/opt/homebrew/bin/ffprobe`、`ffmpeg` 在探测 `/tmp/OpenTangerine-media-*/tone.wav`。该临时目录与 `tone.wav` 是**并行运行的 `scripts/test.sh`（MediaIntegrationTests）夹具**，不是 App 启动行为；两者同时运行，未做隔离验证，故不作归因。
+- 同一时刻还看到 `/opt/homebrew/bin/ffprobe`、`ffmpeg` 在探测 `/tmp/Citrus-media-*/tone.wav`。该临时目录与 `tone.wav` 是**并行运行的 `scripts/test.sh`（MediaIntegrationTests）夹具**，不是 App 启动行为；两者同时运行，未做隔离验证，故不作归因。
 
 退出：
 
 ```
-osascript -e 'tell application "Open Tangerine" to quit'
-pkill -f 'Open Tangerine.app'
+osascript -e 'tell application "Citrus" to quit'
+pkill -f 'Citrus.app'
 ```
 
-结果：`pgrep -fl OpenTangerine` 为空 → 干净退出，未留残留进程，不会与 Lead 的运行时观察抢屏幕。
+结果：`pgrep -fl Citrus` 为空 → 干净退出，未留残留进程，不会与 Lead 的运行时观察抢屏幕。
 
 ## 6. 产物信息
 
-- 路径：`dist/Open Tangerine.app`
-- 内容：`Contents/MacOS/OpenTangerine`、`Resources/AppIcon.icns`、`GPL-3.0.txt`、`Satsuma-MIT.txt`、`THIRD_PARTY_NOTICES.md`
+- 路径：`dist/Citrus.app`
+- 内容：`Contents/MacOS/Citrus`、`Resources/AppIcon.icns`、`GPL-3.0.txt`、`Satsuma-MIT.txt`、`THIRD_PARTY_NOTICES.md`
 - `CFBundleIdentifier` = `com.syntaxerror.opentangerine`；`CFBundleShortVersionString` = `0.1.10`；`CFBundleVersion` = `11`；`LSMinimumSystemVersion` = `15.0`；`LSUIElement` = `true`（无 Dock 图标，纯菜单栏 App）
 - 签名：ad-hoc（`codesign --force --sign -`），未 notarize，无 Developer ID
 - 架构：单 arm64（未设 `BUILD_UNIVERSAL=1`；脚本支持该开关出 universal）
@@ -129,5 +129,5 @@ TEST_EXIT=0
 ## 9. 一行复现
 
 ```
-cd tangerine-oss && ./scripts/build-app.sh || (xattr -cr "dist/Open Tangerine.app" && codesign --force --sign - "dist/Open Tangerine.app" && codesign --verify --deep --strict "dist/Open Tangerine.app"); ./scripts/test.sh
+cd tangerine-oss && ./scripts/build-app.sh || (xattr -cr "dist/Citrus.app" && codesign --force --sign - "dist/Citrus.app" && codesign --verify --deep --strict "dist/Citrus.app"); ./scripts/test.sh
 ```

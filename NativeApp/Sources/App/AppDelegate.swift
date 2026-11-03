@@ -16,7 +16,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         installStatusItem()
         UpdateChecker.shared.onAvailable = { [weak self] version in
             self?.updateMenuItem?.title = "Download update \(version) from website…"
-            self?.statusItem?.button?.toolTip = "Open Tangerine — update \(version) available"
+            self?.statusItem?.button?.toolTip = "Citrus — update \(version) available"
             self?.statusItem?.button?.image = NSImage(systemSymbolName: "arrow.down.circle.fill", accessibilityDescription: "Update available")
         }
         UpdateChecker.shared.start()
@@ -48,7 +48,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         if let button = item.button {
             button.image = BrandArtwork.image(size: 24, template: true)
             button.imageScaling = .scaleProportionallyDown
-            button.toolTip = L10n.t("Open Tangerine: hold Shift while dragging a file")
+            button.toolTip = L10n.t("Citrus: hold Shift while dragging a file")
         }
         let menu = NSMenu()
         menu.addItem(withTitle: "Convert Files…", action: #selector(convertFiles), keyEquivalent: "o").target = self
@@ -58,18 +58,18 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         menu.addItem(withTitle: "Feedback…", action: #selector(openFeedback), keyEquivalent: "").target = self
         menu.addItem(.separator())
         menu.addItem(withTitle: "Settings…", action: #selector(openSettings), keyEquivalent: ",").target = self
-        menu.addItem(withTitle: "About Open Tangerine", action: #selector(about), keyEquivalent: "").target = self
+        menu.addItem(withTitle: "About Citrus", action: #selector(about), keyEquivalent: "").target = self
         let update = menu.addItem(withTitle: "Check for Updates on Website…", action: #selector(checkForUpdates), keyEquivalent: "")
         update.target = self
         update.image = NSImage(systemSymbolName: "arrow.clockwise", accessibilityDescription: "Check for updates")
         updateMenuItem = update
         menu.addItem(withTitle: "Show Logs", action: #selector(showLogs), keyEquivalent: "").target = self
         menu.addItem(.separator())
-        menu.addItem(withTitle: "Quit Open Tangerine", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q")
+        menu.addItem(withTitle: "Quit Citrus", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q")
         let symbols = ["Convert Files…": "arrow.triangle.2.circlepath", "Open Tool for Files…": "wrench.and.screwdriver",
-                       "File Actions…": "doc.on.doc", "Getting Started…": "sparkles", "Feedback…": "bubble.left.and.text.bubble.right", "Settings…": "gearshape", "About Open Tangerine": "info.circle",
+                       "File Actions…": "doc.on.doc", "Getting Started…": "sparkles", "Feedback…": "bubble.left.and.text.bubble.right", "Settings…": "gearshape", "About Citrus": "info.circle",
                        "Check for Updates on Website…": "arrow.clockwise", "Show Logs": "doc.text.magnifyingglass",
-                       "Quit Open Tangerine": "power"]
+                       "Quit Citrus": "power"]
         for entry in menu.items {
             if let symbol = symbols[entry.title] {
                 entry.image = NSImage(systemSymbolName: symbol, accessibilityDescription: entry.title)
@@ -125,7 +125,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         let controller = NSHostingController(rootView: view)
         controller.sizingOptions = []
         let window = SettingsWindow(contentViewController: controller)
-        window.title = "Open Tangerine Settings"
+        window.title = "Citrus Settings"
         window.styleMask = [.titled, .closable, .miniaturizable]
         window.titleVisibility = .hidden
         window.isMovableByWindowBackground = true

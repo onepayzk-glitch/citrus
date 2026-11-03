@@ -42,7 +42,7 @@ enum PagesExporter {
         let result = try await Shell.run("/usr/bin/osascript", ["-e", script])
         guard result.succeeded, fm.fileExists(atPath: destination.path) else {
             let reason = result.stderr.trimmingCharacters(in: .whitespacesAndNewlines)
-            throw OpenTangerineError.invalidInput("Pages export failed. Allow Automation for Open Tangerine when macOS asks, then retry. \(reason)")
+            throw OpenTangerineError.invalidInput("Pages export failed. Allow Automation for Citrus when macOS asks, then retry. \(reason)")
         }
     }
 }

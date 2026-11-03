@@ -58,8 +58,7 @@ struct SettingsView: View {
                 HStack(spacing: 10) {
                     Image(nsImage: BrandArtwork.image(size: 40)).resizable().frame(width: 40, height: 40)
                     VStack(alignment: .leading, spacing: 2) {
-                        Text("Open").font(.system(size: 15, weight: .medium))
-                        Text("Tangerine").font(.system(size: 18, weight: .bold))
+                        Text("Citrus").font(.system(size: 22, weight: .bold, design: .rounded))
                     }
                 }
                 .padding(.top, 20)
@@ -182,7 +181,7 @@ struct SettingsView: View {
             }
             Text(L10n.t("Restart the app to apply menu and guide language changes."))
                 .font(.caption).foregroundStyle(.secondary)
-            Text(L10n.t("Keep Open Tangerine ready in the menu bar after you restart and sign in. Move the app to Applications before enabling."))
+            Text(L10n.t("Keep Citrus ready in the menu bar after you restart and sign in. Move the app to Applications before enabling."))
                 .font(.caption).foregroundStyle(.secondary)
             if let message = settings.loginMessage {
                 Text(message).font(.caption).foregroundStyle(.orange)
@@ -327,7 +326,7 @@ struct SettingsView: View {
         } header: {
             Text(L10n.t("FFmpeg (optional)"))
         } footer: {
-            Text(L10n.t("Open Tangerine uses Apple frameworks for most work. FFmpeg fills the gaps: MP3, FLAC, OGG, Opus, WMA, MKV, WebM, AVI, WMV, GIF and AVIF/WebP encoding on older systems."))
+            Text(L10n.t("Citrus uses Apple frameworks for most work. FFmpeg fills the gaps: MP3, FLAC, OGG, Opus, WMA, MKV, WebM, AVI, WMV, GIF and AVIF/WebP encoding on older systems."))
         }
     }
 
@@ -508,13 +507,13 @@ struct SettingsView: View {
                 Image(nsImage: BrandArtwork.image(size: 100))
                     .resizable().frame(width: 84, height: 84)
                     .shadow(color: Theme.accent.opacity(0.18), radius: 12, y: 6)
-                    .accessibilityLabel("Open Tangerine icon")
+                    .accessibilityLabel("Citrus icon")
                 VStack(spacing: 6) {
-                    Text(L10n.t("Open Tangerine")).font(.system(size: 25, weight: .bold, design: .rounded))
+                    Text(L10n.t("Citrus")).font(.system(size: 25, weight: .bold, design: .rounded))
                     Text(L10n.t("A little less friction. A little more flow."))
                         .font(.system(size: 13)).foregroundStyle(.secondary)
                 }
-                Text("VERSION \(Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "Development")  ·  DEVELOPER TRIAL")
+                Text("VERSION \(Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "Development")  ·  OPEN SOURCE · GPL-3.0")
                     .font(.system(size: 9, weight: .semibold, design: .monospaced))
                     .tracking(1.1).foregroundStyle(.secondary)
                 Divider().padding(.horizontal, 30)

@@ -48,9 +48,9 @@ MARKETING_VERSION=1.0.0 BUILD_NUMBER=1 ./scripts/build-app.sh   # exit 0
 ```
 
 ```
-Built dist/Open Tangerine.app (arm64, macOS 15.0+, version 1.0.0 build 1)
-dist/Open Tangerine.app: valid on disk
-dist/Open Tangerine.app: satisfies its Designated Requirement
+Built dist/Citrus.app (arm64, macOS 15.0+, version 1.0.0 build 1)
+dist/Citrus.app: valid on disk
+dist/Citrus.app: satisfies its Designated Requirement
 ```
 
 启动冒烟：启动 → 进程存活 → 正常退出，无残留。
@@ -63,10 +63,10 @@ MARKETING_VERSION=1.0.0 BUILD_NUMBER=1 ./scripts/package-release.sh   # exit 0
 
 | 产物 | 大小 | SHA-256 |
 |---|---|---|
-| `dist/release/OpenTangerine-1.0.0.zip` | 2.0 MB | `11ae19e746857477dd3ddf3958521b25aeb2ca19471ca42318b3ca259858ac59` |
-| `dist/release/OpenTangerine-1.0.0.dmg` | 2.5 MB | `b79a168dc31b5e1fc254164e4eff9635b293d4f38e2d31a6f532ce66887f3caf` |
+| `dist/release/Citrus-1.0.0.zip` | 2.0 MB | `5a769499f3153adc0884cee952bf046dfa7b74664fe67bf702d5b2b1e38b5aa4` |
+| `dist/release/Citrus-1.0.0.dmg` | 2.5 MB | `bb0e009ec4afb2bc13ff425caa3592f867d50fea4a2b22d3720fd7758c7dca49` |
 
-DMG 验收：可挂载；内含 `Open Tangerine.app` 与 `Applications` 软链；
+DMG 验收：可挂载；内含 `Citrus.app` 与 `Applications` 软链；
 `CFBundleShortVersionString=1.0.0`、`CFBundleVersion=1`、`CFBundleIdentifier=com.onepayzk.opentangerine`；
 `OTGitHubRepo` 为空（未配置仓库时 App 内更新检查不联网）；签名类型为 ad-hoc；
 `spctl --assess` 拒绝（**符合预期**：未公证的 ad-hoc 包不能对外分发）。

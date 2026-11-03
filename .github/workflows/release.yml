@@ -91,7 +91,7 @@ jobs:
           MARKETING_VERSION: ${{ steps.version.outputs.version }}
           BUILD_NUMBER: ${{ steps.version.outputs.build }}
           NOTARY_PROFILE: release-notary
-          BUNDLE_ID: com.onepayzk.opentangerine
+          BUNDLE_ID: com.onepayzk.citrus
           GITHUB_REPO: ${{ github.repository }}
         run: |
           set -euo pipefail
@@ -105,7 +105,7 @@ jobs:
       - name: Upload release artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: OpenTangerine-${{ steps.version.outputs.version }}
+          name: Citrus-${{ steps.version.outputs.version }}
           path: |
             dist/release/*.dmg
             dist/release/*.zip

@@ -16,7 +16,7 @@ AppKit, SwiftUI, ImageIO, PDFKit, AVFoundation, CoreImage, CryptoKit and related
 
 FFmpeg is located on the user's machine and invoked as a separate executable. It is not bundled. Its build-specific LGPL/GPL and codec obligations must be reviewed before distributing a future bundled binary. macOS command-line utilities are supplied by the operating system.
 
-Open Tangerine is independent of Tangerine and does not include Tangerine proprietary source or branding assets.
+Citrus is independent of Tangerine and does not include Tangerine proprietary source or branding assets.
 
 ## DragShift design reference
 
