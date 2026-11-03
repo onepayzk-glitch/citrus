@@ -20,7 +20,7 @@ APP="dist/$APP_NAME.app"
 RELEASE_DIR="dist/release"
 IDENTITY="${DEVELOPER_ID_APPLICATION:-}"
 BUNDLE_ID="${BUNDLE_ID:-com.onepayzk.citrus}"
-GITHUB_REPO="${GITHUB_REPO:-}"
+GITHUB_REPO="${GITHUB_REPO:-onepayzk-glitch/citrus}"
 NOTARY_PROFILE="${NOTARY_PROFILE:-}"
 
 mkdir -p "$RELEASE_DIR"

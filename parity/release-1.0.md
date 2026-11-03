@@ -208,5 +208,5 @@ shasum -a 256 -c "dist/release/SHA256SUMS.txt"
   未注入时，App 内「检查更新」不会访问网络，只打开 GitHub 个人主页；注入后才会访问
   `api.github.com/repos/<repo>/releases/latest`。
 - **上游链接**：README 不再链接上游官网/下载页；上游仓库只作为版权与来源说明保留。
-- **远程仓库**：本地 `origin` 已改名为 `upstream`（只读引用）；发布前请新建自己的仓库并
-  `git remote add origin https://github.com/onepayzk-glitch/<repo>.git`。
+- **远程仓库**：已创建并推送 https://github.com/onepayzk-glitch/citrus （`origin`），
+  上游只读引用保留为 `upstream`；`GITHUB_REPO` 默认 `onepayzk-glitch/citrus`。

@@ -63,8 +63,8 @@ MARKETING_VERSION=1.0.0 BUILD_NUMBER=1 ./scripts/package-release.sh   # exit 0
 
 | 产物 | 大小 | SHA-256 |
 |---|---|---|
-| `dist/release/Citrus-1.0.0.zip` | 2.0 MB | `5a769499f3153adc0884cee952bf046dfa7b74664fe67bf702d5b2b1e38b5aa4` |
-| `dist/release/Citrus-1.0.0.dmg` | 2.5 MB | `bb0e009ec4afb2bc13ff425caa3592f867d50fea4a2b22d3720fd7758c7dca49` |
+| `dist/release/Citrus-1.0.0.zip` | 2.0 MB | `a72d73e7fadfb05ccebe3e9bb50752309a4278b8dddb3d97e5a49ded37c07824` |
+| `dist/release/Citrus-1.0.0.dmg` | 2.5 MB | `7e7894a8b5ac67929a9e432b522687e24a721f5e20af8686d407ccf238526a05` |
 
 DMG 验收：可挂载；内含 `Citrus.app` 与 `Applications` 软链；
 `CFBundleShortVersionString=1.0.0`、`CFBundleVersion=1`、`CFBundleIdentifier=com.onepayzk.opentangerine`；

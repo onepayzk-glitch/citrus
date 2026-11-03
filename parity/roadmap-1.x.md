@@ -86,7 +86,7 @@
 
 ## 7. 近期建议（下一轮可执行）
 
-1. 发布仓库到 `github.com/onepayzk-glitch`（含 README、GPL 许可、截图），把反馈链接切到 Issues；
+1. ~~发布仓库到 `github.com/onepayzk-glitch`~~ 已完成：`github.com/onepayzk-glitch/citrus`；后续把反馈链接切到 Issues；
 2. 做一次真人拖拽清单（`parity/manual-verification-checklist.md`），修掉发现的问题；
 3. 1.2 先做「菜单栏图标 + 强调色 + 输出命名模板」三项，成本低、感知强；
 4. 1.3 先做「柑橘伙伴 + 完成彩纸」（有趣、无数据依赖）。
