@@ -5,7 +5,7 @@ struct CitrusCompanion: View {
     @ObservedObject var state = CompanionState.shared
     private var working: Bool { state.phase == .processing }
     private var failed: Bool { state.phase == .failed }
-    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    private var reduceMotion: Bool { Motion.isReduced }
     var body: some View {
         TimelineView(.animation(minimumInterval: 1.0 / 12, paused: ![.processing, .received, .delivering].contains(state.phase) || reduceMotion)) { timeline in
             let phase = !reduceMotion ? timeline.date.timeIntervalSinceReferenceDate * 5 : 0

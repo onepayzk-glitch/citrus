@@ -46,7 +46,7 @@ struct SettingsView: View {
     @State private var feedbackCopied = false
     @State private var qualityTarget: FileFormat = .webp
 
-    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    private var reduceMotion: Bool { Motion.isReduced }
     @Environment(\.accessibilityReduceTransparency) private var reduceTransparency
     @Namespace private var selection
 
@@ -203,6 +203,22 @@ struct SettingsView: View {
             Picker(L10n.t("Sound"), selection: $settings.soundChoice) {
                 ForEach(SoundChoice.allCases) { Text($0.title).tag($0) }
             }
+            Picker(L10n.t("Wheel size"), selection: $settings.wheelSize) {
+                ForEach(WheelSize.allCases) { Text($0.title).tag($0) }
+            }
+            Picker(L10n.t("Wheel surface"), selection: $settings.wheelSurface) {
+                ForEach(WheelSurface.allCases) { Text($0.title).tag($0) }
+            }
+            HStack {
+                Text(L10n.t("Wheel opacity"))
+                Slider(value: $settings.wheelOpacity, in: 0.75...1.0)
+                Text("\(Int(settings.wheelOpacity * 100))%")
+                    .font(.caption.monospacedDigit())
+                    .frame(width: 40, alignment: .trailing)
+            }
+            Picker(L10n.t("Motion"), selection: $settings.motionChoice) {
+                ForEach(MotionChoice.allCases) { Text($0.title).tag($0) }
+            }
             HStack {
                 TextField(L10n.t("Output name template"), text: $settings.outputNameTemplate)
                     .textFieldStyle(.roundedBorder)
@@ -238,6 +254,38 @@ struct SettingsView: View {
             Text(L10n.t("Drag Modifiers"))
         } footer: {
             Text(L10n.t("Hold the chosen modifier while dragging files in Finder. Tangerine's defaults are ⇧ Shift, ⌘ Command and ⌃ Control. Picking a key that another wheel already uses swaps the two."))
+        }
+        Section {
+            ForEach(settings.allToolsInOrder) { tool in
+                HStack(spacing: 8) {
+                    Image(systemName: tool.symbol).frame(width: 18).foregroundStyle(.secondary)
+                    Text(tool.localizedTitle)
+                    Spacer()
+                    Button { settings.moveTool(tool, offset: -1) } label: {
+                        Image(systemName: "chevron.up")
+                    }
+                    .buttonStyle(.borderless)
+                    .help(L10n.t("Move up"))
+                    Button { settings.moveTool(tool, offset: 1) } label: {
+                        Image(systemName: "chevron.down")
+                    }
+                    .buttonStyle(.borderless)
+                    .help(L10n.t("Move down"))
+                    Button { settings.toggleToolHidden(tool) } label: {
+                        Image(systemName: settings.isToolHidden(tool) ? "eye.slash" : "eye")
+                    }
+                    .buttonStyle(.borderless)
+                    .help(settings.isToolHidden(tool) ? L10n.t("Show on wheel") : L10n.t("Hide from wheel"))
+                }
+                .font(.system(size: 12))
+            }
+            Button(L10n.t("Reset")) { settings.resetToolLayout() }
+                .controlSize(.small)
+        } header: {
+            Text(L10n.t("Tools"))
+        } footer: {
+            Text(L10n.t("Hidden tools stay off the drag wheel; re-enable them here. Order applies to the wheel."))
+                .font(.caption).foregroundStyle(.secondary)
         }
         Section(L10n.t("Excluded applications")) {
             Text(L10n.t("Drag shortcuts stay off when a drag starts in these apps. Add CorelDRAW or other design tools here. You can still use Convert Files from the menu bar."))

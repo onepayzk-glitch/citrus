@@ -38,10 +38,14 @@ struct RadialItem: Identifiable, Hashable {
 }
 
 struct RadialGeometry {
-    var innerRadius: CGFloat = 64
-    var outerRadius: CGFloat = 150
+    var baseInnerRadius: CGFloat = 64
+    var baseOuterRadius: CGFloat = 150
+    var scale: CGFloat = 1
     var gap: CGFloat = 4
     var count: Int
+
+    var innerRadius: CGFloat { baseInnerRadius * scale }
+    var outerRadius: CGFloat { baseOuterRadius * scale }
 
     var slice: CGFloat { 2 * .pi / CGFloat(max(count, 1)) }
 
@@ -136,7 +140,7 @@ struct WedgeShape: Shape {
 }
 
 struct RadialWheelView: View {
-    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    private var reduceMotion: Bool { Motion.isReduced }
     @State private var appeared = false
     var presentationID: UUID = UUID()
     var items: [RadialItem]
@@ -186,7 +190,7 @@ struct RadialWheelView: View {
                     .position(mid)
             }
             .frame(width: rect.width, height: rect.height)
-            .glassSurface(tint: selected ? Theme.accent : nil, in: shape)
+            .wheelSurface(tint: selected ? Theme.accent : nil, selected: selected, in: shape)
             .scaleEffect(selected && !reduceMotion ? 1.025 : 1)
             .offset(x: selected && !reduceMotion ? (mid.x - rect.midX) / geometry.labelRadius * 4 : 0,
                     y: selected && !reduceMotion ? (mid.y - rect.midY) / geometry.labelRadius * 4 : 0)
@@ -220,7 +224,7 @@ struct RadialWheelView: View {
             .padding(.horizontal, 12)
             .frame(height: 34)
             .frame(maxWidth: geometry.innerRadius * 2 - 8)
-            .glassSurface(in: Capsule())
+            .wheelSurface(in: Capsule())
     }
 
     private var empty: some View {
@@ -238,7 +242,7 @@ struct RadialWheelView: View {
         .padding(.horizontal, 22)
         .padding(.vertical, 12)
         .frame(maxWidth: geometry.outerRadius * 2)
-        .glassSurface(in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+        .wheelSurface(in: RoundedRectangle(cornerRadius: 18, style: .continuous))
     }
 }
 
@@ -275,9 +279,14 @@ final class RadialView: NSView {
     private var trackingArea: NSTrackingArea?
     private let host: PassthroughHostingView<RadialWheelView>
 
-    let discRadius: CGFloat = 170
+    var discRadius: CGFloat {
+        let scale = AppSettings.shared.wheelSize.scale
+        return 170 * scale + max(0, (1 - scale) * 20)
+    }
 
-    private var geometry: RadialGeometry { RadialGeometry(count: items.count) }
+    private var geometry: RadialGeometry {
+        RadialGeometry(scale: AppSettings.shared.wheelSize.scale, count: items.count)
+    }
 
     override init(frame frameRect: NSRect) {
         host = PassthroughHostingView(rootView: RadialWheelView(items: [], highlighted: nil, title: "", emptyMessage: "", emptyDetail: "", geometry: RadialGeometry(count: 0)))

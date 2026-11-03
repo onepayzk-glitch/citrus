@@ -167,6 +167,55 @@ enum SoundChoice: String, CaseIterable, Identifiable {
     }
 }
 
+enum WheelSize: String, CaseIterable, Identifiable {
+    case compact, standard, large
+
+    var id: String { rawValue }
+
+    var title: String {
+        switch self {
+        case .compact: return L10n.t("Compact")
+        case .standard: return L10n.t("Standard")
+        case .large: return L10n.t("Large")
+        }
+    }
+
+    var scale: CGFloat {
+        switch self {
+        case .compact: return 0.85
+        case .standard: return 1.0
+        case .large: return 1.15
+        }
+    }
+}
+
+enum WheelSurface: String, CaseIterable, Identifiable {
+    case glass, solid
+
+    var id: String { rawValue }
+
+    var title: String {
+        switch self {
+        case .glass: return L10n.t("Glass")
+        case .solid: return L10n.t("Solid")
+        }
+    }
+}
+
+enum MotionChoice: String, CaseIterable, Identifiable {
+    case system, reduced, full
+
+    var id: String { rawValue }
+
+    var title: String {
+        switch self {
+        case .system: return L10n.t("Follow system")
+        case .reduced: return L10n.t("Reduced")
+        case .full: return L10n.t("Full")
+        }
+    }
+}
+
 enum FloatBehaviour: String, CaseIterable, Identifiable {
     case newShelf, addToExisting
 
@@ -313,6 +362,30 @@ final class AppSettings: ObservableObject {
         didSet { defaults.set(imageQualityOverrides, forKey: "imageQualityOverrides") }
     }
 
+    @Published var wheelSize: WheelSize {
+        didSet { defaults.set(wheelSize.rawValue, forKey: "wheelSize") }
+    }
+
+    @Published var wheelSurface: WheelSurface {
+        didSet { defaults.set(wheelSurface.rawValue, forKey: "wheelSurface") }
+    }
+
+    @Published var wheelOpacity: Double {
+        didSet { defaults.set(wheelOpacity, forKey: "wheelOpacity") }
+    }
+
+    @Published var motionChoice: MotionChoice {
+        didSet { defaults.set(motionChoice.rawValue, forKey: "motionChoice") }
+    }
+
+    @Published var toolOrder: [String] {
+        didSet { defaults.set(toolOrder, forKey: "toolOrder") }
+    }
+
+    @Published var hiddenTools: [String] {
+        didSet { defaults.set(hiddenTools, forKey: "hiddenTools") }
+    }
+
     private init() {
         excludedApplications = defaults.dictionary(forKey: "excludedApplications") as? [String: String] ?? [:]
         compressionPreset = CompressionPreset(rawValue: defaults.string(forKey: "compressionPreset") ?? "") ?? .balanced
@@ -348,6 +421,12 @@ final class AppSettings: ObservableObject {
         } else {
             imageQualityOverrides = [:]
         }
+        wheelSize = WheelSize(rawValue: defaults.string(forKey: "wheelSize") ?? "") ?? .standard
+        wheelSurface = WheelSurface(rawValue: defaults.string(forKey: "wheelSurface") ?? "") ?? .glass
+        wheelOpacity = defaults.object(forKey: "wheelOpacity") as? Double ?? 1.0
+        motionChoice = MotionChoice(rawValue: defaults.string(forKey: "motionChoice") ?? "") ?? .system
+        toolOrder = defaults.stringArray(forKey: "toolOrder") ?? []
+        hiddenTools = defaults.stringArray(forKey: "hiddenTools") ?? []
         if #available(macOS 13.0, *) {
             launchAtLogin = SMAppService.mainApp.status == .enabled
         } else {
@@ -371,6 +450,51 @@ final class AppSettings: ObservableObject {
 
     func resetOutputNameTemplate() {
         outputNameTemplate = "{name} {tool}"
+    }
+
+    // MARK: Tool order and visibility
+
+    /// All tools in the user's order, including hidden ones.
+    var allToolsInOrder: [ToolID] {
+        let rank = Dictionary(uniqueKeysWithValues: toolOrder.enumerated().map { ($1, $0) })
+        return ToolID.allCases.sorted {
+            (rank[$0.rawValue] ?? Int.max) < (rank[$1.rawValue] ?? Int.max)
+        }
+    }
+
+    /// Tools to show on the wheel: hidden ones removed, then user order applied.
+    func orderedTools(_ tools: [ToolID]) -> [ToolID] {
+        let visible = Set(tools.map(\.rawValue)).subtracting(hiddenTools)
+        let rank = Dictionary(uniqueKeysWithValues: toolOrder.enumerated().map { ($1, $0) })
+        return tools.filter { visible.contains($0.rawValue) }.sorted {
+            (rank[$0.rawValue] ?? Int.max) < (rank[$1.rawValue] ?? Int.max)
+        }
+    }
+
+    func isToolHidden(_ tool: ToolID) -> Bool {
+        hiddenTools.contains(tool.rawValue)
+    }
+
+    func toggleToolHidden(_ tool: ToolID) {
+        if isToolHidden(tool) {
+            hiddenTools.removeAll { $0 == tool.rawValue }
+        } else {
+            hiddenTools.append(tool.rawValue)
+        }
+    }
+
+    func moveTool(_ tool: ToolID, offset: Int) {
+        var order = allToolsInOrder.map(\.rawValue)
+        guard let index = order.firstIndex(of: tool.rawValue) else { return }
+        let target = index + offset
+        guard order.indices.contains(target) else { return }
+        order.swapAt(index, target)
+        toolOrder = order
+    }
+
+    func resetToolLayout() {
+        toolOrder = []
+        hiddenTools = []
     }
 
     func applyAppearance() {

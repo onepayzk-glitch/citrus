@@ -53,7 +53,7 @@ struct SegmentedPicker<T: Hashable>: View {
 /// A brief, state-driven illustration: no permanent animation timer.
 struct FileOrbitGraphic: View {
     let tab: SettingsTab
-    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    private var reduceMotion: Bool { Motion.isReduced }
     @State private var appeared = false
     private var angle: Double { Double(SettingsTab.allCases.firstIndex(of: tab) ?? 0) * 90 }
     var body: some View {
@@ -91,7 +91,7 @@ struct FileOrbitGraphic: View {
 }
 
 struct SettingsPressStyle: ButtonStyle {
-    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    private var reduceMotion: Bool { Motion.isReduced }
     @State private var hovering = false
     func makeBody(configuration: Configuration) -> some View {
         configuration.label

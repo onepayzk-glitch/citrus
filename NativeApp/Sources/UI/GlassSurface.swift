@@ -44,6 +44,26 @@ extension View {
     }
 }
 
+extension View {
+    /// Wheel surface: Liquid Glass or a solid, higher-contrast background.
+    @ViewBuilder
+    func wheelSurface<S: Shape>(tint: Color? = nil, selected: Bool = false, in shape: S) -> some View {
+        if AppSettings.shared.wheelSurface == .solid {
+            background {
+                ZStack {
+                    shape.fill(Color(nsColor: .windowBackgroundColor).opacity(0.96))
+                    if let tint {
+                        shape.fill(tint.opacity(selected ? 0.42 : 0.12))
+                    }
+                    shape.stroke(Color(nsColor: .separatorColor).opacity(0.6), lineWidth: 1)
+                }
+            }
+        } else {
+            glassSurface(tint: tint, in: shape)
+        }
+    }
+}
+
 /// Liquid Glass grouping on macOS 26; plain content on older systems.
 struct GlassGroup<Content: View>: View {
     private let content: Content

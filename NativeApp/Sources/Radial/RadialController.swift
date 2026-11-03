@@ -118,8 +118,8 @@ final class RadialController: DragMonitorDelegate {
         panel.alphaValue = 0
         panel.orderFrontRegardless()
         NSAnimationContext.runAnimationGroup { context in
-            context.duration = NSWorkspace.shared.accessibilityDisplayShouldReduceMotion ? 0 : 0.16
-            panel.animator().alphaValue = 1
+            context.duration = Motion.isReduced ? 0 : 0.16
+            panel.animator().alphaValue = AppSettings.shared.wheelOpacity
         }
         visible = true
         Task { @MainActor in JobRunner.shared.beginWatching() }
@@ -175,7 +175,7 @@ final class RadialController: DragMonitorDelegate {
             return
         }
         if advanced {
-            view.items = ToolID.available(for: formats).map(RadialItem.init(tool:))
+            view.items = AppSettings.shared.orderedTools(ToolID.available(for: formats)).map(RadialItem.init(tool:))
             view.emptyMessage = "No tools for this selection"
         } else {
             view.items = ConversionMatrix.targets(for: formats).map(RadialItem.init(format:))

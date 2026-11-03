@@ -28,6 +28,30 @@ import Foundation
             precondition(image.isTemplate, "\(style) template")
         }
 
+        // Wheel and motion choices
+        precondition(WheelSize.allCases.count == 3)
+        precondition(WheelSize.compact.scale < WheelSize.standard.scale)
+        precondition(WheelSize.large.scale > WheelSize.standard.scale)
+        precondition(WheelSurface.allCases.count == 2)
+        precondition(MotionChoice.allCases.count == 3)
+
+        // Tool ordering and hidden tools
+        let settingsTools = AppSettings.shared
+        let originalOrder = settingsTools.toolOrder
+        let originalHidden = settingsTools.hiddenTools
+        settingsTools.toolOrder = [ToolID.editImage.rawValue, ToolID.compress.rawValue]
+        settingsTools.hiddenTools = [ToolID.compress.rawValue]
+        let orderedTools = settingsTools.orderedTools([ToolID.compress, ToolID.editImage, ToolID.cropImage])
+        let allBefore = settingsTools.allToolsInOrder
+        let cropIndex = allBefore.firstIndex(of: .cropImage)!
+        settingsTools.moveTool(.cropImage, offset: -1)
+        let allAfter = settingsTools.allToolsInOrder
+        let movedIndex = allAfter.firstIndex(of: .cropImage)!
+        settingsTools.toolOrder = originalOrder
+        settingsTools.hiddenTools = originalHidden
+        precondition(orderedTools == [.editImage, .cropImage], "tool order: \(orderedTools)")
+        precondition(movedIndex == cropIndex - 1, "move up: \(cropIndex) -> \(movedIndex)")
+
         // Per-format quality override falls back to the global quality and can be reset.
         let settings = AppSettings.shared
         let previous = settings.jpegQuality

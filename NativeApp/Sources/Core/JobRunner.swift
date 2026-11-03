@@ -421,7 +421,7 @@ struct JobPillView: View {
     var hasNotch: Bool = true
     @ObservedObject var runner: JobRunner
     @ObservedObject var presentation: NotchPresentation
-    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    private var reduceMotion: Bool { Motion.isReduced }
     @ObservedObject private var companion = CompanionState.shared
     @ObservedObject private var settings = AppSettings.shared
     @Environment(\.accessibilityReduceTransparency) private var reduceTransparency
