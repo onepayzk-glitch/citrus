@@ -149,3 +149,48 @@ shasum -a 256 -c "dist/release/SHA256SUMS.txt"
 - App 无遥测、无崩溃上报、无账号；公证只是 Apple 对二进制做恶意软件扫描。
 - 反馈由用户手动发送（About → 反馈问题），诊断信息不含文件名/路径/邮箱（见 `AppInfo.swift`）。
 - 签名私钥只保存在你的钥匙串；不要提交 `.p8`、证书或凭据到仓库。
+
+
+## 9. 开源仓库与"绑定凭证"的关系
+
+**开源本身不需要任何 Apple 凭证**：源码公开、License 写明即可，任何人可以自己构建
+（`./scripts/build-app.sh`，ad-hoc 签名，无需账号）。凭证只与「官方分发预编译的 macOS App」有关：
+
+| 模式 | 需要 Apple 凭证？ | 用户首次打开体验 |
+|---|---|---|
+| 只开源源码，用户自行构建 | ❌ 不需要 | 需右键打开 / 系统设置允许（Gatekeeper） |
+| 官方提供 ad-hoc 构建（无公证） | ❌ 不需要（但不推荐主渠道） | 同上，且来源无法验证 |
+| 官方提供 Developer ID 签名 + 公证的 DMG | ✅ 需要（$99/年） | 双击直接打开，无拦截 |
+| 提交 Mac App Store | ✅ 需要（App Store 证书 + 审核） | 商店安装 |
+
+凭证的正确"绑定"方式：**放在 GitHub Actions 的加密 Secrets 或本机钥匙串，绝不写进仓库。**
+
+### GitHub Actions（本仓库已配置 `.github/workflows/release.yml`）
+
+在仓库 Settings → Secrets and variables → Actions 添加：
+
+| Secret | 内容 |
+|---|---|
+| `APPLE_CERT_P12_BASE64` | Developer ID Application 证书 `.p12` 的 base64（`base64 -i cert.p12`) |
+| `APPLE_CERT_PASSWORD` | 该 `.p12` 的密码 |
+| `KEYCHAIN_PASSWORD` | CI 临时钥匙串密码（任意强密码） |
+| `APPLE_TEAM_ID` | 10 位 Team ID |
+| `NOTARY_KEY_ID` | App Store Connect API Key ID |
+| `NOTARY_ISSUER_ID` | Issuer ID（UUID） |
+| `NOTARY_KEY_P8_BASE64` | `AuthKey_*.p8` 的 base64 |
+
+使用：推送 tag（`git tag v1.0.0 && git push origin v1.0.0`）→ workflow 自动：
+构建 → Developer ID 签名 → 公证 ZIP → staple App → 重建 ZIP/DMG → 公证并 staple DMG →
+校验 → 上传构建产物 → 创建 GitHub Release。
+
+- Fork / PR 构建拿不到 secrets，因此只能产出 ad-hoc 包（安全默认）。
+- 私钥、`.p8`、密码**永远不要**提交或上传到 issue/Release。
+- 证书过期（Developer ID 有效期通常 5 年）后需更新 Secret 并重发版本。
+
+### 开源还需准备（与凭证无关）
+
+1. 仓库公开到 `github.com/onepayzk-glitch`（README 已有作者/反馈/路线图）；
+2. License：本仓库为 GPL-3.0-only，保留 Satsuma（MIT）与上游 Open-Tangerine 的归属声明；
+3. 第三方声明：组装版本不捆绑 LibreOffice/FFmpeg，因此不承担其分发许可义务；将来若捆绑，
+   需补 MPL-2.0 / LGPL 许可证文本与源码获取说明；
+4. 不在仓库中存放 `.p8`、`.p12`、公证凭据、用户数据。
