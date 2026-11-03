@@ -2,8 +2,8 @@ import AppKit
 import SwiftUI
 
 enum Theme {
-    static let accentNS = NSColor(srgbRed: 1.0, green: 0.36, blue: 0.0, alpha: 1)
-    static let accent = Color(nsColor: accentNS)
+    static var accentNS: NSColor { AppSettings.shared.accentNSColor }
+    static var accent: Color { Color(nsColor: accentNS) }
 
     static let ink = Color(nsColor: .labelColor)
     static let inkSecondary = Color(nsColor: .secondaryLabelColor)

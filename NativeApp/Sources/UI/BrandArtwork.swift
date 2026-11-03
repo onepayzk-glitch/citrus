@@ -1,5 +1,22 @@
 import AppKit
 
+/// Menu-bar icon variants. Defined here because the icon generator compiles this
+/// file on its own without the rest of the app sources.
+enum MenuBarIconStyle: String, CaseIterable, Identifiable {
+    case citrus, minimal, monogram
+
+    var id: String { rawValue }
+
+    /// English keys; the Settings picker localizes them with L10n.t.
+    var title: String {
+        switch self {
+        case .citrus: return "Citrus fruit"
+        case .minimal: return "Minimal dot"
+        case .monogram: return "Monogram C"
+        }
+    }
+}
+
 /// Original vector mark, shared by app artwork and the template menu-bar icon.
 enum BrandArtwork {
     static func image(size: CGFloat, template: Bool = false) -> NSImage {
@@ -29,5 +46,37 @@ enum BrandArtwork {
         }
         image.isTemplate = template
         return image
+    }
+
+    /// Menu-bar mark for the chosen style. Always a template image so macOS can
+    /// invert it for the light/dark menu bar.
+    static func menuBarImage(style: MenuBarIconStyle, size: CGFloat = 24) -> NSImage {
+        switch style {
+        case .citrus:
+            return image(size: size, template: true)
+        case .minimal:
+            let image = NSImage(size: NSSize(width: size, height: size), flipped: false) { rect in
+                let s = rect.width
+                NSColor.labelColor.setFill()
+                NSBezierPath(ovalIn: NSRect(x: s * 0.2, y: s * 0.2, width: s * 0.6, height: s * 0.6)).fill()
+                NSBezierPath(ovalIn: NSRect(x: s * 0.42, y: s * 0.42, width: s * 0.16, height: s * 0.16)).fill()
+                return true
+            }
+            image.isTemplate = true
+            return image
+        case .monogram:
+            let image = NSImage(size: NSSize(width: size, height: size), flipped: false) { rect in
+                let text = "C" as NSString
+                let attributes: [NSAttributedString.Key: Any] = [
+                    .font: NSFont.systemFont(ofSize: rect.width * 0.78, weight: .bold),
+                    .foregroundColor: NSColor.labelColor,
+                ]
+                let textSize = text.size(withAttributes: attributes)
+                text.draw(at: NSPoint(x: (rect.width - textSize.width) / 2, y: (rect.height - textSize.height) / 2), withAttributes: attributes)
+                return true
+            }
+            image.isTemplate = true
+            return image
+        }
     }
 }

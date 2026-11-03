@@ -1,9 +1,11 @@
 import AppKit
+import Combine
 import SwiftUI
 
 final class AppDelegate: NSObject, NSApplicationDelegate {
     private var updateMenuItem: NSMenuItem?
     private var statusItem: NSStatusItem?
+    private var iconCancellable: AnyCancellable?
     private let dragMonitor = DragMonitor()
     private let radial = RadialController()
     private var settingsWindow: NSWindow?
@@ -46,7 +48,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     private func installStatusItem() {
         let item = NSStatusBar.system.statusItem(withLength: 32)
         if let button = item.button {
-            button.image = BrandArtwork.image(size: 24, template: true)
+            button.image = BrandArtwork.menuBarImage(style: AppSettings.shared.menuBarIconStyle)
             button.imageScaling = .scaleProportionallyDown
             button.toolTip = L10n.t("Citrus: hold Shift while dragging a file")
         }
@@ -80,6 +82,9 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         }
         item.menu = menu
         statusItem = item
+        iconCancellable = AppSettings.shared.$menuBarIconStyle.sink { [weak self] style in
+            self?.statusItem?.button?.image = BrandArtwork.menuBarImage(style: style)
+        }
     }
 
     @MainActor

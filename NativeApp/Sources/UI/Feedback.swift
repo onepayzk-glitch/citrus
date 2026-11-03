@@ -7,7 +7,9 @@ enum Feedback {
 
     @MainActor static func success() {
         guard isEnabled else { return }
-        NSSound(named: "Glass")?.play()
+        if let sound = AppSettings.shared.soundChoice.soundName {
+            NSSound(named: sound)?.play()
+        }
         NSHapticFeedbackManager.defaultPerformer.perform(.generic, performanceTime: .now)
     }
 

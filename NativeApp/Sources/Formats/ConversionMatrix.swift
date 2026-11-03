@@ -63,6 +63,21 @@ enum ConversionMatrix {
         return directory.appendingPathComponent(candidate)
     }
 
+    /// Uniquifies a full file name ("photo Compressed.jpg" -> "photo Compressed 2.jpg").
+    static func uniqueFileURL(directory: URL, fileName: String) -> URL {
+        let fm = FileManager.default
+        let ns = fileName as NSString
+        let ext = ns.pathExtension
+        let base = ns.deletingPathExtension
+        var candidate = fileName
+        var counter = 2
+        while fm.fileExists(atPath: directory.appendingPathComponent(candidate).path) {
+            candidate = ext.isEmpty ? "\(base) \(counter)" : "\(base) \(counter).\(ext)"
+            counter += 1
+        }
+        return directory.appendingPathComponent(candidate)
+    }
+
     static func uniqueURL(directory: URL, baseName: String, suffix: String, ext: String) -> URL {
         let fm = FileManager.default
         var candidate = suffix.isEmpty ? "\(baseName).\(ext)" : "\(baseName) \(suffix).\(ext)"

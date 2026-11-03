@@ -13,7 +13,8 @@ struct ToolSession: Identifiable {
     var outputDirectory: URL { AppSettings.shared.outputLocation.directory(for: primary) }
 
     func outputURL(suffix: String, ext: String, baseName: String? = nil) -> URL {
-        ConversionMatrix.uniqueURL(directory: outputDirectory, baseName: baseName ?? self.baseName, suffix: suffix, ext: ext)
+        let name = OutputNaming.fileName(base: baseName ?? self.baseName, suffix: suffix, ext: ext)
+        return ConversionMatrix.uniqueFileURL(directory: outputDirectory, fileName: name)
     }
 }
 

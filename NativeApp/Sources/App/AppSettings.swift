@@ -113,6 +113,60 @@ enum WheelKind {
     case conversions, tools, actions
 }
 
+enum AccentChoice: String, CaseIterable, Identifiable {
+    case citrus, blue, green, purple, pink, graphite, system
+
+    var id: String { rawValue }
+
+    var title: String {
+        switch self {
+        case .citrus: return L10n.t("Citrus Orange")
+        case .blue: return L10n.t("Blue")
+        case .green: return L10n.t("Green")
+        case .purple: return L10n.t("Purple")
+        case .pink: return L10n.t("Pink")
+        case .graphite: return L10n.t("Graphite")
+        case .system: return L10n.t("System accent")
+        }
+    }
+
+    var color: NSColor? {
+        switch self {
+        case .citrus: return NSColor(srgbRed: 1.0, green: 0.36, blue: 0.0, alpha: 1)
+        case .blue: return NSColor(srgbRed: 0.24, green: 0.53, blue: 0.96, alpha: 1)
+        case .green: return NSColor(srgbRed: 0.20, green: 0.68, blue: 0.40, alpha: 1)
+        case .purple: return NSColor(srgbRed: 0.58, green: 0.39, blue: 0.94, alpha: 1)
+        case .pink: return NSColor(srgbRed: 0.94, green: 0.36, blue: 0.58, alpha: 1)
+        case .graphite: return NSColor(srgbRed: 0.42, green: 0.45, blue: 0.50, alpha: 1)
+        case .system: return nil
+        }
+    }
+}
+
+enum SoundChoice: String, CaseIterable, Identifiable {
+    case glass, pop, tink, none
+
+    var id: String { rawValue }
+
+    var title: String {
+        switch self {
+        case .glass: return L10n.t("Glass")
+        case .pop: return L10n.t("Pop")
+        case .tink: return L10n.t("Tink")
+        case .none: return L10n.t("None")
+        }
+    }
+
+    var soundName: String? {
+        switch self {
+        case .glass: return "Glass"
+        case .pop: return "Pop"
+        case .tink: return "Tink"
+        case .none: return nil
+        }
+    }
+}
+
 enum FloatBehaviour: String, CaseIterable, Identifiable {
     case newShelf, addToExisting
 
@@ -239,6 +293,26 @@ final class AppSettings: ObservableObject {
         didSet { defaults.set(language.rawValue, forKey: "appLanguage") }
     }
 
+    @Published var accentChoice: AccentChoice {
+        didSet { defaults.set(accentChoice.rawValue, forKey: "accentChoice") }
+    }
+
+    @Published var menuBarIconStyle: MenuBarIconStyle {
+        didSet { defaults.set(menuBarIconStyle.rawValue, forKey: "menuBarIconStyle") }
+    }
+
+    @Published var soundChoice: SoundChoice {
+        didSet { defaults.set(soundChoice.rawValue, forKey: "soundChoice") }
+    }
+
+    @Published var outputNameTemplate: String {
+        didSet { defaults.set(outputNameTemplate, forKey: "outputNameTemplate") }
+    }
+
+    @Published var imageQualityOverrides: [String: Double] {
+        didSet { defaults.set(imageQualityOverrides, forKey: "imageQualityOverrides") }
+    }
+
     private init() {
         excludedApplications = defaults.dictionary(forKey: "excludedApplications") as? [String: String] ?? [:]
         compressionPreset = CompressionPreset(rawValue: defaults.string(forKey: "compressionPreset") ?? "") ?? .balanced
@@ -265,11 +339,38 @@ final class AppSettings: ObservableObject {
         soundAndHaptics = defaults.object(forKey: "soundAndHaptics") as? Bool ?? true
         floatBehaviour = FloatBehaviour(rawValue: defaults.string(forKey: "floatBehaviour") ?? "") ?? .newShelf
         language = AppLanguage(rawValue: defaults.string(forKey: "appLanguage") ?? "") ?? .system
+        accentChoice = AccentChoice(rawValue: defaults.string(forKey: "accentChoice") ?? "") ?? .citrus
+        menuBarIconStyle = MenuBarIconStyle(rawValue: defaults.string(forKey: "menuBarIconStyle") ?? "") ?? .citrus
+        soundChoice = SoundChoice(rawValue: defaults.string(forKey: "soundChoice") ?? "") ?? .glass
+        outputNameTemplate = defaults.string(forKey: "outputNameTemplate") ?? "{name} {tool}"
+        if let raw = defaults.dictionary(forKey: "imageQualityOverrides") {
+            imageQualityOverrides = raw.compactMapValues { ($0 as? NSNumber)?.doubleValue }
+        } else {
+            imageQualityOverrides = [:]
+        }
         if #available(macOS 13.0, *) {
             launchAtLogin = SMAppService.mainApp.status == .enabled
         } else {
             launchAtLogin = false
         }
+    }
+
+    /// Effective accent colour; `system` follows the macOS accent.
+    var accentNSColor: NSColor { accentChoice.color ?? NSColor.controlAccentColor }
+
+    /// Quality for a target format: per-format override, otherwise the global quality.
+    func quality(for format: FileFormat) -> Double {
+        imageQualityOverrides[format.rawValue] ?? jpegQuality
+    }
+
+    func setQuality(_ value: Double?, for format: FileFormat) {
+        var copy = imageQualityOverrides
+        copy[format.rawValue] = value
+        imageQualityOverrides = copy
+    }
+
+    func resetOutputNameTemplate() {
+        outputNameTemplate = "{name} {tool}"
     }
 
     func applyAppearance() {

@@ -64,6 +64,8 @@ xattr -d com.apple.quarantine "/Applications/Citrus.app"
 
 Do not disable Gatekeeper globally. Do not redistribute unsigned builds as the official download — users will see a security warning and cannot verify the source.
 
+Release notes template and publishing steps for unsigned test builds: [RELEASE_NOTES_TEMPLATE.md](RELEASE_NOTES_TEMPLATE.md) · [parity/unsigned-release-guide.md](parity/unsigned-release-guide.md).
+
 ## Optional external engines
 
 | Engine | Used for | If missing |

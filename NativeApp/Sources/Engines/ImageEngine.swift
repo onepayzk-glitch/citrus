@@ -242,12 +242,12 @@ struct ImageEngine: ConversionEngine {
         case .pdf:
             try ImageIOBridge.writePDF(images: [image], to: request.destination)
         case .docx:
-            let temp = FileManager.default.temporaryDirectory.appendingPathComponent("opentangerine-\(UUID().uuidString).png")
+            let temp = FileManager.default.temporaryDirectory.appendingPathComponent("citrus-\(UUID().uuidString).png")
             defer { try? FileManager.default.removeItem(at: temp) }
             try ImageIOBridge.write(image, to: temp, format: .png)
             try await DocxWriter.write(paragraphs: [], images: [temp], to: request.destination)
         default:
-            let quality = AppSettings.shared.jpegQuality
+            let quality = AppSettings.shared.quality(for: request.target)
             let metadata = AppSettings.shared.preserveMetadata ? ImageIOBridge.properties(request.source) : nil
             if ImageIOBridge.canEncodeNatively(request.target) {
                 try ImageIOBridge.write(image, to: request.destination, format: request.target, quality: quality, metadata: metadata)

@@ -16,7 +16,7 @@ enum ImageToolSupport {
     static func save(_ session: ToolSession, suffix: String, format: FileFormat? = nil, title: String? = nil, render: @escaping () async throws -> CGImage) {
         let output = format ?? outputFormat(for: session.primary)
         let destination = session.outputURL(suffix: suffix, ext: output.fileExtension)
-        let quality = AppSettings.shared.jpegQuality
+        let quality = AppSettings.shared.quality(for: output)
         let metadata = ImageIOBridge.properties(session.primary)
         session.run(title: title ?? session.tool.progressTitle, detail: session.primary.lastPathComponent) { progress in
             let image = try await render()
@@ -36,10 +36,11 @@ enum ImageToolSupport {
     @MainActor
     static func saveEach(_ session: ToolSession, suffix: String, title: String, detail: String, render: @escaping (URL, CGImage) throws -> CGImage) {
         let files = session.files
-        let quality = AppSettings.shared.jpegQuality
         let destinations = files.map { url -> (URL, FileFormat) in
             let output = outputFormat(for: url)
-            return (ConversionMatrix.uniqueURL(directory: AppSettings.shared.outputLocation.directory(for: url), baseName: ConversionMatrix.strippedBaseName(url.lastPathComponent), suffix: suffix, ext: output.fileExtension), output)
+            let name = OutputNaming.fileName(base: ConversionMatrix.strippedBaseName(url.lastPathComponent), suffix: suffix, ext: output.fileExtension)
+            let destination = ConversionMatrix.uniqueFileURL(directory: AppSettings.shared.outputLocation.directory(for: url), fileName: name)
+            return (destination, output)
         }
         session.run(title: title, detail: detail) { progress in
             var outputs: [URL] = []
@@ -47,6 +48,7 @@ enum ImageToolSupport {
                 let (destination, output) = destinations[index]
                 let source = try ImageIOBridge.load(url)
                 let result = try render(url, source)
+                let quality = AppSettings.shared.quality(for: output)
                 try await ImageIOBridge.writeAnyFormat(result, to: destination, format: output, quality: quality)
                 outputs.append(destination)
                 progress(Double(index + 1) / Double(files.count))

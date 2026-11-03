@@ -44,6 +44,7 @@ struct SettingsView: View {
     @State private var officeHealth: OfficeEngine.Health = .missing
     @State private var formatSelection: FileFormat = .jpg
     @State private var feedbackCopied = false
+    @State private var qualityTarget: FileFormat = .webp
 
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @Environment(\.accessibilityReduceTransparency) private var reduceTransparency
@@ -179,6 +180,38 @@ struct SettingsView: View {
             Picker(L10n.t("Language"), selection: $settings.language) {
                 ForEach(AppLanguage.allCases) { Text($0.title).tag($0) }
             }
+            HStack(spacing: 8) {
+                Text(L10n.t("Accent color"))
+                Spacer()
+                ForEach(AccentChoice.allCases) { choice in
+                    let color = choice == .system ? Color(nsColor: .controlAccentColor) : Color(nsColor: choice.color ?? .controlAccentColor)
+                    Button {
+                        settings.accentChoice = choice
+                    } label: {
+                        Circle()
+                            .fill(color)
+                            .frame(width: 18, height: 18)
+                            .overlay(Circle().strokeBorder(settings.accentChoice == choice ? Color.primary : Color.clear, lineWidth: 2))
+                    }
+                    .buttonStyle(.plain)
+                    .help(choice.title)
+                }
+            }
+            Picker(L10n.t("Menu bar icon"), selection: $settings.menuBarIconStyle) {
+                ForEach(MenuBarIconStyle.allCases) { Text(L10n.t($0.title)).tag($0) }
+            }
+            Picker(L10n.t("Sound"), selection: $settings.soundChoice) {
+                ForEach(SoundChoice.allCases) { Text($0.title).tag($0) }
+            }
+            HStack {
+                TextField(L10n.t("Output name template"), text: $settings.outputNameTemplate)
+                    .textFieldStyle(.roundedBorder)
+                Button(L10n.t("Reset")) { settings.resetOutputNameTemplate() }
+                    .controlSize(.small)
+            }
+            Text(L10n.format("Preview: %@", OutputNaming.fileName(base: "photo", suffix: "Compressed", ext: "jpg")))
+                .font(.caption)
+                .foregroundStyle(.secondary)
             Text(L10n.t("Restart the app to apply menu and guide language changes."))
                 .font(.caption).foregroundStyle(.secondary)
             Text(L10n.t("Keep Citrus ready in the menu bar after you restart and sign in. Move the app to Applications before enabling."))

@@ -121,7 +121,9 @@ struct MetadataToolView: View {
             guard let format = FileFormat.detect(url) else { continue }
             let base = ConversionMatrix.strippedBaseName(url.lastPathComponent)
             let ext = format.category == .image && !ImageIOBridge.canEncodeNatively(format) ? "png" : url.pathExtension
-            let destination = ConversionMatrix.uniqueURL(directory: session.outputDirectory, baseName: base, suffix: removeAll ? "No Metadata" : "Edited", ext: ext)
+            let suffix = removeAll ? "No Metadata" : "Edited"
+            let name = OutputNaming.fileName(base: base, suffix: suffix, ext: ext)
+            let destination = ConversionMatrix.uniqueFileURL(directory: session.outputDirectory, fileName: name)
             JobRunner.shared.run(title: "Editing metadata", detail: "\(url.lastPathComponent)", symbol: ToolID.editMetadata.symbol) { progress in
                 try await MetadataOps.write(url, edits: edits, removeAll: removeAll, removeSensitive: removeSensitive, to: destination, progress: progress)
                 return [destination]
