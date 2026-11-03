@@ -210,3 +210,31 @@ shasum -a 256 -c "dist/release/SHA256SUMS.txt"
 - **上游链接**：README 不再链接上游官网/下载页；上游仓库只作为版权与来源说明保留。
 - **远程仓库**：已创建并推送 https://github.com/onepayzk-glitch/citrus （`origin`），
   上游只读引用保留为 `upstream`；`GITHUB_REPO` 默认 `onepayzk-glitch/citrus`。
+
+
+## 11. 没有 Apple 凭证时的替代方案
+
+**结论：只有「官方发布、用户双击即开」需要 Apple Developer Program（$99/年）。** 没有凭证也能开源和自用，只是分发体验不同。
+
+| 方案 | 费用 | 用户体验 | 可行性 |
+|---|---|---|---|
+| 只发源码，用户自行 `./scripts/build-app.sh` | 0 | 需要 Xcode/命令行工具；首次手动打开 | ✅ 最干净 |
+| 发布 ad-hoc/unsigned 包 | 0 | 需右键打开或系统设置允许；无法验证来源 | ⚠️ 只适合开发者/测试 |
+| 让有 Developer ID 的团队/公司代签 | 对方付费 | 取决于对方身份与信任 | ⚠️ 证书属于对方团队，分发身份不是你的，不建议 |
+| Apple 费用豁免（非营利/教育/政府机构） | 0 | 与付费相同（需审核） | 个人一般不符合；若你有对应机构可申请 |
+| Apple Developer Program | $99/年 | 双击即开，可公证 | ✅ 唯一正规路径 |
+| Mac App Store | $99/年 + 审核 | 商店安装 | ❌ 与 GPL 分发冲突风险，不建议 |
+
+说明：
+- **免费 Apple ID** 只能做本地开发签名（Apple Development），**不能**获得 Developer ID，也无法公证；换台 Mac 仍会被 Gatekeeper 拦截。
+- 公证（notarytool）本身不额外收费，费用就是 Developer Program 年费。
+- 任何第三方都无法替代 Apple 的公证服务；自签名/自建 CA 不会被 Gatekeeper 认可。
+- 建议顺序：先开源 + 源码构建 + ad-hoc 测试包 → 有用户/打赏后再买 $99 → 用 GitHub Actions Secrets 自动签名公证。
+- 若你属于非营利组织、认证教育机构或政府机构，可在 developer.apple.com 查询 fee waiver 政策并申请（以 Apple 当前政策为准）。
+
+### 无凭证期间的发布建议
+
+1. GitHub Release 只放 **源码 zip** 或明确标注 `unsigned developer build` 的包；
+2. README 写清「首次打开方式」，不要让用户全局关闭 Gatekeeper；
+3. 收集打赏/赞助，覆盖 $99 年费后再发正式公证版；
+4. 代码层面的签名/公证流水线已就绪，拿到凭证后一条命令即可。

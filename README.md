@@ -47,6 +47,23 @@ NOTARY_PROFILE="open-tangerine-notary" \
 
 The script builds, signs with hardened runtime, packages ZIP and DMG, notarizes and staples both, then writes `SHA256SUMS.txt`. Without a Developer ID certificate it produces ad-hoc artifacts for local testing only. Prerequisites, GitHub Actions secrets and troubleshooting: [parity/release-1.0.md](parity/release-1.0.md). CI workflow: `.github/workflows/release.yml` (tag `v*`).
 
+## Unsigned developer builds (no Apple account)
+
+A Developer ID certificate is **only** required for a double-click, Gatekeeper-approved public release. Without one you can still build and use Citrus locally:
+
+```bash
+./scripts/build-app.sh
+open "dist/Citrus.app"        # if macOS blocks it: right-click → Open, or System Settings → Privacy & Security → Open Anyway
+```
+
+For a downloaded ZIP/DMG, macOS may quarantine it. The safest manual step is right-click → Open; a terminal alternative is:
+
+```bash
+xattr -d com.apple.quarantine "/Applications/Citrus.app"
+```
+
+Do not disable Gatekeeper globally. Do not redistribute unsigned builds as the official download — users will see a security warning and cannot verify the source.
+
 ## Optional external engines
 
 | Engine | Used for | If missing |
