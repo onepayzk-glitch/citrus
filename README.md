@@ -57,11 +57,16 @@ The script builds, signs with hardened runtime, packages ZIP and DMG, notarizes 
 
 Policy and manual check: [parity/dependencies.md](parity/dependencies.md).
 
+## Product documents
+
+- [Product requirements (PRD)](PRD.md) · [Roadmap](ROADMAP.md)
+- Status: 1.0 source is public and tested; a signed and notarized release is pending the author's Apple Developer credentials.
+
 ## Documentation
 
 - [Feature parity matrix](parity/parity-matrix.md) · [Verification](parity/verification.md) · [Test report 1.0](parity/test-report-1.0.md)
 - [Dependency policy](parity/dependencies.md) · [Release and notarization](parity/release-1.0.md)
-- [1.x roadmap](parity/roadmap-1.x.md) · [Manual drag checklist](parity/manual-verification-checklist.md)
+- [Manual drag checklist](parity/manual-verification-checklist.md)
 - [Static REA evidence](parity/tangerine-static-evidence.md) · [Runtime evidence](parity/tangerine-runtime-evidence.md)
 
 ## Feedback
