@@ -384,6 +384,7 @@ enum L10n {
         "Tool: %@": "工具：%@",
 
         "Author": "作者",
+        "GPL-3.0-only · Fork maintained by 假宝玉.\nBased on Open Tangerine by Sintax Error Private Limited; Satsuma by plyght (MIT).\nIndependent of Tangerine. Some features remain experimental.": "GPL-3.0-only · 本 fork 由假宝玉维护。\n基于 Sintax Error Private Limited 的 Open Tangerine；Satsuma 由 plyght 开发（MIT）。\n与 Tangerine 无关联，部分功能仍属实验性。",
         "Feedback": "反馈问题",
         "Feedback…": "反馈问题…",
         "Send email": "发送邮件反馈",

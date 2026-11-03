@@ -11,6 +11,8 @@ mkdir -p "$app/Contents/MacOS" "$module_cache" "$PWD/.build"
 MIN_MACOS="${MACOSX_DEPLOYMENT_TARGET:-15.0}"
 MARKETING_VERSION="${MARKETING_VERSION:-1.0.0}"
 BUILD_NUMBER="${BUILD_NUMBER:-1}"
+BUNDLE_ID="${BUNDLE_ID:-com.syntaxerror.opentangerine}"
+GITHUB_REPO="${GITHUB_REPO:-}"
 if [[ "${BUILD_UNIVERSAL:-0}" == "1" || "${ARCHS:-}" == "universal" ]]; then
   archs=(x86_64 arm64)
 else
@@ -41,12 +43,13 @@ cat > "$app/Contents/Info.plist" <<PLIST
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0"><dict>
 <key>CFBundleExecutable</key><string>OpenTangerine</string>
-<key>CFBundleIdentifier</key><string>com.syntaxerror.opentangerine</string>
+<key>CFBundleIdentifier</key><string>${BUNDLE_ID}</string>
 <key>CFBundleName</key><string>Open Tangerine</string>
 <key>CFBundleIconFile</key><string>AppIcon</string>
 <key>CFBundlePackageType</key><string>APPL</string>
 <key>CFBundleShortVersionString</key><string>${MARKETING_VERSION}</string>
 <key>CFBundleVersion</key><string>${BUILD_NUMBER}</string>
+<key>OTGitHubRepo</key><string>${GITHUB_REPO}</string>
 <key>LSMinimumSystemVersion</key><string>15.0</string>
 <key>LSUIElement</key><true/>
 <key>NSHighResolutionCapable</key><true/>
@@ -98,4 +101,4 @@ if [[ "$verified" != "1" ]]; then
 fi
 test -x "$app/Contents/MacOS/OpenTangerine"
 plutil -lint "$app/Contents/Info.plist"
-printf 'Built %s (%s, macOS %s+, version %s build %s)\n' "$app" "$(xcrun lipo -archs "$app/Contents/MacOS/OpenTangerine")" "$MIN_MACOS" "$MARKETING_VERSION" "$BUILD_NUMBER"
+printf 'Built %s (%s, macOS %s+, version %s build %s, bundle %s)\n' "$app" "$(xcrun lipo -archs "$app/Contents/MacOS/OpenTangerine")" "$MIN_MACOS" "$MARKETING_VERSION" "$BUILD_NUMBER" "$BUNDLE_ID"

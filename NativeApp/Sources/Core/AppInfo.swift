@@ -1,6 +1,26 @@
 import AppKit
 import Foundation
 
+/// The public repository for this fork. The repo name is injected at build time
+/// (GITHUB_REPO=owner/repo); until it exists the UI falls back to the GitHub profile.
+enum AppRepository {
+    static let owner = AppAuthor.githubUsername
+
+    static var name: String? {
+        guard let value = Bundle.main.object(forInfoDictionaryKey: "OTGitHubRepo") as? String else { return nil }
+        let trimmed = value.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !trimmed.isEmpty, trimmed.contains("/") else { return nil }
+        return trimmed
+    }
+
+    static var profileURL: URL? { URL(string: "https://github.com/" + owner) }
+
+    static var releasesURL: URL? {
+        guard let name else { return profileURL }
+        return URL(string: "https://github.com/" + name + "/releases")
+    }
+}
+
 /// Public author identity. Only limited information is shown to users:
 /// a name, a GitHub profile and a feedback email that is never rendered as plain text
 /// in the UI. The email is assembled at runtime for mailto/copy actions only.

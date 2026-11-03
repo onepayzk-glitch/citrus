@@ -15,12 +15,19 @@ struct AppVersion: Comparable {
 
 @MainActor final class UpdateChecker {
     static let shared = UpdateChecker()
-    private let endpoint = URL(string: "https://api.github.com/repos/sintaxerrorpvtltd/Open-Tangerine/releases/latest")!
+    /// The fork's repository, if configured at build time or injected by tests.
+    private let repositoryName: String?
+
+    private var endpoint: URL? {
+        guard let repositoryName else { return nil }
+        return URL(string: "https://api.github.com/repos/\(repositoryName)/releases/latest")
+    }
+
     var downloadPage: URL {
-        var page = URLComponents(string: "https://sintaxerrorpvtltd.github.io/Open-Tangerine/")!
-        page.queryItems = [URLQueryItem(name: "version", value: currentVersion)]
-        page.fragment = "download"
-        return page.url!
+        if let repositoryName, let releases = URL(string: "https://github.com/\(repositoryName)/releases") {
+            return releases
+        }
+        return AppRepository.profileURL ?? URL(string: "https://github.com")!
     }
     private let session: URLSession
     private let defaults: UserDefaults
@@ -28,7 +35,9 @@ struct AppVersion: Comparable {
     private let openPage: (URL) -> Void
     init(session: URLSession = .shared, defaults: UserDefaults = .standard,
          currentVersion: String = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "0.0.0",
+         repositoryName: String? = AppRepository.name,
          openPage: @escaping (URL) -> Void = { NSWorkspace.shared.open($0) }) {
+        self.repositoryName = repositoryName
         self.session = session
         self.defaults = defaults
         self.currentVersion = currentVersion
@@ -51,6 +60,7 @@ struct AppVersion: Comparable {
             openPage(downloadPage)
             return
         }
+        guard let endpoint else { return }
         guard !checking else { return }
         if let last = defaults.object(forKey: "lastUpdateCheck") as? Date,
            Date().timeIntervalSince(last) < 86400 { return }

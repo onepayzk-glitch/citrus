@@ -91,6 +91,8 @@ jobs:
           MARKETING_VERSION: ${{ steps.version.outputs.version }}
           BUILD_NUMBER: ${{ steps.version.outputs.build }}
           NOTARY_PROFILE: release-notary
+          BUNDLE_ID: com.onepayzk.opentangerine
+          GITHUB_REPO: ${{ github.repository }}
         run: |
           set -euo pipefail
           IDENTITY="$(security find-identity -v -p codesigning | awk -F'"' '/Developer ID Application/{print $2; exit}')"

@@ -194,3 +194,19 @@ shasum -a 256 -c "dist/release/SHA256SUMS.txt"
 3. 第三方声明：组装版本不捆绑 LibreOffice/FFmpeg，因此不承担其分发许可义务；将来若捆绑，
    需补 MPL-2.0 / LGPL 许可证文本与源码获取说明；
 4. 不在仓库中存放 `.p8`、`.p12`、公证凭据、用户数据。
+
+
+## 10. 发布身份（bundle id / 仓库）说明
+
+这是 **Open Tangerine 的 GPL fork**，由假宝玉维护；上游作者是 Sintax Error Private Limited。
+用户可见的身份（作者、反馈、Release 链接）应指向本 fork，但**版权归属与 GPL/MIT 声明必须保留**。
+
+- **bundle identifier**：开发构建默认沿用上游 `com.syntaxerror.opentangerine`（保持本地设置）；
+  `package-release.sh` 默认使用本 fork 的 `com.onepayzk.opentangerine`，可用 `BUNDLE_ID=` 覆盖。
+  不同 bundle id 会使用不同的偏好设置域，正式发布前请确认。
+- **GitHub 仓库**：构建时可注入 `GITHUB_REPO=owner/repo`（写入 Info.plist `OTGitHubRepo`）。
+  未注入时，App 内「检查更新」不会访问网络，只打开 GitHub 个人主页；注入后才会访问
+  `api.github.com/repos/<repo>/releases/latest`。
+- **上游链接**：README 不再链接上游官网/下载页；上游仓库只作为版权与来源说明保留。
+- **远程仓库**：本地 `origin` 已改名为 `upstream`（只读引用）；发布前请新建自己的仓库并
+  `git remote add origin https://github.com/onepayzk-glitch/<repo>.git`。

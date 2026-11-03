@@ -565,7 +565,7 @@ struct SettingsView: View {
                     }
                 }
                 .padding(.top, 2)
-                Text(L10n.t("GPL-3.0-only · Based on Satsuma by plyght (MIT).\nIndependent of Tangerine. Some features remain experimental."))
+                Text(L10n.t("GPL-3.0-only · Fork maintained by 假宝玉.\nBased on Open Tangerine by Sintax Error Private Limited; Satsuma by plyght (MIT).\nIndependent of Tangerine. Some features remain experimental."))
                     .font(.system(size: 10)).foregroundStyle(.secondary)
                     .multilineTextAlignment(.center).lineSpacing(3)
             }

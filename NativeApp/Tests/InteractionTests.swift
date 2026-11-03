@@ -54,8 +54,8 @@ final class UpdateResponse: URLProtocol {
         let defaults = UserDefaults(suiteName: suite)!
         defer { defaults.removePersistentDomain(forName: suite) }
         var openedPage: URL?
-        let checker = UpdateChecker(session: URLSession(configuration: config), defaults: defaults, currentVersion: "0.1.2", openPage: { openedPage = $0 })
-        precondition(checker.downloadPage.absoluteString == "https://sintaxerrorpvtltd.github.io/Open-Tangerine/?version=0.1.2#download")
+        let checker = UpdateChecker(session: URLSession(configuration: config), defaults: defaults, currentVersion: "0.1.2", repositoryName: "onepayzk-glitch/open-tangerine", openPage: { openedPage = $0 })
+        precondition(checker.downloadPage.absoluteString == "https://github.com/onepayzk-glitch/open-tangerine/releases")
         await checker.check(interactive: true)
         precondition(openedPage == checker.downloadPage)
         precondition(UpdateResponse.requests == 0, "Manual update must open the website without waiting for GitHub")
@@ -70,7 +70,13 @@ final class UpdateResponse: URLProtocol {
         UpdateResponse.status = 404
         await checker.check(interactive: false)
         precondition(defaults.object(forKey: "lastUpdateCheck") == nil)
-        print("PASS HTTP update detection, current version, unpublished release")
+        // A build without a configured repository must not reach the network at all.
+        let offline = UpdateChecker(session: URLSession(configuration: config), defaults: defaults, currentVersion: "0.1.2", repositoryName: nil, openPage: { _ in })
+        let before = UpdateResponse.requests
+        await offline.check(interactive: false)
+        precondition(UpdateResponse.requests == before, "No repository must mean no update request")
+        precondition(offline.downloadPage.absoluteString == "https://github.com/onepayzk-glitch")
+        print("PASS HTTP update detection, current version, unpublished release, offline fallback")
         let state = CompanionState.shared
         state.set(.watching)
         state.watch(label: "PNG", direction: 3)

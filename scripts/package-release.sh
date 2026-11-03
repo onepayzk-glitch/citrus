@@ -19,6 +19,8 @@ BUILD_NUMBER="${BUILD_NUMBER:-1}"
 APP="dist/$APP_NAME.app"
 RELEASE_DIR="dist/release"
 IDENTITY="${DEVELOPER_ID_APPLICATION:-}"
+BUNDLE_ID="${BUNDLE_ID:-com.onepayzk.opentangerine}"
+GITHUB_REPO="${GITHUB_REPO:-}"
 NOTARY_PROFILE="${NOTARY_PROFILE:-}"
 
 mkdir -p "$RELEASE_DIR"
@@ -29,6 +31,7 @@ rm -f "$ZIP" "$DMG" "$SHA"
 
 echo "== 1/7 Build (version $MARKETING_VERSION, build $BUILD_NUMBER)"
 MARKETING_VERSION="$MARKETING_VERSION" BUILD_NUMBER="$BUILD_NUMBER" \
+  BUNDLE_ID="$BUNDLE_ID" GITHUB_REPO="$GITHUB_REPO" \
   DEVELOPER_ID_APPLICATION="$IDENTITY" ./scripts/build-app.sh
 
 echo "== 2/7 Verify app signature"

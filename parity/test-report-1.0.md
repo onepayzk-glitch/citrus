@@ -3,6 +3,7 @@
 日期：2026-11-01
 仓库：`/Users/zhukun/Documents/HARNESS/dsh-mac/tangerine-oss`
 版本：`1.0.0 (build 1)`，arm64，macOS 15+，ad-hoc 签名（暂无 Developer ID）
+发布身份：`CFBundleIdentifier = com.onepayzk.opentangerine`（本 fork）；开发构建默认 `com.syntaxerror.opentangerine`
 
 ## 1. 环境
 
@@ -62,11 +63,12 @@ MARKETING_VERSION=1.0.0 BUILD_NUMBER=1 ./scripts/package-release.sh   # exit 0
 
 | 产物 | 大小 | SHA-256 |
 |---|---|---|
-| `dist/release/OpenTangerine-1.0.0.zip` | 2.0 MB | `e272a997f1cdfef2004701a4d59ca9c7bceeb0ca82c9daee303f8dcaf4826b0d` |
-| `dist/release/OpenTangerine-1.0.0.dmg` | 2.5 MB | `dc3be57344df4e3fe6aa9a2e5108ca0e735484f5a24ff282ef3a74655d0c51d5` |
+| `dist/release/OpenTangerine-1.0.0.zip` | 2.0 MB | `11ae19e746857477dd3ddf3958521b25aeb2ca19471ca42318b3ca259858ac59` |
+| `dist/release/OpenTangerine-1.0.0.dmg` | 2.5 MB | `b79a168dc31b5e1fc254164e4eff9635b293d4f38e2d31a6f532ce66887f3caf` |
 
 DMG 验收：可挂载；内含 `Open Tangerine.app` 与 `Applications` 软链；
-`CFBundleShortVersionString=1.0.0`、`CFBundleVersion=1`；签名类型为 ad-hoc；
+`CFBundleShortVersionString=1.0.0`、`CFBundleVersion=1`、`CFBundleIdentifier=com.onepayzk.opentangerine`；
+`OTGitHubRepo` 为空（未配置仓库时 App 内更新检查不联网）；签名类型为 ad-hoc；
 `spctl --assess` 拒绝（**符合预期**：未公证的 ad-hoc 包不能对外分发）。
 
 ## 5. 签名与公证
